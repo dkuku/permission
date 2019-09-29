@@ -41,7 +41,8 @@ defmodule WorkpermitWeb do
 
       import WorkpermitWeb.ErrorHelpers
       import WorkpermitWeb.Gettext
-      alias WorkpermitWeb.Router.Helpers, as: Routes
+      import WorkpermitWeb.Router.Helpers
+      import WorkpermitWeb.Helpers.Auth, only: [signed_in?: 1]
     end
   end
 

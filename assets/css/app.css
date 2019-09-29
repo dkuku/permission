@@ -1,3 +1,25 @@
 /* This file is for your main application css. */
 
 @import "../node_modules/picnic/picnic.min.css";
+main {
+  margin-top: 85px;
+}
+.alert {
+    padding: .3em .6em;
+    border: 0;
+    border-radius: .2em;
+    margin: 15px;
+    border: 1px solid #0074d9;
+}
+.alert-info {
+  border-color: #0074d9;
+}
+.alert-success {
+  border-color: #2ecc40;
+}
+.alert-warning {
+  border-color: #ff851b;
+}
+.alert-error {
+  border-color: #ff4136;
+}
