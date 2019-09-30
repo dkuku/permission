@@ -8,6 +8,7 @@ defmodule WorkpermitWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug WorkpermitWeb.Plugs.LoadUser
+    plug MangoWeb.Plugs.Locale
   end
 
   pipeline :api do

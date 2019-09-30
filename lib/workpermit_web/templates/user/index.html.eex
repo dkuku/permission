@@ -1,12 +1,12 @@
-<h1>Listing Users</h1>
+<h1><%= gettext("Listing Users") %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Email</th>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Phone</th>
+<th><%= gettext("Email") %></th>
+<th><%= gettext("First name") %></th>
+<th><%= gettext("Last name") %></th>
+<th><%= gettext("Phone") %></th>
 
       <th></th>
     </tr>
@@ -20,13 +20,13 @@
       <td><%= user.phone %></td>
 
       <td>
-        <span><%= link "Show", to: user_path(@conn, :show, user) %></span>
-        <span><%= link "Edit", to: user_path(@conn, :edit, user) %></span>
-        <span><%= link "Delete", to: user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %></span>
+<span><%= link gettext("Show"), to: Routes.user_path(@conn, :show, user) %></span>
+        <span><%= link gettext("Edit"), to: Routes.user_path(@conn, :edit, user) %></span>
+        <span><%= link gettext("Delete"), to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %></span>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<span><%= link "New User", to: user_path(@conn, :new) %></span>
+<span><%= link gettext("New User"), to: Routes.user_path(@conn, :new) %></span>
