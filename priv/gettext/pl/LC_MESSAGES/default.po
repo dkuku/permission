@@ -29,7 +29,7 @@ msgstr "Zarejstruj"
 #, elixir-format
 #: lib/workpermit_web/templates/page/index.html.eex:2
 msgid "Welcome to %{name}!"
-msgstr "Witamy w"
+msgstr "Witamy w %{name}!"
 
 #, elixir-format
 #: lib/workpermit_web/templates/layout/app.html.eex:7

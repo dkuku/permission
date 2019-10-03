@@ -1,0 +1,57 @@
+<h1>Show Permit</h1>
+
+<ul>
+
+  <li>
+    <strong>Category:</strong>
+    <%= @permit.category %>
+  </li>
+
+  <li>
+    <strong>Number:</strong>
+    <%= @permit.number %>
+  </li>
+
+  <li>
+    <strong>Issued:</strong>
+    <%= @permit.issued %>
+  </li>
+
+  <li>
+    <strong>Start:</strong>
+    <%= @permit.start %>
+  </li>
+
+  <li>
+    <strong>Finish:</strong>
+    <%= @permit.finish %>
+  </li>
+
+  <li>
+    <strong>Closed:</strong>
+    <%= @permit.closed %>
+  </li>
+
+  <li>
+    <strong>Protective equipment value:</strong>
+    <%= @permit.protective_equipment_value %>
+  </li>
+
+  <li>
+    <strong>Issuer:</strong>
+    <%= @permit.issuer_id %>
+  </li>
+
+  <li>
+    <strong>Performer:</strong>
+    <%= @permit.performer_id %>
+  </li>
+
+  <li>
+    <strong>Controller:</strong>
+    <%= @permit.controller_id %>
+  </li>
+
+</ul>
+
+<span><%= link "Back", to: Routes.permit_path(@conn, :index) %></span>

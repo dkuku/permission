@@ -8,7 +8,7 @@ defmodule WorkpermitWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug WorkpermitWeb.Plugs.LoadUser
-    plug MangoWeb.Plugs.Locale
+    plug WorkpermitWeb.Plugs.Locale
   end
 
   pipeline :api do
@@ -25,6 +25,8 @@ defmodule WorkpermitWeb.Router do
     get "/sign-in", SessionController, :new
     post "/sign-in", SessionController, :create
     delete "/sign-out", SessionController, :delete
+
+    resources "/permits", PermitController, only: [:index, :new, :create, :show]
   end
 
   # Other scopes may use custom stacks.
