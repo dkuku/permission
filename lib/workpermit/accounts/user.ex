@@ -28,9 +28,10 @@ defmodule Workpermit.Accounts.User do
 
   defp put_hashed_password(changeset) do
     case changeset.valid? do
-      true -> 
+      true ->
         changes = changeset.changes
         put_change(changeset, :encrypted_password, Argon2.hash_pwd_salt(changes.password))
+
       _ ->
         changeset
     end
@@ -40,5 +41,4 @@ defmodule Workpermit.Accounts.User do
     %User{}
     |> User.changeset(attrs)
   end
-
 end

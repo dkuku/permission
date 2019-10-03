@@ -12,6 +12,7 @@ defmodule WorkpermitWeb.SessionController do
         conn
         |> put_flash(:info, "There was a problem with your username/password.")
         |> render("new.html")
+
       user ->
         conn
         |> assign(:user, user)

@@ -38,17 +38,17 @@ defmodule Workpermit.Accounts do
   def get_by_email(email) when is_nil(email) do
     nil
   end
-  
+
   def get_by_email(email) do
     Repo.get_by(User, email: email)
   end
 
   def get_user!(id), do: Repo.get!(User, id)
-  
+
   def get_by_credentials(%{"email" => email, "password" => password}) do
     user = get_by_email(email)
 
-    if user && Argon2.verify_pass(password, user.encrypted_password) do 
+    if user && Argon2.verify_pass(password, user.encrypted_password) do
       user
     else
       :error
@@ -77,6 +77,7 @@ defmodule Workpermit.Accounts do
     %User{}
     |> User.changeset(attrs)
   end
+
   @doc """
   Updates a user.
 

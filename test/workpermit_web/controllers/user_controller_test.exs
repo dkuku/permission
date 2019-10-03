@@ -3,8 +3,20 @@ defmodule WorkpermitWeb.UserControllerTest do
 
   alias Workpermit.Accounts
 
-  @create_attrs %{email: "some email", password: "some encrypted_password", first_name: "some first_name", last_name: "some last_name", phone: "some phone"}
-  @update_attrs %{email: "some updated email", password: "some updated encrypted_password", first_name: "some updated first_name", last_name: "some updated last_name", phone: "some updated phone"}
+  @create_attrs %{
+    email: "some email",
+    password: "some encrypted_password",
+    first_name: "some first_name",
+    last_name: "some last_name",
+    phone: "some phone"
+  }
+  @update_attrs %{
+    email: "some updated email",
+    password: "some updated encrypted_password",
+    first_name: "some updated first_name",
+    last_name: "some updated last_name",
+    phone: "some updated phone"
+  }
   @invalid_attrs %{email: nil, password: nil, first_name: nil, last_name: nil, phone: nil}
 
   def fixture(:user) do
@@ -75,6 +87,7 @@ defmodule WorkpermitWeb.UserControllerTest do
     test "deletes chosen user", %{conn: conn, user: user} do
       conn = delete(conn, Routes.user_path(conn, :delete, user))
       assert redirected_to(conn) == Routes.user_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.user_path(conn, :show, user))
       end

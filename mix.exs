@@ -39,21 +39,22 @@ defmodule Workpermit.MixProject do
     [
       {:argon2_elixir, "~> 2.0"},
       {:comeonin, "~> 5.1"},
-      {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
       {:distillery, "~> 2.1"},
       {:ecto_sql, "~> 3.0"},
-      {:elixilorem, "~> 0.0.1", only: [:dev, :test]},
-      {:excoveralls, "~> 0.10", only: :test},
       {:gettext, "~> 0.11"},
-      {:hound, "~> 1.0"},
       {:jason, "~> 1.0"},
       {:phoenix, "~> 1.4.0"},
       {:phoenix_ecto, "~> 4.0"},
       {:phoenix_html, "~> 2.11"},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_pubsub, "~> 1.1"},
       {:plug_cowboy, "~> 2.0"},
-      {:postgrex, ">= 0.0.0"}
+      {:postgrex, ">= 0.0.0"},
+      {:elixilorem, "~> 0.0.1", only: [:dev, :test]},
+      {:excoveralls, "~> 0.10", only: [:test]},
+      {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
+      {:cabbage, "~> 0.3.0", only: [:test]},
+      {:hound, "~> 1.0", only: [:test]},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
     ]
   end
 

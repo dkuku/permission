@@ -8,6 +8,7 @@ defmodule WorkpermitWeb.Acceptance.SessionTest do
     ## GIVEN ##
     # There is a valid registered user
     alias Workpermit.Accounts
+
     valid_attrs = %{
       "first_name" => "John",
       "last_name" => "Snow",
@@ -15,6 +16,7 @@ defmodule WorkpermitWeb.Acceptance.SessionTest do
       "password" => "secret",
       "phone" => "1111"
     }
+
     {:ok, _} = Accounts.create_user(valid_attrs)
     :ok
   end
@@ -25,6 +27,7 @@ defmodule WorkpermitWeb.Acceptance.SessionTest do
     navigate_to("/sign-in")
 
     form = find_element(:tag, "form")
+
     find_within_element(form, :name, "session[email]")
     |> fill_field("john@example.com")
 
@@ -37,8 +40,10 @@ defmodule WorkpermitWeb.Acceptance.SessionTest do
     ## THEN ##
     # message should be displayed
     assert current_path() == "/"
-    message = find_element(:class, "alert-info")
-              |> visible_text()
+
+    message =
+      find_element(:class, "alert-info")
+      |> visible_text()
 
     assert message == "Signed in successfully."
 
@@ -49,8 +54,10 @@ defmodule WorkpermitWeb.Acceptance.SessionTest do
 
     ## THEN ##
     # user can log out
-    message = find_element(:class, "alert-info")
-              |> visible_text()
+    message =
+      find_element(:class, "alert-info")
+      |> visible_text()
+
     assert message == "Signed out successfully!"
     assert visible_page_text() =~ "Log in"
   end
@@ -72,5 +79,4 @@ defmodule WorkpermitWeb.Acceptance.SessionTest do
     message = find_element(:class, "alert-info") |> visible_text()
     assert message == "There was a problem with your username/password."
   end
-
 end

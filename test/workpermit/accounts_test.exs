@@ -6,8 +6,20 @@ defmodule Workpermit.AccountsTest do
   describe "users" do
     alias Workpermit.Accounts.User
 
-    @valid_attrs %{email: "some email", password: "some encrypted_password", first_name: "some first_name", last_name: "some last_name", phone: "some phone"}
-    @update_attrs %{email: "some updated email", password: "some updated encrypted_password", first_name: "some updated first_name", last_name: "some updated last_name", phone: "some updated phone"}
+    @valid_attrs %{
+      email: "some email",
+      password: "some encrypted_password",
+      first_name: "some first_name",
+      last_name: "some last_name",
+      phone: "some phone"
+    }
+    @update_attrs %{
+      email: "some updated email",
+      password: "some updated encrypted_password",
+      first_name: "some updated first_name",
+      last_name: "some updated last_name",
+      phone: "some updated phone"
+    }
     @invalid_attrs %{email: nil, password: nil, first_name: nil, last_name: nil, phone: nil}
 
     def user_fixture(attrs \\ %{}) do
@@ -18,7 +30,7 @@ defmodule Workpermit.AccountsTest do
 
       user
       |> Map.drop([:password])
-      |> Map.put(:password, nil) 
+      |> Map.put(:password, nil)
     end
 
     test "list_users/0 returns all users" do
@@ -77,7 +89,7 @@ defmodule Workpermit.AccountsTest do
   end
 
   test "build_user/0 returns a user changeset" do
-    assert %Ecto.Changeset{} = Accounts.build_user
+    assert %Ecto.Changeset{} = Accounts.build_user()
   end
 
   test "build_user/1 returns a user changeset with values applied" do
@@ -85,7 +97,7 @@ defmodule Workpermit.AccountsTest do
     changeset = Accounts.build_user(attrs)
     assert changeset.params == attrs
   end
-  
+
   test "get_user" do
     valid_attrs = %{
       "last_name" => "John",
@@ -94,6 +106,7 @@ defmodule Workpermit.AccountsTest do
       "password" => "secret",
       "phone" => "1111"
     }
+
     {:ok, user1} = Accounts.create_user(valid_attrs)
     user2 = Accounts.get_by_credentials(valid_attrs)
     assert user1.id == user2.id

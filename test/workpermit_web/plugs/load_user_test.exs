@@ -1,5 +1,5 @@
 defmodule WorkpermitWeb.Plugs.LoadUserTest do
-  use WorkpermitWeb.ConnCase 
+  use WorkpermitWeb.ConnCase
   alias Workpermit.Accounts
 
   @valid_attrs %{
@@ -15,13 +15,12 @@ defmodule WorkpermitWeb.Plugs.LoadUserTest do
     {:ok, user} = Accounts.create_user(@valid_attrs)
 
     # Build a new conn by posting login data to "/sign-in" path
-    conn = post build_conn(), "/sign-in", %{"session" => @valid_attrs } 
+    conn = post build_conn(), "/sign-in", %{"session" => @valid_attrs}
 
     # We reuse the same conn now instead of building a new one
-    conn = get conn, "/" 
+    conn = get(conn, "/")
 
     # now we expect the conn to have the `:current_customer` data loaded in conn.
     assert user.id == conn.assigns.user.id
   end
-
 end
