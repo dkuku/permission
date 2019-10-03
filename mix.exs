@@ -10,7 +10,11 @@ defmodule Workpermit.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test
+      ]
     ]
   end
 
@@ -36,7 +40,10 @@ defmodule Workpermit.MixProject do
       {:argon2_elixir, "~> 2.0"},
       {:comeonin, "~> 5.1"},
       {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
+      {:distillery, "~> 2.1"},
       {:ecto_sql, "~> 3.0"},
+      {:elixilorem, "~> 0.0.1", only: [:dev, :test]},
+      {:excoveralls, "~> 0.10", only: :test},
       {:gettext, "~> 0.11"},
       {:hound, "~> 1.0"},
       {:jason, "~> 1.0"},
@@ -46,7 +53,7 @@ defmodule Workpermit.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_pubsub, "~> 1.1"},
       {:plug_cowboy, "~> 2.0"},
-      {:postgrex, ">= 0.0.0"},
+      {:postgrex, ">= 0.0.0"}
     ]
   end
 
