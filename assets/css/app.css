@@ -1,25 +1,35 @@
-/* This file is for your main application css. */
+@tailwind base;
 
-@import "../node_modules/picnic/picnic.min.css";
-main {
-  margin-top: 85px;
+h1 {
+  @apply text-2xl;
 }
-.alert {
-    padding: .3em .6em;
-    border: 0;
-    border-radius: .2em;
-    margin: 15px;
-    border: 1px solid #0074d9;
+h2 {
+  @apply text-xl;
 }
-.alert-info {
-  border-color: #0074d9;
+h3 {
+  @apply text-lg;
 }
-.alert-success {
-  border-color: #2ecc40;
+a {
+  @apply text-primary-dark;
 }
-.alert-warning {
-  border-color: #ff851b;
+button {
+  @apply font-bold py-2 px-4 rounded;
+  @apply bg-primary-dark text-white;
 }
-.alert-error {
-  border-color: #ff4136;
+button:hover {
+  @apply bg-primary-dark text-white;
 }
+
+.btn-gray {
+  @apply bg-gray-light text-gray-dark;
+}
+.btn-gray:hover {
+  @apply bg-gray-medium;
+}
+@tailwind components;
+
+/* Put your custom components here */
+
+@tailwind utilities;
+
+/* Put your custom utilities here */
