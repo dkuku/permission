@@ -4,47 +4,56 @@
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
+  <div>
+    <div class="flex two four-500 six-800">
+      <%= label f, :category %>
+      <%= number_input f, :category %>
+      <%= error_tag f, :category %>
 
-  <%= label f, :category %>
-  <%= number_input f, :category %>
-  <%= error_tag f, :category %>
+      <%= label f, :number %>
+      <%= number_input f, :number %>
+      <%= error_tag f, :number %>
+    </div>
+    <%= label f, :issued %>
+    <%= error_tag f, :issued %>
+    <div class="flex two four-500 six-800">
+      <%= permit_datetime_select f, :issued %>
+    </div>
+    <%= label f, :start %>
+    <%= error_tag f, :start %>
+    <div class="flex two four-500 six-800">
+      <%= permit_datetime_select f, :start %>
+    </div>
+    <%= label f, :finish %>
+    <%= error_tag f, :finish %>
+    <div class="flex two four-500 six-800">
+      <%= permit_datetime_select f, :finish %>
+    </div>
+    <%= label f, :closed %>
+    <%= error_tag f, :closed %>
+    <div class="flex two four-500 six-800">
+      <%= permit_datetime_select f, :closed %>
+    </div>
+    <div>
+      <!--%= label f, :protective_equipment_value %>
+      <!--%= checkbox f, :protective_equipment_value %>
+      <!--%= error_tag f, :protective_equipment_value %-->
 
-  <%= label f, :number %>
-  <%= number_input f, :number %>
-  <%= error_tag f, :number %>
-
-  <%= label f, :issued %>
-  <%= datetime_select f, :issued %>
-  <%= error_tag f, :issued %>
-
-  <%= label f, :start %>
-  <%= datetime_select f, :start %>
-  <%= error_tag f, :start %>
-
-  <%= label f, :finish %>
-  <%= datetime_select f, :finish %>
-  <%= error_tag f, :finish %>
-
-  <%= label f, :closed %>
-  <%= datetime_select f, :closed %>
-  <%= error_tag f, :closed %>
-
-  <%= label f, :protective_equipment_value %>
-  <%= checkbox f, :protective_equipment_value %>
-  <%= error_tag f, :protective_equipment_value %>
-
-  <%= label f, :issuer_id %>
-  <%= text_input f, :issuer_id %>
-  <%= error_tag f, :issuer_id %>
-
-  <%= label f, :performer_id %>
-  <%= text_input f, :performer_id %>
-  <%= error_tag f, :performer_id %>
-
-  <%= label f, :controller_id %>
-  <%= text_input f, :controller_id %>
-  <%= error_tag f, :controller_id %>
-
+      <%= label f, :issuer_id %>
+      <%= text_input f, :issuer_id %>
+      <%= error_tag f, :issuer_id %>
+    </div>
+    <div>
+      <%= label f, :performer_id %>
+      <%= text_input f, :performer_id %>
+      <%= error_tag f, :performer_id %>
+    </div>
+    <div>
+      <%= label f, :controller_id %>
+      <%= text_input f, :controller_id %>
+      <%= error_tag f, :controller_id %>
+    </div>
+  </div>
   <div>
     <%= submit "Save" %>
   </div>

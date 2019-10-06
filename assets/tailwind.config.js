@@ -1,5 +1,5 @@
 const tailwindColorPalette = require('@dkuku/tailwind-color-palette')
-const primaryColors = tailwindColorPalette('#5cb6bc',{
+const primaryColors = tailwindColorPalette('#eb0',{
   name: 'primary',
   grayscale: true,
   ui: true, 
@@ -65,9 +65,9 @@ module.exports = {
       },
       link: {
         fontWeight: theme('fontWeight.bold'),
-        color: theme('colors.blue.400'),
+        color: theme('colors.primary.light'),
         '&:hover': {
-          color: theme('colors.blue.600'),
+          color: theme('colors.primary.medium'),
           textDecoration: 'underline',
         },
       },

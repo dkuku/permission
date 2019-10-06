@@ -31,6 +31,7 @@ defmodule WorkpermitWeb do
     quote do
       use Phoenix.View,
         root: "lib/workpermit_web/templates",
+        pattern: "**/*",
         namespace: WorkpermitWeb
 
       # Import convenience functions from controllers
@@ -43,6 +44,8 @@ defmodule WorkpermitWeb do
       import WorkpermitWeb.Gettext
       alias WorkpermitWeb.Router.Helpers, as: Routes
       import WorkpermitWeb.Helpers.Auth, only: [signed_in?: 1]
+      import WorkpermitWeb.Helpers.Forms
+      use Timex
     end
   end
 

@@ -24,7 +24,7 @@ defmodule Workpermit.MixProject do
   def application do
     [
       mod: {Workpermit.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :timex]
     ]
   end
 
@@ -49,6 +49,7 @@ defmodule Workpermit.MixProject do
       {:phoenix_pubsub, "~> 1.1"},
       {:plug_cowboy, "~> 2.0"},
       {:postgrex, ">= 0.0.0"},
+      {:timex, "~> 3.5"},
       {:elixilorem, "~> 0.0.1", only: [:dev, :test]},
       {:excoveralls, "~> 0.10", only: [:test]},
       {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},

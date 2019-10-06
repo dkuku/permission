@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= gettext("Workpermit") %></title>
+    <meta name="description" content="">
+    <meta name="keywords" content="safety workpermit creator">
+    <meta name="author" content="Daniel Kukula">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#415bba">
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <style>
+      .gradient {
+        background: linear-gradient(90deg, #45a247 0%, #283c86 100%);
+      }
+      .mirror {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+      }
+    </style>
+  </head>
+  <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
+    <!--Nav-->
+    <%= render "components/nav.html", conn: @conn %>
+
+    <%= Enum.map(get_flash(@conn), fn {flash_key, flash_message} -> %>
+    <p class="alert alert-<%= flash_key %>"><%= flash_message %></p>
+    <% end) %>
+    <%= render @view_module, @view_template, assigns %>
+    <!--Footer-->
+    <footer class="bg-white">
+      <div class="container mx-auto  px-8">
+        <div class="w-full flex flex-col md:flex-row py-6">
+          <div class="flex-1 mb-6">
+          <a class="text-gray-dark no-underine hover:no-underline font-bold text-2xl lg:text-4xl"  href="<%= Routes.page_path(@conn, :index) %>">
+            <%= img_tag(Routes.static_path(@conn, "/images/logo.svg"), class: "h-8 fill-current inline") %>
+            <%= gettext("Workpermit") %>
+          </a>
+          </div>
+          <!--div class="flex-1">
+            <p class="uppercase text-gray-medium md:mb-6">Links</p>
+            <ul class="list-reset mb-6">
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-darker hover:text-primary-medium">FAQ</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-darker hover:text-primary-medium">Help</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-darker hover:text-primary-medium">Support</a>
+              </li>
+            </ul>
+          </div>
+          <div class="flex-1">
+            <p class="uppercase text-gray-medium md:mb-6">Legal</p>
+            <ul class="list-reset mb-6">
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-darker hover:text-primary-medium">Terms</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-darker hover:text-primary-medium">Privacy</a>
+              </li>
+            </ul>
+          </div>
+          <div class="flex-1">
+            <p class="uppercase text-gray-medium md:mb-6">Social</p>
+            <ul class="list-reset mb-6">
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-darker hover:text-primary-medium">Facebook</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-darker hover:text-primary-medium">Linkedin</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-darker hover:text-primary-medium">Twitter</a>
+              </li>
+            </ul>
+          </div>
+          <div class="flex-1">
+            <p class="uppercase text-gray-medium md:mb-6">Company</p>
+            <ul class="list-reset mb-6">
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-darker hover:text-primary-medium">Official Blog</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-darker hover:text-primary-medium">About Us</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-darker hover:text-primary-medium">Contact</a>
+              </li>
+            </ul>
+          </div-->
+        </div>
+      </div>
+      <a class="text-gray-light" href="https://undraw.co/">Images from undraw.co</a>
+      <br/>
+      <a class="text-gray-light" href="https://www.freepik.com/free-photos-vectors/background">Background vector created by freepik - www.freepik.com</a>
+    </footer>
+    <script type="text/javascript" src="<%=Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>

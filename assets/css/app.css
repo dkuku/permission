@@ -1,3 +1,4 @@
+$select-dropimage: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyIiBoZWlnaHQ9IjMiPjxwYXRoIGQ9Im0gMCwxIDEsMiAxLC0yIHoiLz48L3N2Zz4=" !default;
 @tailwind base;
 
 h1 {
@@ -10,7 +11,6 @@ h3 {
   @apply text-lg;
 }
 a {
-  @apply text-primary-dark;
 }
 button {
   @apply font-bold py-2 px-4 rounded;
@@ -19,12 +19,19 @@ button {
 button:hover {
   @apply bg-primary-dark text-white;
 }
-
 .btn-gray {
   @apply bg-gray-light text-gray-dark;
 }
 .btn-gray:hover {
   @apply bg-gray-medium;
+}
+select,
+input {
+  @apply border border-gray-light border-solid text-center text-gray-dark rounded h-10 px-2 m-4 block appearance-none w-full bg-white shadow leading-tight;
+}
+select:focus,
+input:focus {
+  @apply border-primary-light text-gray-darker;
 }
 @tailwind components;
 

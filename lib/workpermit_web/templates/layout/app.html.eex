@@ -9,23 +9,32 @@
   </head>
   <body>
     <header>
-      <section class="container">
-        <nav role="navigation">
-          <%= if signed_in?(@conn) do %>
-            <%= link gettext("Sign out"), to: Routes.session_path(@conn, :delete), method: :delete %>
-          <% else %>
-            <%= link gettext("Log in"), to: Routes.session_path(@conn, :create) %>
-            <%= link gettext("Sign up"), to: Routes.user_path(@conn, :new) %>
-          <% end %>
+      <section>
+        <nav role="navigation" class="flex items-center bg-primary-medium font-sans border-4 m-1 border-black border-solid text-black text-xl rounded">
+          <div class="flex items-center flex-shrink-0 mr-6">
+            <%= link gettext("Workpermit"), to: Routes.page_path(@conn, :index) %>
+          </div>
+          <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+          </div>
+          <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+            <div class="lg:flex-grow">
+              <%= if signed_in?(@conn) do %>
+                <%= link gettext("Sign out"), to: Routes.session_path(@conn, :delete), method: :delete, class: "block mt-4 lg:inline-block lg:mt-0 mr-4" %>
+              <% else %>
+                <%= link gettext("Log in"), to: Routes.session_path(@conn, :create),class: "block mt-4 lg:inline-block lg:mt-0 mr-4" %>
+                <%= link gettext("Sign up"), to: Routes.user_path(@conn, :new),class: "block mt-4 lg:inline-block lg:mt-0 mr-4" %>
+              <% end %>
+            </div>
+          </div>
         </nav>
       </section>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe"></i> I18n<span class="caret"></span></a>
+        <a href="#" class="dropdown-toggle text-primary text" data-toggle="dropdown"><i class="fa fa-globe"></i> I18n<span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li class="<%= get_active_locale_class("en") %>">
             <a href="?locale=en">English</a>
           </li>
-          <li class="<%= get_active_locale_class("fr") %>">
+          <li class="<%= get_active_locale_class("pl") %>">
             <a href="?locale=pl">Polski</a>
           </li>
         </ul>
@@ -34,7 +43,7 @@
     </header>
     <main role="main" class="container">
       <%= Enum.map(get_flash(@conn), fn {flash_key, flash_message} -> %>
-        <p class="alert alert-<%= flash_key %>"><%= flash_message %></p>
+      <p class="alert alert-<%= flash_key %>"><%= flash_message %></p>
       <% end) %>
       <%= render @view_module, @view_template, assigns %>
     </main>

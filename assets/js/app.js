@@ -8,10 +8,10 @@ import css from "../css/app.css"
 // in "webpack.config.js".
 //
 // Import dependencies
-//
 import "phoenix_html"
 
 // Import local files
+import "./navbar"
 //
 // Local files can be imported directly using relative paths, for example:
 // import socket from "./socket"
