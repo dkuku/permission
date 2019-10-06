@@ -22,8 +22,8 @@ before_script:
 script:
   - cd assets && npm install
   - phantomjs --wd
-  - cd .. && mix test
-after_script:
+  - cd .. && mix test && deploy.sh
+after_scrip
   - cd $TRAVIS_BUILD_DIR
   - MIX_ENV=docs mix inch.report
 cache:
@@ -31,3 +31,4 @@ cache:
   - assets/node_modules
   - _build
   - deps
+

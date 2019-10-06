@@ -10,13 +10,22 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :workpermit, WorkpermitWeb.Endpoint,
-  http: [:inet6, port: System.get_env("PORT") || 4000],
-  url: [host: "example.com", port: 80],
+  load_from_system_env: true,
+  http: [port: System.get_env("PORT")],
+  server: true, # Without this line, your app will not start the web server!
+  secret_key_base: "${SECRET_KEY_BASE}",
+  url: [host: "${APP_NAME}.gigalixirapp.com", port: 443],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :workpermit, WorkpermitWeb.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: "${DATABASE_URL}",
+  database: "",
+  ssl: true,
+  pool_size: 2
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
@@ -68,4 +77,4 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs which should be versioned
 # separately.
-import_config "prod.secret.exs"
+# import_config "prod.secret.exs"
