@@ -1,0 +1,33 @@
+language: elixir
+elixir:
+  - 1.9
+otp_release:
+  - 22.0
+sudo: false
+
+addons:
+  postgresql: '11.4'
+
+services:
+  - postgresql
+
+env:
+  global:
+    - ELIXIR_ASSERT_TIMEOUT=2000
+before_script:
+  - mix deps.get
+  - cp config/travis.exs config/test.exs
+  - mix do ecto.create, ecto.migrate
+  - nvm install 6.2 && nvm use 6.2
+script:
+  - cd assets && npm install
+  - phantomjs --wd
+  - cd .. && mix test
+after_script:
+  - cd $TRAVIS_BUILD_DIR
+  - MIX_ENV=docs mix inch.report
+cache:
+  directories:
+  - assets/node_modules
+  - _build
+  - deps
