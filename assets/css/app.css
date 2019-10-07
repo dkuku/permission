@@ -1,4 +1,3 @@
-$select-dropimage: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyIiBoZWlnaHQ9IjMiPjxwYXRoIGQ9Im0gMCwxIDEsMiAxLC0yIHoiLz48L3N2Zz4=" !default;
 @tailwind base;
 	/*Toast open/load animation*/
 	.alert-toast {
@@ -56,7 +55,6 @@ input:focus {
   @apply border-primary-light text-gray-darker;
 }
 @tailwind components;
-
 /* Put your custom components here */
 
 @tailwind utilities;
