@@ -1,5 +1,5 @@
 const tailwindColorPalette = require('@dkuku/tailwind-color-palette')
-const primaryColors = tailwindColorPalette('#eb0',{
+const primaryColors = tailwindColorPalette('#f3d253',{
   name: 'primary',
   grayscale: true,
   ui: true, 
@@ -7,7 +7,7 @@ const primaryColors = tailwindColorPalette('#eb0',{
   scalemode: "lrgb"
 }
 )
-const secondaryColors = tailwindColorPalette('#605650', {
+const secondaryColors = tailwindColorPalette('#825234', {
   name: 'secondary',
   colorscale: ["lighter", "light", "medium", "dark", "darker"],
   scalemode: "lrgb"

@@ -19,15 +19,6 @@
     <meta name="theme-color" content="#415bba">
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
-    <style>
-      .gradient {
-        background: linear-gradient(90deg, #45a247 0%, #283c86 100%);
-      }
-      .mirror {
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-      }
-    </style>
   </head>
   <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
     <!--Nav-->
@@ -36,7 +27,6 @@
     <%= Enum.map(get_flash(@conn), fn {flash_key, flash_message} -> %>
       <div class="alert-toast fixed top-0 right-0 m-8 w-5/6 md:w-full max-w-sm">
         <input type="checkbox" class="hidden" id="footertoast">
-
         <label class="close cursor-pointer flex items-start justify-between w-full p-2 bg-<%= flash_key %>-medium h-24 rounded shadow-lg text-white" title="close" for="footertoast">
           <%= flash_message %>
           <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
