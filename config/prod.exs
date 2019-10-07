@@ -11,7 +11,7 @@ use Mix.Config
 # before starting your production server.
 config :workpermit, WorkpermitWeb.Endpoint,
   load_from_system_env: true,
-  http: [port: 80],
+  http: [port: "${PORT}"],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 config :workpermit, WorkpermitWeb.Endpoint,
@@ -22,7 +22,7 @@ config :workpermit, WorkpermitWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
-config :workpermit, WorkpermitWeb.Repo,
+config :workpermit, Workpermit.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: "${DATABASE_URL}",
   database: "",
