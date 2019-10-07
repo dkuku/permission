@@ -24,6 +24,7 @@ defmodule WorkpermitWeb.Acceptance.SessionTest do
   test "successful sign-in for valid credential" do
     ## WHEN ##
     # users logs in
+    set_window_size(current_window_handle(), 1024, 600)
     navigate_to("/sign-in")
 
     form = find_element(:tag, "form")
@@ -42,7 +43,7 @@ defmodule WorkpermitWeb.Acceptance.SessionTest do
     assert current_path() == "/"
 
     message =
-      find_element(:class, "alert-info")
+      find_element(:tag, "label")
       |> visible_text()
 
     assert message == "Signed in successfully."
@@ -55,7 +56,7 @@ defmodule WorkpermitWeb.Acceptance.SessionTest do
     ## THEN ##
     # user can log out
     message =
-      find_element(:class, "alert-info")
+      find_element(:tag, "label")
       |> visible_text()
 
     assert message == "Signed out successfully!"

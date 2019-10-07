@@ -14,21 +14,33 @@
     <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
       <ul class="list-reset lg:flex justify-end flex-1 items-center">
         <li class="mr-3">
-          <%= link gettext("Permits"), to: Routes.permit_path(@conn, :index), class: "inline-block text-black font-bold no-underline hover:text-gray-darker hover:text-underline py-2 px-4" %>
+          <%= link gettext("Permits"), to: Routes.permit_path(@conn, :index), class: "inline-block text-black font-bold no-underline hover:text-underline py-2 px-4" %>
         </li>
         <%= if signed_in?(@conn) do %>
           <li class="mr-3">
-            <%= link gettext("Sign out"), to: Routes.session_path(@conn, :delete), method: :delete, class: "inline-block text-black no-underline hover:text-gray-darker hover:text-underline py-2 px-4" %>
+            <%= link gettext("Sign out"), to: Routes.session_path(@conn, :delete), method: :delete, class: "inline-block text-black no-underline hover:text-underline py-2 px-4" %>
           </li>
         <% else %>
           <li class="mr-3">
-            <%= link gettext("Log in"), to: Routes.session_path(@conn, :create),class: "inline-block text-black no-underline hover:text-gray-darker hover:text-underline py-2 px-4" %>
+            <%= link gettext("Log in"), to: Routes.session_path(@conn, :create),class: "inline-block text-black no-underline hover:text-underline py-2 px-4" %>
           </li>
           <li class="mr-3">
-            <%= link gettext("Sign up"), to: Routes.user_path(@conn, :new),class: "inline-block text-black no-underline hover:text-gray-darker hover:text-underline py-2 px-4" %>
+            <%= link gettext("Sign up"), to: Routes.user_path(@conn, :new),class: "inline-block text-black no-underline hover:text-underline py-2 px-4" %>
           </li>
         <% end %>
       </ul>
+      <!--Language dropdown -->
+      <div class="relative group">
+        <div class="flex items-center cursor-pointer text-black group-hover:border group-hover:border-b-0  group-hover:border-grey-light rounded-t-lg py-1 px-2">
+          <%= img_tag(Routes.static_path(@conn, "/images/globe.svg"), class: "h-5 inline") %>&nbsp;
+          <%= gettext("Language") %>
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+        <div class="items-center absolute border rounded-lg p-1 bg-white p-2 invisible group-hover:visible w-full">
+          <a class="px-4 py-2 block text-black hover:bg-grey-lighter <%= get_active_locale_class("en") %>" href="?locale=en">English</a>
+          <a class="px-4 py-2 block text-black hover:bg-grey-lighter <%= get_active_locale_class("pl") %>" href="?locale=pl">Polski</a>
+        </div>
+      </div>
       <!--button id="navAction" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-darker font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75">Action</button-->
     </div>
   </div>

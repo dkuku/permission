@@ -123,6 +123,8 @@ module.exports = {
     caps: ['responsive'],
     nums: ['responsive'],
     ligatures: ['responsive'],
+    visibility: ["responsive", "group-hover"],
+    borderColors: ["responsive", "hover", "focus", "group-hover"],
   },
   plugins: [
     require('tailwindcss-typography')({
