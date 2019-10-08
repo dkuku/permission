@@ -1,5 +1,2 @@
-<h1><%= gettext("New User") %></h1>
-
+<h1 class="c-h3 p-5 text-gray-darker"><%= gettext("Sign Up") %></h1>
 <%= render "form.html", Map.put(assigns, :action, Routes.user_path(@conn, :create)) %>
-
-<span><%= link gettext("Back"), to: Routes.user_path(@conn, :index) %></span>

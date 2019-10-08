@@ -13,6 +13,7 @@ const secondaryColors = tailwindColorPalette('#825234', {
   scalemode: "lrgb"
 })
 const colors = Object.assign(secondaryColors, primaryColors)
+
 module.exports = {
   prefix: '',
   important: false,
@@ -137,5 +138,6 @@ module.exports = {
       ligatures: true,        // whether to generate ligature utilities
       componentPrefix: 'c-',  // the prefix to use for text style classes
     }),
+    require('@tailwindcss/custom-forms'),
   ],
-}
+};

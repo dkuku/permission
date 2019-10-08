@@ -1,13 +1,21 @@
-<h1>Sign in</h1>
-<%= form_for @conn, Routes.session_path(@conn, :create), [as: :session], fn f -> %>
-  <%= label f, :email %>
-  <%= text_input f, :email %>
+<h1 class="c-h3 p-5 text-gray-darker"><%= gettext("Sign In") %></h1>
+<%= form_for @conn, Routes.session_path(@conn, :create), [as: :session, class: "bg-white w-full shadow-md rounded px-8 pt-6 pb-8 mb-4"], fn f -> %>
+
+  <%= label f, :email, class: "block mb-6 c-h5 text-gray-darker" do %>
+    <span class="form-label block"><%= gettext("Email") %></span>
+  <%= text_input f, :email, class: "form-input w-full mt-1"  %>
+  <% end %>
   <%= error_tag f, :email %>
 
-  <%= label f, :password %>
-  <%= password_input f, :password %>
+  <%= label f, :password, class: "block mb-6 c-h5 text-gray-darker" do  %>
+    <span class="form-label block"><%= gettext("Password") %></span>
+  <%= password_input f, :password, class: "form-input w-full mt-1" %>
+  <% end %>
   <%= error_tag f, :password %>
-  <div>
-    <%= submit "Sign in" %>
+
+  <div class="flex justify-between">
+    <%= link gettext("Back"), to: Routes.user_path(@conn, :index), class: "bg-transparent hover:bg-primary-light text-primary-medium font-semibold hover:text-white py-2 px-4 border border-primary-medium hover:border-transparent rounded" %>
+    <%= submit gettext("Save"), class: "bg-primary-medium hover:bg-primary-darker text-white font-bold py-2 px-4 rounded" %>
   </div>
 <% end %>
+

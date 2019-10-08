@@ -1,31 +1,42 @@
-<%= form_for @changeset, @action, fn f -> %>
+<%= form_for @changeset, @action, [class: "bg-white w-full shadow-md rounded px-8 pt-6 pb-8 mb-4"], fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
       <p><%= gettext("Oops, something went wrong! Please check the errors below.") %></p>
     </div>
   <% end %>
 
-  <%= label f, :email %>
-  <%= text_input f, :email %>
+  <%= label f, :email, class: "block mb-6 c-h5 text-gray-darker" do %>
+    <span class="form-label block"><%= gettext("Email") %></span>
+  <%= text_input f, :email, class: "form-input w-full mt-1"  %>
+  <% end %>
   <%= error_tag f, :email %>
 
-  <%= label f, :first_name %>
-  <%= text_input f, :first_name %>
+  <%= label f, :first_name, class: "block mb-6 c-h5 text-gray-darker mb-6" do %>
+    <span class="form-label block"><%= gettext("First name") %></span>
+  <%= text_input f, :first_name, class: "form-input w-full mt-1" %>
+  <% end %>
   <%= error_tag f, :first_name %>
 
-  <%= label f, :last_name %>
-  <%= text_input f, :last_name %>
+  <%= label f, :last_name, class: "block mb-6 c-h5 text-gray-darker mb-6" do %>
+    <span class="form-label block"><%= gettext("Last name") %></span>
+  <%= text_input f, :last_name, class: "form-input w-full mt-1"  %>
+  <% end %>
   <%= error_tag f, :last_name %>
 
-  <%= label f, :phone %>
-  <%= text_input f, :phone %>
+  <%= label f, :phone, class: "block mb-6 c-h5 text-gray-darker mb-6" do  %>
+    <span class="form-label block"><%= gettext("Phone") %></span>
+  <%= text_input f, :phone, class: "form-input w-full mt-1"  %>
+  <% end %>
   <%= error_tag f, :phone %>
 
-  <%= label f, :password %>
-  <%= password_input f, :password %>
+  <%= label f, :password, class: "block mb-6 c-h5 text-gray-darker mb-6" do  %>
+    <span class="form-label block"><%= gettext("Password") %></span>
+  <%= password_input f, :password, class: "form-input w-full mt-1" %>
+  <% end %>
   <%= error_tag f, :password %>
 
-  <div>
-    <%= submit gettext("Save") %>
+  <div class="flex justify-between">
+    <%= link gettext("Back"), to: Routes.user_path(@conn, :index), class: "bg-transparent hover:bg-primary-light text-primary-medium font-semibold hover:text-white py-2 px-4 border border-primary-medium hover:border-transparent rounded" %>
+    <%= submit gettext("Save"), class: "bg-primary-medium hover:bg-primary-darker text-white font-bold py-2 px-4 rounded" %>
   </div>
 <% end %>

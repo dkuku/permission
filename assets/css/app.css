@@ -35,38 +35,6 @@
   transform: scaleX(-1);
 }
 
-h1 {
-  @apply text-2xl;
-}
-h2 {
-  @apply text-xl;
-}
-h3 {
-  @apply text-lg;
-}
-a {
-}
-button {
-  @apply font-bold py-2 px-4 rounded;
-  @apply bg-primary-dark text-white;
-}
-button:hover {
-  @apply bg-primary-dark text-white;
-}
-.btn-gray {
-  @apply bg-gray-light text-gray-dark;
-}
-.btn-gray:hover {
-  @apply bg-gray-medium;
-}
-select,
-input {
-  @apply border border-gray-light border-solid text-center text-gray-dark rounded h-10 px-2 m-4 block appearance-none w-full bg-white shadow leading-tight;
-}
-select:focus,
-input:focus {
-  @apply border-primary-light text-gray-darker;
-}
 @tailwind components;
 /* Put your custom components here */
 

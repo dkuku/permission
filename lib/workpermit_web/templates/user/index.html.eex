@@ -1,13 +1,12 @@
-<h1><%= gettext("Listing Users") %></h1>
+<h1 class="c-h3 p-5 text-gray-darker"><%= gettext("User Profiles") %></h1>
 
-<table>
+<table class = "bg-white w-full shadow-md rounded px-8 pt-6 pb-8 mb-4">
   <thead>
     <tr>
-<th><%= gettext("Email") %></th>
-<th><%= gettext("First name") %></th>
-<th><%= gettext("Last name") %></th>
-<th><%= gettext("Phone") %></th>
-
+      <th><%= gettext("Email") %></th>
+      <th><%= gettext("First name") %></th>
+      <th><%= gettext("Last name") %></th>
+      <th><%= gettext("Phone") %></th>
       <th></th>
     </tr>
   </thead>
@@ -20,7 +19,7 @@
       <td><%= user.phone %></td>
 
       <td>
-<span><%= link gettext("Show"), to: Routes.user_path(@conn, :show, user) %></span>
+        <span><%= link gettext("Show"), to: Routes.user_path(@conn, :show, user) %></span>
         <span><%= link gettext("Edit"), to: Routes.user_path(@conn, :edit, user) %></span>
         <span><%= link gettext("Delete"), to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %></span>
       </td>
@@ -29,4 +28,7 @@
   </tbody>
 </table>
 
-<span><%= link gettext("New User"), to: Routes.user_path(@conn, :new) %></span>
+  <div class="flex justify-between">
+    <%= link gettext("Back"), to: Routes.page_path(@conn, :index), class: "bg-transparent hover:bg-primary-light text-primary-medium font-semibold hover:text-white py-2 px-4 border border-primary-medium hover:border-transparent rounded" %>
+    <%= link gettext("New user"), to: Routes.user_path(@conn, :new), class: "bg-primary-medium hover:bg-primary-darker text-white font-bold py-2 px-4 rounded" %>
+  </div>
