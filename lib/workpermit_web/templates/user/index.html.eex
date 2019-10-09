@@ -19,8 +19,11 @@
       <td><%= user.phone %></td>
 
       <td>
+        <i class="far fa-eye"></i>
         <span><%= link gettext("Show"), to: Routes.user_path(@conn, :show, user) %></span>
+        <i class="far fa-edit"></i>
         <span><%= link gettext("Edit"), to: Routes.user_path(@conn, :edit, user) %></span>
+        <i class="fas fa-trash-alt"></i>
         <span><%= link gettext("Delete"), to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %></span>
       </td>
     </tr>

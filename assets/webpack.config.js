@@ -5,6 +5,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
+const FontminPlugin = require('fontmin-webpack');
 
 class TailwindExtractor {
   static extract(content) {
@@ -44,19 +45,57 @@ module.exports = (env, options) => ({
           loader: 'babel-loader'
         }
       },
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
-        //use: [
-        //  MiniCssExtractPlugin.loader,
-        //  { loader: 'css-loader'},
-        //  { loader: 'postcss-loader'}
-        //]
-      }
-    ]
-  },
+      { test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65
+              },
+              // optipng.enabled: false will disable optipng
+              optipng: {
+              },
+              svgo: {
+                options: {
+                  plugins: [
+                    {removeTitle: true},
+                    {convertColors: {shorthex: true}},
+                    {convertPathData: false}
+                  ]
+                }
+              },
+              pngquant: {
+                quality: [0.65, 0.90],
+                speed: 4
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              // the webp option will enable WEBP
+              webp: {
+                quality: 75
+              }
+            }
+          },
+        ],
+      },
+            {
+              test: /\.(css|sass|scss)$/,
+              use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
+              //use: [
+              //  MiniCssExtractPlugin.loader,
+              //  { loader: 'css-loader'},
+              //  { loader: 'postcss-loader'}
+              //]
+            }
+          ]
+        },
   plugins: [
     new MiniCssExtractPlugin({ filename: '../css/app.css' }),
-    new CopyWebpackPlugin([{ from: 'static/', to: '../' }])
+    new CopyWebpackPlugin([{ from: 'static/', to: '../' }]),
+    new FontminPlugin({ autodetect: true }),
   ]
 });
