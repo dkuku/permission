@@ -27,14 +27,14 @@ defmodule WorkpermitWeb.UserControllerTest do
   describe "index" do
     test "lists all users", %{conn: conn} do
       conn = get(conn, Routes.user_path(conn, :index))
-      assert html_response(conn, 200) =~ "Listing Users"
+      assert html_response(conn, 200) =~ "User Profiles"
     end
   end
 
   describe "new user" do
     test "renders form", %{conn: conn} do
       conn = get(conn, Routes.user_path(conn, :new))
-      assert html_response(conn, 200) =~ "New User"
+      assert html_response(conn, 200) =~ "Sign Up"
     end
   end
 
@@ -46,12 +46,12 @@ defmodule WorkpermitWeb.UserControllerTest do
       assert redirected_to(conn) == Routes.user_path(conn, :show, id)
 
       conn = get(conn, Routes.user_path(conn, :show, id))
-      assert html_response(conn, 200) =~ "Show User"
+      assert html_response(conn, 200) =~ "User Profile"
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
       conn = post(conn, Routes.user_path(conn, :create), user: @invalid_attrs)
-      assert html_response(conn, 200) =~ "New User"
+      assert html_response(conn, 200) =~ "Sign Up"
     end
   end
 

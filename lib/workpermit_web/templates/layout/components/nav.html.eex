@@ -12,7 +12,7 @@
       </button>
     </div>
     <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
-      <ul class="toggleColour list-reset lg:flex justify-end flex-1 items-center text-white">
+      <ul class="list-reset lg:flex justify-end flex-1 items-center">
         <li class="mr-3">
           <%= link gettext("Permits"), to: Routes.permit_path(@conn, :index), class: "inline-block font-bold no-underline hover:text-underline py-2 px-4" %>
         </li>
@@ -30,8 +30,8 @@
         <% end %>
       </ul>
       <!--Language dropdown -->
-      <div class="relative group">
-        <div class="flex toggleColour items-center text-white cursor-pointer group-hover:border group-hover:border-b-0  group-hover:border-grey-light rounded-t-lg py-1 px-2">
+      <div class="group relative">
+        <div class=" cursor-pointer flex group-hover:border group-hover:border-b-0 group-hover:border-grey-light items-center px-2 py-1 rounded-t-lg ">
           <%= img_tag(Routes.static_path(@conn, "/images/globe.svg"), id: "globe", class: "h-5 inline invert") %>&nbsp;
           <%= gettext("Language") %>
           <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -44,5 +44,5 @@
       <!--button id="navAction" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-darker font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75">Action</button-->
     </div>
   </div>
-  <hr class="border-b border-gray-lighter opacity-25 my-0 py-0" />
+  <hr class="border-b border-gray-lighter my-0 opacity-25 py-0" />
 </nav>

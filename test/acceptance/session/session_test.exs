@@ -77,7 +77,7 @@ defmodule WorkpermitWeb.Acceptance.SessionTest do
     # current path should not change
     # and a message should be displayed
     assert current_path() == "/sign-in"
-    message = find_element(:class, "alert-info") |> visible_text()
+    message = find_element(:class, "alert-toast") |> visible_text()
     assert message == "There was a problem with your username/password."
   end
 end

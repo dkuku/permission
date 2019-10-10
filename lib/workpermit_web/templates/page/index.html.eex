@@ -1,25 +1,25 @@
 <!--Hero-->
 <div class="pt-24">
-  <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+  <div class="container flex flex-col flex-wrap items-center md:flex-row mx-auto px-3">
     <!--Left Col-->
-    <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-      <p class="uppercase tracking-loose w-full">
-        <h1 class="my-4 text-5xl font-bold leading-tight">
+    <div class="flex flex-col items-start justify-center md:text-left md:w-2/5 text-center w-full">
+      <p class="tracking-loose uppercase w-full">
+        <h1 class="font-bold leading-tight my-4 text-5xl">
           <%= gettext("Workpermit tracker") %>
         </h1>
-        <p class="leading-normal text-2xl mb-8">
+        <p class="leading-normal mb-8 text-2xl">
           <%= gettext("Create and track your workpermits in an dedicated app") %>
         </p>
-        <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-darker font-bold rounded-full my-6 py-4 px-8 shadow-lg">Subscribe</button>
+        <button class="bg-white font-bold hover:underline lg:mx-0 mx-auto my-6 px-8 py-4 rounded-full shadow-lg text-gray-darker">Subscribe</button>
     </div>
     <!--Right Col-->
-    <div class="w-full md:w-3/5 py-6 text-center">
+    <div class="md:w-3/5 py-6 text-center w-full">
       <%= img_tag(Routes.static_path(@conn, "/images/engineer.svg"), class: "w-full md:w-4/5 mirror") %>
     </div>
   </div>
 </div>
 <!--waves-->
-<div class="relative -mt-12 lg:-mt-24">
+<div class="-mt-12 lg:-mt-24 relative">
   <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
     <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -35,14 +35,14 @@
 </div>
 <!-- section 1 -->
 <section class="bg-white border-b py-8 bg-white">
-  <div class="container max-w-5xl mx-auto m-8">
-    <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-darker"><%= gettext("Tired of:") %></h1>
-    <div class="w-full mb-4">	
-      <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+  <div class="container m-8 max-w-5xl mx-auto">
+    <h1 class="font-bold leading-tight my-2 text-5xl text-center text-gray-darker w-full"><%= gettext("Tired of:") %></h1>
+    <div class="mb-4 w-full">
+      <div class="gradient h-1 mx-auto my-0 opacity-25 py-0 rounded-t w-64"></div>
     </div>
     <div class="flex flex-wrap">
       <!--Left Col-->
-      <div class="w-5/6 sm:w-1/2 p-6 mt-6">
+      <div class="mt-6 p-6 sm:w-1/2 w-5/6">
         <h3 class="text-3xl text-gray-darker font-bold leading-none mb-3 mt-6"><%= gettext("Writing the same permits every day") %></h3>
         <p class="text-gray-dark">
           <%= gettext("Keeping track of numbering, remembering all the names, checking the same boxes over and over again") %><br /><br />
@@ -59,21 +59,21 @@
         <%= img_tag(Routes.static_path(@conn, "/images/checking_boxes.svg"), class: "w-5/6 sm:h-64 p-6 mt-6") %>
       </div>
       <!--right Col-->
-      <div class="w-full sm:w-1/2 p-6 mt-6">
+      <div class="mt-6 p-6 sm:w-1/2 w-full">
         <div class="align-middle">
-          <h3 class="text-3xl text-gray-darker font-bold leading-none mb-3 mt-6"><%= gettext("Let the computer do the job for you") %></h3>
+          <h3 class="font-bold leading-none mb-3 mt-6 text-3xl text-gray-darker"><%= gettext("Let the computer do the job for you") %></h3>
           <p class="text-gray-dark"><%= gettext("With a few mouse clicks you can have ready made  work permits. With name auto completion, auto-numbering and custom templates") %></p>
         </div>
       </div>
       <!--Left Col-->
-      <div class="w-5/6 sm:w-1/2 p-6 mt-6">
-        <h3 class="text-3xl text-gray-darker font-bold leading-none mb-3 mt-6"><%= gettext("Keep track who is still working") %></h3>
+      <div class="mt-6 p-6 sm:w-1/2 w-5/6">
+        <h3 class="font-bold leading-none mb-3 mt-6 text-3xl text-gray-darker"><%= gettext("Keep track who is still working") %></h3>
         <p class="text-gray-dark">
           <%= gettext("How long will it take to finish. When you need to check if it's done correctly") %><br /><br />
         </p>
       </div>
       <!--right Col-->
-      <div class="w-full sm:w-1/2 p-6">
+      <div class="p-6 sm:w-1/2 w-full">
         <%= img_tag(Routes.static_path(@conn, "/images/in_sync.svg"), class: "w-5/6 sm:h-64 p-6 mt-6") %>
       </div>
     </div>
@@ -187,9 +187,9 @@
           </ul>
         </div>
         <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-          <div class="w-full pt-6 text-3xl text-gray-medium font-bold text-center">£x.99 <span class="text-base">/ per user</span></div>
+          <div class="font-bold pt-6 text-3xl text-center text-gray-medium w-full">£x.99 <span class="text-base">/ per user</span></div>
           <div class="flex items-center justify-center">
-            <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg">Sign Up</button>
+            <button class="font-bold gradient hover:underline lg:mx-0 mx-auto my-6 px-8 py-4 rounded-full shadow-lg text-white">Sign Up</button>
           </div>
         </div>
       </div>
@@ -213,11 +213,11 @@
   </g>
   </g>
 </svg>
-<section class="container mx-auto text-center py-6 mb-12">
-  <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white"><%= gettext("Start using today") %></h1>
-  <div class="w-full mb-4">	
-    <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
+<section class="container mb-12 mx-auto py-6 text-center">
+  <h1 class="font-bold leading-tight my-2 text-5xl text-center text-white w-full"><%= gettext("Start using today") %></h1>
+  <div class="mb-4 w-full">	
+    <div class="bg-white h-1 mx-auto my-0 opacity-25 py-0 rounded-t w-1/6"></div>
   </div>
-  <h3 class="my-4 text-3xl leading-tight"><%= gettext("And feel the benefits") %></h3>	
-  <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-darker font-bold rounded-full my-6 py-4 px-8 shadow-lg">Action!</button>
+  <h3 class="leading-tight my-4 text-3xl"><%= gettext("And feel the benefits") %></h3>	
+  <button class="bg-white font-bold hover:underline lg:mx-0 mx-auto my-6 px-8 py-4 rounded-full shadow-lg text-gray-darker">Action!</button>
 </section>
