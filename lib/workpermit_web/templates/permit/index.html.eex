@@ -1,40 +1,42 @@
-<h1>Listing Permits</h1>
+<div class="w-full max-w-6xl pt-16 mx-auto content-center flex-1">
+  <h1 class="c-h3 p-5 text-gray-darker"><%= gettext("Permits List") %></h1>
+  <table class = "bg-white mx-auto w-full shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Number</th>
+        <th>Issued</th>
+        <th>Start</th>
+        <th>Finish</th>
+        <th>Closed</th>
+        <th>Issuer</th>
+        <th>Performer</th>
+        <th>Controller</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for permit <- @permits do %>
+        <tr>
+          <td><%= permit.category %></td>
+          <td><%= permit.number %></td>
+          <td><%= permit.issued %></td>
+          <td><%= permit.start %></td>
+          <td><%= permit.finish %></td>
+          <td><%= permit.closed %></td>
+          <td><%= permit.issuer_id %></td>
+          <td><%= permit.performer_id %></td>
+          <td><%= permit.controller_id %></td>
+          <td>
+            <span><%= link "Show", to: Routes.permit_path(@conn, :show, permit) %></span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="flex justify-between">
+    <%= link gettext("Back"), to: Routes.page_path(@conn, :index), class: "bg-transparent hover:bg-primary-light text-primary-medium font-semibold hover:text-white py-2 px-4 border border-primary-medium hover:border-transparent rounded" %>
+    <%= link gettext("New permit"), to: Routes.permit_path(@conn, :new), class: "bg-primary-medium hover:bg-primary-darker text-white font-bold py-2 px-4 rounded" %>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Number</th>
-      <th>Issued</th>
-      <th>Start</th>
-      <th>Finish</th>
-      <th>Closed</th>
-      <th>Issuer</th>
-      <th>Performer</th>
-      <th>Controller</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for permit <- @permits do %>
-    <tr>
-      <td><%= permit.category %></td>
-      <td><%= permit.number %></td>
-      <td><%= permit.issued %></td>
-      <td><%= permit.start %></td>
-      <td><%= permit.finish %></td>
-      <td><%= permit.closed %></td>
-      <td><%= permit.issuer_id %></td>
-      <td><%= permit.performer_id %></td>
-      <td><%= permit.controller_id %></td>
-
-      <td>
-        <span><%= link "Show", to: Routes.permit_path(@conn, :show, permit) %></span>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
-<span><%= link "New Permit", to: Routes.permit_path(@conn, :new) %></span>

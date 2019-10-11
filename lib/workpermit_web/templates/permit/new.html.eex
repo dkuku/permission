@@ -1,5 +1,4 @@
-<h1>New Permit</h1>
-
-<%= render "form.html", Map.put(assigns, :action, Routes.permit_path(@conn, :create)) %>
-
-<span><%= link "Back", to: Routes.permit_path(@conn, :index) %></span>
+<div class="w-full max-w-lg pt-16 mx-auto content-center flex-1">
+  <h1 class="c-h3 p-5 text-gray-darker"><%= gettext("Create permit") %></h1>
+  <%= render "form.html", Map.put(assigns, :action, Routes.permit_path(@conn, :create)) %>
+</div>
