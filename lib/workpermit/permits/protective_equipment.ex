@@ -1,4 +1,4 @@
-defmodule ProtectiveEquipment do
+defmodule Workpermit.ProtectiveEquipment do
   use Ecto.Schema
   import Ecto.Changeset
 

@@ -1,0 +1,20 @@
+<div class="w-full max-w-6xl pt-16 mx-auto content-center flex-1 flex flex-wrap">
+<%= for iso <- Map.keys(Workpermit.IsoSymbols.symbol_to_iso_code_mapping()) do %>
+<div class="max-w-xs rounded overflow-hidden shadow-lg m-4 bg-secondary-medium ">
+  <img class="w-full" src=" <%= Workpermit.IsoSymbols.symbol_to_image_path(iso) %> " alt="<%= iso %>">
+  <div class="px-6 py-4">
+    <div class="font-bold text-xl mb-2">
+  <%= iso %>
+    </div>
+    <p class="text-grey-darker text-base">
+  <%= gettext("Workpermit.IsoSymbols.symbol_to_sign_meaning(iso)") %>
+    </p>
+  </div>
+  <div class="px-6 py-4">
+    <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">#1</span>
+    <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">#2</span>
+    <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker">#3</span>
+  </div>
+</div>
+<%end %>
+</div>

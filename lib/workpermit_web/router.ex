@@ -19,6 +19,7 @@ defmodule WorkpermitWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/demo", PageController, :demo
 
     # User registration and sessions
     resources "/users", UserController

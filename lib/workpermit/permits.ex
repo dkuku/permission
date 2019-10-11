@@ -56,6 +56,22 @@ defmodule Workpermit.Permits do
   end
 
   @doc """
+  Deletes a Permit.
+
+  ## Examples
+
+      iex> delete_permit(permit)
+      {:ok, %Permit{}}
+
+      iex> delete_permit(permit)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_permit(%Permit{} = permit) do
+    Repo.delete(permit)
+  end
+
+  @doc """
   Returns an `%Ecto.Changeset{}` for tracking permit changes.
 
   ## Examples
