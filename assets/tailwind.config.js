@@ -139,5 +139,6 @@ module.exports = {
       componentPrefix: 'c-',  // the prefix to use for text style classes
     }),
     require('@tailwindcss/custom-forms'),
+    require('tailwindcss-tables')(),
   ],
 };

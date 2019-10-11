@@ -1,6 +1,6 @@
 <div class="w-full max-w-6xl pt-16 mx-auto content-center flex-1">
   <h1 class="c-h3 p-5 text-gray-darker"><%= gettext("Permits List") %></h1>
-  <table class = "bg-white mx-auto w-full shadow-md rounded px-8 pt-6 pb-8 mb-4">
+  <table class = "bg-white mx-auto w-full shadow-md rounded px-8 pt-6 pb-8 mb-4 table">
     <thead>
       <tr>
         <th>Category</th>
@@ -28,6 +28,7 @@
           <td><%= permit.performer_id %></td>
           <td><%= permit.controller_id %></td>
           <td>
+            <i class="far fa-eye"></i>
             <span><%= link "Show", to: Routes.permit_path(@conn, :show, permit) %></span>
           </td>
         </tr>
