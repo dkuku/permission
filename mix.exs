@@ -40,6 +40,7 @@ defmodule Workpermit.MixProject do
       {:argon2_elixir, "~> 2.0"},
       {:comeonin, "~> 5.1"},
       {:distillery, "~> 2.1"},
+      {:earmark, "~> 1.4"},
       {:ecto_sql, "~> 3.0"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},

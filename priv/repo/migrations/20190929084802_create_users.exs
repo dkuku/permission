@@ -8,7 +8,6 @@ defmodule Workpermit.Repo.Migrations.CreateUsers do
       add :first_name, :string
       add :last_name, :string
       add :phone, :string
-
       timestamps()
     end
 
