@@ -241,7 +241,7 @@ defmodule Workpermit.IsoSymbols do
     symbol_to_iso_code_mapping()[symbol] || :A999
   end
 
-  def symbol_to_image_path(symbol, path \\ "iso/") do
+  def symbol_to_image_path(symbol, path \\ "/iso/") do
     # input :falling_parts => IS0_111.svg
     path <> "ISO_7010_#{symbol_to_iso_code(symbol)}.svg"
   end

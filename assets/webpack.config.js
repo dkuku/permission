@@ -5,7 +5,6 @@ const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
-const FontminPlugin = require('fontmin-webpack');
 
 class TailwindExtractor {
   static extract(content) {
@@ -96,6 +95,5 @@ module.exports = (env, options) => ({
   plugins: [
     new MiniCssExtractPlugin({ filename: '../css/app.css' }),
     new CopyWebpackPlugin([{ from: 'static/', to: '../' }]),
-    new FontminPlugin({ autodetect: true }),
   ]
 });

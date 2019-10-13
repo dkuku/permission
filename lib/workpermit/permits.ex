@@ -7,7 +7,7 @@ defmodule Workpermit.Permits do
   alias Workpermit.Repo
 
   alias Workpermit.Permits.Permit
-
+  alias Workpermit.Permits.ProtectiveEquipment
   @doc """
   Returns the list of permits.
 
@@ -52,7 +52,8 @@ defmodule Workpermit.Permits do
   def create_permit(attrs \\ %{}) do
     %Permit{}
     |> Permit.changeset(attrs)
-    |> Repo.insert()
+#    |> Repo.insert()
+    IO.inspect(attrs)
   end
 
   @doc """
@@ -82,5 +83,18 @@ defmodule Workpermit.Permits do
   """
   def change_permit(%Permit{} = permit) do
     Permit.changeset(permit, %{})
+  end
+  
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking protective_equipment_value changes.
+
+  ## Examples
+
+      iex> change_protective_equipment_value(protective_equipment_value)
+      %Ecto.Changeset{source: %Protective_equipment_value{}}
+
+  """
+  def change_protective_equipment_value(%ProtectiveEquipment{} = protective_equipment_value) do
+    ProtectiveEquipment.changeset(protective_equipment_value, %{})
   end
 end

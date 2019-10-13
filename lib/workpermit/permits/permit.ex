@@ -1,6 +1,7 @@
 defmodule Workpermit.Permits.Permit do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Workpermit.Permits.ProtectiveEquipment
 
   schema "permits" do
     field :category, :integer

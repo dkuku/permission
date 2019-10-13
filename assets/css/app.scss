@@ -49,6 +49,8 @@ body {
   transform: scaleX(-1);
 }
 
+@import '_multi_step_form.scss';
+
 @tailwind components;
 /*@import "tailwindcss/components";*/
 /* Put your custom components here */

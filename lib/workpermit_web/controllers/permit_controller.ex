@@ -3,6 +3,7 @@ defmodule WorkpermitWeb.PermitController do
 
   alias Workpermit.Permits
   alias Workpermit.Permits.Permit
+  alias Workpermit.Permits.ProtectiveEquipment
 
   def index(conn, _params) do
     permits = Permits.list_permits()
@@ -11,7 +12,8 @@ defmodule WorkpermitWeb.PermitController do
 
   def new(conn, _params) do
     changeset = Permits.change_permit(%Permit{})
-    render(conn, "new.html", changeset: changeset)
+    pe = %ProtectiveEquipment{}
+    render(conn, "new.html", changeset: changeset, pe: pe)
   end
 
   def create(conn, %{"permit" => permit_params}) do

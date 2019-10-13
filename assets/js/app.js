@@ -8,9 +8,11 @@ import css from "../css/app.scss"
 //
 // Import dependencies
 import "phoenix_html"
+import $ from "cash-dom"
 
 // Import local files
 import "./navbar"
+import "./multi_step_form"
 //
 // Local files can be imported directly using relative paths, for example:
 // import socket from "./socket"
@@ -20,6 +22,11 @@ import { faEye, faEdit } from '@fortawesome/free-regular-svg-icons'
 import { } from '@fortawesome/free-brands-svg-icons'
 library.add(faTrashAlt, faEdit, faEye)
 dom.i2svg()
-  .then(function () {
-    console.log('Icons have rendered')
-  })
+//  .then(function () {
+//    console.log('Icons have rendered')
+//})
+//
+//$(function () {
+//  $('html').addClass ( 'dom-loaded' );
+//  $('<p>Appended with Cash</p>').appendTo ($('footer'));
+//});

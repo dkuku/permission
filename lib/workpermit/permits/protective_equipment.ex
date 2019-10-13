@@ -1,4 +1,4 @@
-defmodule Workpermit.ProtectiveEquipment do
+defmodule Workpermit.Permits.ProtectiveEquipment do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -8,24 +8,31 @@ defmodule Workpermit.ProtectiveEquipment do
   #   schema "embedded Item" do
   #
   embedded_schema do
-    field :hard_hat, :boolean
-    field :safety_boots, :boolean
-    field :safety_helmet, :boolean
-    field :hivis_vest, :boolean
-    field :ear_protection, :boolean
-    field :eyes_protection, :boolean
+    field  :ear_protection           , :boolean
+    field  :earth_terminal           , :boolean
+    field  :eye_protection           , :boolean
+    field  :face_shield              , :boolean
+    field  :foot_protection          , :boolean
+    field  :head_protection          , :boolean
+    field  :high_visibility_clothing , :boolean
+    field  :mask                     , :boolean
+    field  :safety_harness           , :boolean
+    field  :welding_mask             , :boolean
   end
 
   def changeset(protective_equipment_value, attrs) do
     protective_equipment_value
     |> cast(attrs, [
       :ear_protection,
-      :eyes_protection,
-      :hard_hat,
-      :hivis_vest,
-      :id,
-      :safety_boots,
-      :safety_helmet
+      :earth_terminal,
+      :eye_protection,
+      :face_shield,
+      :foot_protection,
+      :head_protection,
+      :high_visibility_clothing,
+      :mask,
+      :safety_harness,
+      :welding_mask,
     ])
     |> validate_required([])
   end
