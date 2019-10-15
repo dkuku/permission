@@ -5,15 +5,17 @@
     </div>
   <% end %>
   <div>
-  <%= inputs_for f, :protective_equipment_value, fn p -> %>
+  <%= inputs_for f, :protective_equipment, fn p -> %>
     <ul>
-      <%=  for box <- Map.keys(@pe) do %>
+      <%=  for pe <- @pe do %>
         <li>
-          <%= checkbox p, box %>
-          <label for="<%= "#{:permit_protective_equipment_value_}#{box}" %>">
-            <%= img_tag( Workpermit.IsoSymbols.symbol_to_image_path(box)) %>
+          <%= checkbox p, pe %>
+          <label for="<%= "#{:permit_protective_equipment_}#{pe}" %>">
+            <%= img_tag( Workpermit.IsoSymbols.symbol_to_image_path(pe)) %>
           </label>
-          <%= error_tag p, box %>
+
+          <%= Workpermit.IsoSymbols.symbol_to_sign_meaning(pe) %>
+          <%= error_tag p, pe %>
         </li>
       <% end %>
     </li>
@@ -48,9 +50,9 @@
       <%= permit_datetime_select f, :closed %>
     </div>
     <div>
-      <!--%= label f, :protective_equipment_value %>
-      <!--%= checkbox f, :protective_equipment_value %>
-      <!--%= error_tag f, :protective_equipment_value %-->
+      <!--%= label f, :protective_equipment %>
+      <!--%= checkbox f, :protective_equipment %>
+      <!--%= error_tag f, :protective_equipment %-->
 
       <%= label f, :issuer_id %>
       <%= text_input f, :issuer_id %>

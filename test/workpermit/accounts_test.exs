@@ -35,7 +35,9 @@ defmodule Workpermit.AccountsTest do
 
     test "list_users/0 returns all users" do
       user = user_fixture()
-      assert Accounts.list_users() == [user]
+      user_list = Accounts.list_users()
+      assert user in user_list
+      assert length(user_list) > 0
     end
 
     test "get_user!/1 returns the user with given id" do

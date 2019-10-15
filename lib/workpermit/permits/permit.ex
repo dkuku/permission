@@ -2,18 +2,20 @@ defmodule Workpermit.Permits.Permit do
   use Ecto.Schema
   import Ecto.Changeset
   alias Workpermit.Permits.ProtectiveEquipment
+  alias Workpermit.Accounts.User
 
   schema "permits" do
     field :category, :integer
+    field :number, :integer
+    field :start, :naive_datetime
     field :closed, :naive_datetime
-    field :controller_id, :string
     field :finish, :naive_datetime
     field :issued, :naive_datetime
-    field :issuer_id, :string
-    field :number, :integer
-    field :performer_id, :string
-    embeds_one :protective_equipment_value, ProtectiveEquipment
-    field :start, :naive_datetime
+    belongs_to :issuer, User
+    belongs_to :controller, User
+    belongs_to :firewatch, User
+    belongs_to :performer, User
+    belongs_to :protective_equipment, ProtectiveEquipment
 
     timestamps()
   end
@@ -28,21 +30,16 @@ defmodule Workpermit.Permits.Permit do
       :start,
       :finish,
       :closed,
-      :issuer_id,
-      :performer_id,
-      :controller_id
     ])
-    |> cast_embed(:protective_equipment_value)
     |> validate_required([
       :category,
       :number,
       :issued,
       :start,
       :finish,
-      :closed,
-      :issuer_id,
-      :performer_id,
-      :controller_id
     ])
+    |> assoc_constraint(:issuer)
+    |> assoc_constraint(:performer)
+    |> assoc_constraint(:protective_equipment)
   end
 end

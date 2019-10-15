@@ -52,8 +52,7 @@ defmodule Workpermit.Permits do
   def create_permit(attrs \\ %{}) do
     %Permit{}
     |> Permit.changeset(attrs)
-#    |> Repo.insert()
-    IO.inspect(attrs)
+    |> Repo.insert()
   end
 
   @doc """
@@ -86,15 +85,79 @@ defmodule Workpermit.Permits do
   end
   
   @doc """
-  Returns an `%Ecto.Changeset{}` for tracking protective_equipment_value changes.
+  Returns an `%Ecto.Changeset{}` for tracking protective_equipment changes.
 
   ## Examples
 
-      iex> change_protective_equipment_value(protective_equipment_value)
-      %Ecto.Changeset{source: %Protective_equipment_value{}}
+      iex> change_protective_equipment(protective_equipment)
+      %Ecto.Changeset{source: %Protective_equipment{}}
 
   """
-  def change_protective_equipment_value(%ProtectiveEquipment{} = protective_equipment_value) do
-    ProtectiveEquipment.changeset(protective_equipment_value, %{})
+  def change_protective_equipment(%ProtectiveEquipment{} = protective_equipment) do
+    ProtectiveEquipment.changeset(protective_equipment, %{})
+  end
+
+  @doc """
+  Gets a single protective_equipment.
+
+  Raises `Ecto.NoResultsError` if the ProtectiveEquipment does not exist.
+
+  ## Examples
+
+      iex> get_protective_equipment(123)
+      %ProtectiveEquipment{}
+
+      iex> get_protective_equipment(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_protective_equipment(id), do: Repo.get!(ProtectiveEquipment, id)
+
+  @doc """
+  Creates a protective_equipment.
+
+  ## Examples
+
+      iex> create_protective_equipment(%{field: value})
+      {:ok, %ProtectiveEquipment{}}
+
+      iex> create_protective_equipment(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_protective_equipment(attrs \\ %{}) do
+    %ProtectiveEquipment{}
+    |> ProtectiveEquipment.changeset(attrs)
+    |> Repo.insert()
+    #|>Repo.find_or_create_by(:name)
+  end
+
+  @doc """
+  Deletes a ProtectiveEquipment.
+
+  ## Examples
+
+      iex> delete_protective_equipment(protective_equipment)
+      {:ok, %ProtectiveEquipment{}}
+
+      iex> delete_protective_equipment(protective_equipment)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_protective_equipment(%ProtectiveEquipment{} = protective_equipment) do
+    Repo.delete(protective_equipment)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking protective_equipment changes.
+
+  ## Examples
+
+      iex> change_protective_equipment(protective_equipment)
+      %Ecto.Changeset{source: %ProtectiveEquipment{}}
+
+  """
+  def change_protective_equipment(%ProtectiveEquipment{} = protective_equipment) do
+    ProtectiveEquipment.changeset(protective_equipment, %{})
   end
 end

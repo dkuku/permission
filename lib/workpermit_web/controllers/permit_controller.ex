@@ -12,8 +12,7 @@ defmodule WorkpermitWeb.PermitController do
 
   def new(conn, _params) do
     changeset = Permits.change_permit(%Permit{})
-    pe = %ProtectiveEquipment{}
-    render(conn, "new.html", changeset: changeset, pe: pe)
+    render(conn, "new.html", changeset: changeset, pe: pe_fields())
   end
 
   def create(conn, %{"permit" => permit_params}) do
@@ -24,12 +23,30 @@ defmodule WorkpermitWeb.PermitController do
         |> redirect(to: Routes.permit_path(conn, :show, permit))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "new.html", changeset: changeset, pe: pe_fields())
     end
   end
 
   def show(conn, %{"id" => id}) do
     permit = Permits.get_permit!(id)
     render(conn, "show.html", permit: permit)
+  end
+
+  def pe_fields do
+    #set it as an org param
+    [
+      :ear_protection,
+      :earth_terminal,
+      :eye_protection,
+      :face_shield,
+      :foot_protection,
+      :head_protection,
+      :high_visibility_clothing,
+      :mask,
+      :safety_harness,
+      :welding_mask,
+      :protective_gloves,
+      :protective_clothing,
+    ]
   end
 end

@@ -13,7 +13,7 @@ defmodule Workpermit.Repo.Migrations.CreatePermits do
       add :additional_info, :text
       add :lone_working, :bool
       add :coshh, :bool
-      add :protective_equipment_value, references(:protective_equipment)
+      add :protective_equipment_id, references(:protective_equipment)
       add :issuer_id, references(:users)
       add :firewatch_id, references(:users)
       add :performer_id, references(:users)

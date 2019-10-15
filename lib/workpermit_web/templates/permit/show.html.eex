@@ -32,7 +32,7 @@
     <div class = "block mb-6 c-h5 text-gray-darker">
       <span class="form-label block"><%= gettext("Started") %>:&nbsp;</span>
     </div>
-    <%= @permit.protective_equipment_value %>
+    <%= @permit.protective_equipment %>
     <%= @permit.issuer_id %>
     <%= @permit.performer_id %>
     <%= @permit.controller_id %>

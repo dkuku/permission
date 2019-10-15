@@ -1,13 +1,14 @@
 defmodule Workpermit.Permits.ProtectiveEquipment do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Workpermit.Permits.Permit
 
   # embedded_schema is short for:
   #
   #   @primary_key {:id, :binary_id, autogenerate: true}
   #   schema "embedded Item" do
   #
-  embedded_schema do
+  schema "protective_equipment" do
     field  :ear_protection           , :boolean
     field  :earth_terminal           , :boolean
     field  :eye_protection           , :boolean
@@ -18,10 +19,12 @@ defmodule Workpermit.Permits.ProtectiveEquipment do
     field  :mask                     , :boolean
     field  :safety_harness           , :boolean
     field  :welding_mask             , :boolean
+    field  :protective_gloves        , :boolean
+    field  :protective_clothing      , :boolean
   end
 
-  def changeset(protective_equipment_value, attrs) do
-    protective_equipment_value
+  def changeset(protective_equipment, attrs) do
+    protective_equipment
     |> cast(attrs, [
       :ear_protection,
       :earth_terminal,
@@ -33,6 +36,8 @@ defmodule Workpermit.Permits.ProtectiveEquipment do
       :mask,
       :safety_harness,
       :welding_mask,
+      :protective_gloves,
+      :protective_clothing,
     ])
     |> validate_required([])
   end

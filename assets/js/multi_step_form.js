@@ -1,8 +1,6 @@
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
-console.log('elo')
 function showTab(n) {
-console.log('cwelo')
   // This function will display the specified tab of the form ...
   var x = document.getElementsByClassName("tab");
   x[n].style.display = "block";
@@ -22,7 +20,6 @@ console.log('cwelo')
 }
 
 function nextPrev(n) {
-console.log('123')
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
   // Exit the function if any field in the current tab is invalid:
@@ -41,7 +38,6 @@ console.log('123')
   showTab(currentTab);
 }
 
-console.log('e23')
   // This function will figure out which tab to display
 function validateForm() {
   // This function deals with validation of the form fields

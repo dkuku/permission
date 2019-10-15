@@ -53,6 +53,7 @@ defmodule Workpermit.MixProject do
       {:timex, "~> 3.5"},
       {:elixilorem, "~> 0.0.1", only: [:dev, :test]},
       {:excoveralls, "~> 0.10", only: [:test]},
+      {:ex_machina, "~> 2.3", only: [:test]},
       {:faker, "~> 0.13", only: [:dev, :test]},
       {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
       {:cabbage, "~> 0.3.0", only: [:test]},
