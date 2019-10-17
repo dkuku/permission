@@ -11,10 +11,11 @@ defmodule WorkpermitWeb.PermitController do
   end
 
   def new(conn, _params) do
-    changeset = Permits.change_permit(
-      %Permit{protective_equipment: %ProtectiveEquipment{} 
-    })
-    render(conn, "new.html", changeset: changeset, pe: pe_fields())
+    conn
+    |> assign(:changeset, Permits.change_permit(%Permit{protective_equipment: %ProtectiveEquipment{}}))
+    |> assign(:pe, pe_fields())
+    |> assign(:categories, Permit.CategoryEnum.__enum_map__() |> Enum.map(fn {k, _} -> k end))
+    |> render("new.html")
   end
 
   def create(conn, %{"permit" => permit_params}) do

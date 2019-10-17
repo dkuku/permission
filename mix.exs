@@ -41,6 +41,8 @@ defmodule Workpermit.MixProject do
       {:comeonin, "~> 5.1"},
       {:distillery, "~> 2.1"},
       {:earmark, "~> 1.4"},
+      {:ecto_enum, github: "dnsbty/ecto_enum", ref: "a69a9dde72cf98497606f9603bd46e3924979145"},
+      #{:ecto_enum, "~> 1.3"},
       {:ecto_sql, "~> 3.0"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},

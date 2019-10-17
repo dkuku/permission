@@ -22,7 +22,7 @@
   <% end %>
     <div class="flex two four-500 six-800">
       <%= label f, :category do %>
-      <%= number_input f, :category %>
+      <%= select f, :category, @categories %>
       <%= error_tag f, :category %>
     <% end %>
 

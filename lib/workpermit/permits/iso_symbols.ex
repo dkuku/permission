@@ -213,6 +213,7 @@ defmodule Workpermit.IsoSymbols do
       low_temperature_hazard: :W010,
       slippery_surface: :W011,
       electricity_hazard: :W012,
+      electrical: :W012,
       guard_dog: :W013,
       forklift_truck_and_other_industrial_vehicles: :W014,
       overhead_or_suspended_load: :W015,

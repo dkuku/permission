@@ -1,11 +1,15 @@
 defmodule Workpermit.Permits.Permit do
+  use Ecto.Type
   use Ecto.Schema
   import Ecto.Changeset
   alias Workpermit.Permits.ProtectiveEquipment
   alias Workpermit.Accounts.User
+  import EctoEnum
+
+  defenum CategoryEnum, general: 0, electrical: 1, heights: 2, hot_work: 3, confined_space: 4, hot_fluid: 5, gas: 6
 
   schema "permits" do
-    field :category, :integer
+    field :category, CategoryEnum
     field :number, :integer
     field :start, :naive_datetime
     field :closed, :naive_datetime
