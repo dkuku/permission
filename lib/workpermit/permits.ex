@@ -35,7 +35,11 @@ defmodule Workpermit.Permits do
       ** (Ecto.NoResultsError)
 
   """
-  def get_permit!(id), do: Repo.get!(Permit, id)
+  def get_permit!(id) do
+    Repo.one from permit in Permit,
+      where: permit.id == ^id,
+      preload: :protective_equipment
+  end
 
   @doc """
   Creates a permit.
@@ -146,18 +150,5 @@ defmodule Workpermit.Permits do
   """
   def delete_protective_equipment(%ProtectiveEquipment{} = protective_equipment) do
     Repo.delete(protective_equipment)
-  end
-
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking protective_equipment changes.
-
-  ## Examples
-
-      iex> change_protective_equipment(protective_equipment)
-      %Ecto.Changeset{source: %ProtectiveEquipment{}}
-
-  """
-  def change_protective_equipment(%ProtectiveEquipment{} = protective_equipment) do
-    ProtectiveEquipment.changeset(protective_equipment, %{})
   end
 end

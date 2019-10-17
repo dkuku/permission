@@ -1,6 +1,19 @@
 <div class="w-full max-w-lg pt-16 mx-auto content-center flex-1">
   <h1 class="c-h3 p-5 text-gray-darker"><%= gettext("Permit") %></h1>
   <div class = "bg-white w-full shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <section class="my-8 mx-auto">
+      <ul class="flex justify-between">
+      <%= for  pe <- @pe do %>
+        <% {:ok, val} = Map.fetch(@permit.protective_equipment, pe)%>
+        <%= if val do %>
+          <li class="mr-3 w-32 h-32">
+            <%= img_tag Workpermit.IsoSymbols.symbol_to_image_path(pe), class: "object-cover object-center w-full h-full visible group-hover:hidden" %>
+                <%= Workpermit.IsoSymbols.symbol_to_sign_meaning(pe) %>
+          </li>
+        <% end %>
+      <% end %>
+      </ul>
+    <section>
     <div class = "block mb-6 c-h5 text-gray-darker">
       <span class="form-label block"><%= gettext("Category") %>:&nbsp;</span>
     <%= @permit.category %>
@@ -32,7 +45,6 @@
     <div class = "block mb-6 c-h5 text-gray-darker">
       <span class="form-label block"><%= gettext("Started") %>:&nbsp;</span>
     </div>
-    <%= @permit.protective_equipment %>
     <%= @permit.issuer_id %>
     <%= @permit.performer_id %>
     <%= @permit.controller_id %>

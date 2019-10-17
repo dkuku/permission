@@ -11,7 +11,9 @@ defmodule WorkpermitWeb.PermitController do
   end
 
   def new(conn, _params) do
-    changeset = Permits.change_permit(%Permit{})
+    changeset = Permits.change_permit(
+      %Permit{protective_equipment: %ProtectiveEquipment{} 
+    })
     render(conn, "new.html", changeset: changeset, pe: pe_fields())
   end
 
@@ -20,7 +22,7 @@ defmodule WorkpermitWeb.PermitController do
       {:ok, permit} ->
         conn
         |> put_flash(:info, "Permit created successfully.")
-        |> redirect(to: Routes.permit_path(conn, :show, permit))
+        |> redirect(to: Routes.permit_path(conn, :show, permit, pe: pe_fields()))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset, pe: pe_fields())
@@ -29,7 +31,7 @@ defmodule WorkpermitWeb.PermitController do
 
   def show(conn, %{"id" => id}) do
     permit = Permits.get_permit!(id)
-    render(conn, "show.html", permit: permit)
+    render(conn, "show.html", permit: permit, pe: pe_fields())
   end
 
   def pe_fields do

@@ -23,7 +23,7 @@ defmodule Workpermit.Permits.ProtectiveEquipment do
     field  :protective_clothing      , :boolean
   end
 
-  def changeset(protective_equipment, attrs) do
+  def changeset(protective_equipment, attrs \\ %{}) do
     protective_equipment
     |> cast(attrs, [
       :ear_protection,

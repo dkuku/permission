@@ -21,52 +21,60 @@
     </li>
   <% end %>
     <div class="flex two four-500 six-800">
-      <%= label f, :category %>
+      <%= label f, :category do %>
       <%= number_input f, :category %>
       <%= error_tag f, :category %>
+    <% end %>
 
       <!-- %= label f, :number %>
       < %= number_input f, :number %>
       < %= error_tag f, :number %-->
     </div>
-    <%= label f, :issued %>
+    <%= label f, :issued do %>
     <%= error_tag f, :issued %>
     <div class="flex two four-500 six-800">
       <%= permit_datetime_select f, :issued %>
     </div>
-    <%= label f, :start %>
+    <% end %>
+    <%= label f, :start do %>
     <%= error_tag f, :start %>
     <div class="flex two four-500 six-800">
       <%= permit_datetime_select f, :start %>
     </div>
-    <%= label f, :finish %>
+    <% end %>
+    <%= label f, :finish do %>
     <%= error_tag f, :finish %>
     <div class="flex two four-500 six-800">
       <%= permit_datetime_select f, :finish %>
     </div>
-    <%= label f, :closed %>
+    <% end %>
+    <%= label f, :closed do %>
     <%= error_tag f, :closed %>
     <div class="flex two four-500 six-800">
       <%= permit_datetime_select f, :closed %>
     </div>
+    <% end %>
     <div>
       <!--%= label f, :protective_equipment %>
       <!--%= checkbox f, :protective_equipment %>
       <!--%= error_tag f, :protective_equipment %-->
 
-      <%= label f, :issuer_id %>
+      <%= label f, :issuer_id do %>
       <%= text_input f, :issuer_id %>
       <%= error_tag f, :issuer_id %>
+    <% end %>
     </div>
     <div>
-      <%= label f, :performer_id %>
+      <%= label f, :performer_id do %>
       <%= text_input f, :performer_id %>
       <%= error_tag f, :performer_id %>
+    <% end %>
     </div>
     <div>
-      <%= label f, :controller_id %>
+      <%= label f, :controller_id do %>
       <%= text_input f, :controller_id %>
       <%= error_tag f, :controller_id %>
+    <% end %>
     </div>
   </div>
   <div>

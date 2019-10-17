@@ -49,15 +49,15 @@ defmodule WorkpermitWeb.PermitControllerTest do
 
   describe "create permit" do
     #TODO - add nested form for protective equipment
-    #test "redirects to show when data is valid", %{conn: conn} do
-    #  conn = post(conn, Routes.permit_path(conn, :create), permit: @create_attrs)
+    test "redirects to show when data is valid", %{conn: conn} do
+      conn = post(conn, Routes.permit_path(conn, :create), permit: @create_attrs)
 
-    #  assert %{id: id} = redirected_params(conn)
-    #  assert redirected_to(conn) == Routes.permit_path(conn, :show, id)
+      assert %{id: id} = redirected_params(conn)
+      assert redirected_to(conn) == Routes.permit_path(conn, :show, id)
 
-    #  conn = get(conn, Routes.permit_path(conn, :show, id))
-    #  assert html_response(conn, 200) =~ "Show Permit"
-    #end
+      conn = get(conn, Routes.permit_path(conn, :show, id))
+      assert html_response(conn, 200) =~ "Show Permit"
+    end
 
     test "renders errors when data is invalid", %{conn: conn} do
       conn = post(conn, Routes.permit_path(conn, :create), permit: @invalid_attrs)

@@ -31,15 +31,13 @@ defmodule Workpermit.Permits.Permit do
       :finish,
       :closed,
     ])
+    |> cast_assoc(:protective_equipment, required: true)
     |> validate_required([
       :category,
-      :number,
+      #:number,
       :issued,
       :start,
       :finish,
     ])
-    |> assoc_constraint(:issuer)
-    |> assoc_constraint(:performer)
-    |> assoc_constraint(:protective_equipment)
   end
 end
