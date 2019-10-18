@@ -6,82 +6,82 @@
   <% end %>
 
   <div class="tab block">Type:
-    <%= label f, :category do %>
-      <%= gettext("Category") %>
-      <%= select f, :category, @categories %>
+    <%= label f, :category, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <span class="form-label block"><%= gettext("Category") %></span>
+      <%= select f, :category, @categories, class: "form-input w-full mt-1" %>
       <%= error_tag f, :category %>
     <% end %>
-    <%= label f, :number do %>
-      <%= gettext("Number") %>
-      <%= number_input f, :number %>
+    <%= label f, :number, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <span class="form-label block"><%= gettext("Number") %></span>
+      <%= number_input f, :number, class: "form-input w-full mt-1" %>
       <%= error_tag f, :number %>
     <% end %>
   </div>
 
   <div class="tab">Actors:
     <div>
-      <%= label f, :issuer_name do %>
-        <%= gettext("Issuer") %>
-        <%= text_input f, :issuer_name %>
+      <%= label f, :issuer_name, class: "block mb-6 c-h5 text-gray-darker" do %>
+        <span class="form-label block"><%= gettext("Issuer") %></span>
+        <%= text_input f, :issuer_name, class: "form-input w-full mt-1" %>
         <%= error_tag f, :issuer_name %>
       <% end %>
     </div>
 
     <div>
-      <%= label f, :performer_name do %>
-      <%= gettext("Performer") %>
-      <%= text_input f, :performer_name %>
+      <%= label f, :performer_name, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <span class="form-label block"><%= gettext("Performer") %></span>
+      <%= text_input f, :performer_name, class: "form-input w-full mt-1" %>
       <%= error_tag f, :performer_name %>
     <% end %>
     </div>
 
     <div>
-      <%= label f, :firewatch_name do %>
-      <%= gettext("Firewatch") %>
-      <%= text_input f, :firewatch_name %>
+      <%= label f, :firewatch_name, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <span class="form-label block"><%= gettext("Firewatch") %></span>
+      <%= text_input f, :firewatch_name, class: "form-input w-full mt-1" %>
       <%= error_tag f, :firewatch_name %>
     <% end %>
     </div>
 
     <div>
-      <%= label f, :controller_name do %>
-      <%= gettext("Controller") %>
-      <%= text_input f, :controller_name %>
+      <%= label f, :controller_name, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <span class="form-label block"><%= gettext("Controller") %></span>
+      <%= text_input f, :controller_name, class: "form-input w-full mt-1" %>
       <%= error_tag f, :controller_name %>
     <% end %>
     </div>
   </div>
 
   <div class="tab">Time:
-    <%= label f, :issued_time do %>
-      <%= gettext("Issued time") %>
+    <%= label f, :issued_time, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <span class="form-label block"><%= gettext("Issued time") %></span>
       <%= error_tag f, :issued_time %>
       <div class="flex two four-500 six-800">
-        <%= permit_datetime_select f, :issued_time %>
+        <%= permit_datetime_select f, :issued_time, class: "form-input w-full mt-1" %>
       </div>
     <% end %>
 
-    <%= label f, :start_time do %>
-      <%= gettext("Start Time") %>
+    <%= label f, :start_time, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <span class="form-label block"><%= gettext("Start Time") %></span>
       <%= error_tag f, :start_time %>
       <div class="flex two four-500 six-800">
-        <%= permit_datetime_select f, :start_time %>
+        <%= permit_datetime_select f, :start_time, class: "form-input w-full mt-1" %>
       </div>
     <% end %>
 
-    <%= label f, :finish_time do %>
-      <%= gettext("Finish Time") %>
+    <%= label f, :finish_time, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <span class="form-label block"><%= gettext("Finish Time") %></span>
       <%= error_tag f, :finish_time %>
       <div class="flex two four-500 six-800">
-        <%= permit_datetime_select f, :finish_time %>
+        <%= permit_datetime_select f, :finish_time, class: "form-input w-full mt-1" %>
       </div>
     <% end %>
 
-    <%= label f, :closed_time do %>
-      <%= gettext("Closed Time") %>
+    <%= label f, :closed_time, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <span class="form-label block"><%= gettext("Closed Time") %></span>
       <%= error_tag f, :closed_time %>
       <div class="flex two four-500 six-800">
-        <%= permit_datetime_select f, :closed_time %>
+        <%= permit_datetime_select f, :closed_time, class: "form-input w-full mt-1" %>
       </div>
     <% end %>
   </div>
@@ -107,34 +107,42 @@
 
   <div class="tab">Additions:
     <div>
-      <%= label f, :precautions do %>
-      <%= gettext("Precautions") %>
-      <%= textarea f, :precautions %>
+      <%= label f, :precautions, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <span class="form-label block"><%= gettext("Precautions") %></span>
+      <%= textarea f, :precautions, class: "form-input w-full mt-1" %>
       <%= error_tag f, :precautions %>
     <% end %>
     </div>
     <div>
-      <%= label f, :additional_info do %>
-      <%= gettext("Additional Info") %>
-      <%= textarea f, :additional_info %>
+      <%= label f, :additional_info, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <span class="form-label block"><%= gettext("Additional Info") %></span>
+      <%= textarea f, :additional_info, class: "form-input w-full mt-1" %>
       <%= error_tag f, :additional_info %>
     <% end %>
     </div>
   </div>
 
-  <div>
-    <%= submit "Save" %>
-  </div>
+  <!--div>
+    <% submit "Save" %>
+  </div-->
 
-  <div style="overflow:auto;">
-    <div style="float:right;">
-      <button type="button" id="prevBtn">Previous</button>
-      <button type="button" id="nextBtn">Next</button>
-    </div>
+  <div class="flex justify-between">
+    <button type="button"
+            id="prevBtn"
+            class="bg-transparent hover:bg-primary-light text-primary-medium font-semibold hover:text-white py-2 px-4 border border-primary-medium hover:border-transparent rounded"
+            >Previous</button>
+    <button type="button" 
+            id="nextBtn"
+            class="bg-primary-medium hover:bg-primary-darker text-white font-bold py-2 px-4 rounded"
+            >Next</button>
   </div>
 
   <!-- Circles which indicates the steps of the form: -->
   <div id="steps" style="text-align:center;margin-top:40px;">
-    <!-- generated in js -->
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
   </div>
 <% end %>

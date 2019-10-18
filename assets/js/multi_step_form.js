@@ -1,15 +1,15 @@
 var currentTab = 0; // Current tab is set to be the first tab (0)
-steps();
-//showTab(currentTab); // Display the current tab
-function steps() {
-  var stepDiv = document.getElementById("steps")
-  var stepCount = document.getElementsByClassName("tab").length;
-  var stepElement = document.createElement("span")
-  stepElement.className += "step"
-  for (i = 0; i < stepCount; i++) {
-      stepDiv.appendChild(stepElement.cloneNode(true))
-  }
-}
+showTab(currentTab); // Display the current tab
+//steps();
+//function steps() {
+//  var stepDiv = document.getElementById("steps")
+//  var stepCount = document.getElementsByClassName("tab").length;
+//  var stepElement = document.createElement("span")
+//  stepElement.className += "step"
+//  for (i = 0; i < stepCount; i++) {
+//      stepDiv.appendChild(stepElement.cloneNode(true))
+//  }
+//}
 
 function showTab(n) {
   // This function will display the specified tab of the form ...
