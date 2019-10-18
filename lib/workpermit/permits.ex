@@ -151,4 +151,13 @@ defmodule Workpermit.Permits do
   def delete_protective_equipment(%ProtectiveEquipment{} = protective_equipment) do
     Repo.delete(protective_equipment)
   end
+
+  def category_fields do
+    Permit.CategoryEnum.__enum_map__() |> Enum.map(fn {k, _} -> k end)
+  end
+
+  def pe_fields do
+    #set it as an org param
+    ProtectiveEquipment.keys()
+  end
 end

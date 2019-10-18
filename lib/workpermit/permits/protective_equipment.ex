@@ -1,7 +1,6 @@
 defmodule Workpermit.Permits.ProtectiveEquipment do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Workpermit.Permits.Permit
 
   # embedded_schema is short for:
   #
@@ -40,5 +39,22 @@ defmodule Workpermit.Permits.ProtectiveEquipment do
       :protective_clothing,
     ])
     |> validate_required([])
+  end
+
+  def keys() do
+    [
+      :ear_protection,
+      :earth_terminal,
+      :eye_protection,
+      :face_shield,
+      :foot_protection,
+      :head_protection,
+      :high_visibility_clothing,
+      :mask,
+      :safety_harness,
+      :welding_mask,
+      :protective_gloves,
+      :protective_clothing,
+    ]
   end
 end
