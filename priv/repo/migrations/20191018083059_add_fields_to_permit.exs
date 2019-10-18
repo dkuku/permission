@@ -9,9 +9,9 @@ defmodule Workpermit.Repo.Migrations.AddFieldsToPermit do
       add_if_not_exists :firewatch_name, :string
       add_if_not_exists :performer_name, :string
       add_if_not_exists :precautions, :string
-      add_if_not_exists :coshh, :string
+      add_if_not_exists :additional_info, :string
+      add_if_not_exists :coshh, :boolean
       add_if_not_exists :lone_working, :boolean
-      add_if_not_exists :additional_info, :boolean
       remove_if_exists :controller_id, :integer
       remove_if_exists :firewatch_id, :integer
       remove_if_exists :performer_id, :integer
