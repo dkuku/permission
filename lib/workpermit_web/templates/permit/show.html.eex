@@ -16,38 +16,52 @@
     <section>
     <div class = "block mb-6 c-h5 text-gray-darker">
       <span class="form-label block"><%= gettext("Category") %>:&nbsp;</span>
-    <%= @permit.category %>
+      <%= @permit.category %>
     </div>
     <div class = "block mb-6 c-h5 text-gray-darker">
       <span class="form-label block"><%= gettext("Number") %>:&nbsp;</span>
-    <%= @permit.number %>
+      <%= @permit.number %>
     </div>
     <div class = "block mb-6 c-h5 text-gray-darker">
       <span class="form-label block"><%= gettext("Issued") %>:&nbsp;</span>
-    <%= @permit.issued %>
+      <%= @permit.issued_time %>
     </div>
     <div class = "block mb-6 c-h5 text-gray-darker">
       <span class="form-label block"><%= gettext("Started") %>:&nbsp;</span>
-    <%= @permit.start %>
+      <%= @permit.start_time %>
     </div>
     <div class = "block mb-6 c-h5 text-gray-darker">
       <span class="form-label block"><%= gettext("Finish") %>:&nbsp;</span>
-    <%= @permit.finish %>
+      <%= @permit.finish_time %>
     </div>
     <div class = "block mb-6 c-h5 text-gray-darker">
       <span class="form-label block"><%= gettext("Closed") %>:&nbsp;</span>
-    <%= @permit.closed %>
+      <%= @permit.closed_time %>
     </div>
     <div class = "block mb-6 c-h5 text-gray-darker">
-      <span class="form-label block"><%= gettext("Issued") %>:&nbsp;</span>
-    <%= @permit.issued %>
+      <span class="form-label block"><%= gettext("Issuer Name") %>:&nbsp;</span>
+      <%= @permit.issuer_name %>
     </div>
     <div class = "block mb-6 c-h5 text-gray-darker">
-      <span class="form-label block"><%= gettext("Started") %>:&nbsp;</span>
+      <span class="form-label block"><%= gettext("Performer Name") %>:&nbsp;</span>
+      <%= @permit.performer_name %>
     </div>
-    <%= @permit.issuer_id %>
-    <%= @permit.performer_id %>
-    <%= @permit.controller_id %>
+    <div class = "block mb-6 c-h5 text-gray-darker">
+      <span class="form-label block"><%= gettext("Controller Name") %>:&nbsp;</span>
+      <%= @permit.controller_name %>
+    </div>
+    <div class = "block mb-6 c-h5 text-gray-darker">
+      <span class="form-label block"><%= gettext("Firewatch Name") %>:&nbsp;</span>
+      <%= @permit.firewatch_name %>
+    </div>
+    <div class = "block mb-6 c-h5 text-gray-darker">
+      <span class="form-label block"><%= gettext("Precautions") %>:&nbsp;</span>
+      <%= @permit.precautions %>
+    </div>
+    <div class = "block mb-6 c-h5 text-gray-darker">
+      <span class="form-label block"><%= gettext("Additional Info") %>:&nbsp;</span>
+      <%= @permit.additional_info %>
+    </div>
     <div class="flex justify-between">
       <%= link gettext("Back"), to: Routes.permit_path(@conn, :index), class: "bg-transparent hover:bg-primary-light text-primary-medium font-semibold hover:text-white py-2 px-4 border border-primary-medium hover:border-transparent rounded" %>
     </div>

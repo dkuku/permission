@@ -22,6 +22,7 @@
   <% end %>
     <div class="flex two four-500 six-800">
       <%= label f, :category do %>
+      <%= gettext("Category") %>
       <%= select f, :category, @categories %>
       <%= error_tag f, :category %>
     <% end %>
@@ -30,28 +31,32 @@
       < %= number_input f, :number %>
       < %= error_tag f, :number %-->
     </div>
-    <%= label f, :issued do %>
-    <%= error_tag f, :issued %>
+    <%= label f, :issued_time do %>
+    <%= gettext("Issued time") %>
+    <%= error_tag f, :issued_time %>
     <div class="flex two four-500 six-800">
-      <%= permit_datetime_select f, :issued %>
+      <%= permit_datetime_select f, :issued_time %>
     </div>
     <% end %>
-    <%= label f, :start do %>
-    <%= error_tag f, :start %>
+    <%= label f, :start_time do %>
+    <%= gettext("Start Time") %>
+    <%= error_tag f, :start_time %>
     <div class="flex two four-500 six-800">
-      <%= permit_datetime_select f, :start %>
+      <%= permit_datetime_select f, :start_time %>
     </div>
     <% end %>
-    <%= label f, :finish do %>
-    <%= error_tag f, :finish %>
+    <%= label f, :finish_time do %>
+    <%= gettext("Finish Time") %>
+    <%= error_tag f, :finish_time %>
     <div class="flex two four-500 six-800">
-      <%= permit_datetime_select f, :finish %>
+      <%= permit_datetime_select f, :finish_time %>
     </div>
     <% end %>
-    <%= label f, :closed do %>
-    <%= error_tag f, :closed %>
+    <%= label f, :closed_time do %>
+    <%= gettext("Closed Time") %>
+    <%= error_tag f, :closed_time %>
     <div class="flex two four-500 six-800">
-      <%= permit_datetime_select f, :closed %>
+      <%= permit_datetime_select f, :closed_time %>
     </div>
     <% end %>
     <div>
@@ -59,21 +64,45 @@
       <!--%= checkbox f, :protective_equipment %>
       <!--%= error_tag f, :protective_equipment %-->
 
-      <%= label f, :issuer_id do %>
-      <%= text_input f, :issuer_id %>
-      <%= error_tag f, :issuer_id %>
+      <%= label f, :issuer_name do %>
+      <%= gettext("Issuer") %>
+      <%= text_input f, :issuer_name %>
+      <%= error_tag f, :issuer_name %>
     <% end %>
     </div>
     <div>
-      <%= label f, :performer_id do %>
-      <%= text_input f, :performer_id %>
-      <%= error_tag f, :performer_id %>
+      <%= label f, :performer_name do %>
+      <%= gettext("Performer") %>
+      <%= text_input f, :performer_name %>
+      <%= error_tag f, :performer_name %>
     <% end %>
     </div>
     <div>
-      <%= label f, :controller_id do %>
-      <%= text_input f, :controller_id %>
-      <%= error_tag f, :controller_id %>
+      <%= label f, :firewatch_name do %>
+      <%= gettext("Firewatch") %>
+      <%= text_input f, :firewatch_name %>
+      <%= error_tag f, :firewatch_name %>
+    <% end %>
+    </div>
+    <div>
+      <%= label f, :controller_name do %>
+      <%= gettext("Controller") %>
+      <%= text_input f, :controller_name %>
+      <%= error_tag f, :controller_name %>
+    <% end %>
+    </div>
+    <div>
+      <%= label f, :precautions do %>
+      <%= gettext("Precautions") %>
+      <%= textarea f, :precautions %>
+      <%= error_tag f, :precautions %>
+    <% end %>
+    </div>
+    <div>
+      <%= label f, :additional_info do %>
+      <%= gettext("Additional Info") %>
+      <%= textarea f, :additional_info %>
+      <%= error_tag f, :additional_info %>
     <% end %>
     </div>
   </div>

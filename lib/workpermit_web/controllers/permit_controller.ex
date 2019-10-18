@@ -26,7 +26,11 @@ defmodule WorkpermitWeb.PermitController do
         |> redirect(to: Routes.permit_path(conn, :show, permit, pe: Permits.pe_fields()))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset, pe: Permits.pe_fields())
+        conn
+        |> assign(:changeset, changeset)
+        |> assign(:pe, Permits.pe_fields())
+        |> assign(:categories, Permits.category_fields())
+        |> render("new.html")
     end
   end
 

@@ -11,14 +11,21 @@ defmodule Workpermit.Permits.Permit do
   schema "permits" do
     field :category, CategoryEnum
     field :number, :integer
-    field :start, :naive_datetime
-    field :closed, :naive_datetime
-    field :finish, :naive_datetime
-    field :issued, :naive_datetime
+    field :start_time, :naive_datetime
+    field :closed_time, :naive_datetime
+    field :finish_time, :naive_datetime
+    field :issued_time, :naive_datetime
     belongs_to :issuer, User
-    belongs_to :controller, User
-    belongs_to :firewatch, User
-    belongs_to :performer, User
+    field :organisation, :integer
+    field :issuer_name, :string
+    field :controller_name, :string
+    field :firewatch_name, :string
+    field :performer_name, :string
+    field :precautions, :string
+    field :additional_info, :string
+    field :coshh, :boolean
+    field :lone_working, :boolean
+
     belongs_to :protective_equipment, ProtectiveEquipment
 
     timestamps()
@@ -30,18 +37,28 @@ defmodule Workpermit.Permits.Permit do
     |> cast(attrs, [
       :category,
       :number,
-      :issued,
-      :start,
-      :finish,
-      :closed,
+      :issued_time,
+      :start_time,
+      :finish_time,
+      :closed_time,
+      :issuer_name,
+      :performer_name,
+      :controller_name,
+      :firewatch_name,
+      :precautions,
+      :additional_info,
+      :coshh,
+      :lone_working,
+      :organisation
     ])
     |> cast_assoc(:protective_equipment, required: true)
+    #|> cast_assoc(:issuer, required: true)
     |> validate_required([
       :category,
       #:number,
-      :issued,
-      :start,
-      :finish,
+      :issued_time,
+      :start_time,
+      :finish_time,
     ])
   end
 end
