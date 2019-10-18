@@ -70,4 +70,9 @@ defmodule Workpermit.ProtectiveEquipment do
   def change_protective_equipment(%ProtectiveEquipment{} = protective_equipment) do
     ProtectiveEquipment.changeset(protective_equipment, %{})
   end
+
+  def pe_fields do
+    #set it as an org param
+    ProtectiveEquipment.keys()
+  end
 end

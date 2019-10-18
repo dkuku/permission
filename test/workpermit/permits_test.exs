@@ -8,28 +8,29 @@ defmodule Workpermit.PermitsTest do
   @invalid_attrs %{
      category: nil,
      closed: :nil,
-     controller_id: :nil,
-     finish: :nil,
-     issued: :nil,
-     issuer_id: :nil,
+     controller_name: :nil,
+     finish_time: :nil,
+     issued_time: :nil,
+     issuer_name: :nil,
      number: :nil,
-     performer_id: :nil,
+     performer_name: :nil,
      protective_equipment: :nil,
-    start: :nil
+    start_time: :nil
   }
   #TODO check these inserts - conert to build
   @valid_attrs %{
      category: 42,
-     closed: ~N[2010-04-17 14:00:00],
-     controller_id: build(:user),
-     finish: ~N[2010-04-17 14:00:00],
-     issued: ~N[2010-04-17 14:00:00],
-     issuer: build(:user),
      number: 42,
-     performer: build(:user),
-     firewatch: build(:user),
+     closed_time: ~N[2010-04-17 14:00:00],
+     start_time: ~N[2010-04-17 14:00:00],
+     finish_time: ~N[2010-04-17 14:00:00],
+     issued_time: ~N[2010-04-17 14:00:00],
+     issuer_name: "Issuer Name",
+     controller_name: "Controller Name",
+     performer_name: "Performer Name",
+     firewatch_name: "Firewatch Name",
+     issuer: build(:user),
      protective_equipment: build(:protective_equipment),
-    start: ~N[2010-04-17 14:00:00]
   }
 
   describe "permits" do
@@ -45,19 +46,19 @@ defmodule Workpermit.PermitsTest do
       assert permit_db.id == permit.id
       assert permit_db.number == permit.number
       assert permit_db.category == permit.category
-      assert permit_db.closed == permit.closed 
-      assert permit_db.finish == permit.finish
-      assert permit_db.issued == permit.issued
+      assert permit_db.closed_time == permit.closed_time 
+      assert permit_db.finish_time == permit.finish_time
+      assert permit_db.issued_time == permit.issued_time
     end
 
     test "create_permit/1 with valid data creates a permit" do
       assert {:ok, %Permit{} = permit} = Permits.create_permit(@valid_attrs)
       assert permit.category == 42
-      assert permit.closed == ~N[2010-04-17 14:00:00]
-      assert permit.finish == ~N[2010-04-17 14:00:00]
-      assert permit.issued == ~N[2010-04-17 14:00:00]
       assert permit.number == 42
-      assert permit.start == ~N[2010-04-17 14:00:00]
+      assert permit.closed_time == ~N[2010-04-17 14:00:00]
+      assert permit.finish_time == ~N[2010-04-17 14:00:00]
+      assert permit.issued_time == ~N[2010-04-17 14:00:00]
+      assert permit.start_time == ~N[2010-04-17 14:00:00]
     end
 
     test "create_permit/1 with invalid data returns error changeset" do

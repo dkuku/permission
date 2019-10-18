@@ -43,6 +43,11 @@ defmodule Workpermit.ProtectiveEquipmentTest do
       protective_equipment
     end
 
+    def pe_fields do
+      #set it as an org param
+      assert ProtectiveEquipment.keys() == 1
+    end
+
     test "get_protective_equipment!/1 returns the protective_equipment with given id" do
       protective_equipment = protective_equipment_fixture()
       assert Permits.get_protective_equipment(protective_equipment.id) == protective_equipment

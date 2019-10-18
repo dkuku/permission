@@ -38,7 +38,8 @@ defmodule Workpermit.Permits do
   def get_permit!(id) do
     Repo.one from permit in Permit,
       where: permit.id == ^id,
-      preload: :protective_equipment
+      preload: :protective_equipment,
+      preload: :issuer
   end
 
   @doc """
@@ -53,7 +54,7 @@ defmodule Workpermit.Permits do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_permit(attrs \\ %{}) do
+  def create_permit(attrs) do
     %Permit{}
     |> Permit.changeset(attrs)
     |> Repo.insert()

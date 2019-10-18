@@ -15,7 +15,6 @@ defmodule Workpermit.Permits.Permit do
     field :closed_time, :naive_datetime
     field :finish_time, :naive_datetime
     field :issued_time, :naive_datetime
-    belongs_to :issuer, User
     field :organisation, :integer
     field :issuer_name, :string
     field :controller_name, :string
@@ -25,7 +24,7 @@ defmodule Workpermit.Permits.Permit do
     field :additional_info, :string
     field :coshh, :boolean
     field :lone_working, :boolean
-
+    belongs_to :issuer, User
     belongs_to :protective_equipment, ProtectiveEquipment
 
     timestamps()
@@ -37,6 +36,7 @@ defmodule Workpermit.Permits.Permit do
     |> cast(attrs, [
       :category,
       :number,
+      :issuer_id,
       :issued_time,
       :start_time,
       :finish_time,
@@ -52,13 +52,12 @@ defmodule Workpermit.Permits.Permit do
       :organisation
     ])
     |> cast_assoc(:protective_equipment, required: true)
-    #|> cast_assoc(:issuer, required: true)
     |> validate_required([
       :category,
-      #:number,
+      :number,
+      :issuer_id,
       :issued_time,
       :start_time,
-      :finish_time,
     ])
   end
 end

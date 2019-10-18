@@ -19,6 +19,10 @@
       <%= @permit.category %>
     </div>
     <div class = "block mb-6 c-h5 text-gray-darker">
+      <span class="form-label block"><%= gettext("Creator") %>:&nbsp;</span>
+      <%= @permit.issuer.first_name %>
+    </div>
+    <div class = "block mb-6 c-h5 text-gray-darker">
       <span class="form-label block"><%= gettext("Number") %>:&nbsp;</span>
       <%= @permit.number %>
     </div>

@@ -6,26 +6,28 @@ defmodule WorkpermitWeb.PermitControllerTest do
 
   @create_attrs %{
     category: 42,
-    closed: ~N[2010-04-17 14:00:00],
-    controller: build(:user),
-    finish: ~N[2010-04-17 14:00:00],
-    issued: ~N[2010-04-17 14:00:00],
+    closed_time: ~N[2020-04-17 14:00:00],
+    controller_name: "Controller Name",
+    finish_time: ~N[2020-04-17 14:00:00],
+    issued_time: ~N[2020-04-17 14:00:00],
     issuer: build(:user),
+    issuer_name: "Issuer Name",
     number: 42,
-    performer: build(:user),
-    start: ~N[2010-04-17 14:00:00]
+    performer_name: "Performer Name",
+    start: ~N[2020-04-17 14:00:00]
   }
   @invalid_attrs %{
     category: nil,
-    closed: nil,
-    controller: nil,
-    finish: nil,
-    issued: nil,
+    closed_time: nil,
+    controller_name: nil,
+    finish_time: nil,
+    issued_time: nil,
     issuer: nil,
+    issuer_name: nil,
     number: nil,
-    performer: nil,
+    performer_name: nil,
     protective_equipment: nil,
-    start: nil
+    start_time: nil
   }
 
   def fixture(:permit) do

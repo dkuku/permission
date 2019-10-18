@@ -19,7 +19,8 @@ defmodule WorkpermitWeb.PermitController do
   end
 
   def create(conn, %{"permit" => permit_params}) do
-    case Permits.create_permit(permit_params) do
+    permit = Map.put(permit_params, "issuer_id", conn.assigns.user.id)
+    case Permits.create_permit(permit) do
       {:ok, permit} ->
         conn
         |> put_flash(:info, "Permit created successfully.")

@@ -22,54 +22,59 @@
   <% end %>
     <div class="flex two four-500 six-800">
       <%= label f, :category do %>
-      <%= gettext("Category") %>
-      <%= select f, :category, @categories %>
-      <%= error_tag f, :category %>
-    <% end %>
-
-      <!-- %= label f, :number %>
-      < %= number_input f, :number %>
-      < %= error_tag f, :number %-->
+        <%= gettext("Category") %>
+        <%= select f, :category, @categories %>
+        <%= error_tag f, :category %>
+      <% end %>
     </div>
+    <div class="flex two four-500 six-800">
+      <%= label f, :number do %>
+        <%= gettext("Number") %>
+        <%= number_input f, :number %>
+        <%= error_tag f, :number %>
+      <% end %>
+    </div>
+
     <%= label f, :issued_time do %>
-    <%= gettext("Issued time") %>
-    <%= error_tag f, :issued_time %>
-    <div class="flex two four-500 six-800">
-      <%= permit_datetime_select f, :issued_time %>
-    </div>
+      <%= gettext("Issued time") %>
+      <%= error_tag f, :issued_time %>
+      <div class="flex two four-500 six-800">
+        <%= permit_datetime_select f, :issued_time %>
+      </div>
     <% end %>
-    <%= label f, :start_time do %>
-    <%= gettext("Start Time") %>
-    <%= error_tag f, :start_time %>
-    <div class="flex two four-500 six-800">
-      <%= permit_datetime_select f, :start_time %>
-    </div>
-    <% end %>
-    <%= label f, :finish_time do %>
-    <%= gettext("Finish Time") %>
-    <%= error_tag f, :finish_time %>
-    <div class="flex two four-500 six-800">
-      <%= permit_datetime_select f, :finish_time %>
-    </div>
-    <% end %>
-    <%= label f, :closed_time do %>
-    <%= gettext("Closed Time") %>
-    <%= error_tag f, :closed_time %>
-    <div class="flex two four-500 six-800">
-      <%= permit_datetime_select f, :closed_time %>
-    </div>
-    <% end %>
-    <div>
-      <!--%= label f, :protective_equipment %>
-      <!--%= checkbox f, :protective_equipment %>
-      <!--%= error_tag f, :protective_equipment %-->
 
-      <%= label f, :issuer_name do %>
-      <%= gettext("Issuer") %>
-      <%= text_input f, :issuer_name %>
-      <%= error_tag f, :issuer_name %>
+    <%= label f, :start_time do %>
+      <%= gettext("Start Time") %>
+      <%= error_tag f, :start_time %>
+      <div class="flex two four-500 six-800">
+        <%= permit_datetime_select f, :start_time %>
+      </div>
     <% end %>
+
+    <%= label f, :finish_time do %>
+      <%= gettext("Finish Time") %>
+      <%= error_tag f, :finish_time %>
+      <div class="flex two four-500 six-800">
+        <%= permit_datetime_select f, :finish_time %>
+      </div>
+    <% end %>
+
+    <%= label f, :closed_time do %>
+      <%= gettext("Closed Time") %>
+      <%= error_tag f, :closed_time %>
+      <div class="flex two four-500 six-800">
+        <%= permit_datetime_select f, :closed_time %>
+      </div>
+    <% end %>
+
+    <div>
+      <%= label f, :issuer_name do %>
+        <%= gettext("Issuer") %>
+        <%= text_input f, :issuer_name %>
+        <%= error_tag f, :issuer_name %>
+      <% end %>
     </div>
+
     <div>
       <%= label f, :performer_name do %>
       <%= gettext("Performer") %>
@@ -77,6 +82,7 @@
       <%= error_tag f, :performer_name %>
     <% end %>
     </div>
+
     <div>
       <%= label f, :firewatch_name do %>
       <%= gettext("Firewatch") %>
@@ -84,6 +90,7 @@
       <%= error_tag f, :firewatch_name %>
     <% end %>
     </div>
+
     <div>
       <%= label f, :controller_name do %>
       <%= gettext("Controller") %>
@@ -91,6 +98,7 @@
       <%= error_tag f, :controller_name %>
     <% end %>
     </div>
+
     <div>
       <%= label f, :precautions do %>
       <%= gettext("Precautions") %>
@@ -98,6 +106,7 @@
       <%= error_tag f, :precautions %>
     <% end %>
     </div>
+
     <div>
       <%= label f, :additional_info do %>
       <%= gettext("Additional Info") %>
@@ -106,15 +115,15 @@
     <% end %>
     </div>
   </div>
+
   <div>
     <%= submit "Save" %>
   </div>
 <% end %>
- <form id="regForm" action="">
+<form id="regForm" action="">
 
 <h1>Register:</h1>
 
-<!-- One "tab" for each step in the form: -->
 <!--div class="tab">Name:
 <ul>
   <li><input type="checkbox" id="cb1" />

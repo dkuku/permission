@@ -23,13 +23,18 @@ defmodule Workpermit.Factory do
     %Workpermit.Permits.Permit{
    category: 2,
    number: sequence(:number, &(&1)),
-   closed: ~N[2010-04-17 14:00:00],
-   finish: ~N[2010-04-17 14:00:00],
-   issued: ~N[2010-04-17 14:00:00],
-   start: ~N[2010-04-17 14:00:00],
+   closed_time: ~N[2010-04-17 14:00:00],
+   finish_time: ~N[2010-04-17 14:00:00],
+   issued_time: ~N[2010-04-17 14:00:00],
+   start_time: ~N[2010-04-17 14:00:00],
    issuer: build(:user),
-   performer: build(:user),
+   issuer_name: "Issuer Name",
+   controller_name: "Controller Name",
+   firewatch_name: "Firewatch Name",
+   performer_name: "Performer Name",
    protective_equipment: build(:protective_equipment),
+   precautions: "# precautions",
+   additional_info: "Additional info",
     }
   end
 end
