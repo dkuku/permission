@@ -14,9 +14,10 @@
       <% end %>
       </ul>
     <section>
-    <div class = "block mb-6 c-h5 text-gray-darker">
+    <div class = "block mx-6 c-h5 text-gray-darker">
       <span class="form-label block"><%= gettext("Category") %>:&nbsp;</span>
       <%= @permit.category %>
+      <%= img_tag Workpermit.IsoSymbols.symbol_to_image_path(Workpermit.Permits.image(@permit.category)), class: "w-10 h-10" %>
     </div>
     <div class = "block mb-6 c-h5 text-gray-darker">
       <span class="form-label block"><%= gettext("Creator") %>:&nbsp;</span>
@@ -58,13 +59,13 @@
       <span class="form-label block"><%= gettext("Firewatch Name") %>:&nbsp;</span>
       <%= @permit.firewatch_name %>
     </div>
-    <div class = "block mb-6 c-h5 text-gray-darker">
+    <div class = "block mb-6 c-h5 text-gray-darker markdown">
       <span class="form-label block"><%= gettext("Precautions") %>:&nbsp;</span>
-      <%= @permit.precautions %>
+      <%= markdown(@permit.precautions) %>
     </div>
-    <div class = "block mb-6 c-h5 text-gray-darker">
+    <div class = "block mb-6 c-h5 text-gray-darker markdown">
       <span class="form-label block"><%= gettext("Additional Info") %>:&nbsp;</span>
-      <%= @permit.additional_info %>
+      <%= markdown(@permit.additional_info) %>
     </div>
     <div class="flex justify-between">
       <%= link gettext("Back"), to: Routes.permit_path(@conn, :index), class: "bg-transparent hover:bg-primary-light text-primary-medium font-semibold hover:text-white py-2 px-4 border border-primary-medium hover:border-transparent rounded" %>

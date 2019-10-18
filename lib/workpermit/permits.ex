@@ -161,4 +161,15 @@ defmodule Workpermit.Permits do
     #set it as an org param
     ProtectiveEquipment.keys()
   end
+
+  def image(category) do
+    %{:general => :general_warning_sign,
+    :electrical => :electricity_hazard,
+    :heights => :drop_or_fall_hazard,
+    :hot_work => :flammable_material,
+    :confined_space => :confined_space,
+    :hot_fluid => :hot_surface,
+    :gas => :pressurized_cylinder }
+    |> Map.fetch!(category)
+  end
 end

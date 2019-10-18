@@ -4,69 +4,21 @@
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
-  <div>
-  <%= inputs_for f, :protective_equipment, fn p -> %>
-    <ul>
-      <%=  for pe <- @pe do %>
-        <li>
-          <%= checkbox p, pe %>
-          <label for="<%= "#{:permit_protective_equipment_}#{pe}" %>">
-            <%= img_tag( Workpermit.IsoSymbols.symbol_to_image_path(pe)) %>
-          </label>
 
-          <%= Workpermit.IsoSymbols.symbol_to_sign_meaning(pe) %>
-          <%= error_tag p, pe %>
-        </li>
-      <% end %>
-    </li>
-  <% end %>
-    <div class="flex two four-500 six-800">
-      <%= label f, :category do %>
-        <%= gettext("Category") %>
-        <%= select f, :category, @categories %>
-        <%= error_tag f, :category %>
-      <% end %>
-    </div>
-    <div class="flex two four-500 six-800">
-      <%= label f, :number do %>
-        <%= gettext("Number") %>
-        <%= number_input f, :number %>
-        <%= error_tag f, :number %>
-      <% end %>
-    </div>
-
-    <%= label f, :issued_time do %>
-      <%= gettext("Issued time") %>
-      <%= error_tag f, :issued_time %>
-      <div class="flex two four-500 six-800">
-        <%= permit_datetime_select f, :issued_time %>
-      </div>
+  <div class="tab block">Type:
+    <%= label f, :category do %>
+      <%= gettext("Category") %>
+      <%= select f, :category, @categories %>
+      <%= error_tag f, :category %>
     <% end %>
-
-    <%= label f, :start_time do %>
-      <%= gettext("Start Time") %>
-      <%= error_tag f, :start_time %>
-      <div class="flex two four-500 six-800">
-        <%= permit_datetime_select f, :start_time %>
-      </div>
+    <%= label f, :number do %>
+      <%= gettext("Number") %>
+      <%= number_input f, :number %>
+      <%= error_tag f, :number %>
     <% end %>
+  </div>
 
-    <%= label f, :finish_time do %>
-      <%= gettext("Finish Time") %>
-      <%= error_tag f, :finish_time %>
-      <div class="flex two four-500 six-800">
-        <%= permit_datetime_select f, :finish_time %>
-      </div>
-    <% end %>
-
-    <%= label f, :closed_time do %>
-      <%= gettext("Closed Time") %>
-      <%= error_tag f, :closed_time %>
-      <div class="flex two four-500 six-800">
-        <%= permit_datetime_select f, :closed_time %>
-      </div>
-    <% end %>
-
+  <div class="tab">Actors:
     <div>
       <%= label f, :issuer_name do %>
         <%= gettext("Issuer") %>
@@ -98,7 +50,62 @@
       <%= error_tag f, :controller_name %>
     <% end %>
     </div>
+  </div>
 
+  <div class="tab">Time:
+    <%= label f, :issued_time do %>
+      <%= gettext("Issued time") %>
+      <%= error_tag f, :issued_time %>
+      <div class="flex two four-500 six-800">
+        <%= permit_datetime_select f, :issued_time %>
+      </div>
+    <% end %>
+
+    <%= label f, :start_time do %>
+      <%= gettext("Start Time") %>
+      <%= error_tag f, :start_time %>
+      <div class="flex two four-500 six-800">
+        <%= permit_datetime_select f, :start_time %>
+      </div>
+    <% end %>
+
+    <%= label f, :finish_time do %>
+      <%= gettext("Finish Time") %>
+      <%= error_tag f, :finish_time %>
+      <div class="flex two four-500 six-800">
+        <%= permit_datetime_select f, :finish_time %>
+      </div>
+    <% end %>
+
+    <%= label f, :closed_time do %>
+      <%= gettext("Closed Time") %>
+      <%= error_tag f, :closed_time %>
+      <div class="flex two four-500 six-800">
+        <%= permit_datetime_select f, :closed_time %>
+      </div>
+    <% end %>
+  </div>
+
+
+  <div class="tab">Protective equipment:
+  <%= inputs_for f, :protective_equipment, fn p -> %>
+    <ul>
+      <%=  for pe <- @pe do %>
+        <li>
+          <%= checkbox p, pe %>
+          <label for="<%= "#{:permit_protective_equipment_}#{pe}" %>">
+            <%= img_tag( Workpermit.IsoSymbols.symbol_to_image_path(pe)) %>
+          </label>
+
+          <%= Workpermit.IsoSymbols.symbol_to_sign_meaning(pe) %>
+          <%= error_tag p, pe %>
+        </li>
+      <% end %>
+    </li>
+  <% end %>
+  </div>
+
+  <div class="tab">Additions:
     <div>
       <%= label f, :precautions do %>
       <%= gettext("Precautions") %>
@@ -106,7 +113,6 @@
       <%= error_tag f, :precautions %>
     <% end %>
     </div>
-
     <div>
       <%= label f, :additional_info do %>
       <%= gettext("Additional Info") %>
@@ -119,57 +125,16 @@
   <div>
     <%= submit "Save" %>
   </div>
-<% end %>
-<form id="regForm" action="">
 
-<h1>Register:</h1>
-
-<!--div class="tab">Name:
-<ul>
-  <li><input type="checkbox" id="cb1" />
-    <label for="cb1"><img src="http://lorempixel.com/100/100" /></label>
-  </li>
-  <li><input type="checkbox" id="cb2" />
-    <label for="cb2"><img src="http://lorempixel.com/101/101" /></label>
-  </li>
-  <li><input type="checkbox" id="cb3" />
-    <label for="cb3"><img src="http://lorempixel.com/102/102" /></label>
-  </li>
-  <li><input type="checkbox" id="cb4" />
-    <label for="cb4"><img src="http://lorempixel.com/103/103" /></label>
-  </li>
-</ul>
-</div>
-
-<div class="tab">Contact Info:
-  <p><input placeholder="E-mail..." oninput="this.className = ''"></p>
-  <p><input placeholder="Phone..." oninput="this.className = ''"></p>
-</div>
-
-<div class="tab">Birthday:
-  <p><input placeholder="dd" oninput="this.className = ''"></p>
-  <p><input placeholder="mm" oninput="this.className = ''"></p>
-  <p><input placeholder="yyyy" oninput="this.className = ''"></p>
-</div>
-
-<div class="tab">Login Info:
-  <p><input placeholder="Username..." oninput="this.className = ''"></p>
-  <p><input placeholder="Password..." oninput="this.className = ''"></p>
-</div>
-
-<div style="overflow:auto;">
-  <div style="float:right;">
-    <button type="button" id="prevBtn">Previous</button>
-    <button type="button" id="nextBtn">Next</button>
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="prevBtn">Previous</button>
+      <button type="button" id="nextBtn">Next</button>
+    </div>
   </div>
-</div>
 
-<!-- Circles which indicates the steps of the form: -->
-<div style="text-align:center;margin-top:40px;">
-  <span class="step"></span>
-  <span class="step"></span>
-  <span class="step"></span>
-  <span class="step"></span>
-</div>
-
-</form> 
+  <!-- Circles which indicates the steps of the form: -->
+  <div id="steps" style="text-align:center;margin-top:40px;">
+    <!-- generated in js -->
+  </div>
+<% end %>

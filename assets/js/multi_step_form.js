@@ -1,5 +1,16 @@
 var currentTab = 0; // Current tab is set to be the first tab (0)
-showTab(currentTab); // Display the current tab
+steps();
+//showTab(currentTab); // Display the current tab
+function steps() {
+  var stepDiv = document.getElementById("steps")
+  var stepCount = document.getElementsByClassName("tab").length;
+  var stepElement = document.createElement("span")
+  stepElement.className += "step"
+  for (i = 0; i < stepCount; i++) {
+      stepDiv.appendChild(stepElement.cloneNode(true))
+  }
+}
+
 function showTab(n) {
   // This function will display the specified tab of the form ...
   var x = document.getElementsByClassName("tab");
@@ -31,7 +42,7 @@ function nextPrev(n) {
   // if you have reached the end of the form... :
   if (currentTab >= x.length) {
     //...the form gets submitted:
-    document.getElementById("regForm").submit();
+    document.getElementById("permitForm").submit();
     return false;
   }
   // Otherwise, display the correct tab:
@@ -70,5 +81,5 @@ function fixStepIndicator(n) {
   //... and adds the "active" class to the current step:
   x[n].className += " active";
 }
-document.getElementById ("prevBtn").addEventListener ("click", ()=>nextPrev(-1), false);
-document.getElementById ("nextBtn").addEventListener ("click", ()=>nextPrev(1), false);
+  document.getElementById ("prevBtn").addEventListener ("click", ()=>nextPrev(-1), false);
+  document.getElementById ("nextBtn").addEventListener ("click", ()=>nextPrev(1), false);

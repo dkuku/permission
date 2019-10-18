@@ -66,9 +66,9 @@ module.exports = {
       },
       link: {
         fontWeight: theme('fontWeight.bold'),
-        color: theme('colors.primary.light'),
+        color: theme('colors.primary.medium'),
         '&:hover': {
-          color: theme('colors.primary.medium'),
+          color: theme('colors.primary.dark'),
           textDecoration: 'underline',
         },
       },

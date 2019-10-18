@@ -19,8 +19,7 @@
       <%= for permit <- @permits do %>
         <tr>
           <td>
-
-            <%= img_tag Workpermit.IsoSymbols.symbol_to_image_path(permit.category), class: "w-10 h-10" %>
+            <%= img_tag Workpermit.IsoSymbols.symbol_to_image_path(Workpermit.Permits.image(permit.category)), class: "w-10 h-10" %>
             <%= permit.category %>
           </td>
           <td><%= permit.number %></td>

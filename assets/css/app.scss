@@ -55,6 +55,47 @@ body {
 /*@import "tailwindcss/components";*/
 /* Put your custom components here */
 
+.markdown {
+  @apply text-lg text-gray-darker leading-normal;
+}
+
+.markdown > * + *,  .markdown li + li, .markdown li > p + p {
+  @apply mt-6;
+}
+.markdown strong {
+  @apply text-black font-bold;
+}
+.markdown a {
+  @apply text-black font-semibold;
+}
+.markdown strong a {
+  @apply font-bold;
+}
+.markdown h1 {
+  @apply leading-tight text-2xl font-bold text-black mb-2 mt-10;
+} 
+.markdown h2 {
+  @apply leading-tight text-xl font-bold text-black mb-2 mt-10;
+}
+.markdown h3 {
+  @apply leading-tight text-lg font-bold text-black mt-8 -mb-2;
+}
+.markdown code {
+  @apply font-mono text-sm inline bg-gray-lighter px-1;
+}
+.markdown pre code {
+  @apply block bg-black p-4 rounded;
+}
+.markdown blockquote {
+  @apply border-l-4 border-gray-light pl-4 italic;
+}
+.markdown ul, .markdown ol {
+  @apply pl-5;
+  @screen sm {
+    @apply pl-10;
+  }
+}
+
 @tailwind utilities;
 /*@import "tailwindcss/utilities";*/
 /* Put your custom utilities here */
