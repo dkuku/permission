@@ -25,7 +25,7 @@ module.exports = (env, options) => ({
             extensions: ['html', 'js', 'eex'],
           },
         ],
-        whitelist: ['.markdown']
+        whitelist: ['.markdown', '.awesomplete']
       }),
     ]
   },

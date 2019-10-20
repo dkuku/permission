@@ -15,6 +15,7 @@ defmodule WorkpermitWeb.PermitController do
     |> assign(:changeset, Permits.change_permit(%Permit{protective_equipment: %ProtectiveEquipment{}}))
     |> assign(:pe, Permits.pe_fields())
     |> assign(:categories, Permits.category_fields())
+    |> assign(:current_user, conn.assigns.user)
     # use choosen category from settings
     |> assign(:choosen_category, Permits.choosen_category(:general))
     |> render("new.html")
@@ -31,6 +32,7 @@ defmodule WorkpermitWeb.PermitController do
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
         |> assign(:changeset, changeset)
+        |> assign(:current_user, conn.assigns.user)
         |> assign(:pe, Permits.pe_fields())
         |> assign(:categories, Permits.category_fields())
         # use choosen category from changeset

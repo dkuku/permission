@@ -48,6 +48,7 @@ defmodule Workpermit.MixProject do
       {:jason, "~> 1.0"},
       {:phoenix, "~> 1.4.0"},
       {:phoenix_ecto, "~> 4.0"},
+      {:phoenix_form_awesomplete, "~> 0.1"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_pubsub, "~> 1.1"},
       {:plug_cowboy, "~> 2.0"},

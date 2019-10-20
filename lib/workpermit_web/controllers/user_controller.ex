@@ -60,4 +60,9 @@ defmodule WorkpermitWeb.UserController do
     |> put_flash(:info, "User deleted successfully.")
     |> redirect(to: Routes.user_path(conn, :index))
   end
+
+  def find_name(conn, %{"name" => name}) do
+    users = Accounts.find_names(name)
+    json(conn, users)
+  end
 end

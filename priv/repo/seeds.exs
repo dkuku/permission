@@ -10,7 +10,7 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 #
-Enum.each(1..20, fn(_id) ->
+Enum.each(1..100, fn(_id) ->
   Workpermit.Accounts.create_user(%{
     email: Faker.Internet.email(),
     password: "qweasd",

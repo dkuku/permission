@@ -6,7 +6,7 @@ defmodule Workpermit.Accounts do
   import Ecto.Query, warn: false
   alias Workpermit.Repo
 
-  alias Workpermit.Accounts.User
+  alias Workpermit.Accounts.{Search, User}
 
   @doc """
   Returns the list of users.
@@ -123,5 +123,12 @@ defmodule Workpermit.Accounts do
   """
   def change_user(%User{} = user) do
     User.changeset(user, %{})
+  end
+
+  def find_names(name) do
+    Search.run(User, name)
+                  |> select([u], fragment("concat(?, ' ', ?)", u.first_name, u.last_name))
+                  |> limit(10)
+                  |> Repo.all()
   end
 end

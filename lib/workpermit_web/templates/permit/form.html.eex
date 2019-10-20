@@ -18,13 +18,27 @@
       <%= number_input f, :number, value: @choosen_category.next_number, class: "form-input w-full mt-1" %>
       <%= error_tag f, :number %>
     <% end %>
+    <div  class="flex justify-between">
+      <div>
+      <%= label f, :lone_working, class: "block font-bold text-gray-darker" do %>
+        <%= checkbox f, :lone_working, class: "leading-tight mt-1" %>
+        <span class="text-sm"><%= gettext("Lone working") %></span>
+      <% end %>
+      </div>
+      <div>
+      <%= label f, :coshh, class: "block font-bold text-gray-darker" do %>
+        <%= checkbox f, :coshh, class: "leading-tight mt-1" %>
+        <span class="text-sm"><%= gettext("COSHH") %></span>
+      <% end %>
+      </div>
+    </div>
   </div>
 
   <div class="tab">Actors:
     <div>
       <%= label f, :issuer_name, class: "block mb-6 c-h5 text-gray-darker" do %>
         <span class="form-label block"><%= gettext("Issuer") %></span>
-        <%= text_input f, :issuer_name, class: "form-input w-full mt-1" %>
+        <%= text_input f, :issuer_name, value: @current_user.first_name <> " " <> @current_user.last_name,  class: "form-input w-full mt-1" %>
         <%= error_tag f, :issuer_name %>
       <% end %>
     </div>
@@ -46,7 +60,7 @@
     </div>
 
     <div>
-      <%= label f, :controller_name, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <%= label f, :controller_name, class: "block mb-6 c-h5 text-gray-darker hidden" do %>
       <span class="form-label block"><%= gettext("Controller") %></span>
       <%= text_input f, :controller_name, class: "form-input w-full mt-1" %>
       <%= error_tag f, :controller_name %>
@@ -55,13 +69,13 @@
   </div>
 
   <div class="tab">Time:
-    <%= label f, :issued_time, class: "block mb-6 c-h5 text-gray-darker" do %>
-      <span class="form-label block"><%= gettext("Issued time") %></span>
-      <%= error_tag f, :issued_time %>
+    <!--%= label f, :issued_time, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <span class="form-label block"><-%= gettext("Issued time") %></span>
+      <-%= error_tag f, :issued_time %>
       <div class="flex two four-500 six-800">
-        <%= permit_datetime_select f, :issued_time, class: "form-input w-full mt-1" %>
+        <-%= permit_datetime_select f, :issued_time, class: "form-input w-full mt-1" %>
       </div>
-    <% end %>
+    <-% end %-->
 
     <%= label f, :start_time, class: "block mb-6 c-h5 text-gray-darker" do %>
       <span class="form-label block"><%= gettext("Start Time") %></span>
@@ -79,13 +93,13 @@
       </div>
     <% end %>
 
-    <%= label f, :closed_time, class: "block mb-6 c-h5 text-gray-darker" do %>
-      <span class="form-label block"><%= gettext("Closed Time") %></span>
-      <%= error_tag f, :closed_time %>
+    <!--%= label f, :closed_time, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <span class="form-label block"><-%= gettext("Closed Time") %></span>
+      <-%= error_tag f, :closed_time %>
       <div class="flex two four-500 six-800">
-        <%= permit_datetime_select f, :closed_time, class: "form-input w-full mt-1" %>
+        <-%= permit_datetime_select f, :closed_time, class: "form-input w-full mt-1" %>
       </div>
-    <% end %>
+    <-% end %-->
   </div>
 
 
@@ -94,13 +108,14 @@
     <ul>
       <%=  for pe <- @pe do %>
         <li>
-          <%= checkbox p, pe %>
+          <%= checkbox p, pe, class: "hidden" %>
           <label for="<%= "#{:permit_protective_equipment_}#{pe}" %>">
             <%= img_tag( Workpermit.IsoSymbols.symbol_to_image_path(pe)) %>
+            <!--%= Workpermit.IsoSymbols.symbol_to_sign_meaning(pe) %-->
           </label>
-
-          <%= Workpermit.IsoSymbols.symbol_to_sign_meaning(pe) %>
-          <%= error_tag p, pe %>
+          <p>
+          </p>
+          <!--%= error_tag p, pe %-->
         </li>
       <% end %>
     </li>

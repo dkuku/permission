@@ -1,15 +1,5 @@
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
-//steps();
-//function steps() {
-//  var stepDiv = document.getElementById("steps")
-//  var stepCount = document.getElementsByClassName("tab").length;
-//  var stepElement = document.createElement("span")
-//  stepElement.className += "step"
-//  for (i = 0; i < stepCount; i++) {
-//      stepDiv.appendChild(stepElement.cloneNode(true))
-//  }
-//}
 
 function showTab(n) {
   // This function will display the specified tab of the form ...
@@ -56,27 +46,28 @@ function nextPrev(n) {
   // This function will figure out which tab to display
 function validateForm() {
   // This function deals with validation of the form fields
-  var x, y, i, valid = true;
-  x = document.getElementsByClassName("tab");
-  y = x[currentTab].getElementsByTagName("input");
-  // A loop that checks every input field in the current tab:
-  for (i = 0; i < y.length; i++) {
-    // If a field is empty...
-    if (y[i].value == "") {
-      // add an "invalid" class to the field:
-      y[i].className += " invalid";
-      // and set the current valid status to false:
-      valid = false;
-    }
-  }
-  // If the valid status is true, mark the step as finished and valid:
-  if (valid) {
-    document.getElementsByClassName("step")[currentTab].className += " finish";
-  } else {
-    document.getElementsByClassName("step")[currentTab].className.replace("finish", "");
+  return true;
+  //var x, y, i, valid = true;
+  //x = document.getElementsByClassName("tab");
+  //y = x[currentTab].getElementsByTagName("input");
+  //// A loop that checks every input field in the current tab:
+  //for (i = 0; i < y.length; i++) {
+  //  // If a field is empty...
+  //  if (y[i].value == "") {
+  //    // add an "invalid" class to the field:
+  //    y[i].className += " invalid";
+  //    // and set the current valid status to false:
+  //    valid = false;
+  //  }
+  //}
+  //// If the valid status is true, mark the step as finished and valid:
+  //if (valid) {
+  //  document.getElementsByClassName("step")[currentTab].className += " finish";
+  //} else {
+  //  document.getElementsByClassName("step")[currentTab].className.replace("finish", "");
 
-  }
-  return valid; // return the valid status
+  //}
+  //return valid; // return the valid status
 }
 
 function fixStepIndicator(n) {
@@ -90,7 +81,7 @@ function fixStepIndicator(n) {
 }
 
 
-function postData(url = '', data = {}, csrf_token) {
+function postData(url = '', data = {}, cb) {
   // Default options are marked with *
   fetch(url, {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -99,7 +90,6 @@ function postData(url = '', data = {}, csrf_token) {
     credentials: 'same-origin', // include, *same-origin, omit
     headers: {
       'Content-Type': 'application/json',
-      "X-CSRF-TOKEN": csrf_token,
       // 'Content-Type': 'application/x-www-form-urlencoded',
     },
     redirect: 'follow', // manual, *follow, error
@@ -107,19 +97,53 @@ function postData(url = '', data = {}, csrf_token) {
     body: JSON.stringify(data) // body data type must match "Content-Type" header
   }).then(r => {
     return r.json()
-  }).then(data => {
-    document.getElementById("choosen_category_image").src = data.image;
-    document.getElementById("permit_number").value = data.next_number;
-  })
+  }).then(cb)
 }
 
 function categoryChanged(a) {
   var current = document.getElementById("permit_category");
   var category = current.options[current.selectedIndex].value;
-  var csrf_token = document.querySelector("meta[name=csrf]").content;
-  const data = postData('/api/permits/select_category', { category: category }, csrf_token);
+  var cb = function(data){
+    document.getElementById("choosen_category_image").src = data.image;
+    document.getElementById("permit_number").value = data.next_number;
+  }
+  postData('/api/permits/select_category', { category: category }, cb);
+}
+
+function nameInputChanged(e, awesomplete) {
+  var cb = function(data = []){
+    awesomplete.list = data
+  }
+  var name = e.target.value
+  if (name.length > 0) {
+    postData('/api/users/find', { name: e.target.value }, cb);
+  }  
 }
 
   document.getElementById ("prevBtn").addEventListener ("click", ()=>nextPrev(-1), false);
   document.getElementById ("nextBtn").addEventListener ("click", ()=>nextPrev(1), false);
   document.getElementById("permit_category").addEventListener("change", categoryChanged);
+
+  var permit_issuer_name = document.getElementById("permit_issuer_name");
+  permit_issuer_awesomplete = new Awesomplete(permit_issuer_name, {
+  autoFirst: true
+  });
+  permit_issuer_name.addEventListener("keyup", (e) => nameInputChanged(e, permit_issuer_awesomplete));
+
+  var permit_performer_name = document.getElementById("permit_performer_name");
+  permit_performer_awesomplete = new Awesomplete(permit_performer_name, {
+  autoFirst: true
+  });
+  permit_performer_name.addEventListener("keyup", (e) => nameInputChanged(e, permit_performer_awesomplete));
+
+  var permit_firewatch_name = document.getElementById("permit_firewatch_name");
+  permit_firewatch_awesomplete = new Awesomplete(permit_firewatch_name, {
+  autoFirst: true
+  });
+  permit_firewatch_name.addEventListener("keyup", (e) => nameInputChanged(e, permit_firewatch_awesomplete));
+
+  var permit_controller_name = document.getElementById("permit_controller_name");
+  permit_controller_awesomplete = new Awesomplete(permit_controller_name, {
+  autoFirst: true
+  });
+  permit_controller_name.addEventListener("keyup", (e) => nameInputChanged(e, permit_controller_awesomplete));
