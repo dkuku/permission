@@ -8,12 +8,14 @@
   <div class="tab block">Type:
     <%= label f, :category, class: "block mb-6 c-h5 text-gray-darker" do %>
       <span class="form-label block"><%= gettext("Category") %></span>
-      <%= select f, :category, @categories, class: "form-input w-full mt-1" %>
+      <%= select f, :category, @categories, selected: @choosen_category.selected, class: "form-input w-full mt-1" %>
       <%= error_tag f, :category %>
     <% end %>
+
+    <%= img_tag @choosen_category.image, id: "choosen_category_image" %>
     <%= label f, :number, class: "block mb-6 c-h5 text-gray-darker" do %>
       <span class="form-label block"><%= gettext("Number") %></span>
-      <%= number_input f, :number, class: "form-input w-full mt-1" %>
+      <%= number_input f, :number, value: @choosen_category.next_number, class: "form-input w-full mt-1" %>
       <%= error_tag f, :number %>
     <% end %>
   </div>
@@ -126,20 +128,20 @@
     <% submit "Save" %>
   </div-->
 
-  <div class="flex justify-between">
+  <div  class="flex justify-between">
     <button type="button"
             id="prevBtn"
             class="bg-transparent hover:bg-primary-light text-primary-medium font-semibold hover:text-white py-2 px-4 border border-primary-medium hover:border-transparent rounded"
             >Previous</button>
     <button type="button" 
             id="nextBtn"
-            class="bg-primary-medium hover:bg-primary-darker text-white font-bold py-2 px-4 rounded"
+            class="bg-primary-medium hover:bg-primary-darker text-white font-bold py-2 px-4 rounded right-0"
             >Next</button>
   </div>
 
   <!-- Circles which indicates the steps of the form: -->
   <div id="steps" style="text-align:center;margin-top:40px;">
-    <span class="step"></span>
+    <span class="step active"></span>
     <span class="step"></span>
     <span class="step"></span>
     <span class="step"></span>

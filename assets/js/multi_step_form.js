@@ -17,9 +17,13 @@ function showTab(n) {
   x[n].style.display = "block";
   // ... and fix the Previous/Next buttons:
   if (n == 0) {
-    document.getElementById("prevBtn").style.display = "none";
+    var button = document.getElementById("prevBtn")
+    button.style.display = "none";
+    button.parentElement.style.flexDirection = "row-reverse"
   } else {
-    document.getElementById("prevBtn").style.display = "inline";
+    var button = document.getElementById("prevBtn")
+    button.style.display = "inline";
+    button.parentElement.style.flexDirection = "row"
   }
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Submit";
@@ -68,6 +72,9 @@ function validateForm() {
   // If the valid status is true, mark the step as finished and valid:
   if (valid) {
     document.getElementsByClassName("step")[currentTab].className += " finish";
+  } else {
+    document.getElementsByClassName("step")[currentTab].className.replace("finish", "");
+
   }
   return valid; // return the valid status
 }
@@ -81,5 +88,38 @@ function fixStepIndicator(n) {
   //... and adds the "active" class to the current step:
   x[n].className += " active";
 }
+
+
+function postData(url = '', data = {}, csrf_token) {
+  // Default options are marked with *
+  fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json',
+      "X-CSRF-TOKEN": csrf_token,
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrer: 'no-referrer', // no-referrer, *client
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  }).then(r => {
+    return r.json()
+  }).then(data => {
+    document.getElementById("choosen_category_image").src = data.image;
+    document.getElementById("permit_number").value = data.next_number;
+  })
+}
+
+function categoryChanged(a) {
+  var current = document.getElementById("permit_category");
+  var category = current.options[current.selectedIndex].value;
+  var csrf_token = document.querySelector("meta[name=csrf]").content;
+  const data = postData('/api/permits/select_category', { category: category }, csrf_token);
+}
+
   document.getElementById ("prevBtn").addEventListener ("click", ()=>nextPrev(-1), false);
   document.getElementById ("nextBtn").addEventListener ("click", ()=>nextPrev(1), false);
+  document.getElementById("permit_category").addEventListener("change", categoryChanged);

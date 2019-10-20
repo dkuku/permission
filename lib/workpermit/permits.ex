@@ -162,7 +162,21 @@ defmodule Workpermit.Permits do
     ProtectiveEquipment.keys()
   end
 
-  def image(category) do
+  @doc """
+  ## Examples
+      iex(19)> Workpermit.Permits.next_permit_number(3)
+      14
+      iex(20)> Workpermit.Permits.next_permit_number(4)
+      1
+  """
+  def next_permit_number(category) do
+    last_number = Repo.one from permit in Permit,
+                    where: permit.category == ^category,
+                    select: max(permit.number)
+    (last_number || 0) + 1
+  end
+
+  def image(category) when is_atom(category) do
     %{:general => :general_warning_sign,
     :electrical => :electricity_hazard,
     :heights => :drop_or_fall_hazard,
@@ -171,5 +185,17 @@ defmodule Workpermit.Permits do
     :hot_fluid => :hot_surface,
     :gas => :pressurized_cylinder }
     |> Map.fetch!(category)
+  end
+  def image(category) when is_bitstring(category), do: image(String.to_atom(category))
+  @doc """
+      iex(1)> Workpermit.Permits.choosen_category(:hot_work)
+      %{image: "/iso/ISO_7010_W021.svg", next_number: 15, selected: :hot_work}
+  """
+  def choosen_category(category) do
+    %{
+      next_number: next_permit_number(category),
+      image: Workpermit.IsoSymbols.symbol_to_image_path(image(category)),
+      selected: category,
+    }
   end
 end

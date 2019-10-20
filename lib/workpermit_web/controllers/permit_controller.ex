@@ -15,6 +15,8 @@ defmodule WorkpermitWeb.PermitController do
     |> assign(:changeset, Permits.change_permit(%Permit{protective_equipment: %ProtectiveEquipment{}}))
     |> assign(:pe, Permits.pe_fields())
     |> assign(:categories, Permits.category_fields())
+    # use choosen category from settings
+    |> assign(:choosen_category, Permits.choosen_category(:general))
     |> render("new.html")
   end
 
@@ -31,6 +33,8 @@ defmodule WorkpermitWeb.PermitController do
         |> assign(:changeset, changeset)
         |> assign(:pe, Permits.pe_fields())
         |> assign(:categories, Permits.category_fields())
+        # use choosen category from changeset
+        |> assign(:choosen_category, Permits.choosen_category(:general))
         |> render("new.html")
     end
   end
@@ -38,5 +42,10 @@ defmodule WorkpermitWeb.PermitController do
   def show(conn, %{"id" => id}) do
     permit = Permits.get_permit!(id)
     render(conn, "show.html", permit: permit, pe: Permits.pe_fields())
+  end
+
+  def select_category(conn, %{"category" => category}) do
+    choosen_category =  Permits.choosen_category(category)
+    json(conn, choosen_category)
   end
 end
