@@ -25,7 +25,6 @@ defmodule Workpermit.Factory do
    number: sequence(:number, &(&1)),
    closed_time: ~N[2010-04-17 14:00:00],
    finish_time: ~N[2010-04-17 14:00:00],
-   issued_time: ~N[2010-04-17 14:00:00],
    start_time: ~N[2010-04-17 14:00:00],
    issuer: build(:user),
    issuer_name: "Issuer Name",

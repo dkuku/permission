@@ -28,10 +28,6 @@
       <%= @permit.number %>
     </div>
     <div class = "block mb-6 c-h5 text-gray-darker">
-      <span class="form-label block"><%= gettext("Issued") %>:&nbsp;</span>
-      <%= @permit.issued_time %>
-    </div>
-    <div class = "block mb-6 c-h5 text-gray-darker">
       <span class="form-label block"><%= gettext("Started") %>:&nbsp;</span>
       <%= @permit.start_time %>
     </div>

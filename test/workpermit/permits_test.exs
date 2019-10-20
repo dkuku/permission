@@ -10,7 +10,6 @@ defmodule Workpermit.PermitsTest do
      closed: :nil,
      controller_name: :nil,
      finish_time: :nil,
-     issued_time: :nil,
      issuer_name: :nil,
      number: :nil,
      performer_name: :nil,
@@ -24,7 +23,6 @@ defmodule Workpermit.PermitsTest do
      closed_time: ~N[2010-04-17 14:00:00],
      start_time: ~N[2010-04-17 14:00:00],
      finish_time: ~N[2010-04-17 14:00:00],
-     issued_time: ~N[2010-04-17 14:00:00],
      issuer_name: "Issuer Name",
      controller_name: "Controller Name",
      performer_name: "Performer Name",
@@ -48,7 +46,6 @@ defmodule Workpermit.PermitsTest do
       assert permit_db.category == permit.category
       assert permit_db.closed_time == permit.closed_time 
       assert permit_db.finish_time == permit.finish_time
-      assert permit_db.issued_time == permit.issued_time
     end
 
     test "create_permit/1 with valid data creates a permit" do
@@ -57,7 +54,6 @@ defmodule Workpermit.PermitsTest do
       assert permit.number == 42
       assert permit.closed_time == ~N[2010-04-17 14:00:00]
       assert permit.finish_time == ~N[2010-04-17 14:00:00]
-      assert permit.issued_time == ~N[2010-04-17 14:00:00]
       assert permit.start_time == ~N[2010-04-17 14:00:00]
     end
 

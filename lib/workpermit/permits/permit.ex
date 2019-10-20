@@ -37,7 +37,6 @@ defmodule Workpermit.Permits.Permit do
       :category,
       :number,
       :issuer_id,
-      :issued_time,
       :start_time,
       :finish_time,
       :closed_time,
@@ -55,8 +54,6 @@ defmodule Workpermit.Permits.Permit do
     |> validate_required([
       :category,
       :number,
-      :issuer_id,
-      :issued_time,
       :start_time,
     ])
   end

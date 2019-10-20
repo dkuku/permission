@@ -23,7 +23,7 @@
             <%= permit.category %>
           </td>
           <td><%= permit.number %></td>
-          <td><%= permit.issued_time %></td>
+          <td><%= permit.inserted_at %></td>
           <td><%= permit.start_time %></td>
           <td><%= permit.finish_time %></td>
           <td><%= permit.closed_time %></td>

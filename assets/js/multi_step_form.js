@@ -1,5 +1,6 @@
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
+categoryChanged();
 
 function showTab(n) {
   // This function will display the specified tab of the form ...
@@ -106,6 +107,13 @@ function categoryChanged(a) {
   var cb = function(data){
     document.getElementById("choosen_category_image").src = data.image;
     document.getElementById("permit_number").value = data.next_number;
+    // unhide firewatch
+    firewatch_label = document.getElementById("permit_firewatch_name").parentNode.parentNode;
+    if (["firewatch"].includes(category)){
+    firewatch_label.className = firewatch_label.className.replace(" hidden", "");
+    } else {
+    firewatch_label.className += " hidden";
+    }
   }
   postData('/api/permits/select_category', { category: category }, cb);
 }

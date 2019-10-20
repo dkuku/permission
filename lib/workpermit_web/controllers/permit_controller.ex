@@ -30,6 +30,7 @@ defmodule WorkpermitWeb.PermitController do
         |> redirect(to: Routes.permit_path(conn, :show, permit, pe: Permits.pe_fields()))
 
       {:error, %Ecto.Changeset{} = changeset} ->
+        
         conn
         |> assign(:changeset, changeset)
         |> assign(:current_user, conn.assigns.user)

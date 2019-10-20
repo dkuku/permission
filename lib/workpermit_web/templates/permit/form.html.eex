@@ -52,7 +52,7 @@
     </div>
 
     <div>
-      <%= label f, :firewatch_name, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <%= label f, :firewatch_name, class: "block mb-6 c-h5 text-gray-darker hidden" do %>
       <span class="form-label block"><%= gettext("Firewatch") %></span>
       <%= text_input f, :firewatch_name, class: "form-input w-full mt-1" %>
       <%= error_tag f, :firewatch_name %>
@@ -69,13 +69,6 @@
   </div>
 
   <div class="tab">Time:
-    <!--%= label f, :issued_time, class: "block mb-6 c-h5 text-gray-darker" do %>
-      <span class="form-label block"><-%= gettext("Issued time") %></span>
-      <-%= error_tag f, :issued_time %>
-      <div class="flex two four-500 six-800">
-        <-%= permit_datetime_select f, :issued_time, class: "form-input w-full mt-1" %>
-      </div>
-    <-% end %-->
 
     <%= label f, :start_time, class: "block mb-6 c-h5 text-gray-darker" do %>
       <span class="form-label block"><%= gettext("Start Time") %></span>
