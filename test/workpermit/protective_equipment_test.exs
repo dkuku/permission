@@ -21,18 +21,18 @@ defmodule Workpermit.ProtectiveEquipmentTest do
       protective_clothing: :true,
     }
     @invalid_attrs %{
-      ear_protection: :boolean,
-      earth_terminal: :boolean,
-      eye_protection: :boolean,
-      face_shield: :boolean,
-      foot_protection: :boolean,
-      head_protection: :boolean,
-      high_visibility_clothing: :boolean,
-      mask: :boolean,
-      safety_harness: :boolean,
-      welding_mask: :boolean,
-      protective_gloves: :boolean,
-      protective_clothing: :boolean,
+      ear_protection: :nil,
+      earth_terminal: :nil,
+      eye_protection: :nil,
+      face_shield: :nil,
+      foot_protection: :nil,
+      head_protection: :nil,
+      high_visibility_clothing: :nil,
+      mask: :nil,
+      safety_harness: :nil,
+      welding_mask: :nil,
+      protective_gloves: :nil,
+      protective_clothing: :nil,
     }
     def protective_equipment_fixture(attrs \\ %{}) do
       {:ok, protective_equipment} =

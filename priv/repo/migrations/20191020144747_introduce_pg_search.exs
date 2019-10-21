@@ -9,8 +9,7 @@ defmodule Workpermit.Repo.Migrations.IntroducePgSearch do
     execute("CREATE EXTENSION pg_trgm")
 
     execute("""
-    CREATE INDEX users_trgm_idx ON users USING GIN (to_tsvector('english',
-      first_name || ' ' || coalesce(last_name, ' '))
+    CREATE INDEX users_trgm_idx ON users USING GIN (to_tsvector('english', first_name || ' ' || coalesce(last_name, ' ')));
     """)
   end
 
