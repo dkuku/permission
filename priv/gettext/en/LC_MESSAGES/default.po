@@ -28,14 +28,14 @@ msgstr ""
 
 #, elixir-format
 #: lib/workpermit_web/templates/layout/components/footer.html.eex:7
-#: lib/workpermit_web/templates/layout/components/head.html.eex:18
+#: lib/workpermit_web/templates/layout/components/head.html.eex:19
 #: lib/workpermit_web/templates/layout/components/nav.html.eex:6
 msgid "Workpermit"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/index.html.eex:38
-#: lib/workpermit_web/templates/permit/show.html.eex:40
+#: lib/workpermit_web/templates/permit/index.html.eex:42
+#: lib/workpermit_web/templates/permit/show.html.eex:67
 #: lib/workpermit_web/templates/session/new.html.eex:18
 #: lib/workpermit_web/templates/user/form.html.eex:39
 #: lib/workpermit_web/templates/user/index.html.eex:35
@@ -100,6 +100,7 @@ msgid "Save"
 msgstr ""
 
 #, elixir-format
+#: lib/workpermit_web/templates/permit/index.html.eex:35
 #: lib/workpermit_web/templates/user/index.html.eex:23
 msgid "Show"
 msgstr ""
@@ -110,12 +111,15 @@ msgid "And feel the benefits"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/show.html.eex:5
+#: lib/workpermit_web/templates/permit/form.html.eex:10
+#: lib/workpermit_web/templates/permit/index.html.eex:6
+#: lib/workpermit_web/templates/permit/show.html.eex:18
 msgid "Category"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/show.html.eex:25
+#: lib/workpermit_web/templates/permit/index.html.eex:11
+#: lib/workpermit_web/templates/permit/show.html.eex:39
 msgid "Closed"
 msgstr ""
 
@@ -130,7 +134,8 @@ msgid "Create permit"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/show.html.eex:21
+#: lib/workpermit_web/templates/permit/index.html.eex:10
+#: lib/workpermit_web/templates/permit/show.html.eex:35
 msgid "Finish"
 msgstr ""
 
@@ -140,8 +145,7 @@ msgid "How long will it take to finish. When you need to check if it's done corr
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/show.html.eex:13
-#: lib/workpermit_web/templates/permit/show.html.eex:29
+#: lib/workpermit_web/templates/permit/index.html.eex:8
 msgid "Issued"
 msgstr ""
 
@@ -166,7 +170,7 @@ msgid "Let the computer do the job for you"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/index.html.eex:39
+#: lib/workpermit_web/templates/permit/index.html.eex:43
 msgid "New permit"
 msgstr ""
 
@@ -176,7 +180,9 @@ msgid "New user"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/show.html.eex:9
+#: lib/workpermit_web/templates/permit/form.html.eex:17
+#: lib/workpermit_web/templates/permit/index.html.eex:7
+#: lib/workpermit_web/templates/permit/show.html.eex:27
 msgid "Number"
 msgstr ""
 
@@ -202,8 +208,7 @@ msgid "Permits List"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/show.html.eex:17
-#: lib/workpermit_web/templates/permit/show.html.eex:33
+#: lib/workpermit_web/templates/permit/show.html.eex:31
 msgid "Started"
 msgstr ""
 
@@ -248,11 +253,6 @@ msgid "Workpermit tracker"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/page/demo.html.eex:10
-msgid "Workpermit.IsoSymbols.symbol_to_sign_meaning(iso)"
-msgstr ""
-
-#, elixir-format
 #: lib/workpermit_web/templates/page/index.html.eex:46
 msgid "Writing the same permits every day"
 msgstr ""
@@ -260,4 +260,89 @@ msgstr ""
 #, elixir-format
 #: lib/workpermit_web/templates/layout/landing.html.eex:2
 msgid "en"
+msgstr ""
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/form.html.eex:128
+#: lib/workpermit_web/templates/permit/show.html.eex:63
+msgid "Additional Info"
+msgstr ""
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/form.html.eex:31
+msgid "COSHH"
+msgstr ""
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/form.html.eex:64
+#: lib/workpermit_web/templates/permit/index.html.eex:14
+msgid "Controller"
+msgstr ""
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/show.html.eex:51
+msgid "Controller Name"
+msgstr ""
+
+#, elixir-format, fuzzy
+#: lib/workpermit_web/templates/permit/show.html.eex:23
+msgid "Creator"
+msgstr ""
+
+#, elixir-format, fuzzy
+#: lib/workpermit_web/templates/permit/form.html.eex:82
+msgid "Finish Time"
+msgstr ""
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/form.html.eex:56
+msgid "Firewatch"
+msgstr ""
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/show.html.eex:55
+msgid "Firewatch Name"
+msgstr ""
+
+#, elixir-format, fuzzy
+#: lib/workpermit_web/templates/permit/form.html.eex:40
+#: lib/workpermit_web/templates/permit/index.html.eex:12
+msgid "Issuer"
+msgstr ""
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/show.html.eex:43
+msgid "Issuer Name"
+msgstr ""
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/form.html.eex:25
+msgid "Lone working"
+msgstr ""
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/form.html.eex:48
+#: lib/workpermit_web/templates/permit/index.html.eex:13
+msgid "Performer"
+msgstr ""
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/show.html.eex:47
+msgid "Performer Name"
+msgstr ""
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/form.html.eex:121
+#: lib/workpermit_web/templates/permit/show.html.eex:59
+msgid "Precautions"
+msgstr ""
+
+#, elixir-format, fuzzy
+#: lib/workpermit_web/templates/permit/index.html.eex:9
+msgid "Start"
+msgstr ""
+
+#, elixir-format, fuzzy
+#: lib/workpermit_web/templates/permit/form.html.eex:74
+msgid "Start Time"
 msgstr ""

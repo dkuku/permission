@@ -37,14 +37,14 @@ msgstr "Zarejstruj"
 
 #, elixir-format
 #: lib/workpermit_web/templates/layout/components/footer.html.eex:7
-#: lib/workpermit_web/templates/layout/components/head.html.eex:18
+#: lib/workpermit_web/templates/layout/components/head.html.eex:19
 #: lib/workpermit_web/templates/layout/components/nav.html.eex:6
 msgid "Workpermit"
 msgstr "Zezwolenie"
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/index.html.eex:38
-#: lib/workpermit_web/templates/permit/show.html.eex:40
+#: lib/workpermit_web/templates/permit/index.html.eex:42
+#: lib/workpermit_web/templates/permit/show.html.eex:67
 #: lib/workpermit_web/templates/session/new.html.eex:18
 #: lib/workpermit_web/templates/user/form.html.eex:39
 #: lib/workpermit_web/templates/user/index.html.eex:35
@@ -109,6 +109,7 @@ msgid "Save"
 msgstr "Zapisz"
 
 #, elixir-format
+#: lib/workpermit_web/templates/permit/index.html.eex:35
 #: lib/workpermit_web/templates/user/index.html.eex:23
 msgid "Show"
 msgstr "Pokaż"
@@ -119,12 +120,15 @@ msgid "And feel the benefits"
 msgstr "I zobacz zalety"
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/show.html.eex:5
+#: lib/workpermit_web/templates/permit/form.html.eex:10
+#: lib/workpermit_web/templates/permit/index.html.eex:6
+#: lib/workpermit_web/templates/permit/show.html.eex:18
 msgid "Category"
 msgstr "Kategoria"
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/show.html.eex:25
+#: lib/workpermit_web/templates/permit/index.html.eex:11
+#: lib/workpermit_web/templates/permit/show.html.eex:39
 msgid "Closed"
 msgstr "Zamknięte"
 
@@ -139,9 +143,10 @@ msgid "Create permit"
 msgstr "Utwórz zezwolenie"
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/show.html.eex:21
+#: lib/workpermit_web/templates/permit/index.html.eex:10
+#: lib/workpermit_web/templates/permit/show.html.eex:35
 msgid "Finish"
-msgstr "Zakończ"
+msgstr "Zakończono"
 
 #, elixir-format
 #: lib/workpermit_web/templates/page/index.html.eex:72
@@ -149,8 +154,7 @@ msgid "How long will it take to finish. When you need to check if it's done corr
 msgstr "Jak długo będzie trwać do końca. Kiedy trzeba sprawdzić, czy jest to zrobione poprawnie"
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/show.html.eex:13
-#: lib/workpermit_web/templates/permit/show.html.eex:29
+#: lib/workpermit_web/templates/permit/index.html.eex:8
 msgid "Issued"
 msgstr "Wydano"
 
@@ -175,7 +179,7 @@ msgid "Let the computer do the job for you"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/index.html.eex:39
+#: lib/workpermit_web/templates/permit/index.html.eex:43
 msgid "New permit"
 msgstr "Nowe pozwolenie"
 
@@ -185,7 +189,9 @@ msgid "New user"
 msgstr "Nowy użykownik"
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/show.html.eex:9
+#: lib/workpermit_web/templates/permit/form.html.eex:17
+#: lib/workpermit_web/templates/permit/index.html.eex:7
+#: lib/workpermit_web/templates/permit/show.html.eex:27
 msgid "Number"
 msgstr "Numer"
 
@@ -211,8 +217,7 @@ msgid "Permits List"
 msgstr "Lista zezwoleń"
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/show.html.eex:17
-#: lib/workpermit_web/templates/permit/show.html.eex:33
+#: lib/workpermit_web/templates/permit/show.html.eex:31
 msgid "Started"
 msgstr "Zaczęto"
 
@@ -234,7 +239,7 @@ msgstr "Zacznij używać już dziś"
 #, elixir-format
 #: lib/workpermit_web/templates/page/index.html.eex:39
 msgid "Tired of:"
-msgstr ""
+msgstr "Zmęczony: "
 
 #, elixir-format
 #: lib/workpermit_web/templates/user/show.html.eex:2
@@ -257,11 +262,6 @@ msgid "Workpermit tracker"
 msgstr "Zezwolenie"
 
 #, elixir-format
-#: lib/workpermit_web/templates/page/demo.html.eex:10
-msgid "Workpermit.IsoSymbols.symbol_to_sign_meaning(iso)"
-msgstr ""
-
-#, elixir-format
 #: lib/workpermit_web/templates/page/index.html.eex:46
 msgid "Writing the same permits every day"
 msgstr ""
@@ -270,3 +270,88 @@ msgstr ""
 #: lib/workpermit_web/templates/layout/landing.html.eex:2
 msgid "en"
 msgstr "pl"
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/form.html.eex:128
+#: lib/workpermit_web/templates/permit/show.html.eex:63
+msgid "Additional Info"
+msgstr ""
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/form.html.eex:31
+msgid "COSHH"
+msgstr ""
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/form.html.eex:64
+#: lib/workpermit_web/templates/permit/index.html.eex:14
+msgid "Controller"
+msgstr "Kontroller"
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/show.html.eex:51
+msgid "Controller Name"
+msgstr "Imię Kontrolera"
+
+#, elixir-format, fuzzy
+#: lib/workpermit_web/templates/permit/show.html.eex:23
+msgid "Creator"
+msgstr "Twórca"
+
+#, elixir-format, fuzzy
+#: lib/workpermit_web/templates/permit/form.html.eex:82
+msgid "Finish Time"
+msgstr "Zakończono"
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/form.html.eex:56
+msgid "Firewatch"
+msgstr ""
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/show.html.eex:55
+msgid "Firewatch Name"
+msgstr ""
+
+#, elixir-format, fuzzy
+#: lib/workpermit_web/templates/permit/form.html.eex:40
+#: lib/workpermit_web/templates/permit/index.html.eex:12
+msgid "Issuer"
+msgstr "Wydawca"
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/show.html.eex:43
+msgid "Issuer Name"
+msgstr "Imię wydawcy"
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/form.html.eex:25
+msgid "Lone working"
+msgstr "Praca samemu"
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/form.html.eex:48
+#: lib/workpermit_web/templates/permit/index.html.eex:13
+msgid "Performer"
+msgstr "Wykonawca"
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/show.html.eex:47
+msgid "Performer Name"
+msgstr "Imię wykonawcy"
+
+#, elixir-format
+#: lib/workpermit_web/templates/permit/form.html.eex:121
+#: lib/workpermit_web/templates/permit/show.html.eex:59
+msgid "Precautions"
+msgstr "Uwagi"
+
+#, elixir-format, fuzzy
+#: lib/workpermit_web/templates/permit/index.html.eex:9
+msgid "Start"
+msgstr "Zaczęto"
+
+#, elixir-format, fuzzy
+#: lib/workpermit_web/templates/permit/form.html.eex:74
+msgid "Start Time"
+msgstr "Zaczęto"
