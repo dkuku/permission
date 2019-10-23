@@ -5,9 +5,11 @@ defmodule Workpermit.Permits do
 
   import Ecto.Query, warn: false
   alias Workpermit.Repo
+  alias Ecto
 
   alias Workpermit.Permits.Permit
   alias Workpermit.Permits.ProtectiveEquipment
+  alias Workpermit.Accounts
   @doc """
   Returns the list of permits.
 
@@ -54,9 +56,10 @@ defmodule Workpermit.Permits do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_permit(attrs) do
+  def create_permit(%Accounts.User{} = user, attrs \\ %{}) do
     %Permit{}
     |> Permit.changeset(attrs)
+    |> Ecto.Changeset.put_assoc(:issuer, user)
     |> Repo.insert()
   end
 
