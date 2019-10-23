@@ -33,7 +33,7 @@ defmodule WorkpermitWeb.Router do
   # Other scopes may use custom stacks.
   scope "/api", WorkpermitWeb do
     pipe_through :api
-    post "/permits/select_category", PermitController, :select_category
+    post "/permits/select_category", ApiController, :select_category
     post "/users/find", UserController, :find_name
   end
 end

@@ -10,7 +10,7 @@ defmodule WorkpermitWeb.SessionController do
     case Accounts.get_by_credentials(auth_params) do
       :error ->
         conn
-        |> put_flash(:info, "There was a problem with your username/password.")
+        |> put_flash(:info, gettext("There was a problem with your username/password."))
         |> render("new.html")
 
       user ->
@@ -18,7 +18,7 @@ defmodule WorkpermitWeb.SessionController do
         |> assign(:user, user)
         |> put_session(:user_id, user.id)
         |> configure_session(renew: true)
-        |> put_flash(:info, "Signed in successfully.")
+        |> put_flash(:info, gettext("Signed in successfully."))
         |> redirect(to: Routes.page_path(conn, :index))
     end
   end
@@ -26,7 +26,7 @@ defmodule WorkpermitWeb.SessionController do
   def delete(conn, _params) do
     conn
     |> clear_session
-    |> put_flash(:info, "Signed out successfully!")
+    |> put_flash(:info, gettext("Signed out successfully"))
     |> redirect(to: Routes.page_path(conn, :index))
   end
 end

@@ -1,6 +1,8 @@
 defmodule WorkpermitWeb.PermitController do
   use WorkpermitWeb, :controller
-  plug :authenticate
+  action_fallback(WorkpermitWeb.FallbackController)
+  #plug :authenticate when action in [:index, :new, :create, :show]
+  plug :authenticate when action  not in [:select_category]
 
   alias Workpermit.Permits
   alias Workpermit.Permits.Permit
@@ -23,30 +25,20 @@ defmodule WorkpermitWeb.PermitController do
   end
 
   def create(conn, %{"permit" => permit_params}, user) do
-    case Permits.create_permit(user, permit_params) do
-      {:ok, permit} ->
+    with{:ok, permit} <- Permits.create_permit(user, permit_params) do
         conn
         |> put_flash(:info, gettext("Permit created successfully."))
         |> redirect(to: Routes.permit_path(conn, :show, permit, pe: Permits.pe_fields()))
-
-      {:error, %Ecto.Changeset{} = changeset} ->
-        conn
-        |> assign(:changeset, changeset)
-        |> assign(:current_user, user)
-        |> assign(:pe, Permits.pe_fields())
-        |> assign(:categories, Permits.category_fields())
-        # use choosen category from changeset
-        |> assign(:choosen_category, Permits.choosen_category(:general))
-        |> render("new.html")
     end
   end
 
   def show(conn, %{"id" => id}, _user) do
-    permit = Permits.get_permit!(id)
-    render(conn, "show.html", permit: permit, pe: Permits.pe_fields())
+    with permit <- Permits.get_permit(id) do
+      render(conn, "show.html", permit: permit, pe: Permits.pe_fields())
+    end
   end
 
-  def select_category(conn, %{"category" => category}, _user) do
+  def select_category(conn, %{"category" => category}) do
     choosen_category =  Permits.choosen_category(category)
     json(conn, choosen_category)
   end
