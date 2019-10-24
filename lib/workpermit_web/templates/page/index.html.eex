@@ -54,18 +54,20 @@
       </div>
     </div>
     <!--left Col-->
-    <div class="flex flex-wrap flex-col-reverse sm:flex-row">	
-      <div class="w-full sm:w-1/2 p-6">
-        <%= img_tag(Routes.static_path(@conn, "/images/checking_boxes.svg"), class: "w-5/6 sm:h-64 p-6 mt-6") %>
-      </div>
-      <!--right Col-->
+    <div class="flex flex-wrap flex-row-reverse">	
       <div class="mt-6 p-6 sm:w-1/2 w-full">
         <div class="align-middle">
           <h3 class="font-bold leading-none mb-3 mt-6 text-3xl text-gray-darker"><%= gettext("Let the computer do the job for you") %></h3>
           <p class="text-gray-dark"><%= gettext("With a few mouse clicks you can have ready made  work permits. With name auto completion, auto-numbering and custom templates") %></p>
         </div>
       </div>
-      <!--Left Col-->
+      <!--right Col-->
+      <div class="w-full sm:w-1/2 p-6">
+        <%= img_tag(Routes.static_path(@conn, "/images/checking_boxes.svg"), class: "w-5/6 sm:h-64 p-6 mt-6") %>
+      </div>
+    </div>
+    <!--Left Col-->
+    <div class="flex flex-wrap">	
       <div class="mt-6 p-6 sm:w-1/2 w-5/6">
         <h3 class="font-bold leading-none mb-3 mt-6 text-3xl text-gray-darker"><%= gettext("Keep track who is still working") %></h3>
         <p class="text-gray-dark">

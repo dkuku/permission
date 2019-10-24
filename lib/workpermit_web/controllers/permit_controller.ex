@@ -27,7 +27,7 @@ defmodule WorkpermitWeb.PermitController do
   def create(conn, %{"permit" => permit_params}, user) do
     with{:ok, permit} <- Permits.create_permit(user, permit_params) do
         conn
-        |> put_flash(:info, gettext("Permit created successfully."))
+        |> put_flash(:info, gettext("Permit created successfully"))
         |> redirect(to: Routes.permit_path(conn, :show, permit, pe: Permits.pe_fields()))
     end
   end
