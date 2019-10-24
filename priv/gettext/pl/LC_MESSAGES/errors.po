@@ -36,7 +36,7 @@ msgid "has invalid format"
 msgstr "ma nieprawidłowy format"
 
 msgid "has an invalid entry"
-msgstr "ma niepoprawny coś tam ?"
+msgstr "ma niepoprawny wpis"
 
 msgid "is reserved"
 msgstr "jest zarezerowowany"
