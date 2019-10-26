@@ -33,7 +33,7 @@ defmodule WorkpermitWeb.PermitController do
   end
 
   def show(conn, %{"id" => id}, _user) do
-    with permit <- Permits.get_permit(id) do
+    with permit <- Permits.get_permit!(id) do
       render(conn, "show.html", permit: permit, pe: Permits.pe_fields())
     end
   end

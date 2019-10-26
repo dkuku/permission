@@ -1,4 +1,4 @@
-<div class="w-full pt-16 mx-auto content-center flex-1">
+<div class="w-full max-w-6xl pt-16 mx-auto content-center flex-1">
   <h1 class="c-h3 p-5 text-gray-darker"><%= gettext("Permit") %></h1>
   <div class = "bg-white w-full shadow-md rounded px-8 pt-6 pb-8 mb-4">
     <section class="my-8 mx-auto">
@@ -20,60 +20,60 @@
     <div class="flex flex-wrap mb-4 mt-16">
       <!-- Column -->
       <div class="w-full md:w-1/2">
-        <div class = "block m-4 c-h5 text-gray-darker flex justify-between">
+        <div class = "block m-4 c-h6 text-gray-darker flex justify-between">
           <span class="form-label"><%= gettext("Category") %>:&nbsp;</span>
           <%= @permit.category %>
         </div>
-        <div class = "block m-4 c-h5 text-gray-darker flex justify-between">
+        <div class = "block m-4 c-h6 text-gray-darker flex justify-between">
           <span class="form-label block"><%= gettext("Number") %>:&nbsp;</span>
           <%= @permit.number %>
         </div>
-        <div class = "block m-4 c-h5 text-gray-darker flex justify-between">
+        <div class = "block m-4 c-h6 text-gray-darker flex justify-between">
           <span class="form-label block"><%= gettext("Started") %>:&nbsp;</span>
           <%= date_time @permit.start_time %>
         </div>
-        <div class = "block m-4 c-h5 text-gray-darker flex justify-between">
+        <div class = "block m-4 c-h6 text-gray-darker flex justify-between">
           <span class="form-label block"><%= gettext("Finish") %>:&nbsp;</span>
           <%= date_time @permit.finish_time %>
         </div>
-        <div class = "block m-4 c-h5 text-gray-darker flex justify-between">
+        <div class = "block m-4 c-h6 text-gray-darker flex justify-between">
           <span class="form-label block"><%= gettext("Closed") %>: </span>
           <%= date_time @permit.closed_time %>
         </div>
       </div>
       <!-- Column -->
       <div class="w-full md:w-1/2">
-        <div class = "block m-4 c-h5 text-gray-darker flex justify-between">
+        <div class = "block m-4 c-h6 text-gray-darker flex justify-between">
           <span class="form-label block"><%= gettext("Creator") %>:&nbsp;</span>
           <%= full_name @permit.issuer %>
         </div>
-        <div class = "block m-4 c-h5 text-gray-darker flex justify-between">
+        <div class = "block m-4 c-h6 text-gray-darker flex justify-between">
           <span class="form-label block"><%= gettext("Issuer Name") %>:&nbsp;</span>
           <%= @permit.issuer_name %>
         </div>
-        <div class = "block m-4 c-h5 text-gray-darker flex justify-between">
+        <div class = "block m-4 c-h6 text-gray-darker flex justify-between">
           <span class="form-label block"><%= gettext("Performer Name") %>:&nbsp;</span>
           <%= @permit.performer_name %>
         </div>
         <%= if @permit.controller_name do %>
-        <div class = "block m-4 c-h5 text-gray-darker flex justify-between">
+        <div class = "block m-4 c-h6 text-gray-darker flex justify-between">
           <span class="form-label block"><%= gettext("Controller Name") %>:&nbsp;</span>
           <%= @permit.controller_name %>
         </div>
         <% end %>
         <%= if @permit.firewatch_name do %>
-        <div class = "block m-4 c-h5 text-gray-darker flex justify-between">
+        <div class = "block m-4 c-h6 text-gray-darker flex justify-between">
           <span class="form-label block"><%= gettext("Firewatch Name") %>:&nbsp;</span>
           <%= @permit.firewatch_name %>
         </div>
         <% end %>
       </div>
     </div>
-      <div class = "block mb-6 c-h5 text-gray-darker markdown">
+      <div class = "block mb-6 c-h6 text-gray-darker markdown">
         <span class="form-label block"><%= gettext("Precautions") %>:&nbsp;</span>
         <%= markdown(@permit.precautions) %>
       </div>
-      <div class = "block mb-6 c-h5 text-gray-darker markdown">
+      <div class = "block mb-6 c-h6 text-gray-darker markdown">
         <span class="form-label block"><%= gettext("Additional Info") %>:&nbsp;</span>
         <%= markdown(@permit.additional_info) %>
       </div>

@@ -12,6 +12,7 @@
         <th><%= gettext("Issuer") %></th>
         <th><%= gettext("Performer") %></th>
         <th><%= gettext("Controller") %></th>
+        <th><%= gettext("Firewatch") %></th>
         <th></th>
       </tr>
     </thead>
@@ -19,17 +20,19 @@
       <%= for permit <- @permits do %>
         <tr>
           <td>
-            <%= img_tag Workpermit.IsoSymbols.symbol_to_image_path(Workpermit.Permits.image(permit.category)), class: "w-10 h-10" %>
+            <%= img_tag iso_image(Workpermit.Permits.image(permit.category)), class: "w-10 h-10" %>
             <%= permit.category %>
           </td>
           <td><%= permit.number %></td>
-          <td><%= permit.inserted_at %></td>
-          <td><%= permit.start_time %></td>
-          <td><%= permit.finish_time %></td>
-          <td><%= permit.closed_time %></td>
+          <td><%= date_time permit.inserted_at %></td>
+          <td><%= date_time permit.start_time %></td>
+          <td><%= date_time permit.finish_time %></td>
+          <td><%= date_time permit.closed_time %></td>
+          <td><%= full_name permit.issuer %></td>
           <td><%= permit.issuer_name %></td>
           <td><%= permit.performer_name %></td>
           <td><%= permit.controller_name %></td>
+          <td><%= permit.firewatch_name %></td>
           <td>
             <i class="far fa-eye"></i>
             <span><%= link gettext("Show"), to: Routes.permit_path(@conn, :show, permit) %></span>
