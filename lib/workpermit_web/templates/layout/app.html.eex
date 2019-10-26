@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full">
+  <head>
+    <%= render "components/head.html", conn: @conn %>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">
+  </head>
     <%= render "components/head.html", conn: @conn %>
   <body class="flex flex-col h-full leading-normal tracking-normal bg-secondary-lighter" style="font-family: system;">
     <%= render "components/nav.html", conn: @conn %>
