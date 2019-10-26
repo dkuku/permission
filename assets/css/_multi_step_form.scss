@@ -7,15 +7,6 @@
   min-width: 600px;
 }
 
-/* Style the input fields */
-#permitForm input {
-}
-
-/* Mark input boxes that gets an error on validation: */
-#permitForm input.invalid {
-  background-color: #ffdddd;
-}
-
 /* Hide all steps by default: */
 #permitForm .tab {
   display: none;
@@ -53,11 +44,15 @@
   display: inline-block;
 }
 
+#permitForm .awesomplete li {
+  display: block;
+}
+
 #permitForm input[type="checkbox"] {
   display: none;
 }
 
-#permitForm label {
+#permitForm #pe label {
   border: 1px solid #fff;
   padding: 10px;
   display: block;

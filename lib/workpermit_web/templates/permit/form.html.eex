@@ -1,32 +1,35 @@
 <%= form_for @changeset, @action, [id: "permitForm"], fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+      <p><%= gettext("Oops, something went wrong! Please check the errors below")%></p>
     </div>
   <% end %>
 
-  <div class="tab block">Type:
-    <%= label f, :category, class: "block mb-6 c-h5 text-gray-darker" do %>
+  <div class="tab block text-gray-darker">
+    <h2 class="c-h3 mb-8 ">
+      <%= gettext("Category") %>
+    </h2>
+    <%= label f, :category, class: "block mb-6 c-h5" do %>
       <span class="form-label block"><%= gettext("Category") %></span>
       <%= select f, :category, @categories, selected: @choosen_category.selected, class: "form-input w-full mt-1" %>
       <%= error_tag f, :category %>
     <% end %>
 
     <%= img_tag @choosen_category.image, id: "choosen_category_image" %>
-    <%= label f, :number, class: "block mb-6 c-h5 text-gray-darker" do %>
+    <%= label f, :number, class: "block my-6 c-h5" do %>
       <span class="form-label block"><%= gettext("Number") %></span>
       <%= number_input f, :number, value: @choosen_category.next_number, class: "form-input w-full mt-1" %>
       <%= error_tag f, :number %>
     <% end %>
     <div  class="flex justify-between">
       <div>
-      <%= label f, :lone_working, class: "block font-bold text-gray-darker" do %>
+      <%= label f, :lone_working, class: "block font-bold" do %>
         <%= checkbox f, :lone_working, class: "leading-tight mt-1" %>
         <span class="text-sm"><%= gettext("Lone working") %></span>
       <% end %>
       </div>
       <div>
-      <%= label f, :coshh, class: "block font-bold text-gray-darker" do %>
+      <%= label f, :coshh, class: "block font-bold" do %>
         <%= checkbox f, :coshh, class: "leading-tight mt-1" %>
         <span class="text-sm"><%= gettext("COSHH") %></span>
       <% end %>
@@ -34,9 +37,12 @@
     </div>
   </div>
 
-  <div class="tab">Actors:
+  <div id="actors" class="tab text-gray-darker">
+    <h2 class="c-h4 mb-8 ">
+      <%= gettext("Actors") %>
+    </h2>
     <div>
-      <%= label f, :issuer_name, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <%= label f, :issuer_name, class: "block mb-6 c-h5" do %>
         <span class="form-label block"><%= gettext("Issuer") %></span>
         <%= text_input f, :issuer_name, value: @current_user.first_name <> " " <> @current_user.last_name,  class: "form-input w-full mt-1" %>
         <%= error_tag f, :issuer_name %>
@@ -44,7 +50,7 @@
     </div>
 
     <div>
-      <%= label f, :performer_name, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <%= label f, :performer_name, class: "block mb-6 c-h5" do %>
       <span class="form-label block"><%= gettext("Performer") %></span>
       <%= text_input f, :performer_name, class: "form-input w-full mt-1" %>
       <%= error_tag f, :performer_name %>
@@ -52,7 +58,7 @@
     </div>
 
     <div>
-      <%= label f, :firewatch_name, class: "block mb-6 c-h5 text-gray-darker hidden" do %>
+      <%= label f, :firewatch_name, class: "block mb-6 c-h5 hidden" do %>
       <span class="form-label block"><%= gettext("Firewatch") %></span>
       <%= text_input f, :firewatch_name, class: "form-input w-full mt-1" %>
       <%= error_tag f, :firewatch_name %>
@@ -60,7 +66,7 @@
     </div>
 
     <div>
-      <%= label f, :controller_name, class: "block mb-6 c-h5 text-gray-darker hidden" do %>
+      <%= label f, :controller_name, class: "block mb-6 c-h5 hidden" do %>
       <span class="form-label block"><%= gettext("Controller") %></span>
       <%= text_input f, :controller_name, class: "form-input w-full mt-1" %>
       <%= error_tag f, :controller_name %>
@@ -68,18 +74,20 @@
     </div>
   </div>
 
-  <div class="tab">Time:
-
-    <%= label f, :start_time, class: "block mb-6 c-h5 text-gray-darker" do %>
-      <span class="form-label block"><%= gettext("Start Time") %></span>
+  <div id="time" class="tab text-gray-darker">
+    <h2 class="c-h4 mb-8 ">
+      <%= gettext("Time") %>
+    </h2>
+    <%= label f, :start_time, class: "block mb-6 c-h6" do %>
+      <span class="form-label block c-h5 mb-2"><%= gettext("Start Time") %></span>
       <%= error_tag f, :start_time %>
       <div class="flex two four-500 six-800">
-        <%= permit_datetime_select f, :start_time, class: "form-input w-full mt-1" %>
+        <%= permit_datetime_select f, :start_time, class: "form-input w-full mt-1 c-h6" %>
       </div>
     <% end %>
 
-    <%= label f, :finish_time, class: "block mb-6 c-h5 text-gray-darker" do %>
-      <span class="form-label block"><%= gettext("Finish Time") %></span>
+    <%= label f, :finish_time, class: "block mb-6 c-h6" do %>
+      <span class="form-label block c-h5 mb-2"><%= gettext("Finish Time") %></span>
       <%= error_tag f, :finish_time %>
       <div class="flex two four-500 six-800">
         <%= permit_datetime_select f, :finish_time, class: "form-input w-full mt-1" %>
@@ -95,38 +103,43 @@
     <-% end %-->
   </div>
 
-
-  <div class="tab">Protective equipment:
-  <%= inputs_for f, :protective_equipment, fn p -> %>
-    <ul>
-      <%=  for pe <- @pe do %>
-        <li>
-          <%= checkbox p, pe, class: "hidden" %>
-          <label for="<%= "#{:permit_protective_equipment_}#{pe}" %>">
-            <%= img_tag( Workpermit.IsoSymbols.symbol_to_image_path(pe)) %>
-            <!--%= Workpermit.IsoSymbols.symbol_to_sign_meaning(pe) %-->
-          </label>
-          <p>
-          </p>
-          <!--%= error_tag p, pe %-->
-        </li>
-      <% end %>
-    </li>
-  <% end %>
+  <div id="pe" class="tab">
+    <h2 class="c-h4 mb-8 ">
+      <%= gettext("Protective Equipment") %>
+    </h2>
+    <%= inputs_for f, :protective_equipment, fn p -> %>
+      <ul>
+        <%=  for pe <- @pe do %>
+          <li>
+            <%= checkbox p, pe, class: "hidden" %>
+            <label for="<%= "#{:permit_protective_equipment_}#{pe}" %>">
+              <%= img_tag( Workpermit.IsoSymbols.symbol_to_image_path(pe)) %>
+              <!--%= Workpermit.IsoSymbols.symbol_to_sign_meaning(pe) %-->
+            </label>
+            <p>
+            </p>
+            <!--%= error_tag p, pe %-->
+          </li>
+        <% end %>
+      </li>
+    <% end %>
   </div>
 
-  <div class="tab">Additions:
+  <div id="info" class="tab text-gray-darker">
+    <h2 class="c-h4 mb-8 ">
+      <%= gettext("Additional Info") %>
+    </h2>
     <div>
-      <%= label f, :precautions, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <%= label f, :precautions, class: "block mb-6 c-h5" do %>
       <span class="form-label block"><%= gettext("Precautions") %></span>
-      <%= textarea f, :precautions, class: "form-input w-full mt-1" %>
+      <%= textarea f, :precautions, class: "form-input w-full mt-1 h-64" %>
       <%= error_tag f, :precautions %>
     <% end %>
     </div>
     <div>
-      <%= label f, :additional_info, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <%= label f, :additional_info, class: "block mb-6 c-h5" do %>
       <span class="form-label block"><%= gettext("Additional Info") %></span>
-      <%= textarea f, :additional_info, class: "form-input w-full mt-1" %>
+      <%= textarea f, :additional_info, class: "form-input w-full mt-1 h-32" %>
       <%= error_tag f, :additional_info %>
     <% end %>
     </div>
