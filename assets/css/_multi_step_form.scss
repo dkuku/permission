@@ -8,21 +8,21 @@
 }
 
 /* Style the input fields */
-input {
+#permitForm input {
 }
 
 /* Mark input boxes that gets an error on validation: */
-input.invalid {
+#permitForm input.invalid {
   background-color: #ffdddd;
 }
 
 /* Hide all steps by default: */
-.tab {
+#permitForm .tab {
   display: none;
 }
 
 /* Make circles that indicate the steps of the form: */
-.step {
+#permitForm .step {
   height: 15px;
   width: 15px;
   margin: 0 2px;
@@ -34,29 +34,30 @@ input.invalid {
 }
 
 /* Mark the active step: */
-.step.active {
+#permitForm .step.active {
   opacity: 1;
+  background-color: #4CAF50;
 }
 
 /* Mark the steps that are finished and valid: */
-.step.finish {
+#permitForm .step.finish {
   background-color: #4CAF50;
 } 
 
 
-ul {
+#permitForm ul {
   list-style-type: none;
 }
 
-li {
+#permitForm li {
   display: inline-block;
 }
 
-input[type="checkbox"][id^="cb"] {
+#permitForm input[type="checkbox"] {
   display: none;
 }
 
-label {
+#permitForm label {
   border: 1px solid #fff;
   padding: 10px;
   display: block;
@@ -65,7 +66,7 @@ label {
   cursor: pointer;
 }
 
-label:before {
+#permitForm label:before {
   background-color: white;
   color: white;
   content: " ";
@@ -83,88 +84,30 @@ label:before {
   transform: scale(0);
 }
 
-label img {
+#permitForm label img {
   height: 100px;
   width: 100px;
   transition-duration: 0.2s;
   transform-origin: 50% 50%;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  opacity: 0.5;
 }
 
-:checked + label {
-  border-color: #ddd;
+#permitForm :checked + label {
+  border-color: #fff;
 }
 
-:checked + label:before {
+#permitForm :checked + label:before {
   content: "✓";
   background-color: grey;
   transform: scale(1);
 }
 
-:checked + label img {
-  transform: scale(0.9);
-  box-shadow: 0 0 5px #333;
-  z-index: -1;
-}
-
-ul {
-  list-style-type: none;
-}
-
-li {
-  display: inline-block;
-}
-
-input[type="checkbox"][id^="cb"] {
-  display: none;
-}
-
-label {
-  border: 1px solid #fff;
-  padding: 10px;
-  display: block;
-  position: relative;
-  margin: 10px;
-  cursor: pointer;
-}
-
-label:before {
-  background-color: white;
-  color: white;
-  content: " ";
-  display: block;
-  border-radius: 50%;
-  border: 1px solid grey;
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  width: 25px;
-  height: 25px;
-  text-align: center;
-  line-height: 28px;
-  transition-duration: 0.4s;
-  transform: scale(0);
-}
-
-label img {
-  height: 100px;
-  width: 100px;
-  transition-duration: 0.2s;
-  transform-origin: 50% 50%;
-}
-
-:checked + label {
-  border-color: #ddd;
-}
-
-:checked + label:before {
-  content: "✓";
-  background-color: grey;
-  transform: scale(1);
-}
-
-:checked + label img {
-  transform: scale(0.9);
-  box-shadow: 0 0 5px #333;
+#permitForm :checked + label img {
+  transform: scale(1.1);
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
+  opacity: 1;
   z-index: 1;
 }
-
