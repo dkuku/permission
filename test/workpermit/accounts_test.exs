@@ -11,14 +11,14 @@ defmodule Workpermit.AccountsTest do
       password: "some encrypted_password",
       first_name: "some first_name",
       last_name: "some last_name",
-      phone: "some phone"
+      phone: "077123456"
     }
     @update_attrs %{
       email: "some updated email",
       password: "some updated encrypted_password",
       first_name: "some updated first_name",
       last_name: "some updated last_name",
-      phone: "some updated phone"
+      phone: "01111111111"
     }
     @invalid_attrs %{email: nil, password: nil, first_name: nil, last_name: nil, phone: nil}
 
@@ -53,7 +53,7 @@ defmodule Workpermit.AccountsTest do
       assert String.length(user.encrypted_password) == 98
       assert user.first_name == "some first_name"
       assert user.last_name == "some last_name"
-      assert user.phone == "some phone"
+      assert user.phone == "077123456"
     end
 
     test "create_user/1 with invalid data returns error changeset" do
@@ -69,7 +69,7 @@ defmodule Workpermit.AccountsTest do
       assert String.length(user.encrypted_password) == 98
       assert user.first_name == "some updated first_name"
       assert user.last_name == "some updated last_name"
-      assert user.phone == "some updated phone"
+      assert user.phone == "01111111111"
     end
 
     test "update_user/2 with invalid data returns error changeset" do

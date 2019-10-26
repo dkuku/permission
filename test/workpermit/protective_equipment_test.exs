@@ -67,8 +67,8 @@ defmodule Workpermit.ProtectiveEquipmentTest do
       assert protective_equipment.welding_mask == :true
       assert protective_equipment.protective_gloves == :true
     end
-    test "create_protective_equipment/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Permits.create_protective_equipment(@invalid_attrs)
+    test "create_protective_equipment/1 with empty data returns alid changeset" do
+      assert {:ok, %ProtectiveEquipment{}} = Permits.create_protective_equipment(@invalid_attrs)
     end
   end
 end

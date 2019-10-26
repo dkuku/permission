@@ -37,13 +37,17 @@ defmodule Workpermit.Permits do
       ** (Ecto.NoResultsError)
 
   """
-  def get_permit(id) do
+  def get_permit!(id) do
     Repo.one from permit in Permit,
       where: permit.id == ^id,
       preload: :protective_equipment,
       preload: :issuer
   end
 
+  def get_permit(id) do
+    {:ok, permit} = get_permit!(id)
+    permit
+  end
   @doc """
   Creates a permit.
 

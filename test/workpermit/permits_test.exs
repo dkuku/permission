@@ -18,7 +18,7 @@ defmodule Workpermit.PermitsTest do
   }
   #TODO check these inserts - conert to build
   @valid_attrs %{
-     category: 42,
+    category: :heights,
      number: 42,
      closed_time: ~N[2010-04-17 14:00:00],
      start_time: ~N[2010-04-17 14:00:00],
@@ -28,7 +28,7 @@ defmodule Workpermit.PermitsTest do
      performer_name: "Performer Name",
      firewatch_name: "Firewatch Name",
      issuer: build(:user),
-     protective_equipment: build(:protective_equipment),
+     protective_equipment: %{"mask"  => "true"},
   }
 
   describe "permits" do
@@ -49,8 +49,9 @@ defmodule Workpermit.PermitsTest do
     end
 
     test "create_permit/1 with valid data creates a permit" do
-      assert {:ok, %Permit{} = permit} = Permits.create_permit(@valid_attrs)
-      assert permit.category == 42
+      user = build(:user)
+      assert {:ok, %Permit{} = permit} = Permits.create_permit(user, @valid_attrs)
+      assert permit.category == :heights
       assert permit.number == 42
       assert permit.closed_time == ~N[2010-04-17 14:00:00]
       assert permit.finish_time == ~N[2010-04-17 14:00:00]
@@ -58,7 +59,26 @@ defmodule Workpermit.PermitsTest do
     end
 
     test "create_permit/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Permits.create_permit(@invalid_attrs)
+      user = build(:user)
+      assert {:error, %Ecto.Changeset{}} = Permits.create_permit(user, @invalid_attrs)
+    end
+
+    test "category_fields/1 returns all categories" do
+      assert [:general, :electrical, :heights, :hot_work, :confined_space, :hot_fluid, :gas] = Permits.category_fields()
+    end
+    
+    test "pe_fields/1 returns all protective_equipment fields" do
+      pe = Permits.pe_fields()
+      assert length(pe) == 12
+      [first | rest] = pe
+      assert first == :ear_protection
+    end
+
+    test "next_permit_number/1 returns number + 1 of ladt permit in category" do
+      next_electrical = Permits.next_permit_number(:electrical)
+       IO.puts next_electrical
+      permit = insert(:permit, %{:category  => :electrical})
+      assert Permits.next_permit_number(:electrical) == next_electrical + 1
     end
   end
 end
