@@ -19,6 +19,7 @@ defmodule WorkpermitWeb.PermitView do
   def date(%{} = date), do: date |> Timex.format!("%Y/%m/%d", :strftime)
   def date(_), do: gettext("No data")
   def full_name(%{first_name: f, last_name: l}), do: "#{f} #{l}"
+  def full_name(_), do: gettext("No data")
 
   def permit_datetime_select(form, field, opts \\ []) do
     builder = fn b ->

@@ -45,7 +45,11 @@
 }
 
 #permitForm .awesomplete li {
-  display: block;
+  display: list-item;
+}
+
+#permitForm #category input[type="checkbox"] {
+  display: inline;
 }
 
 #permitForm input[type="checkbox"] {

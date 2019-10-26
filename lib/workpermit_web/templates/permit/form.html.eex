@@ -5,7 +5,7 @@
     </div>
   <% end %>
 
-  <div class="tab block text-gray-darker">
+  <div id="category" class="tab block text-gray-darker">
     <h2 class="c-h3 mb-8 ">
       <%= gettext("Category") %>
     </h2>
@@ -44,7 +44,7 @@
     <div>
       <%= label f, :issuer_name, class: "block mb-6 c-h5" do %>
         <span class="form-label block"><%= gettext("Issuer") %></span>
-        <%= text_input f, :issuer_name, value: @current_user.first_name <> " " <> @current_user.last_name,  class: "form-input w-full mt-1" %>
+        <%= text_input f, :issuer_name, value: full_name(@current_user), class: "form-input w-full mt-1" %>
         <%= error_tag f, :issuer_name %>
       <% end %>
     </div>
