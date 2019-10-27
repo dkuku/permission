@@ -9,6 +9,7 @@
         <th><%= gettext("Start") %></th>
         <th><%= gettext("Finish") %></th>
         <th><%= gettext("Closed") %></th>
+        <th><%= gettext("Creator") %></th>
         <th><%= gettext("Issuer") %></th>
         <th><%= gettext("Performer") %></th>
         <th><%= gettext("Controller") %></th>

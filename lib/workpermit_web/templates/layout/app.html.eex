@@ -13,5 +13,7 @@
     <%= render @view_module, @view_template, assigns %>
     <%= render "components/footer.html", conn: @conn %>
     <script type="text/javascript" src="<%=Routes.static_path(@conn, "/js/app.js") %>"></script>
+    <!-- loads per page html - check /views/permit.view.eex  or add template -->
+    <%= render_existing @view_module, "permits." <> @view_template, assigns %>
   </body>
 </html>

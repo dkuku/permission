@@ -1,3 +1,4 @@
+require("awesomplete");
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 categoryChanged();
@@ -126,9 +127,38 @@ function nameInputChanged(e, awesomplete) {
     postData('/api/users/find', { name: e.target.value }, cb);
   }  
 }
+ 
+function insertThisInThere(thisChar, thereId) {
+	function theCursorPosition(ofThisInput) {
+		// set a fallback cursor location
+		var theCursorLocation = 0;
+ 
+		// find the cursor location via IE method...
+		if (document.selection) {
+			ofThisInput.focus();
+			var theSelectionRange = document.selection.createRange();
+			theSelectionRange.moveStart('character', -ofThisInput.value.length);
+			theCursorLocation = theSelectionRange.text.length;
+		} else if (ofThisInput.selectionStart || ofThisInput.selectionStart == '0') {
+			// or the FF way 
+			theCursorLocation = ofThisInput.selectionStart;
+		}
+		return theCursorLocation;
+	}
+ 
+	// now get ready to place our new character(s)...
+	var theIdElement = document.getElementById(thereId);
+	var currentPos = theCursorPosition(theIdElement);
+	var origValue = theIdElement.value;
+	var newValue = origValue.substr(0, currentPos) + thisChar + origValue.substr(currentPos);
+ 
+	theIdElement.value = newValue;
+ 
+}
 
   document.getElementById ("prevBtn").addEventListener ("click", ()=>nextPrev(-1), false);
   document.getElementById ("nextBtn").addEventListener ("click", ()=>nextPrev(1), false);
+  document.getElementById ("precautions_add_checkbox").addEventListener ("click", ()=>insertThisInThere('□','permit_precautions'), false);
   document.getElementById("permit_category").addEventListener("change", categoryChanged);
 
   var permit_issuer_name = document.getElementById("permit_issuer_name");

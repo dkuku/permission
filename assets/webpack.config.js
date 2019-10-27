@@ -32,6 +32,7 @@ module.exports = (env, options) => ({
   entry: {
       'app': ['./js/app.js'].concat(glob.sync('./vendor/**/*.js')),
       'landing': ['./js/landing.js'],
+      'multi_step_form': ['./js/multi_step_form.js'],
   },
   output: {
     filename: '[name].js',

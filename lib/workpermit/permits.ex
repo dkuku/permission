@@ -210,16 +210,18 @@ defmodule Workpermit.Permits do
 
   def default_precautions do
     [
+    "### General rules",
     "Have you been given a copy of the Site Safety Rules?",
-    "Has a risk assesment been carried out?",
+    "Has a risk assessment been carried out?",
     "Are the workforce qualified to carry out the task?",
-    "Is approprimate PPE available?",
+    "Is appropriate PPE available?",
     "Is safe access and egress confirmed?",
     ]
   end
 
   def default_confined_space do
     [
+    "### Confined space rules",
     "Are personnel trained and supplied With Breathing Apparatus?",
     "Lifebelt and rope held on outside of confined space?",
     ]
@@ -227,6 +229,7 @@ defmodule Workpermit.Permits do
 
   def default_hot_work do
     [
+    "### Hot work rules",
     "Are at least two fire extinguishers available?",
     "Are personnel trained in use of fire extinguishers?",
     "Have flammable liquids/materials been removed from area?",
@@ -236,6 +239,7 @@ defmodule Workpermit.Permits do
 
   def default_heights do
     [
+    "### Working on heights rules",
     "Is work carried out at height?",
     "Are ladders or scaffolding required?",
     "Is a license required and in place for scaffolding?",

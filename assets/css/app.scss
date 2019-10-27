@@ -49,7 +49,6 @@ body {
   transform: scaleX(-1);
 }
 
-@import '_multi_step_form.scss';
 
 @tailwind components;
 /*@import "tailwindcss/components";*/
@@ -81,7 +80,7 @@ body {
   @apply leading-tight text-lg font-bold text-black mt-8 -mb-2;
 }
 .markdown code {
-  @apply font-mono text-sm inline bg-gray-lighter px-1;
+  @apply font-mono text-sm bg-gray-lighter px-1;
 }
 .markdown pre code {
   @apply block bg-black p-4 rounded;
@@ -96,8 +95,9 @@ body {
   }
 }
 
-@tailwind utilities;
 @import "~awesomplete/awesomplete.base.css";
+@import '_multi_step_form.scss';
+@tailwind utilities;
 /*@import "tailwindcss/utilities";*/
 /* Put your custom utilities here */
 

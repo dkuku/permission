@@ -9,12 +9,16 @@
     <h2 class="c-h3 mb-8 ">
       <%= gettext("Category") %>
     </h2>
-    <%= label f, :category, class: "block mb-6 c-h5" do %>
-      <span class="form-label block"><%= gettext("Category") %></span>
-      <%= select f, :category, @categories, selected: @choosen_category.selected, class: "form-input w-full mt-1" %>
-      <%= error_tag f, :category %>
-    <% end %>
 
+    <%= label f, :category, class: "block mb-6 c-h5" %>
+      <span class="form-label block"><%= gettext("Category") %></span>
+      <div class="inline-block relative w-full">
+        <%= select f, :category, @categories, selected: @choosen_category.selected, class: "form-input w-full mt-1 block appearance-none" %>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+      </div>
+      <%= error_tag f, :category %>
     <%= img_tag @choosen_category.image, id: "choosen_category_image" %>
     <%= label f, :number, class: "block my-6 c-h5" do %>
       <span class="form-label block"><%= gettext("Number") %></span>
@@ -130,15 +134,18 @@
       <%= gettext("Additional Info") %>
     </h2>
     <div>
-      <%= label f, :precautions, class: "block mb-6 c-h5" do %>
-      <span class="form-label block"><%= gettext("Precautions") %></span>
+      <%= label f, :precautions, class: "block mb-6" do %>
+        <div  class="flex justify-between">
+          <span class="form-label block c-h5"><%= gettext("Precautions") %></span>
+          <p id="precautions_add_checkbox" class="bg-transparent text-small text-gray-darker py-1 px-2 border border-gray-dark rounded cursor-pointer ">Insert □</p>
+        </div>
       <%= textarea f, :precautions, value: {:safe, prec}, class: "form-input w-full mt-1 h-64" %>
       <%= error_tag f, :precautions %>
     <% end %>
     </div>
     <div>
-      <%= label f, :additional_info, class: "block mb-6 c-h5" do %>
-      <span class="form-label block"><%= gettext("Additional Info") %></span>
+      <%= label f, :additional_info, class: "block mb-6" do %>
+      <span class="form-label block c-h5"><%= gettext("Additional Info") %></span>
       <%= textarea f, :additional_info, class: "form-input w-full mt-1 h-32" %>
       <%= error_tag f, :additional_info %>
     <% end %>
