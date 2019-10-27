@@ -193,7 +193,9 @@ defmodule Workpermit.Permits do
     :gas => :pressurized_cylinder }
     |> Map.fetch!(category)
   end
+
   def image(category) when is_bitstring(category), do: image(String.to_atom(category))
+
   @doc """
       iex(1)> Workpermit.Permits.choosen_category(:hot_work)
       %{image: "/iso/ISO_7010_W021.svg", next_number: 15, selected: :hot_work}
@@ -205,4 +207,57 @@ defmodule Workpermit.Permits do
       selected: category,
     }
   end
+
+  def default_precautions do
+    [
+    "Have you been given a copy of the Site Safety Rules?",
+    "Has a risk assesment been carried out?",
+    "Are the workforce qualified to carry out the task?",
+    "Is approprimate PPE available?",
+    "Is safe access and egress confirmed?",
+    ]
+  end
+
+  def default_confined_space do
+    [
+    "Are personnel trained and supplied With Breathing Apparatus?",
+    "Lifebelt and rope held on outside of confined space?",
+    ]
+  end
+
+  def default_hot_work do
+    [
+    "Are at least two fire extinguishers available?",
+    "Are personnel trained in use of fire extinguishers?",
+    "Have flammable liquids/materials been removed from area?",
+    "Have Gas cylinders been properly secured?",
+    ]
+  end
+
+  def default_heights do
+    [
+    "Is work carried out at height?",
+    "Are ladders or scaffolding required?",
+    "Is a license required and in place for scaffolding?",
+    "Are personel aware and of means of escape and method of raising alarm?",
+    "Risk of falling objects?",
+    "Details of fragile roof explained?",
+    ]
+  end
+
+  def default_electrical do
+    [
+    "Isolated electrical supply? Work in accordance with current Electricity at Work regs?",
+    "Isolator locked off/tagged? Work in accordance with I.E.E. Wiring regs.",
+    "Is voltage detection instrument required?",
+    ]
+  end
+  
+  def default_coshh do
+    [
+    "Has COSHH data been supplied with substances?",
+    "Have COSHH precautions been identified and implemented?",
+    ]
+  end
+
 end

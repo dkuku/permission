@@ -132,7 +132,7 @@
     <div>
       <%= label f, :precautions, class: "block mb-6 c-h5" do %>
       <span class="form-label block"><%= gettext("Precautions") %></span>
-      <%= textarea f, :precautions, class: "form-input w-full mt-1 h-64" %>
+      <%= textarea f, :precautions, value: {:safe, prec}, class: "form-input w-full mt-1 h-64" %>
       <%= error_tag f, :precautions %>
     <% end %>
     </div>

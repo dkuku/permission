@@ -2,6 +2,7 @@ defmodule WorkpermitWeb.PermitView do
   use WorkpermitWeb, :view
   alias WorkpermitWeb.Markdown
   alias Workpermit.IsoSymbols
+  alias Workpermit.Permits
   require EEx
 
   def markdown(body) do
@@ -11,6 +12,11 @@ defmodule WorkpermitWeb.PermitView do
   end
   def iso_image(img), do: img |> IsoSymbols.symbol_to_image_path
   def iso_meaning(img), do: img |> IsoSymbols.symbol_to_sign_meaning
+
+  def cb(string) when is_bitstring(string), do: "□" <> " " <> string
+  def cb(nil), do: "□"
+  def linefy(string), do: string <> "<br>"
+  def prec, do: Permits.default_precautions() |> Enum.map(fn x ->  x |> cb |> linefy end) |> Enum.join
 
   def date_time(%{} = date), do: date |> Timex.format!("%Y/%m/%d %H:%M", :strftime)
   def date_time(_), do: gettext("No data")
