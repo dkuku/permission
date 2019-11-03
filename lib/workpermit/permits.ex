@@ -20,7 +20,7 @@ defmodule Workpermit.Permits do
 
   """
   def list_permits do
-    Repo.all(Permit)
+    Repo.all(Permit |> order_by(desc: :id))
   end
 
   @doc """
