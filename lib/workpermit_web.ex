@@ -45,6 +45,7 @@ defmodule WorkpermitWeb do
       alias WorkpermitWeb.Router.Helpers, as: Routes
       import WorkpermitWeb.Helpers.Auth, only: [signed_in?: 1]
       import WorkpermitWeb.Helpers.Forms
+      import Turbo.HTML
       use Timex
     end
   end

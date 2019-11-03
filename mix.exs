@@ -54,6 +54,8 @@ defmodule Workpermit.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:postgrex, ">= 0.0.0"},
       {:timex, "~> 3.5"},
+      {:turbo_ecto, "~> 0.4.1"},
+      {:turbo_html, github: "dkuku/turbo_html"},
       {:excoveralls, "~> 0.10", only: [:test]},
       {:ex_machina, "~> 2.3", only: [:test]},
       #{:faker, "~> 0.13", only: [:dev, :test]},
