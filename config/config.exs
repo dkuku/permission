@@ -14,8 +14,8 @@ config :workpermit,
   repo: Workpermit.Repo,
   per_page: 10
 
-config :turbo_html, Turbo.HTML,
-  view_style: :semantic
+#config :turbo_html, Turbo.HTML,
+#  view_style: :custom
 
 # Configures the endpoint
 config :workpermit, WorkpermitWeb.Endpoint,
