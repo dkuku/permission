@@ -2,7 +2,9 @@
 
   <div class="flex justify-between">
     <div class="flex justify-between">
-      <h1 class="c-h3 p-4 text-gray-darker"><%= gettext("Permits List") %></h1>
+      <h1 class="c-h3 p-4 text-gray-darker">
+        <%= link gettext("Permits List"), to: Routes.permit_path(@conn, :index), class: "" %>
+      </h1>
       <div class ="flex content-center">
         <%= link gettext("New"), to: Routes.permit_path(@conn, :new), class: "border-gray-medium hover:border-gray-dark border-2 text-gray-darker font-bold p-2 m-4 rounded" %>
       </div>
@@ -21,9 +23,27 @@
       <tr>
         <th><%= gettext("Category") %></th>
         <th><%= gettext("Number") %></th>
-        <th><%= gettext("Issued") %></th>
-        <th><%= gettext("Start") %></th>
-        <th><%= gettext("Finish") %></th>
+        <th>
+          <p class="whitespace-no-wrap">
+            <%= gettext("Issued") %>
+            <%= link "▴", to: Routes.permit_path(@conn, :index, %{ "s" => "updated_at+asc"}), class: "" %>
+            <%= link "▾", to: Routes.permit_path(@conn, :index, %{ "s" => "updated_at+desc"}), class: "" %>
+          </p>
+        </th>
+        <th>
+          <p class="whitespace-no-wrap">
+            <%= gettext("Start") %>
+            <%= link "▴", to: Routes.permit_path(@conn, :index, %{ "s" => "start_time+asc"}), class: "" %>
+            <%= link "▾", to: Routes.permit_path(@conn, :index, %{ "s" => "start_time+desc"}), class: "" %>
+          </p>
+        </th>
+        <th>
+          <p class="whitespace-no-wrap">
+            <%= gettext("Finish") %>
+            <%= link "▴", to: Routes.permit_path(@conn, :index, %{ "s" => "finish_time+asc"}), class: "" %>
+            <%= link "▾", to: Routes.permit_path(@conn, :index, %{ "s" => "finish_time+desc"}), class: "" %>
+          </p>
+        </th>
         <th><%= gettext("Closed") %></th>
         <th><%= gettext("Creator") %></th>
         <th><%= gettext("Issuer") %></th>
@@ -51,8 +71,10 @@
           <td><%= permit.controller_name %></td>
           <td><%= permit.firewatch_name %></td>
           <td>
-            <i class="far fa-eye"></i>
-            <span><%= link gettext("Show"), to: Routes.permit_path(@conn, :show, permit) %></span>
+            <p class="whitespace-no-wrap">
+              <i class="far fa-eye"></i>
+              <span><%= link gettext("Show"), to: Routes.permit_path(@conn, :show, permit) %></span>
+            </p>
           </td>
         </tr>
       <% end %>
@@ -60,7 +82,9 @@
   </table>
   <%= if @paginate.total_pages > 1 do %>
     <% classes = [class: "m-1 rounded border-2 p-2 font-bold", normal_class: "text-gray-dark border-gray-dark", active_class: "bg-primary-medium text-gray-darker border-gray-darker", disabled_class: "bg-gray-lighter text-gray-light"] %>
-    <%= turbo_pagination_custom(@conn, @paginate, classes) %>
+    <div class="flex justify-center">
+      <%= turbo_pagination_custom(@conn, @paginate, classes) %>
+    </div>
   <% end %> 
 </div>
 
