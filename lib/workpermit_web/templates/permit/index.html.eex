@@ -1,8 +1,21 @@
-<div class="w-full max-w-6xl pt-16 mx-auto content-center flex-1">
+<div class="w-full max-w-6xl pt-16 mx-auto content-center flex-1 mb-4">
+
   <div class="flex justify-between">
-    <h1 class="c-h3 p-5 text-gray-darker"><%= gettext("Permits List") %></h1>
-    <%= link gettext("New permit"), to: Routes.permit_path(@conn, :new), class: "bg-primary-medium hover:bg-primary-darker text-white text-xl font-bold pt-2 my-4 px-4 rounded" %>
+    <div class="flex justify-between">
+      <h1 class="c-h3 p-4 text-gray-darker"><%= gettext("Permits List") %></h1>
+      <div class ="flex content-center">
+        <%= link gettext("New"), to: Routes.permit_path(@conn, :new), class: "border-gray-medium hover:border-gray-dark border-2 text-gray-darker font-bold p-2 m-4 rounded" %>
+      </div>
+    </div>
+
+    <%= form_for @conn, Routes.permit_path(@conn, :index), [method: :get, class: "mt-4"], fn f -> %>
+      <div class="flex justify-between mx-2">
+        <%= turbo_search_input f, "q[issuer_name_or_performer_name_like]", placeholder: "name", class: "form-input w-full mx-2" %>
+        <%= submit gettext("search"), class: "border-gray-dark hover:border-gray-darker border-2 text-gray-dark font-bold px-4 rounded" %>
+      <% end %>
+    </div>
   </div>
+
   <table class = "bg-white mx-auto w-full shadow-md rounded px-8 pt-6 pb-8 mb-4 table">
     <thead>
       <tr>
@@ -45,5 +58,9 @@
       <% end %>
     </tbody>
   </table>
+  <%= if @paginate.total_pages > 1 do %>
+    <% classes = [class: "m-1 rounded border-2 p-2 font-bold", normal_class: "text-gray-dark border-gray-dark", active_class: "bg-primary-medium text-gray-darker border-gray-darker", disabled_class: "bg-gray-lighter text-gray-light"] %>
+    <%= turbo_pagination_custom(@conn, @paginate, classes) %>
+  <% end %> 
 </div>
 

@@ -10,6 +10,13 @@ use Mix.Config
 config :workpermit,
   ecto_repos: [Workpermit.Repo]
 
+  config :turbo_ecto, Turbo.Ecto,
+  repo: Workpermit.Repo,
+  per_page: 10
+
+#config :turbo_html, Turbo.HTML,
+#  view_style: :custom
+
 # Configures the endpoint
 config :workpermit, WorkpermitWeb.Endpoint,
   url: [host: "localhost"],
