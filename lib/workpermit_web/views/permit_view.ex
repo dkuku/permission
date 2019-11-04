@@ -19,7 +19,7 @@ defmodule WorkpermitWeb.PermitView do
 "
   def prec, do: Permits.default_precautions() |> Enum.map(fn x ->  x |> checkbox |> line_break end) |> Enum.join
 
-  def date_time(%{} = date), do: date |> Timex.format!("%m/%d %H:%M", :strftime)
+  def date_time(%{} = date), do: date |> Timex.format!("%Y/%m/%d %H:%M", :strftime)
   def date_time(_), do: gettext("No data")
   def time(%{} = date), do: date |> Timex.format!("%H:%M", :strftime)
   def time(_), do: gettext("No data")

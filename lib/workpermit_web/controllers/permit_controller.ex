@@ -5,13 +5,12 @@ defmodule WorkpermitWeb.PermitController do
   plug :authenticate when action  not in [:select_category]
 
   alias Workpermit.Permits
-  alias Workpermit.Permits.{Permit, ProtectiveEquipment}
-  require Ecto.Query
-  def index(conn, params, _user) do
-    result = Permit |> Ecto.Query.order_by(desc: :id)|> Turbo.Ecto.turbo(params, [entry_name: "permits"])
-    render(conn, :index, permits: result.permits, paginate: result.paginate)
-#    permits = Permits.list_permits()
-#    render(conn, "index.html", permits: permits)
+  alias Workpermit.Permits.Permit
+  alias Workpermit.Permits.ProtectiveEquipment
+
+  def index(conn, _params, _user) do
+    permits = Permits.list_permits()
+    render(conn, "index.html", permits: permits)
   end
 
   def new(conn, _params, user) do

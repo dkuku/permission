@@ -19,10 +19,8 @@ defmodule WorkpermitWeb.UserController do
       {:ok, user} ->
         conn
         |> put_session(:current_user_id, user.id)
-        |> assign(:user, user)
-        |> configure_session(renew: true)
         |> put_flash(:info, "User created successfully.")
-        |> redirect(to: Routes.permit_path(conn, :index))
+        |> redirect(to: Routes.user_path(conn, :show, user))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
