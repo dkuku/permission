@@ -11,20 +11,20 @@ use Mix.Config
 # before starting your production server.
 config :workpermit, WorkpermitWeb.Endpoint,
   load_from_system_env: true,
-  http: [port: "#{PORT}"],
+  http: [port: System.get_env("PORT")],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 config :workpermit, WorkpermitWeb.Endpoint,
   server: true, # Without this line, your app will not start the web server!
-  secret_key_base: "#{SECRET_KEY_BASE}",
-  url: [host: "#{APP_NAME}.gigalixirapp.com", port: 443]
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
+  url: [host: System.get_env("APP_NAME") <> ".gigalixirapp.com", port: 443]
 
 # Do not print debug messages in production
 config :logger, level: :info
 
 config :workpermit, Workpermit.Repo,
   adapter: Ecto.Adapters.Postgres,
-  url: "#{DATABASE_URL}",
+  url: System.get_env("DATABASE_URL"),
   database: "",
   ssl: true,
   pool_size: 2,
