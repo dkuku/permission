@@ -27,7 +27,7 @@ config :workpermit, Workpermit.Repo,
   url: "#{DATABASE_URL}",
   database: "",
   ssl: true,
-  pool_size: "#{POOL_SIZE}",
+  pool_size: 2,
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
