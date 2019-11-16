@@ -25,7 +25,7 @@ config :logger, level: :info
 config :workpermit, Workpermit.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: System.get_env("DATABASE_URL"),
-  database: "",
+#  database: "",
   ssl: true,
   pool_size: 2
 # ## SSL Support
