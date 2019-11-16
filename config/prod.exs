@@ -28,6 +28,17 @@ config :workpermit, Workpermit.Repo,
 #  database: "",
   ssl: true,
   pool_size: 2
+
+
+config :sentry,
+  dsn: "https://aea562a06208474f9cc0e6ce4e45773f@sentry.io/1823262",
+  environment_name: :prod,
+  enable_source_code_context: true,
+  root_source_code_path: File.cwd!,
+  tags: %{
+    env: "production"
+  },
+  included_environments: [:prod]
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

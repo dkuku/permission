@@ -56,6 +56,7 @@ defmodule Workpermit.MixProject do
       {:timex, "~> 3.5"},
       {:turbo_ecto, "~> 0.4.1"},
       {:turbo_html, github: "dkuku/turbo_html", ref: "b515e2e"},
+      {:sentry, "~> 7.0"},
       #{:turbo_html, path: "../turbo_html"},
       {:excoveralls, "~> 0.10", only: [:test]},
       {:ex_machina, "~> 2.3", only: [:test]},

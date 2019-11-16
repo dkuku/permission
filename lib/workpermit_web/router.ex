@@ -1,5 +1,7 @@
 defmodule WorkpermitWeb.Router do
   use WorkpermitWeb, :router
+  use Plug.ErrorHandler
+  use Sentry.Plug
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -9,6 +11,7 @@ defmodule WorkpermitWeb.Router do
     plug :put_secure_browser_headers
     plug WorkpermitWeb.Plugs.LoadUser
     plug WorkpermitWeb.Plugs.Locale
+
   end
 
   pipeline :api do
