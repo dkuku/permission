@@ -1,4 +1,4 @@
-defmodule WorkpermitWeb.Plugs.Locale do
+defmodule Web.Plugs.Locale do
   import Plug.Conn
 
   def init(_opts), do: nil
@@ -9,7 +9,7 @@ defmodule WorkpermitWeb.Plugs.Locale do
         conn
 
       locale ->
-        Gettext.put_locale(WorkpermitWeb.Gettext, locale)
+        Gettext.put_locale(Web.Gettext, locale)
         conn |> put_session(:locale, locale)
     end
   end

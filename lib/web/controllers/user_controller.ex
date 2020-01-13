@@ -1,5 +1,5 @@
-defmodule WorkpermitWeb.UserController do
-  use WorkpermitWeb, :controller
+defmodule Web.UserController do
+  use Web, :controller
 
   alias Workpermit.Accounts
   alias Workpermit.Accounts.User

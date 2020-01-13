@@ -1,5 +1,5 @@
-defmodule WorkpermitWeb.FallbackController do
-  use WorkpermitWeb, :controller
+defmodule Web.FallbackController do
+  use Web, :controller
   alias Workpermit.Permits
 
   def call(conn, {:error, msg}, _user) when is_binary(msg) do

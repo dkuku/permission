@@ -1,12 +1,12 @@
-defmodule WorkpermitWeb do
+defmodule Web do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use WorkpermitWeb, :controller
-      use WorkpermitWeb, :view
+      use Web, :controller
+      use Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,20 +19,20 @@ defmodule WorkpermitWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: WorkpermitWeb
+      use Phoenix.Controller, namespace: Web
 
       import Plug.Conn
-      import WorkpermitWeb.Gettext
-      alias WorkpermitWeb.Router.Helpers, as: Routes
+      import Web.Gettext
+      alias Web.Router.Helpers, as: Routes
     end
   end
 
   def view do
     quote do
       use Phoenix.View,
-        root: "lib/workpermit_web/templates",
+        root: "lib/web/templates",
         pattern: "**/*",
-        namespace: WorkpermitWeb
+        namespace: Web
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 1, get_flash: 2, view_module: 1]
@@ -40,11 +40,11 @@ defmodule WorkpermitWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import WorkpermitWeb.ErrorHelpers
-      import WorkpermitWeb.Gettext
-      alias WorkpermitWeb.Router.Helpers, as: Routes
-      import WorkpermitWeb.Helpers.Auth, only: [signed_in?: 1]
-      import WorkpermitWeb.Helpers.Forms
+      import Web.ErrorHelpers
+      import Web.Gettext
+      alias Web.Router.Helpers, as: Routes
+      import Web.Helpers.Auth, only: [signed_in?: 1]
+      import Web.Helpers.Forms
       import Turbo.HTML
       use Timex
     end
@@ -61,7 +61,7 @@ defmodule WorkpermitWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import WorkpermitWeb.Gettext
+      import Web.Gettext
     end
   end
 

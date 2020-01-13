@@ -1,4 +1,4 @@
-defmodule WorkpermitWeb.Helpers.Auth do
+defmodule Web.Helpers.Auth do
   @moduledoc """
   Helpers to use with authentication
   """

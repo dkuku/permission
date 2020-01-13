@@ -1,5 +1,5 @@
-defmodule WorkpermitWeb.Router do
-  use WorkpermitWeb, :router
+defmodule Web.Router do
+  use Web, :router
   use Plug.ErrorHandler
   use Sentry.Plug
 
@@ -9,8 +9,8 @@ defmodule WorkpermitWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug WorkpermitWeb.Plugs.LoadUser
-    plug WorkpermitWeb.Plugs.Locale
+    plug Web.Plugs.LoadUser
+    plug Web.Plugs.Locale
 
   end
 
@@ -18,7 +18,7 @@ defmodule WorkpermitWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", WorkpermitWeb do
+  scope "/", Web do
     pipe_through :browser
 
     get "/", PageController, :index
@@ -34,7 +34,7 @@ defmodule WorkpermitWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  scope "/api", WorkpermitWeb do
+  scope "/api", Web do
     pipe_through :api
     post "/permits/select_category", ApiController, :select_category
     post "/users/find", UserController, :find_name

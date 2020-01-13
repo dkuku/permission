@@ -1,5 +1,5 @@
-defmodule WorkpermitWeb.SessionController do
-  use WorkpermitWeb, :controller
+defmodule Web.SessionController do
+  use Web, :controller
   alias Workpermit.Accounts
 
   def new(conn, _params) do

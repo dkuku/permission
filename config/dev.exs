@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :workpermit, WorkpermitWeb.Endpoint,
+config :workpermit, Web.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -46,13 +46,13 @@ config :workpermit, WorkpermitWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :workpermit, WorkpermitWeb.Endpoint,
+config :workpermit, Web.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
-      ~r{lib/workpermit_web/views/.*(ex)$},
-      ~r{lib/workpermit_web/templates/.*(eex)$}
+      ~r{lib/web/views/.*(ex)$},
+      ~r{lib/web/templates/.*(eex)$}
     ]
   ]
 

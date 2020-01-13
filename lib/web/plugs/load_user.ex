@@ -1,4 +1,4 @@
-defmodule WorkpermitWeb.Plugs.LoadUser do
+defmodule Web.Plugs.LoadUser do
   import Plug.Conn
   alias Workpermit.Accounts
   def init(_opts), do: nil

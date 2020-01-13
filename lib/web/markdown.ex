@@ -1,4 +1,4 @@
-defmodule WorkpermitWeb.Markdown do
+defmodule Web.Markdown do
   @moduledoc """
   """
   def render(body) do

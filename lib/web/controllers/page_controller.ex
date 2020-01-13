@@ -1,5 +1,5 @@
-defmodule WorkpermitWeb.PageController do
-  use WorkpermitWeb, :controller
+defmodule Web.PageController do
+  use Web, :controller
   plug :put_layout, "landing.html"
   def index(conn, _params) do
     conn

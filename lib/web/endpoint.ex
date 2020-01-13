@@ -1,7 +1,7 @@
-defmodule WorkpermitWeb.Endpoint do
+defmodule Web.Endpoint do
   use Phoenix.Endpoint, otp_app: :workpermit
 
-  socket "/socket", WorkpermitWeb.UserSocket,
+  socket "/socket", Web.UserSocket,
     websocket: true,
     longpoll: false
 
@@ -42,5 +42,5 @@ defmodule WorkpermitWeb.Endpoint do
     key: "_workpermit_key",
     signing_salt: "W5+bWvVy"
 
-  plug WorkpermitWeb.Router
+  plug Web.Router
 end

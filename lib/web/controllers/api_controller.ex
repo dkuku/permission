@@ -1,5 +1,5 @@
-defmodule WorkpermitWeb.ApiController do
-  use WorkpermitWeb, :controller
+defmodule Web.ApiController do
+  use Web, :controller
   alias Workpermit.Permits
 
   def select_category(conn, %{"category" => category}) do

@@ -66,6 +66,9 @@ defmodule Workpermit.MixProject do
       {:cabbage, "~> 0.3.0", only: [:test]},
       {:hound, "~> 1.0", only: [:test]},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"},
+      {:floki, ">= 0.0.0", only: :test},
+      {:surface, git: "https://github.com/msaraiva/surface.git"},
     ]
   end
 

@@ -1,6 +1,6 @@
-defmodule WorkpermitWeb.PermitView do
-  use WorkpermitWeb, :view
-  alias WorkpermitWeb.Markdown
+defmodule Web.PermitView do
+  use Web, :view
+  alias Web.Markdown
   alias Workpermit.IsoSymbols
   alias Workpermit.Permits
   require EEx
