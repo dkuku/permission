@@ -12,412 +12,412 @@ msgstr ""
 "Plural-Forms: nplurals=2\n"
 
 #, elixir-format
-#: lib/workpermit_web/templates/layout/components/nav.html.eex:25
+#: lib/web/templates/layout/components/nav.html.eex:25
 msgid "Log in"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/layout/components/nav.html.eex:21
+#: lib/web/templates/layout/components/nav.html.eex:21
 msgid "Sign out"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/layout/components/nav.html.eex:28
+#: lib/web/templates/layout/components/nav.html.eex:28
 msgid "Sign up"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/layout/components/footer.html.eex:7
-#: lib/workpermit_web/templates/layout/components/head.html.eex:17
-#: lib/workpermit_web/templates/layout/components/nav.html.eex:6
+#: lib/web/templates/layout/components/footer.html.eex:7
+#: lib/web/templates/layout/components/head.html.eex:17
+#: lib/web/templates/layout/components/nav.html.eex:6
 msgid "Workpermit"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/index.html.eex:42
-#: lib/workpermit_web/templates/permit/show.html.eex:81
-#: lib/workpermit_web/templates/session/new.html.eex:18
-#: lib/workpermit_web/templates/user/form.html.eex:39
-#: lib/workpermit_web/templates/user/index.html.eex:35
-#: lib/workpermit_web/templates/user/show.html.eex:29
+#: lib/web/templates/permit/index.html.eex:42
+#: lib/web/templates/permit/show.html.eex:81
+#: lib/web/templates/session/new.html.eex:18
+#: lib/web/templates/user/form.html.eex:39
+#: lib/web/templates/user/index.html.eex:35
+#: lib/web/templates/user/show.html.eex:29
 msgid "Back"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/user/index.html.eex:27
+#: lib/web/templates/user/index.html.eex:27
 msgid "Delete"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/user/index.html.eex:25
-#: lib/workpermit_web/templates/user/show.html.eex:30
+#: lib/web/templates/user/index.html.eex:25
+#: lib/web/templates/user/show.html.eex:30
 msgid "Edit"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/user/edit.html.eex:2
+#: lib/web/templates/user/edit.html.eex:2
 msgid "Edit User"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/session/new.html.eex:6
-#: lib/workpermit_web/templates/user/form.html.eex:9
-#: lib/workpermit_web/templates/user/index.html.eex:6
-#: lib/workpermit_web/templates/user/show.html.eex:5
+#: lib/web/templates/session/new.html.eex:6
+#: lib/web/templates/user/form.html.eex:9
+#: lib/web/templates/user/index.html.eex:6
+#: lib/web/templates/user/show.html.eex:5
 msgid "Email"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/user/form.html.eex:15
-#: lib/workpermit_web/templates/user/index.html.eex:7
-#: lib/workpermit_web/templates/user/show.html.eex:11
+#: lib/web/templates/user/form.html.eex:15
+#: lib/web/templates/user/index.html.eex:7
+#: lib/web/templates/user/show.html.eex:11
 msgid "First name"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/user/form.html.eex:21
-#: lib/workpermit_web/templates/user/index.html.eex:8
-#: lib/workpermit_web/templates/user/show.html.eex:17
+#: lib/web/templates/user/form.html.eex:21
+#: lib/web/templates/user/index.html.eex:8
+#: lib/web/templates/user/show.html.eex:17
 msgid "Last name"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/user/form.html.eex:27
-#: lib/workpermit_web/templates/user/index.html.eex:9
-#: lib/workpermit_web/templates/user/show.html.eex:23
+#: lib/web/templates/user/form.html.eex:27
+#: lib/web/templates/user/index.html.eex:9
+#: lib/web/templates/user/show.html.eex:23
 msgid "Phone"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/session/new.html.eex:19
-#: lib/workpermit_web/templates/user/form.html.eex:40
+#: lib/web/templates/session/new.html.eex:19
+#: lib/web/templates/user/form.html.eex:40
 msgid "Save"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/index.html.eex:35
-#: lib/workpermit_web/templates/user/index.html.eex:23
+#: lib/web/templates/permit/index.html.eex:35
+#: lib/web/templates/user/index.html.eex:23
 msgid "Show"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/page/index.html.eex:223
+#: lib/web/templates/page/index.html.eex:223
 msgid "And feel the benefits"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/form.html.eex:10
-#: lib/workpermit_web/templates/permit/form.html.eex:13
-#: lib/workpermit_web/templates/permit/index.html.eex:6
-#: lib/workpermit_web/templates/permit/show.html.eex:24
+#: lib/web/templates/permit/form.html.eex:10
+#: lib/web/templates/permit/form.html.eex:13
+#: lib/web/templates/permit/index.html.eex:6
+#: lib/web/templates/permit/show.html.eex:24
 msgid "Category"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/index.html.eex:11
-#: lib/workpermit_web/templates/permit/show.html.eex:40
+#: lib/web/templates/permit/index.html.eex:11
+#: lib/web/templates/permit/show.html.eex:40
 msgid "Closed"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/page/index.html.eex:11
+#: lib/web/templates/page/index.html.eex:11
 msgid "Create and track your workpermits in an dedicated app"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/new.html.eex:2
+#: lib/web/templates/permit/new.html.eex:2
 msgid "Create permit"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/index.html.eex:10
-#: lib/workpermit_web/templates/permit/show.html.eex:36
+#: lib/web/templates/permit/index.html.eex:10
+#: lib/web/templates/permit/show.html.eex:36
 msgid "Finish"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/page/index.html.eex:74
+#: lib/web/templates/page/index.html.eex:74
 msgid "How long will it take to finish. When you need to check if it's done correctly"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/index.html.eex:8
+#: lib/web/templates/permit/index.html.eex:8
 msgid "Issued"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/page/index.html.eex:72
+#: lib/web/templates/page/index.html.eex:72
 msgid "Keep track who is still working"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/page/index.html.eex:48
+#: lib/web/templates/page/index.html.eex:48
 msgid "Keeping track of numbering, remembering all the names, checking the same boxes over and over again"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/layout/components/nav.html.eex:36
+#: lib/web/templates/layout/components/nav.html.eex:36
 msgid "Language"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/page/index.html.eex:60
+#: lib/web/templates/page/index.html.eex:60
 msgid "Let the computer do the job for you"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/index.html.eex:43
+#: lib/web/templates/permit/index.html.eex:43
 msgid "New permit"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/user/index.html.eex:36
+#: lib/web/templates/user/index.html.eex:36
 msgid "New user"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/form.html.eex:20
-#: lib/workpermit_web/templates/permit/index.html.eex:7
-#: lib/workpermit_web/templates/permit/show.html.eex:28
+#: lib/web/templates/permit/form.html.eex:20
+#: lib/web/templates/permit/index.html.eex:7
+#: lib/web/templates/permit/show.html.eex:28
 msgid "Number"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/session/new.html.eex:12
-#: lib/workpermit_web/templates/user/form.html.eex:33
+#: lib/web/templates/session/new.html.eex:12
+#: lib/web/templates/user/form.html.eex:33
 msgid "Password"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/show.html.eex:2
+#: lib/web/templates/permit/show.html.eex:2
 msgid "Permit"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/layout/components/nav.html.eex:17
+#: lib/web/templates/layout/components/nav.html.eex:17
 msgid "Permits"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/index.html.eex:2
+#: lib/web/templates/permit/index.html.eex:2
 msgid "Permits List"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/show.html.eex:32
+#: lib/web/templates/permit/show.html.eex:32
 msgid "Started"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/session/new.html.eex:2
+#: lib/web/templates/session/new.html.eex:2
 msgid "Sign In"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/user/new.html.eex:2
+#: lib/web/templates/user/new.html.eex:2
 msgid "Sign Up"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/page/index.html.eex:219
+#: lib/web/templates/page/index.html.eex:219
 msgid "Start using today"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/user/show.html.eex:2
+#: lib/web/templates/user/show.html.eex:2
 msgid "User Profile"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/user/index.html.eex:2
+#: lib/web/templates/user/index.html.eex:2
 msgid "User Profiles"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/page/index.html.eex:61
+#: lib/web/templates/page/index.html.eex:61
 msgid "With a few mouse clicks you can have ready made  work permits. With name auto completion, auto-numbering and custom templates"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/page/index.html.eex:8
+#: lib/web/templates/page/index.html.eex:8
 msgid "Workpermit tracker"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/page/index.html.eex:46
+#: lib/web/templates/page/index.html.eex:46
 msgid "Writing the same permits every day"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/layout/landing.html.eex:2
+#: lib/web/templates/layout/landing.html.eex:2
 msgid "en"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/form.html.eex:130
-#: lib/workpermit_web/templates/permit/form.html.eex:141
-#: lib/workpermit_web/templates/permit/show.html.eex:77
+#: lib/web/templates/permit/form.html.eex:130
+#: lib/web/templates/permit/form.html.eex:141
+#: lib/web/templates/permit/show.html.eex:77
 msgid "Additional Info"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/form.html.eex:34
+#: lib/web/templates/permit/form.html.eex:34
 msgid "COSHH"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/form.html.eex:70
-#: lib/workpermit_web/templates/permit/index.html.eex:14
+#: lib/web/templates/permit/form.html.eex:70
+#: lib/web/templates/permit/index.html.eex:14
 msgid "Controller"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/show.html.eex:60
+#: lib/web/templates/permit/show.html.eex:60
 msgid "Controller Name"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/show.html.eex:47
+#: lib/web/templates/permit/show.html.eex:47
 msgid "Creator"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/form.html.eex:90
+#: lib/web/templates/permit/form.html.eex:90
 msgid "Finish Time"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/form.html.eex:62
+#: lib/web/templates/permit/form.html.eex:62
 msgid "Firewatch"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/show.html.eex:66
+#: lib/web/templates/permit/show.html.eex:66
 msgid "Firewatch Name"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/form.html.eex:46
-#: lib/workpermit_web/templates/permit/index.html.eex:12
+#: lib/web/templates/permit/form.html.eex:46
+#: lib/web/templates/permit/index.html.eex:12
 msgid "Issuer"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/show.html.eex:51
+#: lib/web/templates/permit/show.html.eex:51
 msgid "Issuer Name"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/form.html.eex:28
+#: lib/web/templates/permit/form.html.eex:28
 msgid "Lone working"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/form.html.eex:54
-#: lib/workpermit_web/templates/permit/index.html.eex:13
+#: lib/web/templates/permit/form.html.eex:54
+#: lib/web/templates/permit/index.html.eex:13
 msgid "Performer"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/show.html.eex:55
+#: lib/web/templates/permit/show.html.eex:55
 msgid "Performer Name"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/form.html.eex:134
-#: lib/workpermit_web/templates/permit/show.html.eex:73
+#: lib/web/templates/permit/form.html.eex:134
+#: lib/web/templates/permit/show.html.eex:73
 msgid "Precautions"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/index.html.eex:9
+#: lib/web/templates/permit/index.html.eex:9
 msgid "Start"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/form.html.eex:82
+#: lib/web/templates/permit/form.html.eex:82
 msgid "Start Time"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/views/permit_view.ex:36
+#: lib/web/views/permit_view.ex:36
 msgid "Day"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/views/permit_view.ex:39
+#: lib/web/views/permit_view.ex:39
 msgid "Hour"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/views/permit_view.ex:42
+#: lib/web/views/permit_view.ex:42
 msgid "Minutes"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/views/permit_view.ex:33
+#: lib/web/views/permit_view.ex:33
 msgid "Month"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/views/permit_view.ex:16
-#: lib/workpermit_web/views/permit_view.ex:18
-#: lib/workpermit_web/views/permit_view.ex:20
+#: lib/web/views/permit_view.ex:16
+#: lib/web/views/permit_view.ex:18
+#: lib/web/views/permit_view.ex:20
 msgid "No data"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/controllers/session_controller.ex:29
+#: lib/web/controllers/session_controller.ex:29
 msgid "Signed out successfully"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/views/permit_view.ex:30
+#: lib/web/views/permit_view.ex:30
 msgid "Year"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/controllers/permit_controller.ex:51
+#: lib/web/controllers/permit_controller.ex:51
 msgid "You must be logged in to access this page"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/form.html.eex:4
-#: lib/workpermit_web/templates/user/form.html.eex:4
+#: lib/web/templates/permit/form.html.eex:4
+#: lib/web/templates/user/form.html.eex:4
 msgid "Oops, something went wrong! Please check the errors below"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/controllers/permit_controller.ex:30
+#: lib/web/controllers/permit_controller.ex:30
 msgid "Permit created successfully"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/controllers/session_controller.ex:21
+#: lib/web/controllers/session_controller.ex:21
 msgid "Signed in successfully"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/controllers/session_controller.ex:13
+#: lib/web/controllers/session_controller.ex:13
 msgid "There was a problem with your username/password"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/form.html.eex:42
+#: lib/web/templates/permit/form.html.eex:42
 msgid "Actors"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/form.html.eex:108
+#: lib/web/templates/permit/form.html.eex:108
 msgid "Protective Equipment"
 msgstr ""
 
 #, elixir-format
-#: lib/workpermit_web/templates/permit/form.html.eex:79
+#: lib/web/templates/permit/form.html.eex:79
 msgid "Time"
 msgstr ""
 
 #, elixir-format, fuzzy
-#: lib/workpermit_web/templates/page/index.html.eex:39
+#: lib/web/templates/page/index.html.eex:39
 msgid "Tired of"
 msgstr ""
