@@ -32,14 +32,6 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-defmodule Web.PageController do
-  use Web, :controller
-  alias Phoenix.LiveView
-
-  def index(conn, _params) do
-    LiveView.Controller.live_render(conn, Web.RacerView, session: %{})
-  end
-end
 config :workpermit, Web.Gettext, default_locale: "en", locales: ~w(en pl de)
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
