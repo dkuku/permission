@@ -23,6 +23,11 @@ dom.i2svg()
   .then(function () {
     console.log('Icons have rendered')
 })
+import {Socket} from "phoenix"
+import LiveSocket from "phoenix_live_view"
+
+let liveSocket = new LiveSocket("/live", Socket)
+liveSocket.connect()
 //
 //$(function () {
 //  $('html').addClass ( 'dom-loaded' );

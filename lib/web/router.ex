@@ -7,6 +7,7 @@ defmodule Web.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
+    plug Phoenix.LiveView.Flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug Web.Plugs.LoadUser
@@ -31,6 +32,8 @@ defmodule Web.Router do
     delete "/sign-out", SessionController, :delete
 
     resources "/permits", PermitController, only: [:index, :new, :create, :show]
+
+    get "/live", LiveController, :index
   end
 
   # Other scopes may use custom stacks.
