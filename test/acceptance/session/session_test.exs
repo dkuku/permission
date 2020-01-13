@@ -1,4 +1,4 @@
-defmodule WorkpermitWeb.Acceptance.SessionTest do
+defmodule Web.Acceptance.SessionTest do
   use Workpermit.DataCase
   use Hound.Helpers
 

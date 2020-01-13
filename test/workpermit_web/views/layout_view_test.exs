@@ -1,3 +1,3 @@
-defmodule WorkpermitWeb.LayoutViewTest do
-  use WorkpermitWeb.ConnCase, async: true
+defmodule Web.LayoutViewTest do
+  use Web.ConnCase, async: true
 end

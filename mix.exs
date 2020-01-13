@@ -64,7 +64,6 @@ defmodule Workpermit.MixProject do
       {:ex_machina, "~> 2.3", only: [:test]},
       #{:faker, "~> 0.13", only: [:dev, :test]},
       {:faker, "~> 0.13"},
-      {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
       {:cabbage, "~> 0.3.0", only: [:test]},
       {:hound, "~> 1.0", only: [:test]},
       {:phoenix_live_reload, "~> 1.2", only: :dev},

@@ -1,5 +1,5 @@
-defmodule WorkpermitWeb.Plugs.LoadUserTest do
-  use WorkpermitWeb.ConnCase
+defmodule Web.Plugs.LoadUserTest do
+  use Web.ConnCase
   alias Workpermit.Accounts
 
   @valid_attrs %{

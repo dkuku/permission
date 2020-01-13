@@ -1,5 +1,5 @@
-defmodule WorkpermitWeb.UserControllerTest do
-  use WorkpermitWeb.ConnCase
+defmodule Web.UserControllerTest do
+  use Web.ConnCase
 
   alias Workpermit.Accounts
 

@@ -1,5 +1,5 @@
-defmodule WorkpermitWeb.PermitControllerTest do
-  use WorkpermitWeb.ConnCase
+defmodule Web.PermitControllerTest do
+  use Web.ConnCase
 
   alias Workpermit.Permits
   import Workpermit.Factory
