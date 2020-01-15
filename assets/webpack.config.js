@@ -40,6 +40,14 @@ module.exports = (env, options) => ({
       'landing': ['./js/landing.js'],
       'multi_step_form': ['./js/multi_step_form.js'],
   },
+  resolve: {
+    alias: {
+      svelte: path.resolve('node_modules', 'svelte')
+    },
+    extensions: ['.mjs', '.js', '.svelte'],
+    mainFields: ['svelte', 'browser', 'module', 'main'],
+    modules: ['node_modules']
+  },
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, '../priv/static/js')
@@ -51,6 +59,21 @@ module.exports = (env, options) => ({
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader'
+        },
+      },
+      {
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: "javascript/auto",
+      },
+      {
+        test: /\.(html|svelte)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'svelte-loader',
+          options: {
+            hotReload: true
+          }
         }
       },
       { test: /\.(gif|png|jpe?g|svg)$/i,
