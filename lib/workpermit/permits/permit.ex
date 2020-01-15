@@ -2,7 +2,6 @@ defmodule Workpermit.Permits.Permit do
   use Ecto.Type
   use Ecto.Schema
   import Ecto.Changeset
-  alias Workpermit.Permits.ProtectiveEquipment
   alias Workpermit.Accounts.User
   import EctoEnum
 
@@ -24,8 +23,8 @@ defmodule Workpermit.Permits.Permit do
     field :additional_info, :string
     field :coshh, :boolean
     field :lone_working, :boolean
+    field :protective_equipment, {:array, :string}
     belongs_to :issuer, User
-    belongs_to :protective_equipment, ProtectiveEquipment
 
     timestamps()
   end
@@ -48,9 +47,9 @@ defmodule Workpermit.Permits.Permit do
       :additional_info,
       :coshh,
       :lone_working,
-      :organisation
+      :organisation,
+      :protective_equipment
     ])
-    |> cast_assoc(:protective_equipment, required: true)
     |> validate_required([
       :category,
       :number,

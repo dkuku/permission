@@ -15,11 +15,11 @@ defmodule Workpermit.Permits.ProtectiveEquipment do
     field  :foot_protection          , :boolean
     field  :head_protection          , :boolean
     field  :high_visibility_clothing , :boolean
-    field  :mask                     , :boolean
+    field  :dust_mask                     , :boolean
+    field  :protective_clothing      , :boolean
+    field  :protective_gloves        , :boolean
     field  :safety_harness           , :boolean
     field  :welding_mask             , :boolean
-    field  :protective_gloves        , :boolean
-    field  :protective_clothing      , :boolean
   end
 
   def changeset(protective_equipment, attrs \\ %{}) do
@@ -32,11 +32,11 @@ defmodule Workpermit.Permits.ProtectiveEquipment do
       :foot_protection,
       :head_protection,
       :high_visibility_clothing,
-      :mask,
+      :dust_mask,
+      :protective_clothing,
+      :protective_gloves,
       :safety_harness,
       :welding_mask,
-      :protective_gloves,
-      :protective_clothing,
     ])
     |> validate_required([])
   end
@@ -50,11 +50,11 @@ defmodule Workpermit.Permits.ProtectiveEquipment do
       :foot_protection,
       :head_protection,
       :high_visibility_clothing,
-      :mask,
+      :dust_mask,
+      :protective_clothing,
+      :protective_gloves,
       :safety_harness,
       :welding_mask,
-      :protective_gloves,
-      :protective_clothing,
     ]
   end
 end

@@ -10,8 +10,8 @@ defmodule Web.PermitView do
     |> Markdown.render
     |> raw
   end
-  def iso_image(img), do: img |> IsoSymbols.symbol_to_image_path
-  def iso_meaning(img), do: img |> IsoSymbols.symbol_to_sign_meaning
+  def iso_image(img), do: img |> IsoSymbols.to_image_path
+  def iso_meaning(img), do: img |> IsoSymbols.to_sign_meaning
 
   def checkbox(string) when is_bitstring(string), do: "□" <> " " <> string
   def checkbox(nil), do: "□"

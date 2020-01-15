@@ -39,7 +39,7 @@ defmodule Workpermit.IsoSymbols do
       M013: "Wear a face shield",
       M014: "Wear head protection",
       M015: "Wear high visibility clothing",
-      M016: "Wear a mask",
+      M016: "Wear a dust mask",
       M017: "Wear respiratory protection",
       M018: "Wear a safety harness",
       M019: "Wear a welding mask",
@@ -115,10 +115,10 @@ defmodule Workpermit.IsoSymbols do
       W039: "Falling Ice Spikes",
       A001: "Confined Space"
       }
-    sign[code] || "No sign with that symbol"
+    sign[code] || "No sign with that description"
   end
 
-  def symbol_to_iso_code_mapping() do
+  def to_iso_code_mapping() do
     %{
       emergency_exit_left: :E001,
       emergency_exit_right: :E002,
@@ -158,7 +158,7 @@ defmodule Workpermit.IsoSymbols do
       face_shield: :M013,
       head_protection: :M014,
       high_visibility_clothing: :M015,
-      mask: :M016,
+      dust_mask: :M016,
       respiratory_protection: :M017,
       safety_harness: :M018,
       welding_mask: :M019,
@@ -236,18 +236,20 @@ defmodule Workpermit.IsoSymbols do
       }
   end
 
-  def symbol_to_iso_code(symbol) do
+  def to_iso_code(protective_eq) when is_atom(protective_eq) do
     # input :falling_parts =>  :W039
-    symbol_to_iso_code_mapping()[symbol] || :A999
+    to_iso_code_mapping()[protective_eq] || :A999
   end
+  def to_iso_code(protective_eq), do: protective_eq |> String.to_existing_atom |> to_iso_code
 
-  def symbol_to_image_path(symbol, path \\ "/iso/") do
+  def to_image_path(protective_eq, path \\ "/iso/") do
     # input :falling_parts => IS0_111.svg
-    path <> "ISO_7010_#{symbol_to_iso_code(symbol)}.svg"
+    path <> "ISO_7010_#{to_iso_code(protective_eq)}.svg"
   end
 
-  def symbol_to_sign_meaning(symbol) do
+  def to_sign_meaning(protective_eq) when is_atom(protective_eq) do
     # input :falling_parts => "Faling Parts"
-    iso_code_meaning(symbol_to_iso_code(symbol))
+    protective_eq |> to_iso_code |> iso_code_meaning
   end
+  def to_sign_meaning(protective_eq), do: protective_eq |> String.to_existing_atom |> to_sign_meaning
 end

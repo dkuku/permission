@@ -1,17 +1,17 @@
-<div class="w-full max-w-6xl pt-16 mx-auto content-center flex-1 flex flex-wrap">
-<%= for iso <- Enum.sort(Map.keys(Workpermit.IsoSymbols.symbol_to_iso_code_mapping())) do %>
-<div class="max-w-xs rounded overflow-hidden shadow-lg m-4 bg-secondary-medium ">
-  <img class="w-full" src=" <%= Workpermit.IsoSymbols.symbol_to_image_path(iso) %> " alt="<%= iso %>">
+<div class="flex flex-wrap content-center flex-1 w-full max-w-6xl pt-16 mx-auto">
+<%= for iso <- Enum.sort(Map.keys(Workpermit.IsoSymbols.to_iso_code_mapping())) do %>
+<div class="max-w-xs m-4 overflow-hidden rounded shadow-lg bg-secondary-medium ">
+  <img class="w-full" src=" <%= Workpermit.IsoSymbols.to_image_path(iso) %> " alt="<%= iso %>">
   <div class="px-6 py-4">
-    <div class="font-bold text-xl mb-2">
+    <div class="mb-2 text-xl font-bold">
   <%= iso %>
     </div>
-    <p class="text-grey-darker text-base">
-  <%= Workpermit.IsoSymbols.symbol_to_sign_meaning(iso) %>
+    <p class="text-base text-grey-darker">
+  <%= Workpermit.IsoSymbols.to_sign_meaning(iso) %>
     </p>
   </div>
   <div class="px-6 py-4">
-    <!--span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker">#3</span2-->
+    <!--span class="inline-block px-3 py-1 text-sm font-semibold rounded-full bg-grey-lighter text-grey-darker">#3</span2-->
   </div>
 </div>
 <%end %>

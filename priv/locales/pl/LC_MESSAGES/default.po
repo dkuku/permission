@@ -256,11 +256,6 @@ msgstr ""
 msgid "Workpermit tracker"
 msgstr ""
 
-#: lib/web/templates/page/demo.html.eex:10
-#, elixir-format
-msgid "Workpermit.IsoSymbols.symbol_to_sign_meaning(iso)"
-msgstr ""
-
 #: lib/web/templates/page/index.html.eex:46
 #, elixir-format
 msgid "Writing the same permits every day"

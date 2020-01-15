@@ -5,23 +5,23 @@
     </div>
   <% end %>
 
-  <div id="category" class="tab block text-gray-darker">
-    <h2 class="c-h3 mb-8 ">
+  <div id="category" class="block tab text-gray-darker">
+    <h2 class="mb-8 c-h3 ">
       <%= gettext("Category") %>
     </h2>
 
     <%= label f, :category, class: "block mb-6 c-h5" %>
-      <span class="form-label block"><%= gettext("Category") %></span>
-      <div class="inline-block relative w-full">
+      <span class="block form-label"><%= gettext("Category") %></span>
+      <div class="relative inline-block w-full">
         <%= select f, :category, @categories, selected: @choosen_category.selected, class: "form-input w-full mt-1 block appearance-none" %>
-        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2">
-          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+          <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
         </div>
       </div>
       <%= error_tag f, :category %>
     <%= img_tag @choosen_category.image, id: "choosen_category_image" %>
     <%= label f, :number, class: "block my-6 c-h5" do %>
-      <span class="form-label block"><%= gettext("Number") %></span>
+      <span class="block form-label"><%= gettext("Number") %></span>
       <%= number_input f, :number, value: @choosen_category.next_number, class: "form-input w-full mt-1" %>
       <%= error_tag f, :number %>
     <% end %>
@@ -42,12 +42,12 @@
   </div>
 
   <div id="actors" class="tab text-gray-darker">
-    <h2 class="c-h4 mb-8 ">
+    <h2 class="mb-8 c-h4 ">
       <%= gettext("Actors") %>
     </h2>
     <div>
       <%= label f, :issuer_name, class: "block mb-6 c-h5" do %>
-        <span class="form-label block"><%= gettext("Issuer") %></span>
+        <span class="block form-label"><%= gettext("Issuer") %></span>
         <%= text_input f, :issuer_name, value: full_name(@current_user), class: "form-input w-full mt-1" %>
         <%= error_tag f, :issuer_name %>
       <% end %>
@@ -55,7 +55,7 @@
 
     <div>
       <%= label f, :performer_name, class: "block mb-6 c-h5" do %>
-      <span class="form-label block"><%= gettext("Performer") %></span>
+      <span class="block form-label"><%= gettext("Performer") %></span>
       <%= text_input f, :performer_name, class: "form-input w-full mt-1" %>
       <%= error_tag f, :performer_name %>
     <% end %>
@@ -63,7 +63,7 @@
 
     <div>
       <%= label f, :firewatch_name, class: "block mb-6 c-h5 hidden" do %>
-      <span class="form-label block"><%= gettext("Firewatch") %></span>
+      <span class="block form-label"><%= gettext("Firewatch") %></span>
       <%= text_input f, :firewatch_name, class: "form-input w-full mt-1" %>
       <%= error_tag f, :firewatch_name %>
     <% end %>
@@ -71,7 +71,7 @@
 
     <div>
       <%= label f, :controller_name, class: "block mb-6 c-h5 hidden" do %>
-      <span class="form-label block"><%= gettext("Controller") %></span>
+      <span class="block form-label"><%= gettext("Controller") %></span>
       <%= text_input f, :controller_name, class: "form-input w-full mt-1" %>
       <%= error_tag f, :controller_name %>
     <% end %>
@@ -79,11 +79,11 @@
   </div>
 
   <div id="time" class="tab text-gray-darker">
-    <h2 class="c-h4 mb-8 ">
+    <h2 class="mb-8 c-h4 ">
       <%= gettext("Time") %>
     </h2>
     <%= label f, :start_time, class: "block mb-6 c-h6" do %>
-      <span class="form-label block c-h5 mb-2"><%= gettext("Start Time") %></span>
+      <span class="block mb-2 form-label c-h5"><%= gettext("Start Time") %></span>
       <%= error_tag f, :start_time %>
       <div class="flex two four-500 six-800">
         <%= permit_datetime_select f, :start_time, class: "form-input w-full mt-1 c-h6" %>
@@ -91,7 +91,7 @@
     <% end %>
 
     <%= label f, :finish_time, class: "block mb-6 c-h6" do %>
-      <span class="form-label block c-h5 mb-2"><%= gettext("Finish Time") %></span>
+      <span class="block mb-2 form-label c-h5"><%= gettext("Finish Time") %></span>
       <%= error_tag f, :finish_time %>
       <div class="flex two four-500 six-800">
         <%= permit_datetime_select f, :finish_time, class: "form-input w-full mt-1" %>
@@ -99,7 +99,7 @@
     <% end %>
 
     <!--%= label f, :closed_time, class: "block mb-6 c-h5 text-gray-darker" do %>
-      <span class="form-label block"><-%= gettext("Closed Time") %></span>
+      <span class="block form-label"><-%= gettext("Closed Time") %></span>
       <-%= error_tag f, :closed_time %>
       <div class="flex two four-500 six-800">
         <-%= permit_datetime_select f, :closed_time, class: "form-input w-full mt-1" %>
@@ -108,36 +108,36 @@
   </div>
 
   <div id="pe" class="tab">
-    <h2 class="c-h4 mb-8 ">
+    <h2 class="mb-8 c-h4 ">
       <%= gettext("Protective Equipment") %>
     </h2>
-    <%= inputs_for f, :protective_equipment, fn p -> %>
+    <!-- %= inputs_for f, :protective_equipment, fn p -> %-->
       <ul>
         <%=  for pe <- @pe do %>
           <li>
-            <%= checkbox p, pe, class: "hidden" %>
-            <label for="<%= "#{:permit_protective_equipment_}#{pe}" %>">
-              <%= img_tag( Workpermit.IsoSymbols.symbol_to_image_path(pe)) %>
-              <!--%= Workpermit.IsoSymbols.symbol_to_sign_meaning(pe) %-->
+            <!--%= checkbox pe, class: "hidden" %-->
+            <!--label for="<!--%= "#{:permit_protective_equipment_}#{pe}" %>"-->
+              <%= img_tag( Workpermit.IsoSymbols.to_image_path(pe)) %>
+              <%= Workpermit.IsoSymbols.to_sign_meaning(pe) %>
             </label>
             <p>
             </p>
             <!--%= error_tag p, pe %-->
           </li>
         <% end %>
-      </li>
-    <% end %>
+      </ul>
+    <!--% end % -->
   </div>
 
   <div id="info" class="tab text-gray-darker">
-    <h2 class="c-h4 mb-8 ">
+    <h2 class="mb-8 c-h4 ">
       <%= gettext("Additional Info") %>
     </h2>
     <div>
       <%= label f, :precautions, class: "block mb-6" do %>
         <div  class="flex justify-between">
-          <span class="form-label block c-h5"><%= gettext("Precautions") %></span>
-          <p id="precautions_add_checkbox" class="bg-transparent text-small text-gray-darker py-1 px-2 border border-gray-dark rounded cursor-pointer ">Insert □</p>
+          <span class="block form-label c-h5"><%= gettext("Precautions") %></span>
+          <p id="precautions_add_checkbox" class="px-2 py-1 bg-transparent border rounded cursor-pointer text-small text-gray-darker border-gray-dark ">Insert □</p>
         </div>
       <%= textarea f, :precautions, value: {:safe, prec}, class: "form-input w-full mt-1 h-64" %>
       <%= error_tag f, :precautions %>
@@ -145,7 +145,7 @@
     </div>
     <div>
       <%= label f, :additional_info, class: "block mb-6" do %>
-      <span class="form-label block c-h5"><%= gettext("Additional Info") %></span>
+      <span class="block form-label c-h5"><%= gettext("Additional Info") %></span>
       <%= textarea f, :additional_info, class: "form-input w-full mt-1 h-32" %>
       <%= error_tag f, :additional_info %>
     <% end %>
@@ -159,11 +159,11 @@
   <div  class="flex justify-between">
     <button type="button"
             id="prevBtn"
-            class="bg-transparent hover:bg-primary-light text-primary-medium font-semibold hover:text-white py-2 px-4 border border-primary-medium hover:border-transparent rounded"
+            class="px-4 py-2 font-semibold bg-transparent border rounded hover:bg-primary-light text-primary-medium hover:text-white border-primary-medium hover:border-transparent"
             >Previous</button>
     <button type="button" 
             id="nextBtn"
-            class="bg-primary-medium hover:bg-primary-darker text-white font-bold py-2 px-4 rounded right-0"
+            class="right-0 px-4 py-2 font-bold text-white rounded bg-primary-medium hover:bg-primary-darker"
             >Next</button>
   </div>
 
