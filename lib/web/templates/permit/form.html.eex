@@ -111,22 +111,22 @@
     <h2 class="mb-8 c-h4 ">
       <%= gettext("Protective Equipment") %>
     </h2>
-    <!-- %= inputs_for f, :protective_equipment, fn p -> %-->
       <ul>
         <%=  for pe <- @pe do %>
           <li>
-            <!--%= checkbox pe, class: "hidden" %-->
-            <!--label for="<!--%= "#{:permit_protective_equipment_}#{pe}" %>"-->
+            <input type="checkbox" 
+              name="permit[protective_equipment][]"
+              value="<%= pe %>"
+              id="pe_<%= pe %>"
+              class=""
+            >
+            <label for="pe_<%= pe %>">
               <%= img_tag( Workpermit.IsoSymbols.to_image_path(pe)) %>
               <%= Workpermit.IsoSymbols.to_sign_meaning(pe) %>
             </label>
-            <p>
-            </p>
-            <!--%= error_tag p, pe %-->
           </li>
         <% end %>
       </ul>
-    <!--% end % -->
   </div>
 
   <div id="info" class="tab text-gray-darker">

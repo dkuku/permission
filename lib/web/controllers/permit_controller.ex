@@ -29,7 +29,6 @@ defmodule Web.PermitController do
   end
 
   def create(conn, %{"permit" => permit_params}, user) do
-    IO.inspect(permit_params)
     with{:ok, permit} <- Permits.create_permit(user, permit_params) do
         conn
         |> put_flash(:info, gettext("Permit created successfully"))
