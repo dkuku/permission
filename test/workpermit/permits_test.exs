@@ -28,7 +28,7 @@ defmodule Workpermit.PermitsTest do
      performer_name: "Performer Name",
      firewatch_name: "Firewatch Name",
      issuer: build(:user),
-     protective_equipment: %{"mask"  => "true"},
+     protective_equipment: ~w(dust_mask),
   }
 
   describe "permits" do

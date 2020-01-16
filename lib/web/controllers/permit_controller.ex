@@ -7,8 +7,8 @@ defmodule Web.PermitController do
   alias Workpermit.Permits
   alias Workpermit.Permits.{Permit, ProtectiveEquipment}
   require Ecto.Query
+
   def index(conn, params, _user) do
-    IO.inspect(params)
     result = Permit 
              |> Turbo.Ecto.turbo(params, [entry_name: "permits"])
              #|> Ecto.Query.order_by(desc: :id)

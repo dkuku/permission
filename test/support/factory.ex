@@ -12,13 +12,6 @@ defmodule Workpermit.Factory do
       password: "12345asd",
     }
   end
-
-  def protective_equipment_factory do
-    %Workpermit.Permits.ProtectiveEquipment{
-      mask: :true,
-    }
-  end
-
   def permit_factory do
     %Workpermit.Permits.Permit{
    category: 2,
@@ -31,7 +24,7 @@ defmodule Workpermit.Factory do
    controller_name: "Controller Name",
    firewatch_name: "Firewatch Name",
    performer_name: "Performer Name",
-   protective_equipment: build(:protective_equipment),
+   protective_equipment: ~w(dust_mask),
    precautions: "# precautions",
    additional_info: "Additional info",
     }
