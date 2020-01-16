@@ -12,7 +12,7 @@ use Mix.Config
 config :workpermit, Web.Endpoint,
   load_from_system_env: true,
   #http: [port: System.get_env("PORT")],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
   server: true, # Without this line, your app will not start the web server!
   secret_key_base: System.get_env("SECRET_KEY_BASE"),
   url: [host: System.get_env("WEB_HOST"), port: System.get_env("PORT")]
