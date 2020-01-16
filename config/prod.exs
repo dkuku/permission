@@ -11,13 +11,11 @@ use Mix.Config
 # before starting your production server.
 config :workpermit, Web.Endpoint,
   load_from_system_env: true,
-  http: [port: System.get_env("PORT")],
+  #http: [port: System.get_env("PORT")],
   cache_static_manifest: "priv/static/cache_manifest.json"
-
-config :workpermit, Web.Endpoint,
   server: true, # Without this line, your app will not start the web server!
   secret_key_base: System.get_env("SECRET_KEY_BASE"),
-  url: [host: System.get_env("APP_NAME") <> ".gigalixirapp.com", port: 443]
+  url: [host: System.get_env("WEB_HOST"), port: System.get_env("PORT")]
 
 # Do not print debug messages in production
 config :logger, level: :info
