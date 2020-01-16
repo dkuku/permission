@@ -11,11 +11,11 @@ use Mix.Config
 # before starting your production server.
 config :workpermit, Web.Endpoint,
   load_from_system_env: true,
-  #http: [port: System.get_env("PORT")],
+  http: [port: String.to_integer(System.get_env("PORT"))],
   cache_static_manifest: "priv/static/cache_manifest.json",
   server: true, # Without this line, your app will not start the web server!
   secret_key_base: System.get_env("SECRET_KEY_BASE"),
-  url: [host: System.get_env("WEB_HOST"), port: System.get_env("PORT")]
+  url: [host: System.get_env("WEB_HOST"), port: 80] #System.get_env("PORT")]
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -24,8 +24,9 @@ config :workpermit, Workpermit.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: System.get_env("DATABASE_URL"),
 #  database: "",
-  ssl: true,
-  pool_size: 2
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "20"),
+  pool_size: 20,
+  ssl: true
 
 
 config :sentry,
