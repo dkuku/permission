@@ -32,7 +32,7 @@ Enum.each(1..100, fn(id) ->
     protective_equipment: [
       :safety_harness,
       :welding_mask,
-      ;protective_gloves,
+      :protective_gloves,
     ],
     precautions: """
               # Harundine more novercae
