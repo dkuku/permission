@@ -20,20 +20,20 @@ Enum.each(1..100, fn(id) ->
   permit = Workpermit.Permits.create_permit(%{
     category: rem(id, 5),
     number: id,
-    start_time: ~N[2019-10-21 06:00:00],
-    closed_time: ~N[2019-10-21 12:00:00],
-    finish_time: ~N[2019-10-21 14:00:00],
+    start_time: ~N[2020-01-21 06:00:00],
+    closed_time: ~N[2020-01-21 12:00:00],
+    finish_time: ~N[2020-01-21 14:00:00],
     issuer: user,
     issuer_id: user.id,
     issuer_name: "Issuer Name",
     controller_name: "Controller Name",
     firewatch_name: "Firewatch Name",
     performer_name: "Performer Name",
-    protective_equipment: %{
-      safety_harness: :true,
-      welding_mask: :true,
-      protective_gloves: :true,
-    },
+    protective_equipment: [
+      :safety_harness,
+      :welding_mask,
+      ;protective_gloves,
+    ],
     precautions: """
               # Harundine more novercae
 
