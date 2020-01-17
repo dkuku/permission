@@ -16,4 +16,9 @@
     <!-- loads per page html - check /views/permit.view.eex  or add template -->
     <%= render_existing @view_module, "permits." <> @view_template, assigns %>
   </body>
+   <style>
+  body {
+    background-image: url('/images/funky-lines.png');
+  }
+  </style> 
 </html>
