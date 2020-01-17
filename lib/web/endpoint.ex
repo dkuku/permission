@@ -1,5 +1,6 @@
 defmodule Web.Endpoint do
   use Phoenix.Endpoint, otp_app: :workpermit
+  use Sentry.Phoenix.Endpoint
 
   socket "/socket", Web.UserSocket,
     websocket: true,
