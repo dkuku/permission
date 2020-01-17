@@ -2,8 +2,7 @@ defmodule Web.PermitControllerTest do
   use Web.ConnCase
 
   alias Workpermit.Permits
-  alias Workpermit.Accounts.User
-  alias Workpermit.Repo
+  alias Workpermit.Accounts
   import Workpermit.Factory
 
   @create_attrs %{
@@ -44,18 +43,28 @@ defmodule Web.PermitControllerTest do
     permit
   end
 
-  setup %{conn: conn} do
-    user =  User.build_user(@valid_user)
-            |> Repo.insert!
-    conn_with_user = assign(conn, :user, user)
-    IO.inspect(conn_with_user)
-    {:ok, %{conn: conn_with_user}}
+  @session Plug.Session.init(
+    store: :cookie,
+    key: "_app",
+    encryption_salt: "yadayada",
+    signing_salt: "yadayada"
+  )
+
+  setup do
+    {:ok, user} = Accounts.create_user(@valid_user)
+    conn =
+      Plug.Test.conn(:get, "/")
+      |> Map.put(:secret_key_base, String.duplicate("abcdefgh", 8))
+      |> Plug.Session.call(@session)
+      |> Plug.Conn.fetch_session()
+    {:ok, conn: conn, user: user}
   end
 
   describe "index" do
-    test "lists all permits", %{conn: conn} do
+    test "lists all permits", %{conn: conn, user: user} do
+      conn = Plug.Conn.put_session(conn, :user_id, user.id)
       conn = get(conn, Routes.permit_path(conn, :index))
-      IO.inspect(conn)
+    assert get_session(conn, :user_id) == 2
       assert html_response(conn, 200) =~ "Permits List"
     end
   end

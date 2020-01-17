@@ -19,18 +19,6 @@ defmodule Web.UserControllerTest do
   }
   @invalid_attrs %{email: nil, password: nil, first_name: nil, last_name: nil, phone: nil}
 
-  def fixture(:user) do
-    {:ok, user} = Accounts.create_user(@create_attrs)
-    user
-  end
-
-  describe "index" do
-    test "lists all users", %{conn: conn} do
-      conn = get(conn, Routes.user_path(conn, :index))
-      assert html_response(conn, 200) =~ "User Profiles"
-    end
-  end
-
   describe "new user" do
     test "renders form", %{conn: conn} do
       conn = get(conn, Routes.user_path(conn, :new))
@@ -42,11 +30,8 @@ defmodule Web.UserControllerTest do
     test "redirects to show when data is valid", %{conn: conn} do
       conn = post(conn, Routes.user_path(conn, :create), user: @create_attrs)
 
-      assert %{id: id} = redirected_params(conn)
-      assert redirected_to(conn) == Routes.user_path(conn, :show, id)
-
-      conn = get(conn, Routes.user_path(conn, :show, id))
-      assert html_response(conn, 200) =~ "User Profile"
+      assert redirected_to(conn) == Routes.permit_path(conn, :index)
+      assert html_response(conn, 302) =~ "permits"
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
@@ -81,6 +66,13 @@ defmodule Web.UserControllerTest do
     end
   end
 
+  describe "index" do
+    test "lists all users", %{conn: conn} do
+      conn = get(conn, Routes.user_path(conn, :index))
+      assert html_response(conn, 200) =~ "User Profiles"
+    end
+  end
+
   describe "delete user" do
     setup [:create_user]
 
@@ -92,6 +84,11 @@ defmodule Web.UserControllerTest do
         get(conn, Routes.user_path(conn, :show, user))
       end
     end
+  end
+
+  def fixture(:user) do
+    {:ok, user} = Accounts.create_user(@create_attrs)
+    user
   end
 
   defp create_user(_) do

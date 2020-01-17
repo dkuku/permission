@@ -2,7 +2,7 @@ defmodule Web.Plugs.LoadUserTest do
   use Web.ConnCase
   alias Workpermit.Accounts
 
-  @valid_attrs %{
+  @valid_user %{
     "first_name" => "John",
     "last_name" => "Smith",
     "email" => "john@example.com",
@@ -12,10 +12,10 @@ defmodule Web.Plugs.LoadUserTest do
 
   test "fetch customer from session on subsequent visit" do
     # Create a new customer
-    {:ok, user} = Accounts.create_user(@valid_attrs)
+    {:ok, user} = Accounts.create_user(@valid_user)
 
     # Build a new conn by posting login data to "/sign-in" path
-    conn = post build_conn(), "/sign-in", %{"session" => @valid_attrs}
+    conn = post build_conn(), "/sign-in", %{"session" => @valid_user}
 
     # We reuse the same conn now instead of building a new one
     conn = get(conn, "/")

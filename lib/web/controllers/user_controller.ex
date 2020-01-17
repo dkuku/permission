@@ -18,7 +18,7 @@ defmodule Web.UserController do
     case Accounts.create_user(user_params) do
       {:ok, user} ->
         conn
-        |> put_session(:current_user_id, user.id)
+        |> put_session(:user_id, user.id)
         |> assign(:user, user)
         |> configure_session(renew: true)
         |> put_flash(:info, "User created successfully.")
