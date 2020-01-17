@@ -1,6 +1,6 @@
 defmodule Seed do
   def random_protective_equipment_list do
-    1..5 |> Enum.map(&random_protective_equipment/1)
+    1..:rand.uniform(6) |> Enum.map(&random_protective_equipment/1)
   end
 
   def random_protective_equipment(_) do
@@ -20,7 +20,7 @@ defmodule Seed do
   end
 
   def seed do
-    Enum.each(1..6, fn(id) ->
+    Enum.each(1..30, fn(id) ->
       {:ok, user} = Workpermit.Accounts.create_user(%{
         email: Faker.Internet.email(),
         password: "qweasd",
@@ -28,15 +28,15 @@ defmodule Seed do
         last_name: Faker.Name.last_name(),
         phone: Faker.Phone.EnGb.number()
       })
-      seed_permit(user, id, 1)
-      seed_permit(user, id, 2)
-      seed_permit(user, id, 3)
+      seed_permit(user, id)
+      seed_permit(user, id)
+      seed_permit(user, id)
     end)
   end
 
-  def seed_permit(user, id, cat) do
+  def seed_permit(user, id) do
     permit = Workpermit.Permits.create_permit(user, %{
-      category: cat,
+      category: :rand.uniform(7) - 1,
       number: id,
       start_time: ~N[2020-01-21 06:00:00],
       closed_time: ~N[2020-01-21 12:00:00],
@@ -80,7 +80,6 @@ defmodule Seed do
                     - Gradu ipsius per fuerat part
                     """
                     })
-  IO.inspect(permit)
   end
 end
 Seed.seed()
