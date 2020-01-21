@@ -17,6 +17,7 @@ defmodule Workpermit.Users.User do
   def changeset(user, attrs) do
     user
     |> pow_changeset(attrs)
+    |> Ecto.Changeset.validate_confirmation(:password)
     |> Ecto.Changeset.cast(attrs, [:first_name, :last_name, :phone])
     |> Ecto.Changeset.validate_required([:first_name, :last_name, :phone])
   end

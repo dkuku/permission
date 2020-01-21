@@ -7,15 +7,18 @@ defmodule Workpermit.UsersTest do
     alias Workpermit.Users.User
 
     @valid_attrs %{
-      email: "some email",
+      email: "some@email.co",
       password: "some password_hash",
+      password_confirmation: "some password_hash",
       first_name: "some first_name",
       last_name: "some last_name",
       phone: "077123456"
     }
     @update_attrs %{
-      email: "some updated email",
-      password: "some updated password_hash",
+      email: "some@email.com",
+      password: "password_hash",
+      password_confirmation: "password_hash",
+      current_password: "some password_hash",
       first_name: "some updated first_name",
       last_name: "some updated last_name",
       phone: "01111111111"
@@ -47,7 +50,7 @@ defmodule Workpermit.UsersTest do
 
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Users.create_user(@valid_attrs)
-      assert user.email == "some email"
+      assert user.email == "some@email.co"
       assert user.password_hash != "some password_hash"
       assert user.password_hash =~ "$argon2"
       assert String.length(user.password_hash) == 98
@@ -63,8 +66,8 @@ defmodule Workpermit.UsersTest do
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
       assert {:ok, %User{} = user} = Users.update_user(user, @update_attrs)
-      assert user.email == "some updated email"
-      assert user.password_hash != "some updated password_hash"
+      assert user.email == "some@email.com"
+      assert user.password_hash != "password_hash"
       assert user.password_hash =~ "$argon2"
       assert String.length(user.password_hash) == 98
       assert user.first_name == "some updated first_name"
@@ -102,11 +105,12 @@ defmodule Workpermit.UsersTest do
 
   test "get_user" do
     valid_attrs = %{
-      "last_name" => "John",
-      "first_name" => "John",
-      "email" => "john@example.com",
-      "password" => "secret",
-      "phone" => "1111"
+      last_name: "John",
+      first_name: "John",
+      email: "john@example.com",
+      password: "11111secret",
+      password_confirmation: "11111secret",
+      phone: "1111"
     }
 
     {:ok, user1} = Users.create_user(valid_attrs)

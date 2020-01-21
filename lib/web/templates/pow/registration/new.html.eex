@@ -45,11 +45,11 @@
   <%= password_input f, :password, class: "form-input w-full mt-1" %>
   <% end %>
   <%= error_tag f, :password %>
-  <%= label f, :confirm_password, class: "block mb-6 c-h5 text-gray-darker mb-6" do  %>
+  <%= label f, :password_confirmation, class: "block mb-6 c-h5 text-gray-darker mb-6" do  %>
     <span class="block form-label"><%= gettext("Confirm Password") %></span>
-  <%= password_input f, :confirm_password, class: "form-input w-full mt-1" %>
+  <%= password_input f, :password_confirmation, class: "form-input w-full mt-1" %>
   <% end %>
-  <%= error_tag f, :confirm_password %>
+  <%= error_tag f, :password_confirmation %>
 
   <div class="flex justify-between">
     <%= link gettext("Sign in"), to: Routes.pow_session_path(@conn, :new), class: "bg-transparent hover:bg-primary-light text-primary-medium font-semibold hover:text-white py-2 px-4 border border-primary-medium hover:border-transparent rounded" %>

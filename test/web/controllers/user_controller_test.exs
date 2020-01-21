@@ -4,15 +4,17 @@ defmodule Web.UserControllerTest do
   alias Workpermit.Users
 
   @create_attrs %{
-    email: "some email",
+    email: "some@email.co",
     password: "some password_hash",
+    password_confirmation: "some password_hash",
     first_name: "some first_name",
     last_name: "some last_name",
     phone: "some phone"
   }
   @update_attrs %{
-    email: "some updated email",
-    password: "some updated password_hash",
+    email: "some@email.co",
+    password: "password_hash",
+    password_confirmation: "password_hash",
     first_name: "some updated first_name",
     last_name: "some updated last_name",
     phone: "some updated phone"

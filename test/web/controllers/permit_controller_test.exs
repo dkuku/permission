@@ -31,11 +31,12 @@ defmodule Web.PermitControllerTest do
   }
 
   @valid_user %{
-    "first_name" => "John",
-    "last_name" => "Smith",
-    "email" => "john@example.com",
-    "password" => "secret",
-    "phone" => "1111"
+    first_name: "John",
+    last_name: "Smith",
+    email: "john@example.com",
+    password: "secret12",
+    password_confirmation: "secret12",
+    phone: "1111"
   }
 
   def fixture(:permit) do
