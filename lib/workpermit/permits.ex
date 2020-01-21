@@ -9,7 +9,7 @@ defmodule Workpermit.Permits do
 
   alias Workpermit.Permits.Permit
   alias Workpermit.Permits.ProtectiveEquipment
-  alias Workpermit.Accounts
+  alias Workpermit.Users
   @doc """
   Returns the list of permits.
 
@@ -59,7 +59,7 @@ defmodule Workpermit.Permits do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_permit(%Accounts.User{} = user, attrs \\ %{}) do
+  def create_permit(%Users.User{} = user, attrs \\ %{}) do
     %Permit{}
     |> Permit.changeset(attrs)
     |> Ecto.Changeset.put_assoc(:issuer, user)
@@ -191,12 +191,11 @@ defmodule Workpermit.Permits do
     "Is voltage detection instrument required?",
     ]
   end
-  
+
   def default_coshh do
     [
     "Has COSHH data been supplied with substances?",
     "Have COSHH precautions been identified and implemented?",
     ]
   end
-
 end

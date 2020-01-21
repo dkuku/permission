@@ -1,0 +1,59 @@
+<h1>Register</h1>
+
+<%= form_for @changeset, @action, [as: :user], fn f -> %>
+
+<% end %>
+
+
+
+<div class="content-center flex-1 w-full max-w-lg pt-16 mx-auto">
+<h1 class="p-5 c-h3 text-gray-darker"><%= gettext("Sign Up") %></h1>
+
+<%= form_for @changeset, @action, [as: :user, class: "bg-white w-full shadow-md rounded px-8 pt-6 pb-8 mb-4"], fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p><%= gettext("Oops, something went wrong! Please check the errors below") %></p>
+    </div>
+  <% end %>
+
+  <%= label f, Pow.Ecto.Schema.user_id_field(@changeset), class: "block mb-6 c-h5 text-gray-darker" do %>
+    <span class="block form-label"><%= gettext("Email") %></span>
+  <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset), class: "form-input w-full mt-1"  %>
+  <% end %>
+  <%= error_tag f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+
+  <%= label f, :first_name, class: "block mb-6 c-h5 text-gray-darker mb-6" do %>
+    <span class="block form-label"><%= gettext("First name") %></span>
+  <%= text_input f, :first_name, class: "form-input w-full mt-1" %>
+  <% end %>
+  <%= error_tag f, :first_name %>
+
+  <%= label f, :last_name, class: "block mb-6 c-h5 text-gray-darker mb-6" do %>
+    <span class="block form-label"><%= gettext("Last name") %></span>
+  <%= text_input f, :last_name, class: "form-input w-full mt-1"  %>
+  <% end %>
+  <%= error_tag f, :last_name %>
+
+  <%= label f, :phone, class: "block mb-6 c-h5 text-gray-darker mb-6" do  %>
+    <span class="block form-label"><%= gettext("Phone") %></span>
+  <%= text_input f, :phone, class: "form-input w-full mt-1"  %>
+  <% end %>
+  <%= error_tag f, :phone %>
+
+  <%= label f, :password, class: "block mb-6 c-h5 text-gray-darker mb-6" do  %>
+    <span class="block form-label"><%= gettext("Password") %></span>
+  <%= password_input f, :password, class: "form-input w-full mt-1" %>
+  <% end %>
+  <%= error_tag f, :password %>
+  <%= label f, :confirm_password, class: "block mb-6 c-h5 text-gray-darker mb-6" do  %>
+    <span class="block form-label"><%= gettext("Confirm Password") %></span>
+  <%= password_input f, :confirm_password, class: "form-input w-full mt-1" %>
+  <% end %>
+  <%= error_tag f, :confirm_password %>
+
+  <div class="flex justify-between">
+    <%= link gettext("Sign in"), to: Routes.pow_session_path(@conn, :new), class: "bg-transparent hover:bg-primary-light text-primary-medium font-semibold hover:text-white py-2 px-4 border border-primary-medium hover:border-transparent rounded" %>
+    <%= submit gettext("Save"), class: "bg-primary-medium hover:bg-primary-darker text-white font-bold py-2 px-4 rounded" %>
+  </div>
+<% end %>
+</div>

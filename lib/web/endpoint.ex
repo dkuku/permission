@@ -45,5 +45,7 @@ defmodule Web.Endpoint do
     key: "_workpermit_key",
     signing_salt: "W5+bWvVy"
 
+  plug Pow.Plug.Session, otp_app: :workpermit
+
   plug Web.Router
 end

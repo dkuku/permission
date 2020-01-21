@@ -1,18 +1,18 @@
 defmodule Web.UserControllerTest do
   use Web.ConnCase
 
-  alias Workpermit.Accounts
+  alias Workpermit.Users
 
   @create_attrs %{
     email: "some email",
-    password: "some encrypted_password",
+    password: "some password_hash",
     first_name: "some first_name",
     last_name: "some last_name",
     phone: "some phone"
   }
   @update_attrs %{
     email: "some updated email",
-    password: "some updated encrypted_password",
+    password: "some updated password_hash",
     first_name: "some updated first_name",
     last_name: "some updated last_name",
     phone: "some updated phone"
@@ -87,7 +87,7 @@ defmodule Web.UserControllerTest do
   end
 
   def fixture(:user) do
-    {:ok, user} = Accounts.create_user(@create_attrs)
+    {:ok, user} = Users.create_user(@create_attrs)
     user
   end
 

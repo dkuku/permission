@@ -1,5 +1,6 @@
 defmodule Web.Router do
   use Web, :router
+  use Pow.Phoenix.Router
   use Plug.ErrorHandler
   use Sentry.Plug
 
@@ -10,21 +11,30 @@ defmodule Web.Router do
     plug Phoenix.LiveView.Flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug Web.Plugs.LoadUser
+#    plug Web.Plugs.LoadUser
     plug Web.Plugs.Locale
+  end
 
+  pipeline :protected do
+    plug Pow.Plug.RequireAuthenticated,
+      error_handler: Pow.Phoenix.PlugErrorHandler
   end
 
   pipeline :api do
     plug :accepts, ["json"]
   end
 
-  scope "/", Web do
+  scope "/" do
     pipe_through :browser
 
-    get "/", PageController, :index
-    get "/demo", PageController, :demo
+    get "/", Web.PageController, :index
+    get "/demo", Web.PageController, :demo
 
+    pow_routes()
+  end
+
+  scope "/", Web do
+    pipe_through [:browser, :protected]
     # User registration and sessions
     resources "/users", UserController
     get "/sign-in", SessionController, :new

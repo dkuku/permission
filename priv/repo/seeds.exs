@@ -21,9 +21,10 @@ defmodule Seed do
 
   def seed do
     Enum.each(1..30, fn(id) ->
-      {:ok, user} = Workpermit.Accounts.create_user(%{
+      {:ok, user} = Workpermit.Users.create_user(%{
         email: Faker.Internet.email(),
-        password: "qweasd",
+        password: "qweasdzxc",
+        confirm_password: "qweasdzxc",
         first_name: Faker.Name.first_name(),
         last_name: Faker.Name.last_name(),
         phone: Faker.Phone.EnGb.number()

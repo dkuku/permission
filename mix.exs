@@ -55,6 +55,7 @@ defmodule Workpermit.MixProject do
       {:phoenix_pubsub, "~> 1.1"},
       {:plug_cowboy, "~> 2.0"},
       {:postgrex, ">= 0.0.0"},
+      {:pow, "~> 1.0.16"},
       {:timex, "~> 3.5"},
       {:turbo_ecto, "~> 0.4.1"},
       {:turbo_html, github: "dkuku/turbo_html", ref: "b515e2e"},

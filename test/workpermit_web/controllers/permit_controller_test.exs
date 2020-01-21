@@ -2,7 +2,7 @@ defmodule Web.PermitControllerTest do
   use Web.ConnCase
 
   alias Workpermit.Permits
-  alias Workpermit.Accounts
+  alias Workpermit.Users
   import Workpermit.Factory
 
   @create_attrs %{
@@ -51,26 +51,34 @@ defmodule Web.PermitControllerTest do
   )
 
   setup do
-    {:ok, user} = Accounts.create_user(@valid_user)
+    {:ok, user} = Users.create_user(@valid_user)
     conn =
       Plug.Test.conn(:get, "/")
       |> Map.put(:secret_key_base, String.duplicate("abcdefgh", 8))
       |> Plug.Session.call(@session)
       |> Plug.Conn.fetch_session()
-    {:ok, conn: conn, user: user}
+      |> assign(:user, user)
+      |> put_session(:user_id, user.id)
+      |> configure_session(renew: true)
+    [conn: conn, user: user]
   end
 
   describe "index" do
+    # test "lists all permits", context do
+    #  IO.inspect(context)
     test "lists all permits", %{conn: conn, user: user} do
-      conn = Plug.Conn.put_session(conn, :user_id, user.id)
+    IO.inspect(conn.private)
+    IO.inspect(conn.assigns)
       conn = get(conn, Routes.permit_path(conn, :index))
-    assert get_session(conn, :user_id) == 2
+      assert get_session(conn, :user_id) == user.id
       assert html_response(conn, 200) =~ "Permits List"
     end
   end
 
   describe "new permit" do
     test "renders form", %{conn: conn} do
+    IO.inspect(conn.private)
+    IO.inspect(conn.assigns)
       conn = get(conn, Routes.permit_path(conn, :new))
       assert html_response(conn, 200) =~ "Create permit"
     end
@@ -79,6 +87,8 @@ defmodule Web.PermitControllerTest do
   describe "create permit" do
     #TODO - add nested form for protective equipment
     test "redirects to show when data is valid", %{conn: conn} do
+    IO.inspect(conn.private)
+    IO.inspect(conn.assigns)
       conn = post(conn, Routes.permit_path(conn, :create), permit: @create_attrs)
 
       assert %{id: id} = redirected_params(conn)
@@ -89,6 +99,7 @@ defmodule Web.PermitControllerTest do
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
+    IO.inspect(conn.private)
       conn = post(conn, Routes.permit_path(conn, :create), permit: @invalid_attrs)
       assert html_response(conn, 200) =~ "Create permit"
     end
@@ -97,5 +108,10 @@ defmodule Web.PermitControllerTest do
   defp create_permit(_) do
     permit = fixture(:permit)
     {:ok, permit: permit}
+  end
+
+  defp create_user(_) do
+    user = fixture(:user)
+    {:ok, user: user}
   end
 end

@@ -4,7 +4,7 @@ defmodule Workpermit.Factory do
 
 
   def user_factory do
-    %Workpermit.Accounts.User{
+    %Workpermit.Users.User{
       first_name: "Jane",
       last_name: "Smith",
       email: sequence(:email, &"email-#{&1}@example.com"),

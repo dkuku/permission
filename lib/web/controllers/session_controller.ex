@@ -1,13 +1,13 @@
 defmodule Web.SessionController do
   use Web, :controller
-  alias Workpermit.Accounts
+  alias Workpermit.Users
 
   def new(conn, _params) do
     render(conn, "new.html")
   end
 
   def create(conn, %{"session" => auth_params}) do
-    case Accounts.get_by_credentials(auth_params) do
+    case Users.get_by_credentials(auth_params) do
       :error ->
         conn
         |> put_flash(:info, gettext("There was a problem with your username/password"))

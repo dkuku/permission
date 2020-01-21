@@ -1,8 +1,8 @@
 defmodule Web.PermitController do
   use Web, :controller
   action_fallback(Web.FallbackController)
-  #plug :authenticate when action in [:index, :new, :create, :show]
-  plug :authenticate when action  not in [:select_category]
+  plug :authenticate when action in [:index, :new, :create, :show]
+  #plug :authenticate when action  not in [:select_category]
 
   alias Workpermit.Permits
   alias Workpermit.Permits.{Permit, ProtectiveEquipment}
@@ -48,9 +48,11 @@ defmodule Web.PermitController do
   end
 
   defp authenticate(conn, _opts) do
-    if conn.assigns.user do
+    if conn.assigns.current_user do
+      IO.puts("auth")
       conn
     else
+      IO.puts("unauth")
       conn
       |> put_flash(:error, gettext("You must be logged in to access this page"))
       |> redirect(to: Routes.page_path(conn, :index))
@@ -59,7 +61,7 @@ defmodule Web.PermitController do
   end
 
   def action(conn, _) do
-    args = [conn, conn.params, conn.assigns.user]
+    args = [conn, conn.params, conn.assigns.current_user]
     apply(__MODULE__, action_name(conn), args)
   end
 end

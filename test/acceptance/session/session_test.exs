@@ -7,7 +7,7 @@ defmodule Web.Acceptance.SessionTest do
   setup do
     ## GIVEN ##
     # There is a valid registered user
-    alias Workpermit.Accounts
+    alias Workpermit.Users
 
     valid_attrs = %{
       "first_name" => "John",
@@ -17,7 +17,7 @@ defmodule Web.Acceptance.SessionTest do
       "phone" => "1111"
     }
 
-    {:ok, _} = Accounts.create_user(valid_attrs)
+    {:ok, _} = Users.create_user(valid_attrs)
     :ok
   end
 

@@ -1,21 +1,21 @@
-defmodule Workpermit.AccountsTest do
+defmodule Workpermit.UsersTest do
   use Workpermit.DataCase
 
-  alias Workpermit.Accounts
+  alias Workpermit.Users
 
   describe "users" do
-    alias Workpermit.Accounts.User
+    alias Workpermit.Users.User
 
     @valid_attrs %{
       email: "some email",
-      password: "some encrypted_password",
+      password: "some password_hash",
       first_name: "some first_name",
       last_name: "some last_name",
       phone: "077123456"
     }
     @update_attrs %{
       email: "some updated email",
-      password: "some updated encrypted_password",
+      password: "some updated password_hash",
       first_name: "some updated first_name",
       last_name: "some updated last_name",
       phone: "01111111111"
@@ -26,7 +26,7 @@ defmodule Workpermit.AccountsTest do
       {:ok, user} =
         attrs
         |> Enum.into(@valid_attrs)
-        |> Accounts.create_user()
+        |> Users.create_user()
 
       user
       |> Map.drop([:password])
@@ -35,38 +35,38 @@ defmodule Workpermit.AccountsTest do
 
     test "list_users/0 returns all users" do
       user = user_fixture()
-      user_list = Accounts.list_users()
+      user_list = Users.list_users()
       assert user in user_list
       assert length(user_list) > 0
     end
 
     test "get_user!/1 returns the user with given id" do
       user = user_fixture()
-      assert Accounts.get_user!(user.id) == user
+      assert Users.get_user!(user.id) == user
     end
 
     test "create_user/1 with valid data creates a user" do
-      assert {:ok, %User{} = user} = Accounts.create_user(@valid_attrs)
+      assert {:ok, %User{} = user} = Users.create_user(@valid_attrs)
       assert user.email == "some email"
-      assert user.encrypted_password != "some encrypted_password"
-      assert user.encrypted_password =~ "$argon2"
-      assert String.length(user.encrypted_password) == 98
+      assert user.password_hash != "some password_hash"
+      assert user.password_hash =~ "$argon2"
+      assert String.length(user.password_hash) == 98
       assert user.first_name == "some first_name"
       assert user.last_name == "some last_name"
       assert user.phone == "077123456"
     end
 
     test "create_user/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Accounts.create_user(@invalid_attrs)
+      assert {:error, %Ecto.Changeset{}} = Users.create_user(@invalid_attrs)
     end
 
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
-      assert {:ok, %User{} = user} = Accounts.update_user(user, @update_attrs)
+      assert {:ok, %User{} = user} = Users.update_user(user, @update_attrs)
       assert user.email == "some updated email"
-      assert user.encrypted_password != "some updated encrypted_password"
-      assert user.encrypted_password =~ "$argon2"
-      assert String.length(user.encrypted_password) == 98
+      assert user.password_hash != "some updated password_hash"
+      assert user.password_hash =~ "$argon2"
+      assert String.length(user.password_hash) == 98
       assert user.first_name == "some updated first_name"
       assert user.last_name == "some updated last_name"
       assert user.phone == "01111111111"
@@ -74,29 +74,29 @@ defmodule Workpermit.AccountsTest do
 
     test "update_user/2 with invalid data returns error changeset" do
       user = user_fixture()
-      assert {:error, %Ecto.Changeset{}} = Accounts.update_user(user, @invalid_attrs)
-      assert user == Accounts.get_user!(user.id)
+      assert {:error, %Ecto.Changeset{}} = Users.update_user(user, @invalid_attrs)
+      assert user == Users.get_user!(user.id)
     end
 
     test "delete_user/1 deletes the user" do
       user = user_fixture()
-      assert {:ok, %User{}} = Accounts.delete_user(user)
-      assert_raise Ecto.NoResultsError, fn -> Accounts.get_user!(user.id) end
+      assert {:ok, %User{}} = Users.delete_user(user)
+      assert_raise Ecto.NoResultsError, fn -> Users.get_user!(user.id) end
     end
 
     test "change_user/1 returns a user changeset" do
       user = user_fixture()
-      assert %Ecto.Changeset{} = Accounts.change_user(user)
+      assert %Ecto.Changeset{} = Users.change_user(user)
     end
   end
 
   test "build_user/0 returns a user changeset" do
-    assert %Ecto.Changeset{} = Accounts.build_user()
+    assert %Ecto.Changeset{} = Users.build_user()
   end
 
   test "build_user/1 returns a user changeset with values applied" do
     attrs = %{"name" => "John"}
-    changeset = Accounts.build_user(attrs)
+    changeset = Users.build_user(attrs)
     assert changeset.params == attrs
   end
 
@@ -109,8 +109,8 @@ defmodule Workpermit.AccountsTest do
       "phone" => "1111"
     }
 
-    {:ok, user1} = Accounts.create_user(valid_attrs)
-    user2 = Accounts.get_by_credentials(valid_attrs)
+    {:ok, user1} = Users.create_user(valid_attrs)
+    user2 = Users.get_by_credentials(valid_attrs)
     assert user1.id == user2.id
   end
 end
