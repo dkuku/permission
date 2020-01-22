@@ -8,18 +8,18 @@ defmodule Workpermit.Permits.ProtectiveEquipment do
   #   schema "embedded Item" do
   #
   schema "protective_equipment" do
-    field  :ear_protection           , :boolean
-    field  :earth_terminal           , :boolean
-    field  :eye_protection           , :boolean
-    field  :face_shield              , :boolean
-    field  :foot_protection          , :boolean
-    field  :head_protection          , :boolean
-    field  :high_visibility_clothing , :boolean
-    field  :dust_mask                     , :boolean
-    field  :protective_clothing      , :boolean
-    field  :protective_gloves        , :boolean
-    field  :safety_harness           , :boolean
-    field  :welding_mask             , :boolean
+    field :ear_protection, :boolean
+    field :earth_terminal, :boolean
+    field :eye_protection, :boolean
+    field :face_shield, :boolean
+    field :foot_protection, :boolean
+    field :head_protection, :boolean
+    field :high_visibility_clothing, :boolean
+    field :dust_mask, :boolean
+    field :protective_clothing, :boolean
+    field :protective_gloves, :boolean
+    field :safety_harness, :boolean
+    field :welding_mask, :boolean
   end
 
   def changeset(protective_equipment, attrs \\ %{}) do
@@ -36,7 +36,7 @@ defmodule Workpermit.Permits.ProtectiveEquipment do
       :protective_clothing,
       :protective_gloves,
       :safety_harness,
-      :welding_mask,
+      :welding_mask
     ])
     |> validate_required([])
   end
@@ -54,7 +54,7 @@ defmodule Workpermit.Permits.ProtectiveEquipment do
       :protective_clothing,
       :protective_gloves,
       :safety_harness,
-      :welding_mask,
+      :welding_mask
     ]
   end
 end

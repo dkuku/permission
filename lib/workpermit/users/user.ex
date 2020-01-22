@@ -1,8 +1,9 @@
 defmodule Workpermit.Users.User do
   use Ecto.Schema
   import Ecto.Query, warn: false
+
   use Pow.Ecto.Schema,
-  password_hash_methods: {&Argon2.hash_pwd_salt/1, &Argon2.verify_pass/2}
+    password_hash_methods: {&Argon2.hash_pwd_salt/1, &Argon2.verify_pass/2}
 
   schema "users" do
     field :first_name, :string
@@ -24,14 +25,14 @@ defmodule Workpermit.Users.User do
 
   def find_names(name) do
     search(User, name)
-                  |> select([u], fragment("concat(?, ' ', ?)", u.first_name, u.last_name))
-                  |> limit(10)
-                  |> Repo.all()
+    |> select([u], fragment("concat(?, ' ', ?)", u.first_name, u.last_name))
+    |> limit(10)
+    |> Repo.all()
   end
 
   @spec search(Ecto.Query.t(), any()) :: Ecto.Query.t()
   def search(query, search_name) do
-   where(
+    where(
       query,
       fragment(
         "to_tsvector('english', first_name || ' ' || coalesce(last_name, ' ')) @@
@@ -40,5 +41,6 @@ defmodule Workpermit.Users.User do
       )
     )
   end
+
   defp prefix_search(term), do: String.replace(term, ~r/\W/u, "") <> ":*"
 end

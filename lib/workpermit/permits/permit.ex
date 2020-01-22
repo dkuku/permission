@@ -5,24 +5,33 @@ defmodule Workpermit.Permits.Permit do
   alias Workpermit.Users.User
   import EctoEnum
 
-  defenum CategoryEnum, general: 0, electrical: 1, heights: 2, hot_work: 3, confined_space: 4, hot_fluid: 5, gas: 6
-  @protective_equipment  [
-      :ear_protection,
-      :earth_terminal,
-      :eye_protection,
-      :face_shield,
-      :foot_protection,
-      :head_protection,
-      :high_visibility_clothing,
-      :dust_mask,
-      :protective_clothing,
-      :protective_gloves,
-      :safety_harness,
-      :welding_mask,
-    ]
+  defenum(CategoryEnum,
+    general: 0,
+    electrical: 1,
+    heights: 2,
+    hot_work: 3,
+    confined_space: 4,
+    hot_fluid: 5,
+    gas: 6
+  )
+
+  @protective_equipment [
+    :ear_protection,
+    :earth_terminal,
+    :eye_protection,
+    :face_shield,
+    :foot_protection,
+    :head_protection,
+    :high_visibility_clothing,
+    :dust_mask,
+    :protective_clothing,
+    :protective_gloves,
+    :safety_harness,
+    :welding_mask
+  ]
   def protective_equipment() do
     @protective_equipment
-    |> Enum.map(&to_string &1)
+    |> Enum.map(&to_string(&1))
   end
 
   schema "permits" do
@@ -71,7 +80,7 @@ defmodule Workpermit.Permits.Permit do
     |> validate_required([
       :category,
       :number,
-      :start_time,
+      :start_time
     ])
     |> validate_subset(:protective_equipment, protective_equipment())
   end

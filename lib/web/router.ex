@@ -11,7 +11,7 @@ defmodule Web.Router do
     plug Phoenix.LiveView.Flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-#    plug Web.Plugs.LoadUser
+    #    plug Web.Plugs.LoadUser
     plug Web.Plugs.Locale
   end
 

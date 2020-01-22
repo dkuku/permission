@@ -7,6 +7,7 @@ defmodule Workpermit.ProtectiveEquipment do
   alias Workpermit.Repo
 
   alias Workpermit.Permits.ProtectiveEquipment
+
   @doc """
   Gets a single protective_equipment.
 
@@ -39,7 +40,8 @@ defmodule Workpermit.ProtectiveEquipment do
     %ProtectiveEquipment{}
     |> ProtectiveEquipment.changeset(attrs)
     |> Repo.insert()
-    #|>Repo.find_or_create_by(:name)
+
+    # |>Repo.find_or_create_by(:name)
   end
 
   @doc """
@@ -72,7 +74,7 @@ defmodule Workpermit.ProtectiveEquipment do
   end
 
   def pe_fields do
-    #set it as an org param
+    # set it as an org param
     ProtectiveEquipment.keys()
   end
 end

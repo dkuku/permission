@@ -41,15 +41,16 @@ defmodule Web.PermitControllerTest do
       conn = get(conn, Routes.permit_path(conn, :index))
       assert html_response(conn, 302) =~ "redirected"
     end
+
     test "show permit redirects to login form", %{conn: conn} do
       conn = get(conn, Routes.permit_path(conn, :show, 1))
       assert html_response(conn, 302) =~ "redirected"
     end
+
     test "new permit redirects to login form", %{conn: conn} do
       conn = get(conn, Routes.permit_path(conn, :new))
       assert html_response(conn, 302) =~ "redirected"
     end
-
   end
 
   describe "authenticated user" do
@@ -70,7 +71,7 @@ defmodule Web.PermitControllerTest do
       assert html_response(conn, 200) =~ "Create permit"
     end
 
-    #TODO - add nested form for protective equipment
+    # TODO - add nested form for protective equipment
     test "create permit redirects to show when data is valid", %{conn: conn} do
       conn = post(conn, Routes.permit_path(conn, :create), permit: @create_attrs)
 

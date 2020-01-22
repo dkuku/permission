@@ -22,7 +22,6 @@ defmodule Web.Acceptance.SessionTest do
     :ok
   end
 
-
   test "shows error message for invalid credentials" do
     ## WHEN ##
     # users tryes to log in with invalid credentials
@@ -38,7 +37,9 @@ defmodule Web.Acceptance.SessionTest do
     # and a message should be displayed
     assert current_path() == "/session"
     message = find_element(:class, "alert-toast") |> visible_text()
-    assert message == "The provided login details did not work. Please verify your credentials, and try again."
+
+    assert message ==
+             "The provided login details did not work. Please verify your credentials, and try again."
   end
 
   test "Create new user" do
@@ -80,7 +81,6 @@ defmodule Web.Acceptance.SessionTest do
     assert current_path() == "/"
   end
 
-  
   test "successful sign-in for valid credential" do
     ## WHEN ##
     # users logs in
@@ -106,8 +106,8 @@ defmodule Web.Acceptance.SessionTest do
       |> visible_text()
 
     assert message == ""
-    #TODO fix message
-    #assert message == "Signed in successfully."
+    # TODO fix message
+    # assert message == "Signed in successfully."
     assert current_path() == "/"
 
     ## AND ##
@@ -122,7 +122,7 @@ defmodule Web.Acceptance.SessionTest do
       |> visible_text()
 
     assert message == ""
-    #assert message == "Signed out successfully!"
+    # assert message == "Signed out successfully!"
     assert visible_page_text() =~ "Log in"
   end
 end

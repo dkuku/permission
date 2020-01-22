@@ -114,7 +114,8 @@ defmodule Workpermit.IsoSymbols do
       W035: "Falling Parts",
       W039: "Falling Ice Spikes",
       A001: "Confined Space"
-      }
+    }
+
     sign[code] || "No sign with that description"
   end
 
@@ -233,14 +234,15 @@ defmodule Workpermit.IsoSymbols do
       falling_parts: :W035,
       falling_ice_spikes: :W039,
       confined_space: :A001
-      }
+    }
   end
 
   def to_iso_code(protective_eq) when is_atom(protective_eq) do
     # input :falling_parts =>  :W039
     to_iso_code_mapping()[protective_eq] || :A999
   end
-  def to_iso_code(protective_eq), do: protective_eq |> String.to_existing_atom |> to_iso_code
+
+  def to_iso_code(protective_eq), do: protective_eq |> String.to_existing_atom() |> to_iso_code
 
   def to_image_path(protective_eq, path \\ "/iso/") do
     # input :falling_parts => IS0_111.svg
@@ -251,5 +253,7 @@ defmodule Workpermit.IsoSymbols do
     # input :falling_parts => "Faling Parts"
     protective_eq |> to_iso_code |> iso_code_meaning
   end
-  def to_sign_meaning(protective_eq), do: protective_eq |> String.to_existing_atom |> to_sign_meaning
+
+  def to_sign_meaning(protective_eq),
+    do: protective_eq |> String.to_existing_atom() |> to_sign_meaning
 end

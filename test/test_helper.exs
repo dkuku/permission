@@ -1,6 +1,6 @@
-options = [ 
-  exclude: [:skip],
-] 
+options = [
+  exclude: [:skip]
+]
 
 ExUnit.start(options)
 Ecto.Adapters.SQL.Sandbox.mode(Workpermit.Repo, :manual)

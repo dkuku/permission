@@ -2,19 +2,21 @@ defmodule Web.PermitController do
   use Web, :controller
   action_fallback(Web.FallbackController)
   plug :authenticate when action in [:index, :new, :create, :show]
-  #plug :authenticate when action  not in [:select_category]
+  # plug :authenticate when action  not in [:select_category]
 
   alias Workpermit.Permits
   alias Workpermit.Permits.{Permit, ProtectiveEquipment}
   require Ecto.Query
 
   def index(conn, params, _user) do
-    result = Permit 
-             |> Turbo.Ecto.turbo(params, [entry_name: "permits"])
-             #|> Ecto.Query.order_by(desc: :id)
+    result =
+      Permit
+      |> Turbo.Ecto.turbo(params, entry_name: "permits")
+
+    # |> Ecto.Query.order_by(desc: :id)
     render(conn, :index, permits: result.permits, paginate: result.paginate)
-#    permits = Permits.list_permits()
-#    render(conn, "index.html", permits: permits)
+    #    permits = Permits.list_permits()
+    #    render(conn, "index.html", permits: permits)
   end
 
   def new(conn, _params, user) do
@@ -29,10 +31,10 @@ defmodule Web.PermitController do
   end
 
   def create(conn, %{"permit" => permit_params}, user) do
-    with{:ok, permit} <- Permits.create_permit(user, permit_params) do
-        conn
-        |> put_flash(:info, gettext("Permit created successfully"))
-        |> redirect(to: Routes.permit_path(conn, :show, permit))
+    with {:ok, permit} <- Permits.create_permit(user, permit_params) do
+      conn
+      |> put_flash(:info, gettext("Permit created successfully"))
+      |> redirect(to: Routes.permit_path(conn, :show, permit))
     end
   end
 
@@ -43,7 +45,7 @@ defmodule Web.PermitController do
   end
 
   def select_category(conn, %{"category" => category}) do
-    choosen_category =  Permits.choosen_category(category)
+    choosen_category = Permits.choosen_category(category)
     json(conn, choosen_category)
   end
 

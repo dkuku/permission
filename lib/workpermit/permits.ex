@@ -10,6 +10,7 @@ defmodule Workpermit.Permits do
   alias Workpermit.Permits.Permit
   alias Workpermit.Permits.ProtectiveEquipment
   alias Workpermit.Users
+
   @doc """
   Returns the list of permits.
 
@@ -38,15 +39,18 @@ defmodule Workpermit.Permits do
 
   """
   def get_permit!(id) do
-    Repo.one from permit in Permit,
-      where: permit.id == ^id,
-      preload: :issuer
+    Repo.one(
+      from permit in Permit,
+        where: permit.id == ^id,
+        preload: :issuer
+    )
   end
 
   def get_permit(id) do
     {:ok, permit} = get_permit!(id)
     permit
   end
+
   @doc """
   Creates a permit.
 
@@ -94,16 +98,17 @@ defmodule Workpermit.Permits do
   def change_permit() do
     Permit.changeset(%Permit{}, %{})
   end
+
   def change_permit(%Permit{} = permit \\ %{}) do
     Permit.changeset(permit, %{})
   end
-  
+
   def category_fields do
     Permit.CategoryEnum.__enum_map__() |> Enum.map(fn {k, _} -> k end)
   end
 
   def pe_fields do
-    #set it as an org param
+    # set it as an org param
     ProtectiveEquipment.keys()
   end
 
@@ -115,20 +120,26 @@ defmodule Workpermit.Permits do
       1
   """
   def next_permit_number(category) do
-    last_number = Repo.one from permit in Permit,
-                    where: permit.category == ^category,
-                    select: max(permit.number)
+    last_number =
+      Repo.one(
+        from permit in Permit,
+          where: permit.category == ^category,
+          select: max(permit.number)
+      )
+
     (last_number || 0) + 1
   end
 
   def image(category) when is_atom(category) do
-    %{:general => :general_warning_sign,
-    :electrical => :electricity_hazard,
-    :heights => :drop_or_fall_hazard,
-    :hot_work => :flammable_material,
-    :confined_space => :confined_space,
-    :hot_fluid => :hot_surface,
-    :gas => :pressurized_cylinder }
+    %{
+      :general => :general_warning_sign,
+      :electrical => :electricity_hazard,
+      :heights => :drop_or_fall_hazard,
+      :hot_work => :flammable_material,
+      :confined_space => :confined_space,
+      :hot_fluid => :hot_surface,
+      :gas => :pressurized_cylinder
+    }
     |> Map.fetch!(category)
   end
 
@@ -142,63 +153,63 @@ defmodule Workpermit.Permits do
     %{
       next_number: next_permit_number(category),
       image: Workpermit.IsoSymbols.to_image_path(image(category)),
-      selected: category,
+      selected: category
     }
   end
 
   def default_precautions do
     [
-    "### General rules",
-    "Have you been given a copy of the Site Safety Rules?",
-    "Has a risk assessment been carried out?",
-    "Are the workforce qualified to carry out the task?",
-    "Is appropriate PPE available?",
-    "Is safe access and egress confirmed?",
+      "### General rules",
+      "Have you been given a copy of the Site Safety Rules?",
+      "Has a risk assessment been carried out?",
+      "Are the workforce qualified to carry out the task?",
+      "Is appropriate PPE available?",
+      "Is safe access and egress confirmed?"
     ]
   end
 
   def default_confined_space do
     [
-    "### Confined space rules",
-    "Are personnel trained and supplied With Breathing Apparatus?",
-    "Lifebelt and rope held on outside of confined space?",
+      "### Confined space rules",
+      "Are personnel trained and supplied With Breathing Apparatus?",
+      "Lifebelt and rope held on outside of confined space?"
     ]
   end
 
   def default_hot_work do
     [
-    "### Hot work rules",
-    "Are at least two fire extinguishers available?",
-    "Are personnel trained in use of fire extinguishers?",
-    "Have flammable liquids/materials been removed from area?",
-    "Have Gas cylinders been properly secured?",
+      "### Hot work rules",
+      "Are at least two fire extinguishers available?",
+      "Are personnel trained in use of fire extinguishers?",
+      "Have flammable liquids/materials been removed from area?",
+      "Have Gas cylinders been properly secured?"
     ]
   end
 
   def default_heights do
     [
-    "### Working on heights rules",
-    "Is work carried out at height?",
-    "Are ladders or scaffolding required?",
-    "Is a license required and in place for scaffolding?",
-    "Are personel aware and of means of escape and method of raising alarm?",
-    "Risk of falling objects?",
-    "Details of fragile roof explained?",
+      "### Working on heights rules",
+      "Is work carried out at height?",
+      "Are ladders or scaffolding required?",
+      "Is a license required and in place for scaffolding?",
+      "Are personel aware and of means of escape and method of raising alarm?",
+      "Risk of falling objects?",
+      "Details of fragile roof explained?"
     ]
   end
 
   def default_electrical do
     [
-    "Isolated electrical supply? Work in accordance with current Electricity at Work regs?",
-    "Isolator locked off/tagged? Work in accordance with I.E.E. Wiring regs.",
-    "Is voltage detection instrument required?",
+      "Isolated electrical supply? Work in accordance with current Electricity at Work regs?",
+      "Isolator locked off/tagged? Work in accordance with I.E.E. Wiring regs.",
+      "Is voltage detection instrument required?"
     ]
   end
 
   def default_coshh do
     [
-    "Has COSHH data been supplied with substances?",
-    "Have COSHH precautions been identified and implemented?",
+      "Has COSHH data been supplied with substances?",
+      "Have COSHH precautions been identified and implemented?"
     ]
   end
 end

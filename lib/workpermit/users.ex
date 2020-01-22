@@ -34,6 +34,7 @@ defmodule Workpermit.Users do
   def get_by_credentials(%{"email" => email, "password" => password}) do
     get_by_credentials(%{email: email, password: password})
   end
+
   def get_by_credentials(%{email: email, password: password}) do
     user = get_by_email(email)
 
