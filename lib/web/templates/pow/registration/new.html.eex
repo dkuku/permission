@@ -1,11 +1,5 @@
 <h1>Register</h1>
 
-<%= form_for @changeset, @action, [as: :user], fn f -> %>
-
-<% end %>
-
-
-
 <div class="content-center flex-1 w-full max-w-lg pt-16 mx-auto">
 <h1 class="p-5 c-h3 text-gray-darker"><%= gettext("Sign Up") %></h1>
 

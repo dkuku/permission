@@ -19,7 +19,7 @@ defmodule Web.PermitController do
 
   def new(conn, _params, user) do
     conn
-    |> assign(:changeset, Permits.change_permit(%Permit{protective_equipment: %ProtectiveEquipment{}}))
+    |> assign(:changeset, Permits.change_permit())
     |> assign(:pe, Permits.pe_fields())
     |> assign(:categories, Permits.category_fields())
     |> assign(:current_user, user)
@@ -32,13 +32,13 @@ defmodule Web.PermitController do
     with{:ok, permit} <- Permits.create_permit(user, permit_params) do
         conn
         |> put_flash(:info, gettext("Permit created successfully"))
-        |> redirect(to: Routes.permit_path(conn, :show, permit, pe: Permits.pe_fields()))
+        |> redirect(to: Routes.permit_path(conn, :show, permit))
     end
   end
 
   def show(conn, %{"id" => id}, _user) do
     with permit <- Permits.get_permit!(id) do
-      render(conn, "show.html", permit: permit, pe: Permits.pe_fields())
+      render(conn, "show.html", permit: permit)
     end
   end
 
@@ -49,10 +49,8 @@ defmodule Web.PermitController do
 
   defp authenticate(conn, _opts) do
     if conn.assigns.current_user do
-      IO.puts("auth")
       conn
     else
-      IO.puts("unauth")
       conn
       |> put_flash(:error, gettext("You must be logged in to access this page"))
       |> redirect(to: Routes.page_path(conn, :index))

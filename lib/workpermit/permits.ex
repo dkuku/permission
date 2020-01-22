@@ -91,7 +91,10 @@ defmodule Workpermit.Permits do
       %Ecto.Changeset{source: %Permit{}}
 
   """
-  def change_permit(%Permit{} = permit) do
+  def change_permit() do
+    Permit.changeset(%Permit{}, %{})
+  end
+  def change_permit(%Permit{} = permit \\ %{}) do
     Permit.changeset(permit, %{})
   end
   

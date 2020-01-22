@@ -8,10 +8,9 @@ defmodule Web.FallbackController do
     |> redirect(to: Routes.permit_path(conn, :index))
   end
 
-  def call(conn, {:error, %Ecto.Changeset{} = changeset}, user) do
+  def call(conn, {:error, %Ecto.Changeset{} = changeset}, user \\ nil) do
     conn
     |> assign(:changeset, changeset)
-    |> assign(:current_user, user)
     |> assign(:pe, Permits.pe_fields())
     |> assign(:categories, Permits.category_fields())
     # use choosen category from changeset
