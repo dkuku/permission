@@ -60,7 +60,7 @@ defmodule Workpermit.MixProject do
       {:turbo_html, github: "dkuku/turbo_html", ref: "b515e2e"},
       {:sentry, "~> 7.0"},
       {:sobelow, "~> 0.8", only: [:dev, :test]},
-      {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
+      # {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
       # {:turbo_html, path: "../turbo_html"},
       {:excoveralls, "~> 0.10", only: [:test]},
       {:ex_machina, "~> 2.3", only: [:test]},
