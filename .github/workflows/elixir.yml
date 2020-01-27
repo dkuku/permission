@@ -5,7 +5,7 @@ on: push
 jobs:
   build:
 
-    runs-on: elixir-1.9.4
+    runs-on: elixir:1.9.4
       
     services:
       postgres:
