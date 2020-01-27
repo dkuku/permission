@@ -25,14 +25,13 @@ jobs:
     - name: Install Dependencies
       run: |
         echo 'deb http://archive.ubuntu.com/ubuntu bionic universe multiverse' >> /etc/apt/sources.list; apt-get update;
-        apt-get install nodejs phantomjs
+        apt-get install nodejs chromium
         mix local.rebar --force
         mix local.hex --force
         mix deps.get
         npm install --prefix assets
     - name: Run Tests
       run: |
-        phantomjs --wd &
-        WEBDRIVER=phantomjs mix test
+        chromedriver & mix test && pkill chromedriver
       env:
         DB_HOST: postgres

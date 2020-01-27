@@ -6,8 +6,15 @@ config :workpermit, Web.Endpoint,
   http: [port: 4001],
   server: true
 
-config :hound, driver: "phantomjs"
-
+#config :hound, driver: "phantomjs"
+config :hound,
+driver: "chrome_driver",
+browser: "chrome_headless",
+additional_capabilities: %{
+  chromeOptions: %{ "args" => [
+    "--headless"
+  ]}
+}
 # Print only warnings and errors during test
 config :logger, level: :warn
 
