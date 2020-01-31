@@ -6,7 +6,6 @@
   </head>
   <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
     <%= render "components/nav.html", conn: @conn, tenant: assigns[:tenant] %>
-    <%= svelte "test", %{:first_name => "Daniel", :last_name => "Kukula"}, "border" %></div>
     <%= Enum.map(get_flash(@conn), fn {type, message} -> %>
       <%= render "components/flash.html", type: type, message: message %>
     <% end) %>
