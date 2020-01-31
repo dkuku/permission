@@ -61,7 +61,6 @@ defmodule Workpermit.Permits.Permit do
     permit
     |> cast(attrs, [
       :category,
-      :number,
       :issuer_id,
       :start_time,
       :finish_time,
@@ -79,7 +78,6 @@ defmodule Workpermit.Permits.Permit do
     ])
     |> validate_required([
       :category,
-      :number,
       :start_time
     ])
     |> validate_subset(:protective_equipment, protective_equipment())

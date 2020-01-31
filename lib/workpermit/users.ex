@@ -8,9 +8,7 @@ defmodule Workpermit.Users do
       iex> list_users()
       [%User{}, ...]
   """
-  def list_users do
-    Repo.all(User)
-  end
+  def list_users(tenant \\ nil), do: Repo.all(User, prefix: tenant)
 
   @doc """
   Gets a single user.
@@ -21,22 +19,36 @@ defmodule Workpermit.Users do
       iex> get_user!(456)
       ** (Ecto.NoResultsError)
   """
-  def get_by_email(email) when is_nil(email) do
-    nil
-  end
+  def get_by_email(email) when is_nil(email), do: nil
+  def get_by_email(email, _tenant) when is_nil(email), do: nil
 
-  def get_by_email(email) do
-    Repo.get_by(User, email: email)
-  end
+  def get_by_email(email, tenant \\ nil), do: Repo.get_by(User, email: email, prefix: tenant)
 
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user!(id, tenant \\ nil), do: Repo.get!(User, id, prefix: tenant)
+
 
   def get_by_credentials(%{"email" => email, "password" => password}) do
-    get_by_credentials(%{email: email, password: password})
+    get_by_credentials(%{email: email, password: password}, nil)
+  end
+  def get_by_credentials(%{"email" => email, "password" => password}, nil) do
+    get_by_credentials(%{email: email, password: password}, nil)
+  end
+  def get_by_credentials(%{"email" => email, "password" => password}, tenant) do
+    get_by_credentials(%{email: email, password: password}, tenant)
   end
 
-  def get_by_credentials(%{email: email, password: password}) do
+  def get_by_credentials(%{email: email, password: password}, tenant) when is_nil(tenant) do
     user = get_by_email(email)
+
+    if user && Argon2.verify_pass(password, user.password_hash) do
+      user
+    else
+      :error
+    end
+  end
+
+  def get_by_credentials(%{email: email, password: password}, tenant) do
+    user = get_by_email(email, tenant)
 
     if user && Argon2.verify_pass(password, user.password_hash) do
       user
@@ -53,10 +65,10 @@ defmodule Workpermit.Users do
       iex> create_user(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
   """
-  def create_user(attrs \\ %{}) do
+  def create_user(attrs \\ %{}, tenant \\ nil) do
     attrs
     |> build_user
-    |> Repo.insert()
+    |> Repo.insert(prefix: tenant)
   end
 
   def build_user(attrs \\ %{}) do
@@ -72,10 +84,10 @@ defmodule Workpermit.Users do
       iex> update_user(user, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
   """
-  def update_user(%User{} = user, attrs) do
+  def update_user(%User{} = user, attrs, tenant \\ nil) do
     user
     |> User.changeset(attrs)
-    |> Repo.update()
+    |> Repo.update(prefix: tenant)
   end
 
   @doc """
@@ -86,8 +98,8 @@ defmodule Workpermit.Users do
       iex> delete_user(user)
       {:error, %Ecto.Changeset{}}
   """
-  def delete_user(%User{} = user) do
-    Repo.delete(user)
+  def delete_user(%User{} = user, tenant \\ nil) do
+    Repo.delete(user, prefix: tenant)
   end
 
   @doc """

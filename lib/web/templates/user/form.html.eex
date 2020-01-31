@@ -2,38 +2,45 @@
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
       <p><%= gettext("Oops, something went wrong! Please check the errors below") %></p>
+      <p><%= @changeset.action %></p>
     </div>
   <% end %>
 
   <%= label f, :email, class: "block mb-6 c-h5 text-gray-darker" do %>
-    <span class="form-label block"><%= gettext("Email") %></span>
+    <span class="block form-label"><%= gettext("Email") %></span>
   <%= text_input f, :email, class: "form-input w-full mt-1"  %>
   <% end %>
   <%= error_tag f, :email %>
 
   <%= label f, :first_name, class: "block mb-6 c-h5 text-gray-darker mb-6" do %>
-    <span class="form-label block"><%= gettext("First name") %></span>
+    <span class="block form-label"><%= gettext("First name") %></span>
   <%= text_input f, :first_name, class: "form-input w-full mt-1" %>
   <% end %>
   <%= error_tag f, :first_name %>
 
   <%= label f, :last_name, class: "block mb-6 c-h5 text-gray-darker mb-6" do %>
-    <span class="form-label block"><%= gettext("Last name") %></span>
+    <span class="block form-label"><%= gettext("Last name") %></span>
   <%= text_input f, :last_name, class: "form-input w-full mt-1"  %>
   <% end %>
   <%= error_tag f, :last_name %>
 
   <%= label f, :phone, class: "block mb-6 c-h5 text-gray-darker mb-6" do  %>
-    <span class="form-label block"><%= gettext("Phone") %></span>
+    <span class="block form-label"><%= gettext("Phone") %></span>
   <%= text_input f, :phone, class: "form-input w-full mt-1"  %>
   <% end %>
   <%= error_tag f, :phone %>
 
   <%= label f, :password, class: "block mb-6 c-h5 text-gray-darker mb-6" do  %>
-    <span class="form-label block"><%= gettext("Password") %></span>
+    <span class="block form-label"><%= gettext("Password") %></span>
   <%= password_input f, :password, class: "form-input w-full mt-1" %>
   <% end %>
   <%= error_tag f, :password %>
+
+  <%= label f, :password_confirmation, class: "block mb-6 c-h5 text-gray-darker mb-6" do  %>
+    <span class="block form-label"><%= gettext("Password Confirmation") %></span>
+  <%= password_input f, :password_confirmation, class: "form-input w-full mt-1" %>
+  <% end %>
+  <%= error_tag f, :password_confirmation %>
 
   <div class="flex justify-between">
     <%= link gettext("Back"), to: Routes.user_path(@conn, :index), class: "bg-transparent hover:bg-primary-light text-primary-medium font-semibold hover:text-white py-2 px-4 border border-primary-medium hover:border-transparent rounded" %>

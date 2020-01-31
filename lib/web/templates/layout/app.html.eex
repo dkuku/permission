@@ -6,7 +6,7 @@
   </head>
     <%= render "components/head.html", conn: @conn %>
   <body class="flex flex-col h-full leading-normal tracking-normal bg-secondary-lighter" style="font-family: system;">
-    <%= render "components/nav.html", conn: @conn %>
+    <%= render "components/nav.html", conn: @conn, tenant: assigns[:current_tenant] %>
     <%= Enum.map(get_flash(@conn), fn {type, message} -> %>
       <%= render "components/flash.html", type: type, message: message %>
     <% end) %>

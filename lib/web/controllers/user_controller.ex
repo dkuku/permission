@@ -4,18 +4,18 @@ defmodule Web.UserController do
   alias Workpermit.Users
   alias Workpermit.Users.User
 
-  def index(conn, _params) do
-    users = Users.list_users()
+  def index(conn, _params, tenant) do
+    users = Users.list_users(tenant)
     render(conn, "index.html", users: users)
   end
 
-  def new(conn, _params) do
+  def new(conn, _params, tenant) do
     changeset = Users.change_user(%User{})
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"user" => user_params}) do
-    case Users.create_user(user_params) do
+  def create(conn, %{"user" => user_params}, tenant) do
+    case Users.create_user(user_params, tenant) do
       {:ok, user} ->
         conn
         |> put_session(:user_id, user.id)
@@ -29,21 +29,21 @@ defmodule Web.UserController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    user = Users.get_user!(id)
+  def show(conn, %{"id" => id}, tenant) do
+    user = Users.get_user!(id, tenant)
     render(conn, "show.html", user: user)
   end
 
-  def edit(conn, %{"id" => id}) do
-    user = Users.get_user!(id)
+  def edit(conn, %{"id" => id}, tenant) do
+    user = Users.get_user!(id, tenant)
     changeset = Users.change_user(user)
     render(conn, "edit.html", user: user, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "user" => user_params}) do
+  def update(conn, %{"id" => id, "user" => user_params}, tenant) do
     user = Users.get_user!(id)
 
-    case Users.update_user(user, user_params) do
+    case Users.update_user(user, user_params, tenant) do
       {:ok, user} ->
         conn
         |> put_flash(:info, "User updated successfully.")
@@ -54,7 +54,7 @@ defmodule Web.UserController do
     end
   end
 
-  def delete(conn, %{"id" => id}) do
+  def delete(conn, %{"id" => id}, tenant) do
     user = Users.get_user!(id)
     {:ok, _user} = Users.delete_user(user)
 
@@ -63,8 +63,14 @@ defmodule Web.UserController do
     |> redirect(to: Routes.user_path(conn, :index))
   end
 
-  def find_name(conn, %{"name" => name}) do
+  def find_name(conn, %{"name" => name}, tenant) do
     users = Users.find_names(name)
     json(conn, users)
   end
+
+  def action(conn, _) do
+    args = [conn, conn.params, Triplex.to_prefix(conn.assigns.current_tenant)]
+    apply(__MODULE__, action_name(conn), args)
+  end
+
 end

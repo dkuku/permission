@@ -11,8 +11,18 @@ defmodule Web.Router do
     plug Phoenix.LiveView.Flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    #    plug Web.Plugs.LoadUser
     plug Web.Plugs.Locale
+  end
+
+  pipeline :tenant do
+    plug Triplex.SubdomainPlug,
+      endpoint: Web.Endpoint,
+      assign: :current_tenant,
+      tenant_handler: &Web.TenantHelper.tenant_handler/1
+    plug Triplex.EnsurePlug,
+      assign: :current_tenant,
+      callback: &Web.TenantHelper.callback/2,
+      failure_callback: &Web.TenantHelper.failure_callback/2
   end
 
   pipeline :protected do
@@ -25,16 +35,20 @@ defmodule Web.Router do
   end
 
   scope "/" do
-    pipe_through :browser
+    pipe_through [:browser]
 
     get "/", Web.PageController, :index
     get "/demo", Web.PageController, :demo
+
+  end
+  scope "/" do
+    pipe_through [:browser, :tenant]
 
     pow_routes()
   end
 
   scope "/", Web do
-    pipe_through [:browser, :protected]
+    pipe_through [:browser, :tenant, :protected]
     # User registration and sessions
     resources "/users", UserController
     get "/sign-in", SessionController, :new
