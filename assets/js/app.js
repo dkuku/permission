@@ -8,6 +8,7 @@ import css from "../css/app.scss"
 //
 // Import dependencies
 import "phoenix_html"
+import 'alpinejs'
 
 // Import local files
 import "./navbar"

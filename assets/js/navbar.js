@@ -46,32 +46,32 @@ document.addEventListener('scroll', function() {
 });
 /*Toggle dropdown list*/
 /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
-document.onclick = check;
-function check(e){
-  var target = (e && e.target) || (event && event.srcElement);
-  //Nav Menu
-  if (!checkParent(target, navcontent)) {
-    // click NOT on the menu
-    if (checkParent(target, navMenu)) {
-      // click on the link
-      if (navcontent.classList.contains("hidden")) {
-        navcontent.classList.remove("hidden");
-        navcontent.classList.add("text-gray-darker");
-      } else {
-        navcontent.classList.add("hidden");
-        navcontent.classList.remove("text-gray-darker");
-        }
-    } else {
-      // click both outside link and outside menu, hide menu
-      navcontent.classList.add("hidden");
-        navcontent.classList.remove("text-gray-darker");
-    }
-  }
-}
-function checkParent(t, elm) {
-  while(t.parentNode) {
-    if( t == elm ) {return true;}
-    t = t.parentNode;
-  }
-  return false;
-}
+//document.onclick = check;
+//function check(e){
+//  var target = (e && e.target) || (event && event.srcElement);
+//  //Nav Menu
+//  if (!checkParent(target, navcontent)) {
+//    // click NOT on the menu
+//    if (checkParent(target, navMenu)) {
+//      // click on the link
+//      if (navcontent.classList.contains("hidden")) {
+//        navcontent.classList.remove("hidden");
+//        navcontent.classList.add("text-gray-darker");
+//      } else {
+//        navcontent.classList.add("hidden");
+//        navcontent.classList.remove("text-gray-darker");
+//        }
+//    } else {
+//      // click both outside link and outside menu, hide menu
+//      navcontent.classList.add("hidden");
+//        navcontent.classList.remove("text-gray-darker");
+//    }
+//  }
+//}
+//function checkParent(t, elm) {
+//  while(t.parentNode) {
+//    if( t == elm ) {return true;}
+//    t = t.parentNode;
+//  }
+//  return false;
+//}
