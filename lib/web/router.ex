@@ -27,8 +27,8 @@ defmodule Web.Router do
   scope "/" do
     pipe_through :browser
 
-    get "/", Web.PageController, :index
-    get "/demo", Web.PageController, :demo
+    get "/", PageController, :index
+    get "/demo", PageController, :demo
 
     pow_routes()
   end
