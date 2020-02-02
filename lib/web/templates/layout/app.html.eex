@@ -7,9 +7,11 @@
     <%= render "components/head.html", conn: @conn %>
   <body class="flex flex-col h-full leading-normal tracking-normal bg-secondary-lighter" style="font-family: system;">
     <%= render "components/nav.html", conn: @conn, tenant: assigns[:tenant], text_color: Web.CSS.nav_text_color(@conn) %>
-    <%= Enum.map(get_flash(@conn), fn {type, message} -> %>
-      <%= render "components/flash.html", type: type, message: message %>
-    <% end) %>
+    <div class="fixed top-0 right-0 w-5/6 max-w-sm m-8 mt-16 md:w-full transform">
+      <%= Enum.map(get_flash(@conn), fn {type, message} -> %>
+        <%= render "components/flash.html", type: type, message: message %>
+      <% end) %>
+      </div>
     <%= render @view_module, @view_template, assigns %>
     <%= render "components/footer.html", conn: @conn %>
     <script type="text/javascript" src="<%=Routes.static_path(@conn, "/js/app.js") %>"></script>

@@ -12,6 +12,7 @@ document.addEventListener('scroll', function() {
   /*Apply classes for slide in bar*/
   scrollpos = window.scrollY;
   if(scrollpos < 20 && pathname == "/"){
+    globe.classList.add("invert")
     header.classList.remove("bg-white");
     for (var i = 0; i < toToggle.length; i++) {
       toToggle[i].classList.add("text-white");

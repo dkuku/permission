@@ -36,7 +36,7 @@
       <!--Language dropdown -->
       <div x-data="{ isOpen: false }" class="relative group">
         <div @click="isOpen = !isOpen" class="flex items-center px-2 py-1 rounded-t-lg cursor-pointer group-hover:border group-hover:border-b-0 group-hover:border-grey-light">
-          <%= img_tag(Routes.static_path(@conn, "/images/globe.svg"), id: "globe", class: "h-5 inline invert") %>&nbsp;
+          <%= img_tag(Routes.static_path(@conn, "/images/globe.svg"), id: "globe", class: "h-5 inline") %>&nbsp;
           <%= gettext("Language") %>
           <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
             <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>

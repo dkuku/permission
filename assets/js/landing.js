@@ -13,6 +13,8 @@ import "phoenix_html"
 // Import local files
 import 'alpinejs'
 import "./navbar"
+
+document.getElementById("globe").classList.add("invert")
 //
 // Local files can be imported directly using relative paths, for example:
 // import socket from "./socket"
