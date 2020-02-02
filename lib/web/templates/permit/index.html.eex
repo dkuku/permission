@@ -89,7 +89,7 @@
     </tbody>
   </table>
   <%= if @paginate.total_pages > 1 do %>
-    <% classes = [class: "m-1 rounded border-2 p-2 font-bold", normal_class: "text-gray-dark border-gray-dark", active_class: "bg-primary-medium text-gray-darker border-gray-darker", disabled_class: "bg-gray-lighter text-gray-light"] %>
+    <% classes = [class: "m-1 rounded border-2 p-2 px-3 font-bold", normal_class: "text-gray-dark border-gray-dark", active_class: "bg-primary-medium text-gray-darker border-gray-darker", disabled_class: "bg-gray-lighter text-gray-light"] %>
     <div class="flex justify-center">
       <%= turbo_pagination_custom(@conn, @paginate, classes) %>
     </div>

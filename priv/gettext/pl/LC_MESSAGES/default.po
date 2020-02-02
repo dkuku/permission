@@ -520,7 +520,7 @@ msgstr "ochrona głowy"
 #, elixir-format
 #: lib/web/templates/page/demo.html.eex:4
 msgid "heights"
-msgstr "praca na wysokościo"
+msgstr "praca na wysokości"
 
 #, elixir-format
 #: lib/web/templates/page/demo.html.eex:15
