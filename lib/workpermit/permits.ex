@@ -70,6 +70,11 @@ defmodule Workpermit.Permits do
     |> Repo.insert()
   end
 
+  def close_permit(id, attrs \\ %{}) do
+    get_permit!(id)
+    |> Permit.changeset(attrs)
+    |> Repo.update!()
+  end
   @doc """
   Deletes a Permit.
 

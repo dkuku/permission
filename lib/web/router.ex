@@ -27,8 +27,8 @@ defmodule Web.Router do
   scope "/" do
     pipe_through :browser
 
-    get "/", PageController, :index
-    get "/demo", PageController, :demo
+    get "/", Web.PageController, :index
+    get "/demo", Web.PageController, :demo
 
     pow_routes()
   end
@@ -41,7 +41,7 @@ defmodule Web.Router do
     post "/sign-in", SessionController, :create
     delete "/sign-out", SessionController, :delete
 
-    resources "/permits", PermitController, only: [:index, :new, :create, :show]
+    resources "/permits", PermitController, only: [:index, :new, :create, :show, :delete]
 
     get "/live", LiveController, :index
   end

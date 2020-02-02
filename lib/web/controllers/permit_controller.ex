@@ -7,6 +7,7 @@ defmodule Web.PermitController do
   alias Workpermit.Permits
   alias Workpermit.Permits.Permit
   require Ecto.Query
+  require IEx
 
   def index(conn, params, _user) do
     result =
@@ -42,6 +43,11 @@ defmodule Web.PermitController do
     with permit <- Permits.get_permit!(id) do
       render(conn, "show.html", permit: permit)
     end
+  end
+
+  def delete(conn, %{"id" => id}, _user) do
+    permit = Permits.close_permit(id, %{closed_time: DateTime.utc_now()})
+    render(conn, "show.html", permit: permit)
   end
 
   def select_category(conn, %{"category" => category}) do

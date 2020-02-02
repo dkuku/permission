@@ -35,7 +35,11 @@
         </div>
         <div class = "flex justify-between block m-4 c-h6 text-gray-darker">
           <span class="block form-label"><%= gettext("Closed") %>: </span>
-          <%= date_time @permit.closed_time %>
+          <%=  if @permit.closed_time do %>
+            <%= date_time @permit.closed_time %>
+          <% else %>
+            <%= link gettext("Close"), to: Routes.permit_path(@conn, :delete, @permit.id), method: :delete %>
+          <% end %>
         </div>
       </div>
       <!-- Column -->

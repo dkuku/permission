@@ -5,7 +5,6 @@
      >
   <div class="flex items-start justify-between w-full h-full p-2 border-4 border-black rounded shadow-lg cursor-pointer bg-primary-medium close" title="close">
     <%= @message %>
-    <%= @type %>
     <svg @click="isOpen = false"
       class="fill-current text-secondary-dark"
       xmlns="http://www.w3.org/2000/svg"
