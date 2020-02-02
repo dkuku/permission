@@ -9,7 +9,7 @@
       <%= for  pe <- @permit.protective_equipment do %>
         <li class="w-32 h-32 p-2 mr-3">
           <%= img_tag iso_image(pe), class: "object-center w-full h-full visible group-hover:hidden" %>
-          <%= iso_meaning(pe) %>
+          <%= gettext_category(iso_meaning(pe)) %>
         </li>
       <% end %>
       </ul>

@@ -265,7 +265,7 @@ msgstr "Dodatkowe informacje"
 #, elixir-format
 #: lib/web/templates/permit/form.html.eex:38
 msgid "COSHH"
-msgstr ""
+msgstr "substancje niebezpieczne"
 
 #, elixir-format
 #: lib/web/templates/permit/form.html.eex:74
@@ -463,96 +463,156 @@ msgid "search"
 msgstr "szukaj"
 
 #, elixir-format
-#: lib/web/templates/page/demo.html.eex:20
+#: lib/web/templates/page/demo.html.eex:6
 msgid "confined_space"
 msgstr "zamknięta przestrzeń"
 
 #, elixir-format
-#: lib/web/templates/page/demo.html.eex:30
+#: lib/web/templates/page/demo.html.eex:16
 msgid "dust_mask"
 msgstr "maska przeciwpyłowa"
 
 #, elixir-format
-#: lib/web/templates/page/demo.html.eex:23
+#: lib/web/templates/page/demo.html.eex:9
 msgid "ear_protection"
 msgstr "ochrona słuchu"
 
 #, elixir-format
-#: lib/web/templates/page/demo.html.eex:24
+#: lib/web/templates/page/demo.html.eex:10
 msgid "earth_terminal"
 msgstr "uziemienie"
 
 #, elixir-format
-#: lib/web/templates/page/demo.html.eex:17
+#: lib/web/templates/page/demo.html.eex:3
 msgid "electrical"
 msgstr "elektryczne"
 
 #, elixir-format
-#: lib/web/templates/page/demo.html.eex:25
+#: lib/web/templates/page/demo.html.eex:11
 msgid "eye_protection"
 msgstr "ochrona wzroku"
 
 #, elixir-format
-#: lib/web/templates/page/demo.html.eex:26
+#: lib/web/templates/page/demo.html.eex:12
 msgid "face_shield"
 msgstr "osłona twarzy"
 
 #, elixir-format
-#: lib/web/templates/page/demo.html.eex:27
+#: lib/web/templates/page/demo.html.eex:13
 msgid "foot_protection"
 msgstr "obuwie ochronne"
 
 #, elixir-format
-#: lib/web/templates/page/demo.html.eex:22
+#: lib/web/templates/page/demo.html.eex:8
 msgid "gas"
 msgstr "gaz"
 
 #, elixir-format
-#: lib/web/templates/page/demo.html.eex:16
+#: lib/web/templates/page/demo.html.eex:2
 msgid "general"
 msgstr "ogólny"
 
 #, elixir-format
-#: lib/web/templates/page/demo.html.eex:28
+#: lib/web/templates/page/demo.html.eex:14
 msgid "head_protection"
 msgstr "ochrona głowy"
 
 #, elixir-format
-#: lib/web/templates/page/demo.html.eex:18
+#: lib/web/templates/page/demo.html.eex:4
 msgid "heights"
 msgstr "praca na wysokościo"
 
 #, elixir-format
-#: lib/web/templates/page/demo.html.eex:29
+#: lib/web/templates/page/demo.html.eex:15
 msgid "high_visibility_clothing"
 msgstr "ubranie odblaskowe"
 
 #, elixir-format
-#: lib/web/templates/page/demo.html.eex:21
+#: lib/web/templates/page/demo.html.eex:7
 msgid "hot_fluid"
 msgstr "gorące płyny"
 
 #, elixir-format
-#: lib/web/templates/page/demo.html.eex:19
+#: lib/web/templates/page/demo.html.eex:5
 msgid "hot_work"
 msgstr "zagrożenie pożarem"
 
 #, elixir-format
-#: lib/web/templates/page/demo.html.eex:31
+#: lib/web/templates/page/demo.html.eex:17
 msgid "protective_clothing"
 msgstr "ubranie ochronne"
 
 #, elixir-format
-#: lib/web/templates/page/demo.html.eex:32
+#: lib/web/templates/page/demo.html.eex:18
 msgid "protective_gloves"
 msgstr "rękawice ochronne"
 
 #, elixir-format
-#: lib/web/templates/page/demo.html.eex:33
+#: lib/web/templates/page/demo.html.eex:19
 msgid "safety_harness"
 msgstr "szelki ochronne"
 
 #, elixir-format
-#: lib/web/templates/page/demo.html.eex:34
+#: lib/web/templates/page/demo.html.eex:20
 msgid "welding_mask"
 msgstr "maska spawalnicza"
+
+#, elixir-format
+#: lib/web/templates/page/demo.html.eex:23
+msgid "Connect an earth terminal to the ground"
+msgstr "uziemienie"
+
+#, elixir-format
+#: lib/web/templates/page/demo.html.eex:29
+msgid "Wear a dust mask"
+msgstr "Załóż maskę przeciwpyłową"
+
+#, elixir-format
+#: lib/web/templates/page/demo.html.eex:25
+msgid "Wear a face shield"
+msgstr "Załóż maskę ochronną"
+
+#, elixir-format
+#: lib/web/templates/page/demo.html.eex:32
+msgid "Wear a safety harness"
+msgstr "Załóż szelki ochronne"
+
+#, elixir-format
+#: lib/web/templates/page/demo.html.eex:33
+msgid "Wear a welding mask"
+msgstr "Załóż maskę spawalniczą"
+
+#, elixir-format, fuzzy
+#: lib/web/templates/page/demo.html.eex:22
+msgid "Wear ear protection"
+msgstr "ochrona słuchu"
+
+#, elixir-format, fuzzy
+#: lib/web/templates/page/demo.html.eex:24
+msgid "Wear eye protection"
+msgstr "ochrona słuchu"
+
+#, elixir-format, fuzzy
+#: lib/web/templates/page/demo.html.eex:26
+msgid "Wear foot protection"
+msgstr "obuwie ochronne"
+
+#, elixir-format, fuzzy
+#: lib/web/templates/page/demo.html.eex:27
+msgid "Wear head protection"
+msgstr "ochrona słuchu"
+
+#, elixir-format, fuzzy
+#: lib/web/templates/page/demo.html.eex:28
+msgid "Wear high visibility clothing"
+msgstr "ubranie odblaskowe"
+
+#, elixir-format, fuzzy
+#: lib/web/templates/page/demo.html.eex:30
+msgid "Wear protective clothing"
+msgstr "ubranie ochronne"
+
+#, elixir-format, fuzzy
+#: lib/web/templates/page/demo.html.eex:31
+msgid "Wear protective gloves"
+msgstr "rękawice ochronne"

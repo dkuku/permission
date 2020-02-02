@@ -122,7 +122,7 @@
             >
             <label for="pe_<%= pe %>">
               <%= img_tag( Workpermit.IsoSymbols.to_image_path(pe)) %>
-              <%= Workpermit.IsoSymbols.to_sign_meaning(pe) %>
+              <%= gettext_category(iso_meaning(pe)) %>
             </label>
           </li>
         <% end %>

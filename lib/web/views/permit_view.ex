@@ -27,8 +27,8 @@ defmodule Web.PermitView do
     link show, to: route, class: class
   end
   def iso_image_category(category), do:  category |> Permits.image() |> iso_image()
-  def iso_image(img), do: img |> IsoSymbols.to_image_path()
-  def iso_meaning(img), do: img |> IsoSymbols.to_sign_meaning()
+  def iso_image(iso), do: iso |> IsoSymbols.to_image_path()
+  def iso_meaning(iso), do: iso |> IsoSymbols.to_sign_meaning()
 
   def checkbox(string) when is_bitstring(string), do: "□" <> " " <> string
   def checkbox(nil), do: "□"
