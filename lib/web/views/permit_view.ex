@@ -11,6 +11,19 @@ defmodule Web.PermitView do
     |> raw
   end
 
+  def category_query(params, category) do
+    search_query = %{
+      "q" => %{"category_eq" => category},
+      "s" => "number+desc"
+    }
+    Map.merge(params, search_query)
+  end
+  def link_sorted(conn, show, params, new_params, class  \\ "") do
+    updated_params = Map.merge(params, new_params)
+    route = Routes.permit_path(conn, :index, updated_params)
+    link show, to: route, class: class
+  end
+  def iso_image_category(category), do:  category |> Permits.image() |> iso_image()
   def iso_image(img), do: img |> IsoSymbols.to_image_path()
   def iso_meaning(img), do: img |> IsoSymbols.to_sign_meaning()
 

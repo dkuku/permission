@@ -25,29 +25,29 @@
         <th>
           <p class="whitespace-no-wrap">
         <%= gettext("Number") %>
-            <%= link "▴", to: Routes.permit_path(@conn, :index, Map.merge(@old_params, %{ "s" => "number+asc"})), class: "" %>
-            <%= link "▾", to: Routes.permit_path(@conn, :index, Map.merge(@old_params, %{ "s" => "number+desc"})), class: "" %>
+            <%= link_sorted @conn, "▴", @old_params, %{ "s" => "number+asc"}, "" %>
+            <%= link_sorted @conn, "▾", @old_params, %{ "s" => "number+desc"}, "" %>
           </p>
         </th>
         <th>
           <p class="whitespace-no-wrap">
             <%= gettext("Issued") %>
-            <%= link "▴", to: Routes.permit_path(@conn, :index, Map.merge(@old_params, %{ "s" => "updated_at+asc"})), class: "" %>
-            <%= link "▾", to: Routes.permit_path(@conn, :index, Map.merge(@old_params, %{ "s" => "updated_at+desc"})), class: "" %>
+            <%= link_sorted @conn, "▴", @old_params, %{ "s" => "updated_at+asc"}, "" %>
+            <%= link_sorted @conn, "▾", @old_params, %{ "s" => "updated_at+desc"}, "" %>
           </p>
         </th>
         <th>
           <p class="whitespace-no-wrap">
             <%= gettext("Start") %>
-            <%= link "▴", to: Routes.permit_path(@conn, :index, Map.merge(@old_params, %{ "s" => "start_time+asc"})), class: "" %>
-            <%= link "▾", to: Routes.permit_path(@conn, :index, Map.merge(@old_params, %{ "s" => "start_time+desc"})), class: "" %>
+            <%= link_sorted @conn, "▴", @old_params, %{ "s" => "start_time+asc"}, "" %>
+            <%= link_sorted @conn, "▾", @old_params, %{ "s" => "start_time+desc"}, "" %>
           </p>
         </th>
         <th>
           <p class="whitespace-no-wrap">
             <%= gettext("Finish") %>
-            <%= link "▴", to: Routes.permit_path(@conn, :index, Map.merge(@old_params, %{ "s" => "finish_time+asc"})), class: "" %>
-            <%= link "▾", to: Routes.permit_path(@conn, :index, Map.merge(@old_params, %{ "s" => "finish_time+desc"})), class: "" %>
+            <%= link_sorted @conn, "▴", @old_params, %{ "s" => "finish_time+asc"}, "" %>
+            <%= link_sorted @conn, "▾", @old_params, %{ "s" => "finish_time+desc"}, "" %>
           </p>
         </th>
         <th><%= gettext("Closed") %></th>
@@ -63,9 +63,9 @@
       <%= for permit <- @permits do %>
         <tr>
           <td>
-            <%= link to: Routes.permit_path(@conn, :index, Map.merge(@old_params, %{ "q" => %{"category_eq" => permit.category}})), class: "" do %>
-              <%= img_tag iso_image(Workpermit.Permits.image(permit.category)), class: "w-10 h-10" %>
-              <%= to_string(permit.category) %>
+            <%= link to: Routes.permit_path( @conn, :index, category_query(@old_params, permit.category)), class: "" do %>
+              <%= img_tag iso_image_category(permit.category), class: "w-10 h-10" %>
+              <%= OrgGettext.dgettext(Web.Gettext, "default", to_string(permit.category)) %>
             <% end %>
           </td>
           <td><%= permit.number %></td>

@@ -28,6 +28,7 @@ defmodule Web do
 
       import Web.ErrorHelpers
       import Web.Gettext
+      alias Gettext, as: OrgGettext
       alias Web.Router.Helpers, as: Routes
       import Web.Helpers.Auth, only: [signed_in?: 1]
       import Web.Helpers.Forms
