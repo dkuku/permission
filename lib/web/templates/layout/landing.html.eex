@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/landing.css") %>">
   </head>
   <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
-    <%= render "components/nav.html", conn: @conn, tenant: assigns[:tenant] %>
+    <%= render "components/nav.html", conn: @conn, tenant: assigns[:tenant], text_color: Web.CSS.nav_text_color(@conn) %>
     <%= Enum.map(get_flash(@conn), fn {type, message} -> %>
       <%= render "components/flash.html", type: type, message: message %>
     <% end) %>

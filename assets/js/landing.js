@@ -11,6 +11,7 @@ import css from "../css/landing.scss"
 import "phoenix_html"
 
 // Import local files
+import 'alpinejs'
 import "./navbar"
 //
 // Local files can be imported directly using relative paths, for example:
