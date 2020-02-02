@@ -3,12 +3,12 @@
   <div class = "w-full px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md">
     <section class="mx-auto my-8">
       <ul class="flex justify-between">
-        <li class="w-32 h-32 mr-3">
-          <%= img_tag iso_image(Workpermit.Permits.image(@permit.category)), class: "object-cover object-center w-full h-full visible group-hover:hidden" %>
+        <li class="h-32 mr-3 w-34">
+          <%= img_tag iso_image(Workpermit.Permits.image(@permit.category)), class: "object-center w-full h-full visible group-hover:hidden" %>
         </li>
       <%= for  pe <- @permit.protective_equipment do %>
-        <li class="w-32 h-32 mr-3">
-          <%= img_tag iso_image(pe), class: "object-cover object-center w-full h-full visible group-hover:hidden" %>
+        <li class="w-32 h-32 p-2 mr-3">
+          <%= img_tag iso_image(pe), class: "object-center w-full h-full visible group-hover:hidden" %>
           <%= iso_meaning(pe) %>
         </li>
       <% end %>
@@ -19,7 +19,7 @@
       <div class="w-full md:w-1/2">
         <div class = "flex justify-between block m-4 c-h6 text-gray-darker">
           <span class="form-label"><%= gettext("Category") %>:&nbsp;</span>
-          <%= @permit.category %>
+          <%= gettext_category(@permit.category) %>
         </div>
         <div class = "flex justify-between block m-4 c-h6 text-gray-darker">
           <span class="block form-label"><%= gettext("Number") %>:&nbsp;</span>

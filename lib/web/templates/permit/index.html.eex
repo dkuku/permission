@@ -65,7 +65,7 @@
           <td>
             <%= link to: Routes.permit_path( @conn, :index, category_query(@old_params, permit.category)), class: "" do %>
               <%= img_tag iso_image_category(permit.category), class: "w-10 h-10" %>
-              <%= OrgGettext.dgettext(Web.Gettext, "default", to_string(permit.category)) %>
+              <%= gettext_category(permit.category) %>
             <% end %>
           </td>
           <td><%= permit.number %></td>

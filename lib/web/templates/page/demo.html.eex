@@ -1,18 +1,37 @@
 <div class="flex flex-wrap content-center flex-1 w-full max-w-6xl pt-16 mx-auto">
-<%= for iso <- Enum.sort(Map.keys(Workpermit.IsoSymbols.to_iso_code_mapping())) do %>
-<div class="max-w-xs m-4 overflow-hidden rounded shadow-lg bg-secondary-medium ">
-  <img class="w-full" src=" <%= Workpermit.IsoSymbols.to_image_path(iso) %> " alt="<%= iso %>">
-  <div class="px-6 py-4">
-    <div class="mb-2 text-xl font-bold">
-  <%= iso %>
+  <br><%= gettext("general") %>
+  <br><%= gettext("electrical") %>
+  <br><%= gettext("heights") %>
+  <br><%= gettext("hot_work") %>
+  <br><%= gettext("confined_space") %>
+  <br><%= gettext("hot_fluid") %>
+  <br><%= gettext("gas") %>
+  <br><%= gettext("ear_protection") %>
+  <br><%= gettext("earth_terminal") %>
+  <br><%= gettext("eye_protection") %>
+  <br><%= gettext("face_shield") %>
+  <br><%= gettext("foot_protection") %>
+  <br><%= gettext("head_protection") %>
+  <br><%= gettext("high_visibility_clothing") %>
+  <br><%= gettext("dust_mask") %>
+  <br><%= gettext("protective_clothing") %>
+  <br><%= gettext("protective_gloves") %>
+  <br><%= gettext("safety_harness") %>
+  <br><%= gettext("welding_mask") %>
+  <%= for iso <- Enum.sort(Map.keys(Workpermit.IsoSymbols.to_iso_code_mapping())) do %>
+    <div class="max-w-xs m-4 overflow-hidden rounded shadow-lg bg-secondary-medium ">
+      <img class="w-full" src=" <%= Workpermit.IsoSymbols.to_image_path(iso) %> " alt="<%= iso %>">
+      <div class="px-6 py-4">
+        <div class="mb-2 text-xl font-bold">
+          <%= iso %>
+        </div>
+        <p class="text-base text-grey-darker">
+          <%= Workpermit.IsoSymbols.to_sign_meaning(iso) %>
+        </p>
+      </div>
+      <div class="px-6 py-4">
+        <!--span class="inline-block px-3 py-1 text-sm font-semibold rounded-full bg-grey-lighter text-grey-darker">#3</span2-->
+      </div>
     </div>
-    <p class="text-base text-grey-darker">
-  <%= Workpermit.IsoSymbols.to_sign_meaning(iso) %>
-    </p>
-  </div>
-  <div class="px-6 py-4">
-    <!--span class="inline-block px-3 py-1 text-sm font-semibold rounded-full bg-grey-lighter text-grey-darker">#3</span2-->
-  </div>
-</div>
-<%end %>
+  <%end %>
 </div>

@@ -11,6 +11,9 @@ defmodule Web.PermitView do
     |> raw
   end
 
+  def gettext_category(category) do
+    OrgGettext.dgettext(Web.Gettext, "default", to_string(category))
+  end
   def category_query(params, category) do
     search_query = %{
       "q" => %{"category_eq" => category},
