@@ -19,7 +19,6 @@ defmodule Workpermit.PermitsTest do
   # TODO check these inserts - conert to build
   @valid_attrs %{
     category: :heights,
-    number: 42,
     closed_time: ~N[2010-04-17 14:00:00],
     start_time: ~N[2010-04-17 14:00:00],
     finish_time: ~N[2010-04-17 14:00:00],
@@ -41,7 +40,6 @@ defmodule Workpermit.PermitsTest do
       permit = insert(:permit)
       permit_db = Permits.get_permit!(permit.id)
       assert permit_db.id == permit.id
-      assert permit_db.number == permit.number
       assert permit_db.category == permit.category
       assert permit_db.closed_time == permit.closed_time
       assert permit_db.finish_time == permit.finish_time
@@ -51,7 +49,6 @@ defmodule Workpermit.PermitsTest do
       user = build(:user)
       assert {:ok, %Permit{} = permit} = Permits.create_permit(user, @valid_attrs)
       assert permit.category == :heights
-      assert permit.number == 42
       assert permit.closed_time == ~N[2010-04-17 14:00:00]
       assert permit.finish_time == ~N[2010-04-17 14:00:00]
       assert permit.start_time == ~N[2010-04-17 14:00:00]
@@ -74,8 +71,8 @@ defmodule Workpermit.PermitsTest do
       assert first == :ear_protection
     end
 
-    @tag :skip
-    test "next_permit_number/1 returns number + 1 of ladt permit in category" do
+    #@tag :skip
+    test "next_permit_number/1 returns number + 1 of last permit in category" do
       next_electrical = Permits.next_permit_number(:electrical)
       _permit = insert(:permit, %{:category => :electrical})
       assert Permits.next_permit_number(:electrical) == next_electrical + 1

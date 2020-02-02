@@ -6,7 +6,7 @@ defmodule Workpermit.Repo.Migrations.NextPermitNumberFunction do
     CREATE OR REPLACE FUNCTION next_permit()
     RETURNS TRIGGER AS $category_number$ 
       BEGIN 
-        SELECT max(number)+1 INTO NEW.number 
+        SELECT coalesce(max(number), 0)+1 INTO NEW.number 
           FROM permits WHERE category = NEW.category;   
         RETURN NEW; 
       END; 

@@ -2,28 +2,24 @@ defmodule Web.PermitController do
   use Web, :controller
   action_fallback(Web.FallbackController)
   plug :authenticate when action in [:index, :new, :create, :show]
+  # plug :authenticate when action  not in [:select_category]
 
   alias Workpermit.Permits
-  alias Workpermit.Permits.Permit
+  alias Workpermit.Permits.{Permit, ProtectiveEquipment}
   require Ecto.Query
 
-  def index(conn, params, tenant,  _user) do
-    result = Turbo.Ecto.turbo(
-      Permit,
-      params,
-      entry_name: "permits",
-      prefix: tenant
-    )
+  def index(conn, params, _user) do
+    result =
+      Permit
+      |> Turbo.Ecto.turbo(params, entry_name: "permits")
 
-    conn
-    |> assign(:permits, result.permits)
-    |> assign(:paginate, result.paginate)
-    |> render(:index)
+    # |> Ecto.Query.order_by(desc: :id)
+    render(conn, :index, permits: result.permits, paginate: result.paginate)
     #    permits = Permits.list_permits()
     #    render(conn, "index.html", permits: permits)
   end
 
-  def new(conn, _params, tenant, user) do
+  def new(conn, _params, user) do
     conn
     |> assign(:changeset, Permits.change_permit())
     |> assign(:pe, Permits.pe_fields())
@@ -34,16 +30,16 @@ defmodule Web.PermitController do
     |> render("new.html")
   end
 
-  def create(conn, %{"permit" => permit_params}, tenant, user) do
-    with {:ok, permit} <- Permits.create_permit(user, tenant, permit_params) do
+  def create(conn, %{"permit" => permit_params}, user) do
+    with {:ok, permit} <- Permits.create_permit(user, permit_params) do
       conn
       |> put_flash(:info, gettext("Permit created successfully"))
       |> redirect(to: Routes.permit_path(conn, :show, permit))
     end
   end
 
-  def show(conn, %{"id" => id}, tenant, _user) do
-    with permit <- Permits.get_permit!(id, tenant) do
+  def show(conn, %{"id" => id}, _user) do
+    with permit <- Permits.get_permit!(id) do
       render(conn, "show.html", permit: permit)
     end
   end
@@ -65,7 +61,7 @@ defmodule Web.PermitController do
   end
 
   def action(conn, _) do
-    args = [conn, conn.params, Triplex.to_prefix(conn.assigns.current_tenant), conn.assigns.current_user]
+    args = [conn, conn.params, conn.assigns.current_user]
     apply(__MODULE__, action_name(conn), args)
   end
 end

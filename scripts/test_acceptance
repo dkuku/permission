@@ -1,0 +1,1 @@
+phantomjs --wd & sleep 3 && mix test --only hound && pkill phantomjs

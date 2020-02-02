@@ -22,6 +22,7 @@ defmodule Web.Acceptance.SessionTest do
     :ok
   end
 
+  @tag :hound
   test "shows error message for invalid credentials" do
     ## WHEN ##
     # users tryes to log in with invalid credentials
@@ -42,6 +43,7 @@ defmodule Web.Acceptance.SessionTest do
              "The provided login details did not work. Please verify your credentials, and try again."
   end
 
+  @tag :hound
   test "Create new user" do
     ## WHEN ##
     # users logs in
@@ -81,6 +83,7 @@ defmodule Web.Acceptance.SessionTest do
     assert current_path() == "/"
   end
 
+  @tag :hound
   test "successful sign-in for valid credential" do
     ## WHEN ##
     # users logs in

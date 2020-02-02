@@ -1,5 +1,5 @@
 options = [
-  exclude: [:skip]
+  exclude: [:skip, :hound]
 ]
 
 ExUnit.start(options)

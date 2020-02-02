@@ -1,4 +1,4 @@
-defmodule Workpermit.Permits do
+defmodule Workpermit.PermitsTenant do
   @moduledoc """
   The Permits context.
   """
@@ -21,7 +21,8 @@ defmodule Workpermit.Permits do
 
   """
   def list_permits do
-    Repo.all(Permit |> order_by(desc: :id))
+    Repo.all(Permit |> order_by(desc: :id),
+    prefix: Triplex.to_prefix("demo"))
   end
 
   @doc """
@@ -38,17 +39,16 @@ defmodule Workpermit.Permits do
       ** (Ecto.NoResultsError)
 
   """
-  def get_permit!(id) do
-    Repo.one(
-      from permit in Permit,
+  def get_permit!(id, tenant) do
+      query = from permit in Permit,
         where: permit.id == ^id,
         preload: :issuer
-    )
+    Repo.one(query, prefix: tenant)
   end
 
-  def get_permit(id) do
-    {:ok, permit} = get_permit!(id)
-    permit
+  def get_permit(id, tenant) do
+    permit = get_permit!(id, tenant)
+    {:ok, permit}
   end
 
   @doc """
@@ -63,11 +63,11 @@ defmodule Workpermit.Permits do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_permit(%Users.User{} = user, attrs \\ %{}) do
+  def create_permit(%Users.User{} = user, tenant, attrs \\ %{}) do
     %Permit{}
     |> Permit.changeset(attrs)
     |> Ecto.Changeset.put_assoc(:issuer, user)
-    |> Repo.insert()
+    |> Repo.insert(prefix: tenant)
   end
 
   @doc """

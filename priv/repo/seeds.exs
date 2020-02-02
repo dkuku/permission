@@ -41,7 +41,6 @@ defmodule Seed do
     permit =
       Workpermit.Permits.create_permit(user, %{
         category: :rand.uniform(7) - 1,
-        number: id,
         start_time: ~N[2020-01-21 06:00:00],
         closed_time: ~N[2020-01-21 12:00:00],
         finish_time: ~N[2020-01-21 14:00:00],
