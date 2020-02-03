@@ -104,8 +104,8 @@ defmodule Workpermit.Permits do
     Permit.changeset(%Permit{}, %{})
   end
 
-  def change_permit(%Permit{} = permit \\ %{}) do
-    Permit.changeset(permit, %{})
+  def change_permit(permit) do
+    Permit.changeset(%Permit{}, permit)
   end
 
   def category_fields do

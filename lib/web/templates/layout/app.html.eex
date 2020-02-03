@@ -4,7 +4,6 @@
     <%= render "components/head.html", conn: @conn %>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">
   </head>
-    <%= render "components/head.html", conn: @conn %>
   <body class="flex flex-col h-full leading-normal tracking-normal bg-secondary-lighter" style="font-family: system;">
     <%= render "components/nav.html", conn: @conn, tenant: assigns[:tenant], text_color: Web.CSS.nav_text_color(@conn) %>
     <div class="fixed top-0 right-0 w-5/6 max-w-sm m-8 mt-16 md:w-full transform">

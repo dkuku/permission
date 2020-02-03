@@ -3,6 +3,6 @@ defmodule Web.LiveController do
   alias Phoenix.LiveView
 
   def index(conn, _params) do
-    LiveView.Controller.live_render(conn, Web.RacerView, session: %{})
+    LiveView.Controller.live_render(conn, Web.LivePermitView, session: %{})
   end
 end
