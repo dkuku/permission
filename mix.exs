@@ -47,6 +47,7 @@ defmodule Workpermit.MixProject do
       {:ecto_sql, "~> 3.0"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
+      {:pdf_generator, ">=0.4.0"},
       {:phoenix, "~> 1.4.12"},
       {:phoenix_ecto, "~> 4.0"},
       {:phoenix_form_awesomplete, "~> 0.1"},

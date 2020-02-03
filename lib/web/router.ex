@@ -5,7 +5,7 @@ defmodule Web.Router do
   use Sentry.Plug
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    plug :accepts, ["html", "pdf"]
     plug :fetch_session
     plug :fetch_flash
     plug Phoenix.LiveView.Flash
@@ -19,7 +19,9 @@ defmodule Web.Router do
     plug Pow.Plug.RequireAuthenticated,
       error_handler: Pow.Phoenix.PlugErrorHandler
   end
-
+  pipeline :pdf do
+    plug Web.PdfGenerator, orientation: 'portrait'
+  end
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -33,6 +35,11 @@ defmodule Web.Router do
     pow_routes()
   end
 
+  scope "/", Web do
+    pipe_through [:browser, :protected, :pdf]
+    get "/permits/pdf/:id", PermitController, :show, as: "print"
+    get "/permits/pdf", PermitController, :index, as: "print"
+  end
   scope "/", Web do
     pipe_through [:browser, :protected]
     # User registration and sessions
