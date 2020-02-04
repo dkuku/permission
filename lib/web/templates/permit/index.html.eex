@@ -83,6 +83,10 @@
               <i class="far fa-eye"></i>
               <span><%= link gettext("Show"), to: Routes.permit_path(@conn, :show, permit) %></span>
             </p>
+            <p class="whitespace-no-wrap">
+              <i class="far fa-print"></i>
+              <span><%= link gettext("Print"), to: Routes.print_path(@conn, :show, permit.id) %></span>
+            </p>
           </td>
         </tr>
       <% end %>

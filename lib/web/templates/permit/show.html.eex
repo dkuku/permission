@@ -79,7 +79,8 @@
         <%= markdown(@permit.additional_info) %>
       </div>
       <div class="flex justify-between">
-        <%= link gettext("Back"), to: Routes.permit_path(@conn, :index), class: "bg-transparent hover:bg-primary-light text-primary-medium font-semibold hover:text-white py-2 px-4 border border-primary-medium hover:border-transparent rounded" %>
+        <%= link gettext("Back"), to: Routes.permit_path(@conn, :index), class: "right-0 px-4 py-2 font-bold text-black border-2 rounded bg-primary-medium hover:bg-primary-dark" %>
+        <%= link gettext("Print"), to: Routes.print_path(@conn, :show, @permit.id), class: "right-0 px-4 py-2 font-bold text-black border-2 rounded bg-primary-medium hover:bg-primary-dark" %>
       </div>
     </div>
   </div>
