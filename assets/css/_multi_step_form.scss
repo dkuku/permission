@@ -52,10 +52,12 @@
   display: inline;
 }
 
-#permitForm input[type="checkbox"] {
+#permitForm input[type="checkbox"], 
+#permitForm input[type="radio"] {
   display: none;
 }
 
+#permitForm #category label,
 #permitForm #pe label {
   border: 1px solid #fff;
   padding: 10px;

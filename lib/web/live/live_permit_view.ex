@@ -1,4 +1,5 @@
 defmodule Web.LivePermitView do
+  import Phoenix.LiveView.Helpers
   use Phoenix.LiveView
   use Phoenix.HTML
   import Web.Gettext
@@ -10,7 +11,8 @@ defmodule Web.LivePermitView do
     Phoenix.View.render(Web.PermitView, "live_form.html", assigns)
   end
 
-  def mount(session, socket) do
+  def mount(params, session, socket) do
+    IO.inspect(params)
     %{current_user: user} = current_user(socket, session).assigns
     socket =
       socket
@@ -57,7 +59,7 @@ defmodule Web.LivePermitView do
 
   def handle_event("validate", %{"permit" => params}, socket) do
     changeset = Permits.change_permit(params) |> Map.put(:action, :insert)
-
+    IO.inspect(changeset)
     {:noreply, assign(socket, :changeset, changeset)}
   end
 

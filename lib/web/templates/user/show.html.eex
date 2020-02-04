@@ -1,27 +1,27 @@
-<div class="w-full max-w-lg pt-16 mx-auto content-center flex-1">
-  <h1 class="c-h3 p-5 text-gray-darker"><%= gettext("User Profile") %></h1>
-  <div class = "bg-white w-full shadow-md rounded px-8 pt-6 pb-8 mb-4">
+<div class="content-center flex-1 w-full max-w-lg pt-16 mx-auto">
+  <h1 class="p-5 c-h3 text-gray-darker"><%= gettext("User Profile") %></h1>
+  <div class = "w-full px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md">
     <div class = "block mb-6 c-h5 text-gray-darker">
-      <span class="form-label block"><%= gettext("Email") %></span>
-      <p class = "form-input w-full mt-1">
+      <span class="block form-label"><%= gettext("Email") %></span>
+      <p class = "w-full mt-1 form-input">
         <%= @user.email %>
       </p>
     </div>
     <div class = "block mb-6 c-h5 text-gray-darker">
-      <span class="form-label block"><%= gettext("First name") %></span>
-      <p class = "form-input w-full mt-1">
+      <span class="block form-label"><%= gettext("First name") %></span>
+      <p class = "w-full mt-1 form-input">
         <%= @user.first_name %>
       </p>
     </div>
     <div class = "block mb-6 c-h5 text-gray-darker">
-      <span class="form-label block"><%= gettext("Last name") %></span>
-      <p class = "form-input w-full mt-1">
+      <span class="block form-label"><%= gettext("Last name") %></span>
+      <p class = "w-full mt-1 form-input">
         <%= @user.last_name %>
       </p>
     </div>
     <div class = "block mb-6 c-h5 text-gray-darker">
-      <span class="form-label block"><%= gettext("Phone") %></span>
-      <p class = "form-input w-full mt-1">
+      <span class="block form-label"><%= gettext("Phone") %></span>
+      <p class = "w-full mt-1 form-input">
         <%= @user.phone %>
       </p>
     </div>

@@ -12,7 +12,7 @@ defmodule Web.PermitView do
   end
 
   def gettext_category(category) do
-    OrgGettext.dgettext(Web.Gettext, "default", to_string(category))
+    OrgGettext.dgettext(Web.Gettext, "default", humanize(category))
   end
   def category_query(params, category) do
     search_query = %{
