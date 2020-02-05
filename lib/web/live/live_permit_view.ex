@@ -11,13 +11,11 @@ defmodule Web.LivePermitView do
     Phoenix.View.render(Web.PermitView, "live_form.html", assigns)
   end
 
-  def mount(params, session, socket) do
-    IO.inspect(params)
+  def mount(_params, session, socket) do
     %{current_user: user} = current_user(socket, session).assigns
     socket =
       socket
       |> current_user(session)
-      |> IO.inspect()
       |> assign(:current_step, 1)
       |> assign(:action, 1)
       |> assign(:changeset, Permits.change_permit())
@@ -26,14 +24,19 @@ defmodule Web.LivePermitView do
       # use choosen category from settings
       |> assign(:choosen_category, Permits.choosen_category(:general))
       |> assign(:current_user, full_name(user))
+      |> assign(:usernames, [])
       |> current_user(session)
-      |> IO.inspect()
-    {:ok, socket}
+    {:ok, socket, temporary_assigns: [usernames: []]}
+  end
+
+  def handle_event("suggest-username", payload, socket) do
+    IO.inspect(payload)
+    usernames = search_usernames(payload["value"])
+    {:noreply, assign(socket, :usernames, usernames)}
   end
 
   def handle_event("prev-step", _value, socket) do
     new_step = max(socket.assigns.current_step - 1, 1)
-    IO.inspect(new_step)
     {:noreply, assign(socket, :current_step, new_step)}
   end
 
@@ -41,10 +44,9 @@ defmodule Web.LivePermitView do
     current_step = socket.assigns.current_step
     changeset = socket.assigns.changeset
 
-    IO.inspect(changeset.errors)
     step_invalid =
       case current_step do
-        1 -> Enum.any?(Keyword.keys(changeset.errors), fn k -> k in [:category] end)
+        1 -> Enum.any?(Keyword.keys(changeset.errors), fn k -> k in [:categor] end)
         2 -> Enum.any?(Keyword.keys(changeset.errors), fn k -> k in [:type] end)
         3 -> Enum.any?(Keyword.keys(changeset.errors), fn k -> k in [:start_time] end)
         4 -> Enum.any?(Keyword.keys(changeset.errors), fn k -> k in [:type] end)
@@ -53,15 +55,16 @@ defmodule Web.LivePermitView do
       end
 
     new_step = if step_invalid, do: current_step, else: current_step + 1
-
     {:noreply, assign(socket, :current_step, new_step)}
   end
 
+  def handle_info(:pow_auth_ttl, socket), do: {:noreply, socket}
+
   def handle_event("validate", %{"permit" => params}, socket) do
     changeset = Permits.change_permit(params) |> Map.put(:action, :insert)
-    IO.inspect(changeset)
     {:noreply, assign(socket, :changeset, changeset)}
   end
+
 
   def handle_event("save", %{"permit" => params}, socket) do
     user = socket.assigns.current_user
@@ -82,5 +85,15 @@ defmodule Web.LivePermitView do
 
   def full_name(%{first_name: f, last_name: l}), do: "#{f} #{l}"
   def full_name(_), do: gettext("No data")
+  def search_usernames(""), do: []
+  def search_usernames(name), do: Workpermit.Users.find_names(name)
+  def error_tag(form, field) do
+    Enum.map(Keyword.get_values(form.errors, field), fn error ->
+      content_tag(:span, error,
+        class: "help-block",
+        data: [phx_error_for: input_id(form, field)]
+      )
+    end)
+  end
 end
 

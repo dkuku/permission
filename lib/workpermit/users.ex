@@ -1,6 +1,7 @@
 defmodule Workpermit.Users do
   alias Workpermit.Users.User
   alias Workpermit.Repo
+  import Ecto.Query
 
   @doc """
   Returns the list of users.
@@ -99,4 +100,25 @@ defmodule Workpermit.Users do
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
+
+  def find_names(name) do
+    search(User, name)
+    |> select([u], fragment("concat(?, ' ', ?)", u.first_name, u.last_name))
+    |> limit(10)
+    |> Repo.all()
+  end
+
+  @spec search(Ecto.Query.t(), any()) :: Ecto.Query.t()
+  def search(query, search_name) do
+    where(
+      query,
+      fragment(
+        "to_tsvector('english', first_name || ' ' || coalesce(last_name, ' ')) @@
+        to_tsquery(?)",
+        ^prefix_search(search_name)
+      )
+    )
+  end
+
+  defp prefix_search(term), do: String.replace(term, ~r/\W/u, "") <> ":*"
 end

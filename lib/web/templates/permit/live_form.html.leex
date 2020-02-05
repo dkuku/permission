@@ -1,6 +1,7 @@
 <div id="permitForm" class="content-center flex-1 w-full max-w-lg pt-16 mx-auto">
   <h1 class="p-5 c-h3 text-gray-darker"><%= gettext("Create permit") %></h1>
-  <%= f = form_for @changeset, "#", [phx_change: :validate, phx_submit: :save] %>
+  <!--%= f = form_for @changeset, "#", [phx_change: :validate, phx_submit: :save] % -->
+  <%= f = form_for @changeset, "#", [phx_submit: :save] %>
 
   <!-- error message -->
   <%= if @changeset.action do %>
@@ -53,9 +54,17 @@
       <div>
         <%= label f, actor, class: "block mb-6 c-h5" do %>
           <span class="block form-label"><%= gettext_category(actor) %></span>
-          <%= text_input f, actor, class: "form-input w-full mt-1", list: "#{actor}_list" %>
-          <datalist id="<%= actor %>_list">
-            <%= for match <- ~W(ar rs rrcv rcddd) do %>
+          <!-- %= text_input f, actor, class: "form-input w-full mt-1", list: "#{actor}_list" %-->
+          <input  class="w-full mt-1 form-input"
+                  id="permit_<%= actor %>" 
+                  list="<%= actor %>__list"
+                  name="permit[<%= actor %>]"
+                  phx-keyup="suggest-username"
+                  placeholder="Search..." 
+                  type="text" 
+                  >
+          <datalist phx-update="prepend" id="<%= actor %>__list">
+            <%= for match <- @usernames do %>
               <option value="<%= match %>"><%= match %></option>
             <% end %>
           </datalist>

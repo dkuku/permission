@@ -22,25 +22,4 @@ defmodule Workpermit.Users.User do
     |> Ecto.Changeset.cast(attrs, [:first_name, :last_name, :phone])
     |> Ecto.Changeset.validate_required([:first_name, :last_name, :phone])
   end
-
-  def find_names(name) do
-    search(User, name)
-    |> select([u], fragment("concat(?, ' ', ?)", u.first_name, u.last_name))
-    |> limit(10)
-    |> Repo.all()
-  end
-
-  @spec search(Ecto.Query.t(), any()) :: Ecto.Query.t()
-  def search(query, search_name) do
-    where(
-      query,
-      fragment(
-        "to_tsvector('english', first_name || ' ' || coalesce(last_name, ' ')) @@
-        to_tsquery(?)",
-        ^prefix_search(search_name)
-      )
-    )
-  end
-
-  defp prefix_search(term), do: String.replace(term, ~r/\W/u, "") <> ":*"
 end
