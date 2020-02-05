@@ -1,0 +1,178 @@
+<%= form_for @changeset, @action, [id: "permitForm"], fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p><%= gettext("Oops, something went wrong! Please check the errors below")%></p>
+    </div>
+  <% end %>
+
+  <div id="category" class="block tab text-gray-darker">
+    <h2 class="mb-8 c-h3 ">
+      <%= gettext("Category") %>
+    </h2>
+
+    <%= label f, :category, class: "block mb-6 c-h5" %>
+      <span class="block form-label"><%= gettext("Category") %></span>
+      <div class="relative inline-block w-full">
+        <%= select f, :category, @categories, selected: @choosen_category.selected, class: "form-input w-full mt-1 block appearance-none" %>
+        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+          <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+      </div>
+      <%= error_tag f, :category %>
+    <%= img_tag @choosen_category.image, id: "choosen_category_image" %>
+    <%= label f, :number, class: "block my-6 c-h5" do %>
+      <span class="block form-label"><%= gettext("Number") %></span>
+      <%= number_input f, :number, value: @choosen_category.next_number, class: "form-input w-full mt-1" %>
+      <%= error_tag f, :number %>
+    <% end %>
+    <div  class="flex justify-between">
+      <div>
+      <%= label f, :lone_working, class: "block font-bold" do %>
+        <%= checkbox f, :lone_working, class: "leading-tight mt-1" %>
+        <span class="text-sm"><%= gettext("Lone working") %></span>
+      <% end %>
+      </div>
+      <div>
+      <%= label f, :coshh, class: "block font-bold" do %>
+        <%= checkbox f, :coshh, class: "leading-tight mt-1" %>
+        <span class="text-sm"><%= gettext("COSHH") %></span>
+      <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div id="actors" class="tab text-gray-darker">
+    <h2 class="mb-8 c-h4 ">
+      <%= gettext("Actors") %>
+    </h2>
+    <div>
+      <%= label f, :issuer_name, class: "block mb-6 c-h5" do %>
+        <span class="block form-label"><%= gettext("Issuer") %></span>
+        <%= text_input f, :issuer_name, value: full_name(@current_user), class: "form-input w-full mt-1" %>
+        <%= error_tag f, :issuer_name %>
+      <% end %>
+    </div>
+
+    <div>
+      <%= label f, :performer_name, class: "block mb-6 c-h5" do %>
+      <span class="block form-label"><%= gettext("Performer") %></span>
+      <%= text_input f, :performer_name, class: "form-input w-full mt-1" %>
+      <%= error_tag f, :performer_name %>
+    <% end %>
+    </div>
+
+    <div>
+      <%= label f, :firewatch_name, class: "block mb-6 c-h5 hidden" do %>
+      <span class="block form-label"><%= gettext("Firewatch") %></span>
+      <%= text_input f, :firewatch_name, class: "form-input w-full mt-1" %>
+      <%= error_tag f, :firewatch_name %>
+    <% end %>
+    </div>
+
+    <div>
+      <%= label f, :controller_name, class: "block mb-6 c-h5 hidden" do %>
+      <span class="block form-label"><%= gettext("Controller") %></span>
+      <%= text_input f, :controller_name, class: "form-input w-full mt-1" %>
+      <%= error_tag f, :controller_name %>
+    <% end %>
+    </div>
+  </div>
+
+  <div id="time" class="tab text-gray-darker">
+    <h2 class="mb-8 c-h4 ">
+      <%= gettext("Time") %>
+    </h2>
+    <%= label f, :start_time, class: "block mb-6 c-h6" do %>
+      <span class="block mb-2 form-label c-h5"><%= gettext("Start Time") %></span>
+      <%= error_tag f, :start_time %>
+      <div class="flex two four-500 six-800">
+        <%= permit_datetime_select f, :start_time, class: "form-input w-full mt-1 c-h6" %>
+      </div>
+    <% end %>
+
+    <%= label f, :finish_time, class: "block mb-6 c-h6" do %>
+      <span class="block mb-2 form-label c-h5"><%= gettext("Finish Time") %></span>
+      <%= error_tag f, :finish_time %>
+      <div class="flex two four-500 six-800">
+        <%= permit_datetime_select f, :finish_time, class: "form-input w-full mt-1" %>
+      </div>
+    <% end %>
+
+    <!--%= label f, :closed_time, class: "block mb-6 c-h5 text-gray-darker" do %>
+      <span class="block form-label"><-%= gettext("Closed Time") %></span>
+      <-%= error_tag f, :closed_time %>
+      <div class="flex two four-500 six-800">
+        <-%= permit_datetime_select f, :closed_time, class: "form-input w-full mt-1" %>
+      </div>
+    <-% end %-->
+  </div>
+
+  <div id="pe" class="tab">
+    <h2 class="mb-8 c-h4 ">
+      <%= gettext("Protective Equipment") %>
+    </h2>
+      <ul>
+        <%=  for pe <- @pe do %>
+          <li>
+            <input type="checkbox" 
+              name="permit[protective_equipment][]"
+              value="<%= pe %>"
+              id="pe_<%= pe %>"
+              class=""
+            >
+            <label for="pe_<%= pe %>">
+              <%= img_tag( Workpermit.IsoSymbols.to_image_path(pe)) %>
+              <%= gettext_category(iso_meaning(pe)) %>
+            </label>
+          </li>
+        <% end %>
+      </ul>
+  </div>
+
+  <div id="info" class="tab text-gray-darker">
+    <h2 class="mb-8 c-h4 ">
+      <%= gettext("Additional Info") %>
+    </h2>
+    <div>
+      <%= label f, :precautions, class: "block mb-6" do %>
+        <div  class="flex justify-between">
+          <span class="block form-label c-h5"><%= gettext("Precautions") %></span>
+          <p id="precautions_add_checkbox" class="px-2 py-1 bg-transparent border rounded cursor-pointer text-small text-gray-darker border-gray-dark ">Insert □</p>
+        </div>
+      <%= textarea f, :precautions, value: {:safe, prec}, class: "form-input w-full mt-1 h-64" %>
+      <%= error_tag f, :precautions %>
+    <% end %>
+    </div>
+    <div>
+      <%= label f, :additional_info, class: "block mb-6" do %>
+      <span class="block form-label c-h5"><%= gettext("Additional Info") %></span>
+      <%= textarea f, :additional_info, class: "form-input w-full mt-1 h-32" %>
+      <%= error_tag f, :additional_info %>
+    <% end %>
+    </div>
+  </div>
+
+  <!--div>
+    <% submit "Save" %>
+  </div-->
+
+  <div  class="flex justify-between">
+    <button type="button"
+            id="prevBtn"
+            class="px-4 py-2 font-semibold bg-transparent border rounded hover:bg-primary-light text-primary-medium hover:text-white border-primary-medium hover:border-transparent"
+            >Previous</button>
+    <button type="button" 
+            id="nextBtn"
+            class="right-0 px-4 py-2 font-bold text-white rounded bg-primary-medium hover:bg-primary-darker"
+            >Next</button>
+  </div>
+
+  <!-- Circles which indicates the steps of the form: -->
+  <div id="steps" style="text-align:center;margin-top:40px;">
+    <span class="step active"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+  </div>
+<% end %>

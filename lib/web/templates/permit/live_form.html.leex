@@ -55,14 +55,13 @@
         <%= label f, actor, class: "block mb-6 c-h5" do %>
           <span class="block form-label"><%= gettext_category(actor) %></span>
           <!-- %= text_input f, actor, class: "form-input w-full mt-1", list: "#{actor}_list" %-->
-          <input  class="w-full mt-1 form-input"
+          <input  phx-keyup="suggest-username"
+                  type="text" 
+                  name="permit[<%= actor %>]"
                   id="permit_<%= actor %>" 
                   list="<%= actor %>__list"
-                  name="permit[<%= actor %>]"
-                  phx-keyup="suggest-username"
                   placeholder="Search..." 
-                  type="text" 
-                  >
+                  class="w-full mt-1 form-input">
           <datalist phx-update="prepend" id="<%= actor %>__list">
             <%= for match <- @usernames do %>
               <option value="<%= match %>"><%= match %></option>
