@@ -99,7 +99,7 @@ defmodule Workpermit.PermitsTenant do
     Permit.changeset(%Permit{}, %{})
   end
 
-  def change_permit(%Permit{} = permit \\ %{}) do
+  def change_permit(permit) do
     Permit.changeset(permit, %{})
   end
 

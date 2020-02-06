@@ -31,6 +31,13 @@
 <br><%= gettext("Wear protective gloves") %>
 <br><%= gettext("Wear a safety harness") %>
 <br><%= gettext("Wear a welding mask") %>
+
+<br><%= gettext("Finish time") %>
+<br><%= gettext("Start time") %>
+<br><%= gettext("Issuer name") %>
+<br><%= gettext("Performer name") %>
+<br><%= gettext("Firewatch name") %>
+<br><%= gettext("Controller name") %>
 <%= for iso <- Enum.sort(Map.keys(Workpermit.IsoSymbols.to_iso_code_mapping())) do %> %>
     <div class="max-w-xs m-4 overflow-hidden rounded shadow-lg bg-secondary-medium ">
       <img class="w-full" src=" <%= Workpermit.IsoSymbols.to_image_path(iso) %> " alt="<%= iso %>">

@@ -113,8 +113,9 @@ msgid "And feel the benefits"
 msgstr "I zobacz zalety"
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:10
-#: lib/web/templates/permit/form.html.eex:14 lib/web/templates/permit/index.html.eex:24
+#: lib/web/templates/permit/form.html.eex:6
+#: lib/web/templates/permit/form_org.html.eex:10 lib/web/templates/permit/form_org.html.eex:14
+#: lib/web/templates/permit/index.html.eex:24 lib/web/templates/permit/live_form.html.leex:18
 #: lib/web/templates/permit/show.html.eex:21
 msgid "Category"
 msgstr "Kategoria"
@@ -131,6 +132,7 @@ msgid "Create and track your workpermits in an dedicated app"
 msgstr "Twórz i Śledź swoje dokumenty w dedykowanej aplikacji"
 
 #, elixir-format
+#: lib/web/templates/permit/live_form.html.leex:2
 #: lib/web/templates/permit/new.html.eex:2
 msgid "Create permit"
 msgstr "Utwórz zezwolenie"
@@ -139,7 +141,7 @@ msgstr "Utwórz zezwolenie"
 #: lib/web/templates/permit/index.html.eex:48
 #: lib/web/templates/permit/show.html.eex:33
 msgid "Finish"
-msgstr "Zakończono"
+msgstr "Koniec"
 
 #, elixir-format
 #: lib/web/templates/page/index.html.eex:78
@@ -177,7 +179,7 @@ msgid "New user"
 msgstr "Nowy użykownik"
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:24
+#: lib/web/templates/permit/form_org.html.eex:24
 #: lib/web/templates/permit/index.html.eex:27 lib/web/templates/permit/show.html.eex:25
 msgid "Number"
 msgstr "Numer"
@@ -257,18 +259,20 @@ msgid "en"
 msgstr "pl"
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:134
-#: lib/web/templates/permit/form.html.eex:148 lib/web/templates/permit/show.html.eex:78
+#: lib/web/templates/permit/form.html.eex:88
+#: lib/web/templates/permit/form.html.eex:102 lib/web/templates/permit/form_org.html.eex:134
+#: lib/web/templates/permit/form_org.html.eex:148 lib/web/templates/permit/live_form.html.leex:118
+#: lib/web/templates/permit/live_form.html.leex:132 lib/web/templates/permit/show.html.eex:78
 msgid "Additional Info"
 msgstr "Dodatkowe informacje"
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:38
+#: lib/web/templates/permit/form_org.html.eex:38
 msgid "COSHH"
 msgstr "substancje niebezpieczne"
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:74
+#: lib/web/templates/permit/form_org.html.eex:74
 #: lib/web/templates/permit/index.html.eex:57
 msgid "Controller"
 msgstr "Kontroler"
@@ -285,12 +289,12 @@ msgid "Creator"
 msgstr "Twórca"
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:94
+#: lib/web/templates/permit/form_org.html.eex:94
 msgid "Finish Time"
 msgstr "Zakończono"
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:66
+#: lib/web/templates/permit/form_org.html.eex:66
 #: lib/web/templates/permit/index.html.eex:58
 msgid "Firewatch"
 msgstr "Dozór pożarowy"
@@ -301,7 +305,7 @@ msgid "Firewatch Name"
 msgstr "Dozór pożarowy"
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:50
+#: lib/web/templates/permit/form_org.html.eex:50
 #: lib/web/templates/permit/index.html.eex:55
 msgid "Issuer"
 msgstr "Wydawca"
@@ -312,12 +316,12 @@ msgid "Issuer Name"
 msgstr "Wydający"
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:32
+#: lib/web/templates/permit/form_org.html.eex:32
 msgid "Lone working"
 msgstr "Praca w pojedynkę"
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:58
+#: lib/web/templates/permit/form_org.html.eex:58
 #: lib/web/templates/permit/index.html.eex:56
 msgid "Performer"
 msgstr "Wykonawca"
@@ -328,7 +332,8 @@ msgid "Performer Name"
 msgstr "Wykonawcy"
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:139
+#: lib/web/templates/permit/form.html.eex:93
+#: lib/web/templates/permit/form_org.html.eex:139 lib/web/templates/permit/live_form.html.leex:123
 #: lib/web/templates/permit/show.html.eex:74
 msgid "Precautions"
 msgstr "Uwagi"
@@ -339,7 +344,7 @@ msgid "Start"
 msgstr "Zaczęto"
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:86
+#: lib/web/templates/permit/form_org.html.eex:86
 msgid "Start Time"
 msgstr "Od"
 
@@ -364,8 +369,8 @@ msgid "Month"
 msgstr "Miesiąc"
 
 #, elixir-format
-#: lib/web/views/permit_view.ex:45 lib/web/views/permit_view.ex:47
-#: lib/web/views/permit_view.ex:49 lib/web/views/permit_view.ex:51
+#: lib/web/live/live_permit_view.ex:81 lib/web/views/permit_view.ex:45
+#: lib/web/views/permit_view.ex:47 lib/web/views/permit_view.ex:49 lib/web/views/permit_view.ex:51
 msgid "No data"
 msgstr "Brak Danych"
 
@@ -386,8 +391,9 @@ msgid "You must be logged in to access this page"
 msgstr "Musisz być zalgowany by widzieć tę stronę"
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:4
-#: lib/web/templates/pow/registration/new.html.eex:9 lib/web/templates/user/form.html.eex:4
+#: lib/web/templates/permit/form_org.html.eex:4
+#: lib/web/templates/permit/live_form.html.leex:9 lib/web/templates/pow/registration/new.html.eex:9
+#: lib/web/templates/user/form.html.eex:4
 msgid "Oops, something went wrong! Please check the errors below"
 msgstr "Coś poszło nie tak! Sprawdź błędy poniżej i spróbuj jeszcze raz"
 
@@ -408,17 +414,20 @@ msgid "There was a problem with your username/password"
 msgstr "Wystąpił problem z toimi danymi logowania"
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:46
+#: lib/web/templates/permit/form.html.eex:38
+#: lib/web/templates/permit/form_org.html.eex:46 lib/web/templates/permit/live_form.html.leex:50
 msgid "Actors"
 msgstr "Wykonawcy"
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:112
+#: lib/web/templates/permit/form.html.eex:65
+#: lib/web/templates/permit/form_org.html.eex:112 lib/web/templates/permit/live_form.html.leex:95
 msgid "Protective Equipment"
 msgstr "Sprzęt ochronny"
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:83
+#: lib/web/templates/permit/form.html.eex:49
+#: lib/web/templates/permit/form_org.html.eex:83 lib/web/templates/permit/live_form.html.leex:79
 msgid "Time"
 msgstr "Czas"
 
@@ -582,37 +591,91 @@ msgstr "Załóż szelki ochronne"
 msgid "Wear a welding mask"
 msgstr "Załóż maskę spawalniczą"
 
-#, elixir-format, fuzzy
+#, elixir-format
 #: lib/web/templates/page/demo.html.eex:22
 msgid "Wear ear protection"
 msgstr "ochrona słuchu"
 
-#, elixir-format, fuzzy
+#, elixir-format
 #: lib/web/templates/page/demo.html.eex:24
 msgid "Wear eye protection"
 msgstr "ochrona słuchu"
 
-#, elixir-format, fuzzy
+#, elixir-format
 #: lib/web/templates/page/demo.html.eex:26
 msgid "Wear foot protection"
 msgstr "obuwie ochronne"
 
-#, elixir-format, fuzzy
+#, elixir-format
 #: lib/web/templates/page/demo.html.eex:27
 msgid "Wear head protection"
 msgstr "ochrona słuchu"
 
-#, elixir-format, fuzzy
+#, elixir-format
 #: lib/web/templates/page/demo.html.eex:28
 msgid "Wear high visibility clothing"
 msgstr "ubranie odblaskowe"
 
-#, elixir-format, fuzzy
+#, elixir-format
 #: lib/web/templates/page/demo.html.eex:30
 msgid "Wear protective clothing"
 msgstr "ubranie ochronne"
 
-#, elixir-format, fuzzy
+#, elixir-format
 #: lib/web/templates/page/demo.html.eex:31
 msgid "Wear protective gloves"
 msgstr "rękawice ochronne"
+
+#, elixir-format
+#: lib/web/templates/permit/form.html.eex:123
+#: lib/web/templates/permit/live_form.html.leex:154
+msgid "Next"
+msgstr "Następna"
+
+#, elixir-format
+#: lib/web/templates/permit/form.html.eex:114
+#: lib/web/templates/permit/live_form.html.leex:144
+msgid "Prev"
+msgstr "Poprzednia"
+
+#, elixir-format
+#: lib/web/templates/permit/index.html.eex:88
+#: lib/web/templates/permit/show.html.eex:83
+msgid "Print"
+msgstr "Zezwolenie"
+
+#, elixir-format
+#: lib/web/templates/permit/form.html.eex:118
+#: lib/web/templates/permit/live_form.html.leex:149
+msgid "Send"
+msgstr "Wyślij"
+
+#, elixir-format
+#: lib/web/templates/page/demo.html.eex:40
+msgid "Controller name"
+msgstr "Kontroler"
+
+#, elixir-format
+#: lib/web/templates/page/demo.html.eex:35
+msgid "Finish time"
+msgstr "Zakończono"
+
+#, elixir-format
+#: lib/web/templates/page/demo.html.eex:39
+msgid "Firewatch name"
+msgstr "Dozór pożarowy"
+
+#, elixir-format
+#: lib/web/templates/page/demo.html.eex:37
+msgid "Issuer name"
+msgstr "Wydający"
+
+#, elixir-format
+#: lib/web/templates/page/demo.html.eex:38
+msgid "Performer name"
+msgstr "Wykonawcy"
+
+#, elixir-format
+#: lib/web/templates/page/demo.html.eex:36
+msgid "Start time"
+msgstr "Początek"

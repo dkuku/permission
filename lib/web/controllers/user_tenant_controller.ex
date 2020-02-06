@@ -9,7 +9,7 @@ defmodule Web.UserTenantController do
     render(conn, "index.html", users: users)
   end
 
-  def new(conn, _params, tenant) do
+  def new(conn, _params, _tenant) do
     changeset = UsersTenant.change_user(%User{})
     render(conn, "new.html", changeset: changeset)
   end
@@ -54,7 +54,7 @@ defmodule Web.UserTenantController do
     end
   end
 
-  def delete(conn, %{"id" => id}, tenant) do
+  def delete(conn, %{"id" => id}, _tenant) do
     user = UsersTenant.get_user!(id)
     {:ok, _user} = UsersTenant.delete_user(user)
 
@@ -63,10 +63,10 @@ defmodule Web.UserTenantController do
     |> redirect(to: Routes.user_path(conn, :index))
   end
 
-  def find_name(conn, %{"name" => name}, tenant) do
-    users = UsersTenant.find_names(name)
-    json(conn, users)
-  end
+  #def find_name(conn, %{"name" => name}, _tenant) do
+  #  users = UsersTenant.find_names(name)
+  #  json(conn, users)
+  #end
 
   def action(conn, _) do
     args = [conn, conn.params, Triplex.to_prefix(conn.assigns.current_tenant)]

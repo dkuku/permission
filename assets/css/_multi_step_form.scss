@@ -1,45 +1,4 @@
-/* Style the form */
-#permitForm {
-  background-color: #ffffff;
-  margin: 100px auto;
-  padding: 40px;
-  width: 70%;
-  min-width: 600px;
-}
-
-/* Hide all steps by default: */
-#permitForm .tab {
-  display: none;
-}
-
 /* Make circles that indicate the steps of the form: */
-#permitForm .step {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbbbbb;
-  border: none;
-  border-radius: 50%;
-  display: inline-block;
-  opacity: 0.5;
-}
-
-/* Mark the active step: */
-#permitForm .step.active {
-  opacity: 1;
-  background-color: #4CAF50;
-}
-
-/* Mark the steps that are finished and valid: */
-#permitForm .step.finish {
-  background-color: #4CAF50;
-} 
-
-
-#permitForm ul {
-  list-style-type: none;
-}
-
 #permitForm li {
   display: inline-block;
 }
@@ -111,8 +70,4 @@
   filter: grayscale(0%);
   opacity: 1;
   z-index: 1;
-}
-
-.awesomplete {
-  width: 100%;
 }

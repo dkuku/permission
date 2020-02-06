@@ -1,31 +1,23 @@
-<%= form_for @changeset, @action, [id: "permitForm", "x-data": "{ current_step: 1 }"], fn f -> %>
-
-  <!-- error message -->
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p><%= gettext("Oops, something went wrong! Please check the errors below")%></p>
-      <p><%= @changeset.action %></p>
-    </div>
-  <% end %>
+<%= form_for @changeset, @action, [id: "permitForm", "x-data": "{ current_step: 1 }", class: "bg-white text-gray-darker"], fn f -> %>
 
   <!-- category page -->
-  <div id="category" x-show="current_step == 1" class="block text-gray-darker">
+  <div id="category" x-show="current_step == 1" class="block">
     <h2 class="mb-8 c-h3 ">
       <%= gettext("Category") %>
     </h2>
 
     <div>
-      <%=  for category <- @categories do %>
-        <ul>
-          <li>
+      <ul class="flex flex-wrap -mb-4">
+        <%=  for category <- @categories do %>
+          <li class="w-1/3 mb-4">
             <%= radio_button f, :category, category %>
             <%= label f, "category_" <> Atom.to_string(category) do %>
               <%= img_tag( iso_image_category(category)) %>
               <%= gettext_category(iso_meaning(category)) %>
             <% end %>
           </li>
-        </ul>
-      <% end %>
+        <% end %>
+      </ul>
     </div>
 
     <div  class="flex justify-between">
@@ -41,41 +33,23 @@
   </div>
 
   <!-- actors page -->
-  <div id="actors" x-show="current_step == 2" class="block text-gray-darker">
+  <div id="actors" x-show="current_step == 2" class="block">
+    <h2 class="mb-8 c-h4 ">
+      <%= gettext("Actors") %>
+    </h2>
     <%= live_render @conn, Web.UserInputComponent, session: %{"actor" => :issuer_name, "usernames" => []} %>
     <%= live_render @conn, Web.UserInputComponent, session: %{"actor" => :performer_name, "usernames" => []} %>
     <%= live_render @conn, Web.UserInputComponent, session: %{"actor" => :firewatch_name, "usernames" => []} %>
     <%= live_render @conn, Web.UserInputComponent, session: %{"actor" => :controller_name, "usernames" => []} %>
-    <h2 class="mb-8 c-h4 ">
-      <%= gettext("Actors") %>
-    </h2>
-
-    <%=  for actor <- ~w(issuer_name performer_name firewatch_name contact_name)a do %>
-      <div>
-        <%= label f, actor, class: "block mb-6 c-h5" do %>
-          <span class="block form-label"><%= gettext_category(actor) %></span>
-          <!-- %= text_input f, actor, class: "form-input w-full mt-1", list: "#{actor}_list" %-->
-          <input  class="w-full mt-1 form-input"
-                  id="permit_<%= actor %>" 
-                  list="<%= actor %>__list"
-                  name="permit[<%= actor %>]"
-                  phx-keyup="suggest-username"
-                  placeholder="Search..." 
-                  type="text" 
-                  >
-          <%= error_tag f, actor %>
-        <% end %>
-      </div>
-    <% end %>
   </div>
 
   <!-- time page -->
-  <div id="time" x-show="current_step == 3" class="block text-gray-darker">
+  <div id="time" x-show="current_step == 3" class="block">
     <h2 class="mb-8 c-h4 ">
       <%= gettext("Time") %>
     </h2>
     <%=  for time <- ~w(start_time finish_time)a do %>
-      <%= label f, time, class: "block mb-6 c-h6" do %>
+      <%= label f, gettext_category(time), class: "block mb-6 c-h6" do %>
         <span class="block mb-2 form-label c-h5"><%= gettext_category(time) %></span>
         <%= error_tag f, time %>
         <div class="flex two four-500 six-800">
@@ -86,13 +60,13 @@
   </div>
 
   <!-- protective equipment page -->
-  <div id="pe" x-show="current_step == 4" class="block text-gray-darker">
+  <div id="pe" x-show="current_step == 4" class="block">
     <h2 class="mb-8 c-h4 ">
       <%= gettext("Protective Equipment") %>
     </h2>
-    <ul>
+    <ul class="flex flex-wrap -mb-4">
       <%=  for pe <- @pe do %>
-        <li>
+        <li class="w-1/3 -mb-4">
           <input type="checkbox" 
                  name="permit[protective_equipment][]"
                  value="<%= pe %>"
@@ -109,7 +83,7 @@
   </div>
 
   <!--other precautions page -->
-  <div id="info" x-show="current_step == 5" class="block text-gray-darker">
+  <div id="info" x-show="current_step == 5" class="block">
     <h2 class="mb-8 c-h4 ">
       <%= gettext("Additional Info") %>
     </h2>
@@ -119,7 +93,7 @@
           <span class="block form-label c-h5"><%= gettext("Precautions") %></span>
           <p id="precautions_add_checkbox" class="px-2 py-1 bg-transparent border rounded cursor-pointer text-small text-gray-darker border-gray-dark ">Insert □</p>
         </div>
-        <%= textarea f, :precautions, value: {:safe, prec}, class: "form-input w-full mt-1 h-64" %>
+        <%= textarea f, :precautions, value: {:safe, prec()}, class: "form-input w-full mt-1 h-64" %>
         <%= error_tag f, :precautions %>
       <% end %>
     </div>
@@ -133,12 +107,11 @@
   </div>
 
   <!--prev/next buttons page -->
-  <div  class="flex justify-between">
-    <button x-on:click="current_step--"
+  <div  class="flex justify-between mt-8">
+    <button x-on:click="current_step > 1 ? current_step-- : None"
             type="button"
             class="px-4 py-2 font-semibold text-black bg-transparent border-2 border-black rounded hover:bg-primary-light"
             ><%= gettext("Prev") %></button>
-
       <!--% submit "Save" %-->
       <button x-show="current_step == 5"
               class="right-0 px-4 py-2 font-bold text-black border-2 rounded bg-primary-medium hover:bg-primary-dark"
@@ -149,12 +122,18 @@
               class="right-0 px-4 py-2 font-bold text-black border-2 rounded bg-primary-medium hover:bg-primary-dark"
               ><%= gettext("Next") %></button>
   </div>
-  <% end %>
 
   <!-- Circles which indicates the steps of the form: -->
-  <div id="steps" style="text-align:center;margin-top:40px;">
-    <%= for i <- 0..4 do %>
-      <span class="step active"></span>
+  <div class="max-w-xs mx-auto my-4">
+    <div class="flex pb-3">
+      <%= for i <- 1..5 do %>
+        <div class="flex-1">
+          <div x-show="current_step >  <%= i %>" class="flex items-center w-5 h-5 mx-auto text-lg rounded-full bg-primary-medium"></div>
+          <div x-show="current_step <  <%= i %>" class="flex items-center w-5 h-5 mx-auto text-lg rounded-full bg-primary-light"></div>
+          <div x-show="current_step == <%= i %>" class="flex items-center w-5 h-5 mx-auto text-lg border-2 rounded-full bg-primary-medium"></div>
+        </div>
     <% end %>
+    </div>
   </div>
+<% end %>
 </div>

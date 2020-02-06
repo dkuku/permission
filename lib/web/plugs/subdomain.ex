@@ -1,5 +1,4 @@
 defmodule Web.Plug.Subdomain do
-  import Plug.Conn
 
   @doc false
   def init(default), do: default

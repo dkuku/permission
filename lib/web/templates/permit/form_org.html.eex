@@ -139,7 +139,7 @@
           <span class="block form-label c-h5"><%= gettext("Precautions") %></span>
           <p id="precautions_add_checkbox" class="px-2 py-1 bg-transparent border rounded cursor-pointer text-small text-gray-darker border-gray-dark ">Insert □</p>
         </div>
-      <%= textarea f, :precautions, value: {:safe, prec}, class: "form-input w-full mt-1 h-64" %>
+      <%= textarea f, :precautions, value: {:safe, prec()}, class: "form-input w-full mt-1 h-64" %>
       <%= error_tag f, :precautions %>
     <% end %>
     </div>

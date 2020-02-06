@@ -23,7 +23,7 @@ defmodule Web.PermitTenantController do
     #    render(conn, "index.html", permits: permits)
   end
 
-  def new(conn, _params, tenant, user) do
+  def new(conn, _params, _tenant, user) do
     conn
     |> assign(:changeset, PermitsTenant.change_permit())
     |> assign(:pe, PermitsTenant.pe_fields())

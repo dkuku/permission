@@ -19,10 +19,9 @@ defmodule Workpermit.UsersTenant do
       iex> get_user!(456)
       ** (Ecto.NoResultsError)
   """
-  def get_by_email(email) when is_nil(email), do: nil
-  def get_by_email(email, _tenant) when is_nil(email), do: nil
-
-  def get_by_email(email, tenant \\ nil), do: Repo.get_by(User, email: email, prefix: tenant)
+  def get_by_email(nil), do: nil
+  def get_by_email(nil, _tenant), do: nil
+  def get_by_email(email, tenant), do: Repo.get_by(User, email: email, prefix: tenant)
 
   def get_user!(id, tenant \\ nil), do: Repo.get!(User, id, prefix: tenant)
 

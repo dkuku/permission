@@ -1,5 +1,4 @@
 defmodule Workpermit.Permits.Permit do
-  use Ecto.Type
   use Ecto.Schema
   import Ecto.Changeset
   alias Workpermit.Users.User
