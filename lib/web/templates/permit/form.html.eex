@@ -9,11 +9,13 @@
     <div>
       <ul class="flex flex-wrap -mb-4">
         <%=  for category <- @categories do %>
-          <li class="w-1/3 mb-4">
+          <li class="w-1/3 mb-4" >
             <%= radio_button f, :category, category %>
             <%= label f, "category_" <> Atom.to_string(category) do %>
-              <%= img_tag( iso_image_category(category)) %>
-              <%= gettext_category(iso_meaning(category)) %>
+              <%= img_tag( iso_image_category(category), class: "mb-2 m-auto") %>
+              <p class="text-xl text-center">
+                <%= gettext_category(gettext_category(category)) %>
+              <p>
             <% end %>
           </li>
         <% end %>
@@ -74,8 +76,10 @@
                  class=""
                  >
                  <label for="pe_<%= pe %>">
-                   <%= img_tag( Workpermit.IsoSymbols.to_image_path(pe)) %>
-                   <%= gettext_category(iso_meaning(pe)) %>
+                   <%= img_tag( Workpermit.IsoSymbols.to_image_path(pe), class: "mb-2 m-auto") %>
+                   <p class="text-xl text-center">
+                     <%= gettext_category(iso_meaning(pe)) %>
+                     <p>
                  </label>
         </li>
       <% end %>

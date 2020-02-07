@@ -12,24 +12,24 @@ msgstr ""
 "Plural-Forms: nplurals=2\n"
 
 #, elixir-format
-#: lib/web/templates/layout/components/nav.html.eex:29
+#: lib/web/templates/layout/components/nav.html.eex:46
 msgid "Log in"
 msgstr ""
 
 #, elixir-format
-#: lib/web/templates/layout/components/nav.html.eex:25
+#: lib/web/templates/layout/components/nav.html.eex:42
 msgid "Sign out"
 msgstr ""
 
 #, elixir-format
-#: lib/web/templates/layout/components/nav.html.eex:32
+#: lib/web/templates/layout/components/nav.html.eex:49
 #: lib/web/templates/page/index.html.eex:15 lib/web/templates/page/index.html.eex:230
 msgid "Sign up"
 msgstr ""
 
 #, elixir-format
 #: lib/web/templates/layout/components/footer.html.eex:7
-#: lib/web/templates/layout/components/head.html.eex:18 lib/web/templates/layout/components/nav.html.eex:9
+#: lib/web/templates/layout/components/head.html.eex:18 lib/web/templates/layout/components/nav.html.eex:11
 msgid "Workpermit"
 msgstr ""
 
@@ -155,7 +155,7 @@ msgid "Keeping track of numbering, remembering all the names, checking the same 
 msgstr ""
 
 #, elixir-format
-#: lib/web/templates/layout/components/nav.html.eex:40
+#: lib/web/templates/layout/components/nav.html.eex:57
 msgid "Language"
 msgstr ""
 
@@ -188,7 +188,7 @@ msgid "Permit"
 msgstr ""
 
 #, elixir-format
-#: lib/web/templates/layout/components/nav.html.eex:21
+#: lib/web/templates/layout/components/nav.html.eex:38
 msgid "Permits"
 msgstr ""
 
@@ -250,8 +250,8 @@ msgid "en"
 msgstr ""
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:88
-#: lib/web/templates/permit/form.html.eex:102 lib/web/templates/permit/form_org.html.eex:134
+#: lib/web/templates/permit/form.html.eex:92
+#: lib/web/templates/permit/form.html.eex:106 lib/web/templates/permit/form_org.html.eex:134
 #: lib/web/templates/permit/form_org.html.eex:148 lib/web/templates/permit/live_form.html.leex:118
 #: lib/web/templates/permit/live_form.html.leex:132 lib/web/templates/permit/show.html.eex:78
 msgid "Additional Info"
@@ -323,7 +323,7 @@ msgid "Performer Name"
 msgstr ""
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:93
+#: lib/web/templates/permit/form.html.eex:97
 #: lib/web/templates/permit/form_org.html.eex:139 lib/web/templates/permit/live_form.html.leex:123
 #: lib/web/templates/permit/show.html.eex:74
 msgid "Precautions"
@@ -405,19 +405,19 @@ msgid "There was a problem with your username/password"
 msgstr ""
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:38
+#: lib/web/templates/permit/form.html.eex:40
 #: lib/web/templates/permit/form_org.html.eex:46 lib/web/templates/permit/live_form.html.leex:50
 msgid "Actors"
 msgstr ""
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:65
+#: lib/web/templates/permit/form.html.eex:67
 #: lib/web/templates/permit/form_org.html.eex:112 lib/web/templates/permit/live_form.html.leex:95
 msgid "Protective Equipment"
 msgstr ""
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:49
+#: lib/web/templates/permit/form.html.eex:51
 #: lib/web/templates/permit/form_org.html.eex:83 lib/web/templates/permit/live_form.html.leex:79
 msgid "Time"
 msgstr ""
@@ -618,13 +618,13 @@ msgid "Wear protective gloves"
 msgstr ""
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:123
+#: lib/web/templates/permit/form.html.eex:127
 #: lib/web/templates/permit/live_form.html.leex:154
 msgid "Next"
 msgstr ""
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:114
+#: lib/web/templates/permit/form.html.eex:118
 #: lib/web/templates/permit/live_form.html.leex:144
 msgid "Prev"
 msgstr ""
@@ -636,7 +636,7 @@ msgid "Print"
 msgstr ""
 
 #, elixir-format
-#: lib/web/templates/permit/form.html.eex:118
+#: lib/web/templates/permit/form.html.eex:122
 #: lib/web/templates/permit/live_form.html.leex:149
 msgid "Send"
 msgstr ""
