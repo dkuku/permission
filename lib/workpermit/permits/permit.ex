@@ -45,7 +45,7 @@ defmodule Workpermit.Permits.Permit do
     field :controller_name, :string
     field :firewatch_name, :string
     field :performer_name, :string
-    field :precautions, :string
+    field :precautions, Permits.Precautions
     field :additional_info, :string
     field :coshh, :boolean
     field :lone_working, :boolean

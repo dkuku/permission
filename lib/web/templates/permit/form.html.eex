@@ -1,4 +1,4 @@
-<%= form_for @changeset, @action, [id: "permitForm", "x-data": "{ current_step: 1 }", class: "bg-white text-gray-darker"], fn f -> %>
+<%= form_for @changeset, @action, [id: "permitForm", "x-data": "{ current_step: 5 }", class: "bg-white text-gray-darker"], fn f -> %>
 
   <!-- category page -->
   <div id="category" x-show="current_step == 1" class="block">
@@ -72,6 +72,7 @@
           <input type="checkbox" 
                  name="permit[protective_equipment][]"
                  value="<%= pe %>"
+
                  id="pe_<%= pe %>"
                  class=""
                  >
@@ -93,11 +94,11 @@
     </h2>
     <div>
       <%= label f, :precautions, class: "block mb-6" do %>
-        <div  class="flex justify-between">
+        <div class="flex justify-between">
           <span class="block form-label c-h5"><%= gettext("Precautions") %></span>
-          <p id="precautions_add_checkbox" class="px-2 py-1 bg-transparent border rounded cursor-pointer text-small text-gray-darker border-gray-dark ">Insert □</p>
         </div>
-        <%= textarea f, :precautions, value: {:safe, prec()}, class: "form-input w-full mt-1 h-64" %>
+        <%= live_render @conn, Web.PrecautionsInputComponent, session: %{"precautions" => precautions()} %>
+        <!-- %= textarea f, :precautions, value: {:safe, prec()}, class: "form-input w-full mt-1 h-64" % -->
         <%= error_tag f, :precautions %>
       <% end %>
     </div>

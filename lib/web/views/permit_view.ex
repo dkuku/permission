@@ -32,14 +32,14 @@ defmodule Web.PermitView do
 
   def checkbox(string) when is_bitstring(string), do: "□" <> " " <> string
   def checkbox(nil), do: "□"
-  def line_break(string), do: string <> "  
-"
+  def line_break(string), do: string <> "\n"
 
-  def prec,
-    do:
+  def precautions(), do: Permits.default_precautions()
+  def prec() do
       Permits.default_precautions()
       |> Enum.map(fn x -> x |> checkbox |> line_break end)
       |> Enum.join()
+  end
 
   def date_time(%{} = date), do: date |> Timex.format!("%m/%d %H:%M", :strftime)
   def date_time(_), do: gettext("No data")
