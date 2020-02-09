@@ -1,4 +1,4 @@
-<div class="content-center flex-1 w-full max-w-lg pt-4 mx-auto">
+<div class="content-center flex-1 w-full max-w-lg pt-8 mx-auto">
   <h1 class="p-5 c-h3 text-gray-darker"><%= gettext("Create permit") %></h1>
   <%= render "form.html", Map.put(assigns, :action, Routes.permit_path(@conn, :create)) %>
 </div>

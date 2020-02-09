@@ -114,6 +114,7 @@
   <div  class="flex justify-between mt-8">
     <button x-on:click="current_step > 1 ? current_step-- : None"
             type="button"
+            :class="{'text-gray-light border-gray-light hover:bg-none': current_step == 1}"
             class="px-4 py-2 font-semibold text-black bg-transparent border-2 border-black rounded hover:bg-primary-light"
             ><%= gettext("Prev") %></button>
       <!--% submit "Save" %-->
@@ -132,9 +133,11 @@
     <div class="flex pb-3">
       <%= for i <- 1..5 do %>
         <div class="flex-1">
-          <div x-show="current_step >  <%= i %>" class="flex items-center w-5 h-5 mx-auto text-lg rounded-full bg-primary-medium"></div>
-          <div x-show="current_step <  <%= i %>" class="flex items-center w-5 h-5 mx-auto text-lg rounded-full bg-primary-light"></div>
-          <div x-show="current_step == <%= i %>" class="flex items-center w-5 h-5 mx-auto text-lg border-2 rounded-full bg-primary-medium"></div>
+          <div class="flex items-center w-5 h-5 mx-auto text-lg rounded-full bg-primary-light"
+               :class="{
+                 'border-2': current_step == <%= i %>,
+                 'bg-primary-medium': current_step >= <%= i %>
+               }"></div>
         </div>
     <% end %>
     </div>
