@@ -76,6 +76,8 @@ defmodule Workpermit.MixProject do
       {:floki, ">= 0.0.0", only: :test},
       {:surface, git: "https://github.com/msaraiva/surface.git"},
       {:phoenix_live_dashboard, "~> 0.1"},
+      {:telemetry_poller, "~> 0.4"},
+      {:telemetry_metrics, "~> 0.4"},
     ]
   end
 
