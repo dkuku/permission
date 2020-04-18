@@ -1,9 +1,9 @@
 <div x-data="{isOpen: false}" 
-     x-show="isOpen"
      x-init="setTimeout(() => {isOpen = true;},500)"
-     class="m-8 mt-4 mr-4 overflow-hidden"
+     class="w-64 h-24 rounded shadow-lg cursor-pointer close bg-primary-medium"
+     :class="{ 'h-0 border-0 border-white shadow-none m-0 p-0 trhide': ! isOpen, 'm-8 p-2 trshow border-4 border-black': isOpen }"
      >
-  <div class="flex items-start justify-between w-full h-full p-2 border-4 border-black rounded shadow-lg cursor-pointer bg-primary-medium close" title="close">
+     <div x-show="isOpen" class="flex items-start justify-between">
     <%= @message %>
     <svg @click="isOpen = false"
       class="fill-current text-secondary-dark"
@@ -15,6 +15,3 @@
     </svg>
   </div>
 </div>
-<style>
-  [x-cloak] { display: none; }
-</style>

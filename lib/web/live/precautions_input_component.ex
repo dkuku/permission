@@ -2,24 +2,31 @@
 defmodule Web.PrecautionsInputComponent do
   use Phoenix.LiveView
   use Phoenix.HTML
+  import Web.Gettext
   import Web.PermitView, only: [gettext_category: 1]
 
   def mount(_, session, socket) do
     socket =
       socket
       |> assign(precautions: session["precautions"])
+      |> assign(f: session["f"])
     {:ok, socket}
   end
 
   def render(assigns) do
     ~L"""
       <div>
-        <button type="button"
-          phx-click="add-input" 
-          class="px-2 py-1 bg-transparent border rounded cursor-pointer text-small text-gray-darker border-gray-dark "
-          >
-            Add field
-          </button>
+        <%= label @f, :precautions, class: "block mb-6" do %>
+          <div class="flex justify-between">
+              <span class="block form-label c-h5"><%= gettext("Precautions") %></span>
+              <button type="button"
+                phx-click="add-input" 
+                class="px-2 py-1 bg-transparent border rounded cursor-pointer text-small text-gray-darker border-gray-dark "
+                >
+                  Add field
+              </button>
+          </div>
+        <% end %>
         <%= for {prec, i} <- Enum.with_index(@precautions) do %>
           <%= precautions_input(prec, i) %>
         <% end %>
@@ -40,7 +47,7 @@ defmodule Web.PrecautionsInputComponent do
       <button type="button" 
         phx-click="remove-input" 
         phx-value-index="<%= i %>"
-        class="w-8 h-8 bg-transparent border rounded cursor-pointer text-small"
+        class="w-8 h-8 px-2 py-2 m-2 bg-transparent border rounded cursor-pointer text-small"
       >
         x
       </button>

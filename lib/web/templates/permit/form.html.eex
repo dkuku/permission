@@ -1,11 +1,10 @@
-<%= form_for @changeset, @action, [id: "permitForm", "x-data": "{ current_step: 5 }", class: "bg-white text-gray-darker"], fn f -> %>
+<%= form_for @changeset, @action, [id: "permitForm", "x-data": "{ current_step: 1 }", class: "bg-white text-gray-darker px-8 pt-6 pb-8"], fn f -> %>
 
   <!-- category page -->
   <div id="category" x-show="current_step == 1" class="block">
     <h2 class="mb-8 c-h3 ">
       <%= gettext("Category") %>
     </h2>
-
     <div>
       <ul class="flex flex-wrap -mb-4">
         <%=  for category <- @categories do %>
@@ -93,14 +92,9 @@
       <%= gettext("Additional Info") %>
     </h2>
     <div>
-      <%= label f, :precautions, class: "block mb-6" do %>
-        <div class="flex justify-between">
-          <span class="block form-label c-h5"><%= gettext("Precautions") %></span>
-        </div>
-        <%= live_render @conn, Web.PrecautionsInputComponent, session: %{"precautions" => precautions()} %>
+      <%= live_render @conn, Web.PrecautionsInputComponent, session: %{"precautions" => precautions(), "f" => f} %>
         <!-- %= textarea f, :precautions, value: {:safe, prec()}, class: "form-input w-full mt-1 h-64" % -->
         <%= error_tag f, :precautions %>
-      <% end %>
     </div>
     <div>
       <%= label f, :additional_info, class: "block mb-6" do %>

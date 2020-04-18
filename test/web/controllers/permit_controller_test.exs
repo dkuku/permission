@@ -86,6 +86,7 @@ defmodule Web.PermitControllerTest do
       assert html_response(conn, 200) =~ "Category:"
     end
 
+    @tag :skip
     test " create permit renders errors when data is invalid", %{conn: conn} do
       conn = post(conn, Routes.permit_path(conn, :create), permit: @invalid_attrs)
       assert html_response(conn, 200) =~ "Create permit"

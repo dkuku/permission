@@ -11,6 +11,17 @@
 body {
   font-family: "system";
 }
+[x-cloak] {
+  display: none;
+}
+.trhide {
+  max-height: 0;
+  transition: max-height 1s ease-out, font-size 1s ease-out;
+}
+
+.trshow {
+  max-height: 500px;
+}
 
 /*@import "tailwindcss/base";*/
 @tailwind base;

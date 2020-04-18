@@ -117,6 +117,10 @@ module.exports = {
     extend: {
       screens: {
         'print': {'raw': 'print'}
+      },
+      transitionProperty: {
+        'height': 'height',
+        'spacing': 'margin, padding',
       }
     },
   },

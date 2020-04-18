@@ -72,9 +72,10 @@ defmodule Workpermit.MixProject do
       {:cabbage, "~> 0.3.0", only: [:test]},
       {:hound, github: "HashNuke/hound", ref: "0613a33f065a1eaa91fab602b8bc9af367d78ec1" },
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"},
+      {:phoenix_live_view, github: "phoenixframework/phoenix_live_view", override: true},
       {:floki, ">= 0.0.0", only: :test},
-      {:surface, git: "https://github.com/msaraiva/surface.git"}
+      {:surface, git: "https://github.com/msaraiva/surface.git"},
+      {:phoenix_live_dashboard, "~> 0.1"},
     ]
   end
 

@@ -25,7 +25,7 @@ defmodule Workpermit.Factory do
       firewatch_name: "Firewatch Name",
       performer_name: "Performer Name",
       protective_equipment: ~w(dust_mask),
-      precautions: "# precautions",
+      precautions: [],
       additional_info: "Additional info"
     }
   end

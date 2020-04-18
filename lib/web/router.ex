@@ -3,12 +3,12 @@ defmodule Web.Router do
   use Pow.Phoenix.Router
   use Plug.ErrorHandler
   use Sentry.Plug
+  import Phoenix.LiveDashboard.Router
 
   pipeline :browser do
     plug :accepts, ["html", "pdf"]
     plug :fetch_session
-    plug :fetch_flash
-    plug Phoenix.LiveView.Flash
+    plug :fetch_live_flash
     plug :protect_from_forgery
     plug Web.CSPHeader
     plug :put_secure_browser_headers
@@ -30,7 +30,6 @@ defmodule Web.Router do
     pipe_through :browser
 
     get "/", Web.PageController, :index
-    get "/demo", Web.PageController, :demo
 
     pow_routes()
   end
@@ -49,7 +48,6 @@ defmodule Web.Router do
     delete "/sign-out", SessionController, :delete
 
     resources "/permits", PermitController, only: [:index, :new, :create, :show, :delete]
-
     get "/live", LiveController, :index
   end
 
@@ -58,5 +56,13 @@ defmodule Web.Router do
     pipe_through :api
     post "/permits/select_category", ApiController, :select_category
     post "/users/find", UserController, :find_name
+  end
+
+  if Mix.env() == :dev do
+    scope "/" do
+    pipe_through :browser
+    live_dashboard "/dashboard"
+    get "/demo", Web.PageController, :demo
+  end
   end
 end
