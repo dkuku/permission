@@ -6,7 +6,6 @@
   src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
 }
 
-@import "../../deps/phoenix_live_view/assets/css/live_view.css";
 /* Now, let's apply it on an element */
 body {
   font-family: "system";
@@ -90,9 +89,9 @@ body {
   }
 }
 
-@import "~awesomplete/awesomplete.base.css";
 @import '_multi_step_form.scss';
 @tailwind utilities;
 /*@import "tailwindcss/utilities";*/
 /* Put your custom utilities here */
 
+@import "../node_modules/nprogress/nprogress.css";

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full">
   <head>
+    <%= csrf_meta_tag() %>
     <%= render "components/head.html", conn: @conn %>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">
   </head>
@@ -11,11 +12,13 @@
         <%= render "components/flash.html", type: type, message: message %>
       <% end) %>
       </div>
+    <%= view_module(@conn) %>
+    <%= "permits." <> view_template(@conn) %>
     <%= @inner_content %>
     <%= render "components/footer.html", conn: @conn %>
     <script type="text/javascript" src="<%=Routes.static_path(@conn, "/js/app.js") %>"></script>
     <!-- loads per page html - check /views/permit.view.eex  or add template -->
-    <%= render_existing @view_module, "permits." <> @view_template, assigns %>
+    <%= render_existing view_module(@conn), "permits." <> view_template(@conn), assigns %>
   </body>
    <style>
   body {

@@ -10,7 +10,7 @@ defmodule Web.Router do
     plug :fetch_session
     plug :fetch_live_flash
     plug :protect_from_forgery
-    plug Web.CSPHeader
+ #   plug Web.CSPHeader
     plug :put_secure_browser_headers
     plug Web.Plugs.Locale
   end
