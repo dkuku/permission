@@ -1,0 +1,4 @@
+<div class="content-center flex-1 w-full max-w-lg pt-16 mx-auto">
+<h1 class="p-5 c-h3 text-gray-darker"><%= gettext("Edit User") %></h1>
+<%= render "form.html", Map.put(assigns, :action, Routes.admin_user_path(@conn, :update, @user)) %>
+</div>

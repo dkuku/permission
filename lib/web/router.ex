@@ -42,7 +42,6 @@ defmodule Web.Router do
   scope "/", Web do
     pipe_through [:browser, :protected]
     # User registration and sessions
-    resources "/users", UserController
     get "/sign-in", SessionController, :new
     post "/sign-in", SessionController, :create
     delete "/sign-out", SessionController, :delete
@@ -50,6 +49,12 @@ defmodule Web.Router do
     resources "/permits", PermitController, only: [:index, :new, :create, :show, :delete]
     get "/live", LiveController, :index
   end
+
+  scope "/admin", Web.Admin, as: :admin do
+    pipe_through :browser
+    resources "/users", UserController
+  end
+
 
   # Other scopes may use custom stacks.
   scope "/api", Web do

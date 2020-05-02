@@ -1,0 +1,37 @@
+<div class="content-center flex-1 w-full max-w-6xl pt-16 mx-auto">
+  <h1 class="p-5 c-h3 text-gray-darker"><%= gettext("User Profiles") %></h1>
+  <table class = "table w-full px-8 pt-6 pb-8 mx-auto mb-4 bg-white rounded shadow-md">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Phone</th>
+
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for user <- @users do %>
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= user.first_name %></td>
+          <td><%= user.last_name %></td>
+          <td><%= user.phone %></td>
+
+          <td>
+            <span><%= link "Show", to: Routes.admin_user_path(@conn, :show, user) %></span>
+            <span><%= link "Edit", to: Routes.admin_user_path(@conn, :edit, user) %></span>
+            <span><%= link "Delete", to: Routes.admin_user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %></span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="flex justify-between">
+    <%= link gettext("Back"), to: Routes.admin_user_path(@conn, :index), class: "bg-transparent hover:bg-primary-light text-primary-medium font-semibold hover:text-white py-2 px-4 border border-primary-medium hover:border-transparent rounded" %>
+    <%= link gettext("New user"), to: Routes.admin_user_path(@conn, :new), class: "bg-primary-medium hover:bg-primary-darker text-white font-bold py-2 px-4 rounded" %>
+  </div>
+  <span><%= link "New User", to: Routes.admin_user_path(@conn, :new) %></span>
+</div>
