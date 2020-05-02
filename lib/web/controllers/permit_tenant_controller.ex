@@ -7,18 +7,20 @@ defmodule Web.PermitTenantController do
   alias Workpermit.Permits.Permit
   require Ecto.Query
 
-  def index(conn, params, tenant,  _user) do
-    result = Turbo.Ecto.turbo(
-      Permit,
-      params,
-      entry_name: "permits",
-      prefix: tenant
-    )
+  def index(conn, params, tenant, _user) do
+    result =
+      Turbo.Ecto.turbo(
+        Permit,
+        params,
+        entry_name: "permits",
+        prefix: tenant
+      )
 
     conn
     |> assign(:permits, result.permits)
     |> assign(:paginate, result.paginate)
     |> render(:index)
+
     #    permits = Permits.list_permits()
     #    render(conn, "index.html", permits: permits)
   end
@@ -65,7 +67,13 @@ defmodule Web.PermitTenantController do
   end
 
   def action(conn, _) do
-    args = [conn, conn.params, Triplex.to_prefix(conn.assigns.current_tenant), conn.assigns.current_user]
+    args = [
+      conn,
+      conn.params,
+      Triplex.to_prefix(conn.assigns.current_tenant),
+      conn.assigns.current_user
+    ]
+
     apply(__MODULE__, action_name(conn), args)
   end
 end

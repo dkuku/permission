@@ -8,6 +8,7 @@ defmodule Web.UserInputComponent do
       socket
       |> assign(actor: session["actor"])
       |> assign(usernames: session["usernames"])
+
     {:ok, socket}
   end
 
@@ -32,8 +33,10 @@ defmodule Web.UserInputComponent do
       </div>
     """
   end
+
   def search_usernames(""), do: []
   def search_usernames(name), do: Workpermit.Users.find_names(name)
+
   def handle_event("suggest-username", payload, socket) do
     usernames = search_usernames(payload["value"])
     {:noreply, assign(socket, :usernames, usernames)}

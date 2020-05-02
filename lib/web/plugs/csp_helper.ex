@@ -4,12 +4,12 @@ defmodule Web.CSPHeader do
   def init(opts), do: opts
 
   def call(conn, _opts) do
-    put_resp_header conn, "content-security-policy", csp(conn)
+    put_resp_header(conn, "content-security-policy", csp(conn))
   end
 
   defp csp(conn) do
     "default-src 'self'; \
-    connect-src 'self' #{ws_url conn} #{ws_url conn, "wss"}; \
+    connect-src 'self' #{ws_url(conn)} #{ws_url(conn, "wss")}; \
     script-src 'self' 'unsafe-inline' 'unsafe-eval'; \
     style-src 'self' 'unsafe-inline' 'unsafe-eval'"
   end

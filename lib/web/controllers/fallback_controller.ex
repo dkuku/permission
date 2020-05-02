@@ -7,6 +7,7 @@ defmodule Web.FallbackController do
     |> put_flash(:error, msg)
     |> redirect(to: Routes.permit_path(conn, :index))
   end
+
   def call(conn, {:error, %Ecto.Changeset{} = changeset}, _user) do
     conn
     |> assign(:changeset, changeset)

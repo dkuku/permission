@@ -18,10 +18,12 @@ defmodule Web.RouterTenant do
       endpoint: Web.Endpoint,
       assign: :current_tenant,
       tenant_handler: &Web.TenantHelper.tenant_handler/1
+
     plug Triplex.EnsurePlug,
       assign: :current_tenant,
       callback: &Web.TenantHelper.callback/2,
       failure_callback: &Web.TenantHelper.failure_callback/2
+
     plug Web.PowTriplexSessionPlug, otp_app: :workpermit
   end
 
@@ -39,8 +41,8 @@ defmodule Web.RouterTenant do
 
     get "/", Web.PageController, :index
     get "/demo", Web.PageController, :demo
-
   end
+
   scope "/" do
     pipe_through [:browser, :tenant]
 

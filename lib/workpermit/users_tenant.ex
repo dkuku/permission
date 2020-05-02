@@ -25,13 +25,14 @@ defmodule Workpermit.UsersTenant do
 
   def get_user!(id, tenant \\ nil), do: Repo.get!(User, id, prefix: tenant)
 
-
   def get_by_credentials(%{"email" => email, "password" => password}) do
     get_by_credentials(%{email: email, password: password}, nil)
   end
+
   def get_by_credentials(%{"email" => email, "password" => password}, nil) do
     get_by_credentials(%{email: email, password: password}, nil)
   end
+
   def get_by_credentials(%{"email" => email, "password" => password}, tenant) do
     get_by_credentials(%{email: email, password: password}, tenant)
   end

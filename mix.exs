@@ -58,7 +58,7 @@ defmodule Workpermit.MixProject do
       {:pow, "~> 1.0.20"},
       {:timex, "~> 3.5"},
       {:triplex, "~> 1.3.0"},
-      #{:turbo_ecto, "~> 0.4.1"},
+      # {:turbo_ecto, "~> 0.4.1"},
       {:turbo_ecto, github: "redmar/turbo_ecto", ref: "134e517"},
       {:turbo_html, github: "dkuku/turbo_html", ref: "b515e2e"},
       {:sentry, "~> 7.0"},
@@ -66,18 +66,18 @@ defmodule Workpermit.MixProject do
       # {:turbo_html, path: "../turbo_html"},
       {:excoveralls, "~> 0.10", only: [:test]},
       {:ex_machina, "~> 2.3", only: [:test]},
-      { :changex, "~> 0.2.0"},
+      {:changex, "~> 0.2.0"},
       # {:faker, "~> 0.13", only: [:dev, :test]},
       {:faker, "~> 0.13"},
       {:cabbage, "~> 0.3.0", only: [:test]},
-      {:hound, github: "HashNuke/hound", ref: "0613a33f065a1eaa91fab602b8bc9af367d78ec1" },
+      {:hound, github: "HashNuke/hound", ref: "0613a33f065a1eaa91fab602b8bc9af367d78ec1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, github: "phoenixframework/phoenix_live_view", override: true},
       {:phoenix_live_dashboard, github: "phoenixframework/phoenix_live_dashboard"},
       {:floki, ">= 0.0.0", only: :test},
       {:surface, github: "msaraiva/surface"},
       {:telemetry_poller, "~> 0.4"},
-      {:telemetry_metrics, "~> 0.4"},
+      {:telemetry_metrics, "~> 0.4"}
     ]
   end
 

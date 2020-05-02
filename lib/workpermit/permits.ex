@@ -75,6 +75,7 @@ defmodule Workpermit.Permits do
     |> Permit.changeset(attrs)
     |> Repo.update!()
   end
+
   @doc """
   Deletes a Permit.
 

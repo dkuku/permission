@@ -63,10 +63,10 @@ defmodule Web.UserTenantController do
     |> redirect(to: Routes.user_path(conn, :index))
   end
 
-  #def find_name(conn, %{"name" => name}, _tenant) do
+  # def find_name(conn, %{"name" => name}, _tenant) do
   #  users = UsersTenant.find_names(name)
   #  json(conn, users)
-  #end
+  # end
 
   def action(conn, _) do
     args = [conn, conn.params, Triplex.to_prefix(conn.assigns.current_tenant)]

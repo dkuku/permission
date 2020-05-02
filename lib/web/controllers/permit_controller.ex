@@ -2,6 +2,7 @@ defmodule Web.PermitController do
   use Web, :controller
   action_fallback(Web.FallbackController)
   plug :authenticate when action in [:index, :new, :create, :show]
+
   # plug :authenticate when action  not in [:select_category]
 
   alias Workpermit.Permits

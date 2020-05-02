@@ -22,7 +22,8 @@ defmodule Workpermit.PermitsTenant do
   """
   def list_permits do
     Repo.all(Permit |> order_by(desc: :id),
-    prefix: Triplex.to_prefix("demo"))
+      prefix: Triplex.to_prefix("demo")
+    )
   end
 
   @doc """
@@ -40,9 +41,11 @@ defmodule Workpermit.PermitsTenant do
 
   """
   def get_permit!(id, tenant) do
-      query = from permit in Permit,
+    query =
+      from permit in Permit,
         where: permit.id == ^id,
         preload: :issuer
+
     Repo.one(query, prefix: tenant)
   end
 

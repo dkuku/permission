@@ -1,5 +1,4 @@
 defmodule Web.Plug.Subdomain do
-
   @doc false
   def init(default), do: default
 
@@ -9,7 +8,9 @@ defmodule Web.Plug.Subdomain do
       subdomain when byte_size(subdomain) > 0 ->
         conn
         |> router.call(router.init({}))
-      _ -> conn
+
+      _ ->
+        conn
     end
   end
 

@@ -10,6 +10,7 @@ defmodule Web.PrecautionsInputComponent do
       socket
       |> assign(precautions: session["precautions"])
       |> assign(f: session["f"])
+
     {:ok, socket}
   end
 
@@ -55,21 +56,23 @@ defmodule Web.PrecautionsInputComponent do
     """
   end
 
-  
   def handle_event("changed-input", payload, socket) do
     index = get_index(payload)
     updated_precautions = List.replace_at(socket.assigns.precautions, index, payload["value"])
     {:noreply, assign(socket, :precautions, updated_precautions)}
   end
+
   def handle_event("add-input", _payload, socket) do
     updated_precautions = socket.assigns.precautions ++ [""]
     {:noreply, assign(socket, :precautions, updated_precautions)}
   end
+
   def handle_event("remove-input", payload, socket) do
     index = get_index(payload)
-    updated_precautions = List.delete_at(socket.assigns.precautions, index )
+    updated_precautions = List.delete_at(socket.assigns.precautions, index)
     {:noreply, assign(socket, :precautions, updated_precautions)}
   end
+
   defp get_index(payload) do
     payload["index"]
     |> String.to_integer()

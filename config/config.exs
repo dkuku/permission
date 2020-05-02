@@ -4,9 +4,9 @@ config :workpermit,
   ecto_repos: [Workpermit.Repo]
 
 config :triplex,
-repo: Workpermit.Repo,
-tenant_prefix: :wpt_,
-reserved_tenants: ["workpermit", "www", "api", ~r/^db+$/]
+  repo: Workpermit.Repo,
+  tenant_prefix: :wpt_,
+  reserved_tenants: ["workpermit", "www", "api", ~r/^db+$/]
 
 config :turbo_ecto, Turbo.Ecto,
   repo: Workpermit.Repo,

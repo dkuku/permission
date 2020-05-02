@@ -1,5 +1,4 @@
 defmodule Web.TenantHelper do
-
   @default_tenant "demo"
   def callback(conn, tenant_from_url) do
     tenant =
@@ -22,6 +21,7 @@ defmodule Web.TenantHelper do
     IO.inspect("current_tenant: nil")
     nil
   end
+
   def tenant_handler(tenant) do
     IO.inspect("current_tenant: #{tenant}")
     tenant

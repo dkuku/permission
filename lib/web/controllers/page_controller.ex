@@ -5,7 +5,6 @@ defmodule Web.PageController do
   def index(conn, _params) do
     conn
     |> render("index.html")
-
   end
 
   def demo(conn, _params) do

@@ -14,19 +14,23 @@ defmodule Web.PermitView do
   def gettext_category(category) do
     OrgGettext.dgettext(Web.Gettext, "default", humanize(category))
   end
+
   def category_query(params, category) do
     search_query = %{
       "q" => %{"category_eq" => category},
       "s" => "number+desc"
     }
+
     Map.merge(params, search_query)
   end
-  def link_sorted(conn, show, params, new_params, class  \\ "") do
+
+  def link_sorted(conn, show, params, new_params, class \\ "") do
     updated_params = Map.merge(params, new_params)
     route = Routes.permit_path(conn, :index, updated_params)
-    link show, to: route, class: class
+    link(show, to: route, class: class)
   end
-  def iso_image_category(category), do:  category |> Permits.image() |> iso_image()
+
+  def iso_image_category(category), do: category |> Permits.image() |> iso_image()
   def iso_image(iso), do: iso |> IsoSymbols.to_image_path()
   def iso_meaning(iso), do: iso |> IsoSymbols.to_sign_meaning()
 
@@ -35,10 +39,11 @@ defmodule Web.PermitView do
   def line_break(string), do: string <> "\n"
 
   def precautions(), do: Permits.default_precautions()
+
   def prec() do
-      Permits.default_precautions()
-      |> Enum.map(fn x -> x |> checkbox |> line_break end)
-      |> Enum.join()
+    Permits.default_precautions()
+    |> Enum.map(fn x -> x |> checkbox |> line_break end)
+    |> Enum.join()
   end
 
   def date_time(%{} = date), do: date |> Timex.format!("%m/%d %H:%M", :strftime)

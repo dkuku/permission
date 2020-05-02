@@ -71,7 +71,7 @@ defmodule Workpermit.PermitsTest do
       assert first == :ear_protection
     end
 
-    #@tag :skip
+    # @tag :skip
     test "next_permit_number/1 returns number + 1 of last permit in category" do
       next_electrical = Permits.next_permit_number(:electrical)
       _permit = insert(:permit, %{:category => :electrical})

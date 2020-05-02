@@ -10,7 +10,7 @@ defmodule Web.Router do
     plug :fetch_session
     plug :fetch_live_flash
     plug :protect_from_forgery
- #   plug Web.CSPHeader
+    #   plug Web.CSPHeader
     plug :put_secure_browser_headers
     plug Web.Plugs.Locale
   end
@@ -19,9 +19,11 @@ defmodule Web.Router do
     plug Pow.Plug.RequireAuthenticated,
       error_handler: Pow.Phoenix.PlugErrorHandler
   end
+
   pipeline :pdf do
     plug Web.PdfGenerator, orientation: 'portrait'
   end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -39,6 +41,7 @@ defmodule Web.Router do
     get "/permits/pdf/:id", PermitController, :show, as: "print"
     get "/permits/pdf", PermitController, :index, as: "print"
   end
+
   scope "/", Web do
     pipe_through [:browser, :protected]
     # User registration and sessions
@@ -55,7 +58,6 @@ defmodule Web.Router do
     resources "/users", UserController
   end
 
-
   # Other scopes may use custom stacks.
   scope "/api", Web do
     pipe_through :api
@@ -65,9 +67,9 @@ defmodule Web.Router do
 
   if Mix.env() == :dev do
     scope "/" do
-    pipe_through :browser
-    live_dashboard "/dashboard", metrics: Web.Telemetry
-    get "/demo", Web.PageController, :demo
-  end
+      pipe_through :browser
+      live_dashboard "/dashboard", metrics: Web.Telemetry
+      get "/demo", Web.PageController, :demo
+    end
   end
 end
