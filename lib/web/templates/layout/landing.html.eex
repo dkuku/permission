@@ -9,7 +9,7 @@
     <%= Enum.map(get_flash(@conn), fn {type, message} -> %>
       <%= render "components/flash.html", type: type, message: message %>
     <% end) %>
-    <%= render @view_module, @view_template, assigns %>
+    <%= @inner_content %>
     <%= render "components/footer.html", conn: @conn %>
     <script type="text/javascript" src="<%=Routes.static_path(@conn, "/js/landing.js") %>"></script>
   </body>

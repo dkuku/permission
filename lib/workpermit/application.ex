@@ -5,6 +5,7 @@ defmodule Workpermit.Application do
 
   def start(_type, _args) do
     children = [
+      {Phoenix.PubSub, name: Workpermit.PubSub},
       Workpermit.Repo,
       Web.Telemetry,
       Web.Endpoint

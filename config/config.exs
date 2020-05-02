@@ -20,7 +20,7 @@ config :workpermit, Web.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "V8vj221j4H6PdMpZps8Ldk6ztUxn4Z/H1Hwdg9H7mFGODMWwWo5jhbqbQHuL1BI2",
   render_errors: [view: Web.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Workpermit.PubSub, adapter: Phoenix.PubSub.PG2],
+  pubsub_server: Workpermit.PubSub,
   live_view: [signing_salt: "E7S7f1RciqnSlS7ylHCCTGxXRrpVhS/a"]
 
 # Configures Elixir's Logger
