@@ -1,19 +1,24 @@
-defmodule WorkpermitWeb.Admin.UserControllerTest do
-  use WorkpermitWeb.ConnCase
+defmodule Web.Admin.UserControllerTest do
+  use Web.ConnCase
 
   alias Workpermit.Users
 
   @create_attrs %{
-    email: "some email",
+    email: "some@email.fi",
     first_name: "some first_name",
     last_name: "some last_name",
-    phone: "some phone"
+    phone: "some phone",
+    password: "arstpqw12",
+    password_confirmation: "arstpqw12",
   }
   @update_attrs %{
-    email: "some updated email",
+    email: "some@updated_email.ye",
     first_name: "some updated first_name",
     last_name: "some updated last_name",
-    phone: "some updated phone"
+    phone: "some updated phone",
+    password: "arstpqw12",
+    password_confirmation: "arstpqw12",
+    current_password: "arstpqw12",
   }
   @invalid_attrs %{email: nil, first_name: nil, last_name: nil, phone: nil}
 
@@ -25,7 +30,7 @@ defmodule WorkpermitWeb.Admin.UserControllerTest do
   describe "index" do
     test "lists all users", %{conn: conn} do
       conn = get(conn, Routes.admin_user_path(conn, :index))
-      assert html_response(conn, 200) =~ "Listing Users"
+      assert html_response(conn, 200) =~ "User Profiles"
     end
   end
 
@@ -44,7 +49,7 @@ defmodule WorkpermitWeb.Admin.UserControllerTest do
       assert redirected_to(conn) == Routes.admin_user_path(conn, :show, id)
 
       conn = get(conn, Routes.admin_user_path(conn, :show, id))
-      assert html_response(conn, 200) =~ "Show User"
+      assert html_response(conn, 200) =~ "User Profile"
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
