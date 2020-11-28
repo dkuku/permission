@@ -12,8 +12,6 @@
         <%= render "components/flash.html", type: type, message: message %>
       <% end) %>
       </div>
-    <%= view_module(@conn) %>
-    <%= "permits." <> view_template(@conn) %>
     <%= @inner_content %>
     <%= render "components/footer.html", conn: @conn %>
     <script type="text/javascript" src="<%=Routes.static_path(@conn, "/js/app.js") %>"></script>

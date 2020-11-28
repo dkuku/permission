@@ -1,4 +1,16 @@
-# Workpermit
+# Demo Elixir/Phoenix app for creating permits to work that can be exported to pdf
+## Technologies used
+- Elixir/Phoenix
+- Postgres/Ecto
+- TurboEcto - custom fork with tailwind support
+- LiveView/LiveDashboard
+- Alpine js
+- Tailwind css
+
+## Demo images
+![list](README_static/2020-11-28_14-52.png)
+![permit form](README_static/2020-11-28_14-53.png)
+![finished permit](README_static/2020-11-28_14-54.png)
 
 To start your Phoenix server:
 
@@ -8,13 +20,3 @@ To start your Phoenix server:
   * Start Phoenix endpoint with `mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
